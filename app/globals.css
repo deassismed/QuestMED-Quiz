@@ -331,6 +331,79 @@ a { color: inherit; }
 }
 .timer-pill.danger { background: #fff1f1; border-color: rgba(180, 35, 24, 0.3); color: var(--danger); }
 
+.completion-panel {
+  background: rgba(39, 37, 69, 0.82);
+  border: 1px solid rgba(153, 150, 206, 0.26);
+  border-radius: 18px;
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+.completion-panel h2 {
+  color: #fff;
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  line-height: 1;
+  margin: 0;
+}
+.completion-summary {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.completion-summary > div {
+  background: rgba(12, 10, 32, 0.72);
+  border: 1px solid rgba(72, 240, 255, 0.18);
+  border-radius: 14px;
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+}
+.completion-summary span {
+  color: rgba(248, 245, 255, 0.62);
+  font-size: 0.7rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+.completion-summary strong {
+  color: #47d997;
+  font-size: 1.55rem;
+}
+.completion-answer-list {
+  display: grid;
+  gap: 10px;
+}
+.completion-answer {
+  background: rgba(255, 241, 241, 0.08);
+  border: 1px solid rgba(255, 106, 106, 0.24);
+  border-radius: 14px;
+  display: grid;
+  gap: 7px;
+  grid-template-columns: auto 1fr auto auto;
+  padding: 12px;
+}
+.completion-answer.correct {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+.completion-answer strong {
+  color: #48f0ff;
+  font-family: Consolas, "Liberation Mono", "Courier New", monospace;
+}
+.completion-answer span,
+.completion-answer b,
+.completion-answer em {
+  color: #fff;
+  font-style: normal;
+  font-weight: 900;
+}
+.completion-answer em { color: #47d997; }
+.completion-answer p {
+  color: rgba(248, 245, 255, 0.72);
+  grid-column: 1 / -1;
+  line-height: 1.4;
+  margin: 0;
+}
+
 .question-card {
   background: #fff;
   border: 1px solid #d6e5e2;
@@ -1207,6 +1280,21 @@ a { color: inherit; }
   color: var(--muted);
   font-size: 0.78rem;
   text-transform: uppercase;
+}
+.table-icon-danger {
+  align-items: center;
+  background: #fff1f1;
+  border: 1px solid rgba(180, 35, 24, 0.24);
+  border-radius: 8px;
+  color: var(--danger);
+  display: inline-flex;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+.table-icon-danger:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 .clickable-row {
   cursor: pointer;

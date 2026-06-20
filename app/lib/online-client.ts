@@ -97,6 +97,26 @@ export function finishRoom(roomId: string, adminKey: string) {
   });
 }
 
+export function deleteStudent(roomId: string, studentId: string, adminKey: string) {
+  return requestJson<RoomPublicState>(
+    `/api/admin/rooms/${encodeURIComponent(roomId)}/students/${encodeURIComponent(studentId)}`,
+    {
+      method: "DELETE",
+      body: JSON.stringify({ adminKey })
+    }
+  );
+}
+
+export function deleteUbs(roomId: string, ubsId: string, adminKey: string) {
+  return requestJson<RoomPublicState>(
+    `/api/admin/rooms/${encodeURIComponent(roomId)}/ubs/${encodeURIComponent(ubsId)}`,
+    {
+      method: "DELETE",
+      body: JSON.stringify({ adminKey })
+    }
+  );
+}
+
 export function loadQuestionStats(roomId: string, questionId: string, adminKey: string) {
   return requestJson<QuestionStats>(
     `/api/admin/rooms/${encodeURIComponent(roomId)}/question-stats?questionId=${encodeURIComponent(questionId)}&adminKey=${encodeURIComponent(adminKey)}`

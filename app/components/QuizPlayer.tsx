@@ -47,9 +47,14 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     [session?.answers]
   );
   const releasedQuestions = questions.filter((question) => session?.room.releasedQuestionIds.includes(question.id));
+  const unansweredQuestion = releasedQuestions.find((question) => !answersByQuestion.has(question.id)) ?? null;
+  const allReleasedAnswered = releasedQuestions.length > 0 && !unansweredQuestion;
+  const answeredQuestionStats = releasedQuestions
+    .map((question) => ({ question, answer: answersByQuestion.get(question.id) }))
+    .filter((item): item is { question: QuizQuestion; answer: NonNullable<ReturnType<typeof answersByQuestion.get>> } => Boolean(item.answer));
   const currentQuestion =
     questions.find((question) => question.id === selectedQuestionId) ??
-    releasedQuestions.find((question) => !answersByQuestion.has(question.id)) ??
+    unansweredQuestion ??
     releasedQuestions[0] ??
     null;
   const currentAnswer = currentQuestion ? answersByQuestion.get(currentQuestion.id) : null;
@@ -433,7 +438,28 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
             </span>
           </div>
 
-          {!currentQuestion ? (
+          {allReleasedAnswered ? (
+            <section className="completion-panel">
+              <span className="eyebrow">Atividade concluida</span>
+              <h2>Suas estatisticas</h2>
+              <div className="completion-summary">
+                <div><span>Respondidas</span><strong>{session.answers.length}/{releasedQuestions.length}</strong></div>
+                <div><span>Acertos</span><strong>{session.answers.filter((answer) => answer.isCorrect).length}</strong></div>
+                <div><span>Pontos</span><strong>{session.student.totalScore.toFixed(1)}</strong></div>
+              </div>
+              <div className="completion-answer-list">
+                {answeredQuestionStats.map(({ answer, question }) => (
+                  <article className={answer.isCorrect ? "completion-answer correct" : "completion-answer"} key={question.id}>
+                    <strong>{question.id}</strong>
+                    <span>{answer.selectedOptionId === "TIMEOUT" ? "Tempo esgotado" : `Marcada ${answer.selectedOptionId}`}</span>
+                    <b>Gabarito {question.correctOptionId}</b>
+                    <em>{answer.score.toFixed(1)} pts</em>
+                    <p>{question.explanation}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : !currentQuestion ? (
             <section className="question-card waiting-card">
               <h2>Aguardando questoes liberadas</h2>
               <p>O professor ainda nao liberou questoes para esta sala.</p>
@@ -477,7 +503,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
           )}
         </div>
 
-        {currentQuestion && !currentAnswer ? (
+        {currentQuestion && !currentAnswer && !allReleasedAnswered ? (
           <button className="floating-confirm-button" disabled={busy || !selectedOptionId || remainingSeconds === 0} onClick={() => void submitAnswer()} type="button" aria-label="Confirmar resposta">
             <Check size={28} />
           </button>

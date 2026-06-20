@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowLeft, BarChart3, Copy, ExternalLink, Power, RefreshCw, Shuffle } from "lucide-react";
+import { ArrowLeft, BarChart3, Copy, ExternalLink, Power, RefreshCw, Shuffle, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions } from "../lib/online-client";
+import { deleteStudent, deleteUbs, finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
 import type { QuestionStats, QuizQuestion, RoomPublicState, StudentStats } from "../types";
 
@@ -115,6 +115,37 @@ export function TeacherDashboard({
     }
   }
 
+  async function removeStudent(studentId: string, nickname: string) {
+    if (!window.confirm(`Excluir o aluno ${nickname}? As respostas dele tambem serao apagadas.`)) return;
+    setBusy(true);
+    setError("");
+    try {
+      setState(await deleteStudent(state.room.id, studentId, adminKey));
+      setStudentStats(null);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel excluir o aluno.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function removeUbs(ubsId: string, ubsName: string, memberCount: number) {
+    const message =
+      memberCount > 0
+        ? `Excluir a UBS ${ubsName} e ${memberCount} aluno(s) vinculados? As respostas desses alunos tambem serao apagadas.`
+        : `Excluir a UBS ${ubsName}?`;
+    if (!window.confirm(message)) return;
+    setBusy(true);
+    setError("");
+    try {
+      setState(await deleteUbs(state.room.id, ubsId, adminKey));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel excluir a UBS.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <main className="admin-shell">
       <header className="dashboard-header">
@@ -163,12 +194,29 @@ export function TeacherDashboard({
         </div>
         <div className="data-table-wrap">
           <table className="data-table">
-            <thead><tr><th>UBS</th><th>Alunos</th><th>Respostas</th><th>Media</th></tr></thead>
+            <thead><tr><th>UBS</th><th>Alunos</th><th>Respostas</th><th>Media</th><th>Acoes</th></tr></thead>
             <tbody>
               {teamRanking.map((team) => (
-                <tr key={team.id}><td><strong>{team.name}</strong></td><td>{team.memberCount}</td><td>{team.answeredCount}</td><td><strong>{team.averageScore.toFixed(1)}</strong></td></tr>
+                <tr key={team.id}>
+                  <td><strong>{team.name}</strong></td>
+                  <td>{team.memberCount}</td>
+                  <td>{team.answeredCount}</td>
+                  <td><strong>{team.averageScore.toFixed(1)}</strong></td>
+                  <td>
+                    <button
+                      aria-label={`Excluir UBS ${team.name}`}
+                      className="table-icon-danger"
+                      disabled={busy}
+                      onClick={() => void removeUbs(team.id, team.name, team.memberCount)}
+                      title="Excluir UBS"
+                      type="button"
+                    >
+                      <Trash2 size={17} />
+                    </button>
+                  </td>
+                </tr>
               ))}
-              {teamRanking.length === 0 ? <tr><td className="empty-table" colSpan={4}>Nenhuma UBS entrou na sala.</td></tr> : null}
+              {teamRanking.length === 0 ? <tr><td className="empty-table" colSpan={5}>Nenhuma UBS entrou na sala.</td></tr> : null}
             </tbody>
           </table>
         </div>
@@ -183,7 +231,7 @@ export function TeacherDashboard({
         </div>
         <div className="data-table-wrap">
           <table className="data-table">
-            <thead><tr><th>Aluno</th><th>UBS</th><th>Respondidas</th><th>Pontos</th><th>Ultima atividade</th></tr></thead>
+            <thead><tr><th>Aluno</th><th>UBS</th><th>Respondidas</th><th>Pontos</th><th>Ultima atividade</th><th>Acoes</th></tr></thead>
             <tbody>
               {studentRanking.map((student) => (
                 <tr
@@ -200,9 +248,25 @@ export function TeacherDashboard({
                   <td>{studentStatsBusy === student.id ? "..." : student.answeredCount}</td>
                   <td><strong>{student.totalScore.toFixed(1)}</strong></td>
                   <td>{new Date(student.lastActivityAt).toLocaleString("pt-BR")}</td>
+                  <td>
+                    <button
+                      aria-label={`Excluir aluno ${student.nickname}`}
+                      className="table-icon-danger"
+                      disabled={busy}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        void removeStudent(student.id, student.nickname);
+                      }}
+                      onKeyDown={(event) => event.stopPropagation()}
+                      title="Excluir aluno"
+                      type="button"
+                    >
+                      <Trash2 size={17} />
+                    </button>
+                  </td>
                 </tr>
               ))}
-              {studentRanking.length === 0 ? <tr><td className="empty-table" colSpan={5}>Nenhum aluno entrou na sala.</td></tr> : null}
+              {studentRanking.length === 0 ? <tr><td className="empty-table" colSpan={6}>Nenhum aluno entrou na sala.</td></tr> : null}
             </tbody>
           </table>
         </div>

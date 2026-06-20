@@ -472,6 +472,35 @@ export async function finishOnlineRoom(roomId: string, adminKey: string) {
   return getRoomPublicStateById(roomId);
 }
 
+export async function deleteRoomStudent(roomId: string, adminKey: string, studentId: string) {
+  if (!(await validateAdmin(roomId, adminKey))) throw new Error("Chave administrativa invalida.");
+  const { error } = await getServerSupabase()
+    .from("qmq_students")
+    .delete()
+    .eq("room_id", roomId)
+    .eq("id", studentId);
+  if (error) throw error;
+  return getRoomPublicStateById(roomId);
+}
+
+export async function deleteRoomUbs(roomId: string, adminKey: string, ubsId: string) {
+  if (!(await validateAdmin(roomId, adminKey))) throw new Error("Chave administrativa invalida.");
+  const supabase = getServerSupabase();
+  const { error: studentsError } = await supabase
+    .from("qmq_students")
+    .delete()
+    .eq("room_id", roomId)
+    .eq("ubs_id", ubsId);
+  if (studentsError) throw studentsError;
+  const { error: ubsError } = await supabase
+    .from("qmq_ubs_teams")
+    .delete()
+    .eq("room_id", roomId)
+    .eq("id", ubsId);
+  if (ubsError) throw ubsError;
+  return getRoomPublicStateById(roomId);
+}
+
 export async function getQuestionStats(roomId: string, adminKey: string, questionId: string): Promise<QuestionStats> {
   if (!(await validateAdmin(roomId, adminKey))) throw new Error("Chave administrativa invalida.");
   const question = getQuestion(questionId);
