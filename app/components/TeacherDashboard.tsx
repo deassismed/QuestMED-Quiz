@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, BarChart3, Copy, ExternalLink, Power, RefreshCw } from "lucide-react";
+import { ArrowLeft, BarChart3, Copy, ExternalLink, Power, RefreshCw, Shuffle } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
@@ -24,12 +24,19 @@ export function TeacherDashboard({
   const [selectedQuestionStats, setSelectedQuestionStats] = useState<QuestionStats | null>(null);
   const [studentStats, setStudentStats] = useState<StudentStats | null>(null);
   const [studentStatsBusy, setStudentStatsBusy] = useState("");
+  const [releaseAmount, setReleaseAmount] = useState(5);
   const studentUrl = useMemo(() => (origin ? `${origin}/?sala=${state.room.roomCode}` : ""), [origin, state.room.roomCode]);
   const statusUrl = useMemo(() => (origin ? `${origin}/status/${state.room.roomCode}` : ""), [origin, state.room.roomCode]);
   const teamRanking = [...state.ubsTeams].sort((a, b) => b.averageScore - a.averageScore);
   const studentRanking = [...state.students].sort((a, b) => b.totalScore - a.totalScore);
+  const releasedQuestionIds = new Set(state.room.releasedQuestionIds);
+  const remainingQuestions = questions.filter((question) => !releasedQuestionIds.has(question.id));
 
   useEffect(() => setOrigin(window.location.origin), []);
+  useEffect(() => {
+    if (remainingQuestions.length === 0) return;
+    setReleaseAmount((current) => Math.max(1, Math.min(current, remainingQuestions.length)));
+  }, [remainingQuestions.length]);
   useEffect(() => {
     if (!studentStats) return;
     const close = () => setStudentStats(null);
@@ -52,16 +59,19 @@ export function TeacherDashboard({
     };
   }, [state.room.id, state.room.roomCode]);
 
-  async function toggleQuestion(questionId: string) {
+  async function releaseRandomQuestions() {
     setBusy(true);
     setError("");
     try {
-      const nextIds = state.room.releasedQuestionIds.includes(questionId)
-        ? state.room.releasedQuestionIds.filter((id) => id !== questionId)
-        : [...state.room.releasedQuestionIds, questionId];
-      setState(await updateReleasedQuestions(state.room.id, nextIds, adminKey));
+      if (state.room.status === "finished") throw new Error("Esta sala ja foi encerrada.");
+      if (remainingQuestions.length === 0) throw new Error("Todas as questoes ja foram liberadas.");
+
+      const amount = Math.max(1, Math.min(releaseAmount, remainingQuestions.length));
+      const shuffled = shuffleQuestions(remainingQuestions);
+      const selectedIds = shuffled.slice(0, amount).map((question) => question.id);
+      setState(await updateReleasedQuestions(state.room.id, [...state.room.releasedQuestionIds, ...selectedIds], adminKey));
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Nao foi possivel atualizar questoes.");
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel liberar questoes.");
     } finally {
       setBusy(false);
     }
@@ -207,9 +217,34 @@ export function TeacherDashboard({
             <h2>Liberar questoes</h2>
           </div>
         </div>
+        <div className="random-release-panel">
+          <div>
+            <span>Disponiveis</span>
+            <strong>{remainingQuestions.length}</strong>
+          </div>
+          <label>
+            <span>Quantidade para sortear</span>
+            <input
+              disabled={busy || state.room.status === "finished" || remainingQuestions.length === 0}
+              max={Math.max(1, remainingQuestions.length)}
+              min={1}
+              onChange={(event) => setReleaseAmount(Number(event.currentTarget.value))}
+              type="number"
+              value={releaseAmount}
+            />
+          </label>
+          <button
+            className="primary-command"
+            disabled={busy || state.room.status === "finished" || remainingQuestions.length === 0}
+            onClick={() => void releaseRandomQuestions()}
+            type="button"
+          >
+            <Shuffle size={18} /> Liberar aleatorias
+          </button>
+        </div>
         <div className="question-release-list">
           {questions.map((question) => {
-            const released = state.room.releasedQuestionIds.includes(question.id);
+            const released = releasedQuestionIds.has(question.id);
             return (
               <article
                 className={[
@@ -229,16 +264,7 @@ export function TeacherDashboard({
                   <span>{question.area}</span>
                   <p>{question.theme}</p>
                 </div>
-                <button
-                  disabled={busy || state.room.status === "finished"}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    void toggleQuestion(question.id);
-                  }}
-                  type="button"
-                >
-                  {released ? "Liberada" : "Liberar"}
-                </button>
+                <span className={released ? "release-state released" : "release-state"}>{released ? "Liberada" : "Disponivel"}</span>
               </article>
             );
           })}
@@ -253,6 +279,15 @@ export function TeacherDashboard({
       </section>
     </main>
   );
+}
+
+function shuffleQuestions(items: QuizQuestion[]) {
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled;
 }
 
 function StudentStatsModal({ onClose, stats }: { onClose: () => void; stats: StudentStats }) {
