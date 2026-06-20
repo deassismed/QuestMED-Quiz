@@ -88,6 +88,29 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   }, []);
 
   useEffect(() => {
+    if (step !== "student" || !state?.room.id) return;
+    const reload = () => {
+      void loadRoomState(state.room.roomCode)
+        .then(setState)
+        .catch(() => undefined);
+    };
+    const interval = window.setInterval(reload, 5000);
+    const client = getBrowserSupabase();
+    if (!client) {
+      return () => window.clearInterval(interval);
+    }
+    const channel = client
+      .channel(`qmq-entry:${state.room.id}`)
+      .on("postgres_changes", { event: "*", schema: "public", table: "qmq_students", filter: `room_id=eq.${state.room.id}` }, reload)
+      .on("postgres_changes", { event: "*", schema: "public", table: "qmq_ubs_teams", filter: `room_id=eq.${state.room.id}` }, reload)
+      .subscribe();
+    return () => {
+      window.clearInterval(interval);
+      void client.removeChannel(channel);
+    };
+  }, [state?.room.id, state?.room.roomCode, step]);
+
+  useEffect(() => {
     if (!session) return;
     const reload = () => {
       void Promise.all([loadStudentState(session.room.id, session.student.id), loadRoomState(session.room.roomCode)])
@@ -364,7 +387,6 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
                       type="button"
                     >
                       <AvatarBadge avatarId={avatar.id} className="choice-avatar" name={nickname || avatar.label} />
-                      <span>{avatar.label}</span>
                     </button>
                   ))}
                 </div>
