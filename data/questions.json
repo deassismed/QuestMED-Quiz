@@ -1,0 +1,72 @@
+[
+  {
+    "id": "Q001",
+    "area": "Clínica Médica",
+    "theme": "Dor torácica",
+    "statement": "Homem de 58 anos, hipertenso e tabagista, chega com dor torácica opressiva há 50 minutos, sudorese e náuseas. ECG com supradesnivelamento de ST em DII, DIII e aVF. Qual é a conduta inicial mais adequada?",
+    "explanation": "IAM com supra de ST exige terapia de reperfusão imediata, preferencialmente angioplastia primária quando disponível em tempo adequado.",
+    "correctOptionId": "B",
+    "options": [
+      { "id": "A", "text": "Solicitar troponina seriada antes de definir reperfusão." },
+      { "id": "B", "text": "Encaminhar para angioplastia primária e iniciar medidas antitrombóticas." },
+      { "id": "C", "text": "Prescrever nitrato e observar evolução clínica por 6 horas." },
+      { "id": "D", "text": "Realizar teste ergométrico após analgesia." }
+    ]
+  },
+  {
+    "id": "Q002",
+    "area": "Pediatria",
+    "theme": "Desidratação",
+    "statement": "Criança de 2 anos com diarreia há 2 dias, irritada, olhos fundos, sede intensa e sinal da prega que desaparece lentamente. Sem choque. Segundo a estratégia AIDPI, qual plano de hidratação é indicado?",
+    "explanation": "Na presença de alguma desidratação sem sinais de gravidade, indica-se Plano B com solução de reidratação oral sob supervisão.",
+    "correctOptionId": "C",
+    "options": [
+      { "id": "A", "text": "Plano A com líquidos em casa e retorno se piora." },
+      { "id": "B", "text": "Expansão venosa imediata com cristaloide em bolus." },
+      { "id": "C", "text": "Plano B com solução de reidratação oral na unidade." },
+      { "id": "D", "text": "Antibiótico empírico e jejum por 24 horas." }
+    ]
+  },
+  {
+    "id": "Q003",
+    "area": "Medicina Preventiva",
+    "theme": "Pré-natal",
+    "statement": "Gestante de baixo risco, 10 semanas, comparece à primeira consulta de pré-natal. Qual exame deve ser solicitado de rotina nessa fase?",
+    "explanation": "No início do pré-natal devem ser solicitados exames básicos, incluindo tipagem sanguínea, hemograma, glicemia, urina, sorologias e testes rápidos conforme protocolo local.",
+    "correctOptionId": "A",
+    "options": [
+      { "id": "A", "text": "Tipagem sanguínea, hemograma, glicemia, urina e sorologias." },
+      { "id": "B", "text": "Cardiotocografia basal semanal." },
+      { "id": "C", "text": "Ressonância magnética fetal." },
+      { "id": "D", "text": "Teste ergométrico materno." }
+    ]
+  },
+  {
+    "id": "Q004",
+    "area": "Cirurgia",
+    "theme": "Abdome agudo",
+    "statement": "Mulher de 24 anos com dor inicialmente periumbilical que migrou para fossa ilíaca direita, náuseas e Blumberg positivo. Qual hipótese diagnóstica é mais provável?",
+    "explanation": "Dor migratória para fossa ilíaca direita associada a sinais de irritação peritoneal sugere apendicite aguda.",
+    "correctOptionId": "D",
+    "options": [
+      { "id": "A", "text": "Colecistite aguda." },
+      { "id": "B", "text": "Pancreatite aguda." },
+      { "id": "C", "text": "Diverticulite de sigmoide." },
+      { "id": "D", "text": "Apendicite aguda." }
+    ]
+  },
+  {
+    "id": "Q005",
+    "area": "Ginecologia e Obstetrícia",
+    "theme": "Sangramento uterino",
+    "statement": "Adolescente com ciclos irregulares desde a menarca, sangramento aumentado, estável hemodinamicamente e teste de gravidez negativo. Qual é a causa mais comum nessa faixa etária?",
+    "explanation": "Nos primeiros anos após a menarca, sangramento uterino anormal frequentemente decorre de anovulação por imaturidade do eixo hipotálamo-hipófise-ovário.",
+    "correctOptionId": "A",
+    "options": [
+      { "id": "A", "text": "Ciclos anovulatórios." },
+      { "id": "B", "text": "Miomatose uterina volumosa." },
+      { "id": "C", "text": "Câncer de endométrio." },
+      { "id": "D", "text": "Endometriose profunda." }
+    ]
+  }
+]

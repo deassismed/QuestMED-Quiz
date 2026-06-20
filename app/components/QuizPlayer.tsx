@@ -1,0 +1,448 @@
+"use client";
+
+import { Check, Clock3, LockKeyhole, Medal } from "lucide-react";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { AvatarBadge } from "./AvatarBadge";
+import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
+import { answerQuestion, joinRoom, loadRoomState, loadStudentState, startQuestionTimer } from "../lib/online-client";
+import { getBrowserSupabase } from "../lib/supabase-browser";
+import type { QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
+
+type Step = "room" | "student" | "quiz";
+
+const SESSION_KEY = "questmed-quiz-session";
+const QUESTION_TIME_LIMIT_SECONDS = 90;
+
+function normalizeCode(value: string) {
+  return value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6);
+}
+
+function normalizeName(value: string) {
+  return value.toLocaleUpperCase("pt-BR").replace(/[^\p{L}\p{N} .'-]/gu, "");
+}
+
+export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
+  const [step, setStep] = useState<Step>("room");
+  const [roomCode, setRoomCode] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [ubsName, setUbsName] = useState("");
+  const [avatarId, setAvatarId] = useState<string>(DEFAULT_AVATAR_ID);
+  const [state, setState] = useState<RoomPublicState | null>(null);
+  const [session, setSession] = useState<StudentSessionState | null>(null);
+  const [selectedQuestionId, setSelectedQuestionId] = useState("");
+  const [selectedOptionId, setSelectedOptionId] = useState("");
+  const [questionStartedAt, setQuestionStartedAt] = useState("");
+  const [remainingSeconds, setRemainingSeconds] = useState(QUESTION_TIME_LIMIT_SECONDS);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [duplicateNickname, setDuplicateNickname] = useState(false);
+  const roomInputRef = useRef<HTMLInputElement>(null);
+  const nicknameInputRef = useRef<HTMLInputElement>(null);
+  const ubsInputRef = useRef<HTMLInputElement>(null);
+  const timeoutQuestionRef = useRef("");
+
+  const answersByQuestion = useMemo(
+    () => new Map((session?.answers ?? []).map((answer) => [answer.questionId, answer])),
+    [session?.answers]
+  );
+  const releasedQuestions = questions.filter((question) => session?.room.releasedQuestionIds.includes(question.id));
+  const currentQuestion =
+    questions.find((question) => question.id === selectedQuestionId) ??
+    releasedQuestions.find((question) => !answersByQuestion.has(question.id)) ??
+    releasedQuestions[0] ??
+    null;
+  const currentAnswer = currentQuestion ? answersByQuestion.get(currentQuestion.id) : null;
+  const ubsOptions = state?.ubsTeams ?? [];
+  const individualRanking = [...(state?.students ?? [])].sort((a, b) => b.totalScore - a.totalScore || a.joinedAt.localeCompare(b.joinedAt));
+  const teamRanking = [...(state?.ubsTeams ?? [])].sort((a, b) => b.averageScore - a.averageScore || b.memberCount - a.memberCount);
+  const currentStudentRank = Math.max(1, individualRanking.findIndex((student) => student.id === session?.student.id) + 1 || 1);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const requestedRoom = normalizeCode(params.get("sala") ?? "");
+    const saved = window.localStorage.getItem(SESSION_KEY);
+    if (requestedRoom) {
+      setRoomCode(requestedRoom);
+      void loadRoom(requestedRoom, true);
+      return;
+    }
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved) as { roomId: string; studentId: string };
+        void loadStudentState(parsed.roomId, parsed.studentId).then((next) => {
+          setSession(next);
+          setRoomCode(next.room.roomCode);
+          setNickname(next.student.nickname);
+          setUbsName(next.ubsTeam.name);
+          setAvatarId(next.student.avatarId ?? DEFAULT_AVATAR_ID);
+          setStep("quiz");
+        });
+      } catch {
+        window.localStorage.removeItem(SESSION_KEY);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!session) return;
+    const reload = () => {
+      void Promise.all([loadStudentState(session.room.id, session.student.id), loadRoomState(session.room.roomCode)])
+        .then(([nextSession, nextState]) => {
+          setSession(nextSession);
+          setState(nextState);
+        })
+        .catch(() => undefined);
+    };
+    const client = getBrowserSupabase();
+    if (!client) return;
+    const channel = client
+      .channel(`qmq-player:${session.room.id}:${session.student.id}`)
+      .on("postgres_changes", { event: "*", schema: "public", table: "qmq_rooms", filter: `id=eq.${session.room.id}` }, reload)
+      .on("postgres_changes", { event: "*", schema: "public", table: "qmq_students", filter: `room_id=eq.${session.room.id}` }, reload)
+      .on("postgres_changes", { event: "*", schema: "public", table: "qmq_ubs_teams", filter: `room_id=eq.${session.room.id}` }, reload)
+      .on("postgres_changes", { event: "*", schema: "public", table: "qmq_answers", filter: `room_id=eq.${session.room.id}` }, reload)
+      .subscribe();
+    return () => {
+      void client.removeChannel(channel);
+    };
+  }, [session?.room.id, session?.room.roomCode, session?.student.id]);
+
+  useEffect(() => {
+    if (!session || !currentQuestion || currentAnswer) {
+      setQuestionStartedAt("");
+      setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+      return;
+    }
+    let cancelled = false;
+    void startQuestionTimer({
+      roomId: session.room.id,
+      studentId: session.student.id,
+      questionId: currentQuestion.id
+    })
+      .then((timer) => {
+        if (cancelled) return;
+        setQuestionStartedAt(timer.startedAt);
+      })
+      .catch((caught) => setError(caught instanceof Error ? caught.message : "Nao foi possivel iniciar o cronometro."));
+    return () => {
+      cancelled = true;
+    };
+  }, [currentAnswer, currentQuestion?.id, session?.room.id, session?.student.id]);
+
+  useEffect(() => {
+    if (!questionStartedAt) return;
+    const updateRemaining = () => {
+      const elapsed = Math.floor((Date.now() - new Date(questionStartedAt).getTime()) / 1000);
+      setRemainingSeconds(Math.max(0, QUESTION_TIME_LIMIT_SECONDS - elapsed));
+    };
+    updateRemaining();
+    const interval = window.setInterval(updateRemaining, 250);
+    return () => window.clearInterval(interval);
+  }, [questionStartedAt]);
+
+  useEffect(() => {
+    if (!session || !currentQuestion || currentAnswer || remainingSeconds > 0 || timeoutQuestionRef.current === currentQuestion.id) return;
+    timeoutQuestionRef.current = currentQuestion.id;
+    setBusy(true);
+    setError("");
+    void answerQuestion({
+      roomId: session.room.id,
+      studentId: session.student.id,
+      questionId: currentQuestion.id,
+      selectedOptionId: "TIMEOUT"
+    })
+      .then(async () => {
+        const nextSession = await loadStudentState(session.room.id, session.student.id);
+        setSession(nextSession);
+        setState(await loadRoomState(session.room.roomCode));
+        const nextQuestion = releasedQuestions.find((question) => !nextSession.answers.some((answer) => answer.questionId === question.id));
+        setSelectedQuestionId(nextQuestion?.id ?? currentQuestion.id);
+        setSelectedOptionId("");
+        setQuestionStartedAt("");
+        setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+      })
+      .catch((caught) => setError(caught instanceof Error ? caught.message : "Tempo esgotado."))
+      .finally(() => setBusy(false));
+  }, [currentAnswer, currentQuestion, releasedQuestions, remainingSeconds, session]);
+
+  async function loadRoom(code = roomCode, advance = false) {
+    if (code.length !== 6) return;
+    setBusy(true);
+    setError("");
+    try {
+      const nextState = await loadRoomState(code);
+      setState(nextState);
+      if (advance) setStep("student");
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Sala nao encontrada.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function submitRoom(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const nextRoomCode = normalizeCode(roomInputRef.current?.value ?? String(formData.get("roomCode") ?? roomCode));
+    setRoomCode(nextRoomCode);
+    await loadRoom(nextRoomCode, true);
+  }
+
+  async function submitStudent(event: FormEvent<HTMLFormElement>, confirmReconnect = false) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const nextNickname = normalizeName(nicknameInputRef.current?.value ?? String(formData.get("nickname") ?? nickname));
+    const nextUbsName = normalizeName(ubsInputRef.current?.value ?? String(formData.get("ubsName") ?? ubsName));
+    setNickname(nextNickname);
+    setUbsName(nextUbsName);
+    setBusy(true);
+    setError("");
+    setDuplicateNickname(false);
+    try {
+      const nextSession = await joinRoom(roomCode, nextNickname, nextUbsName, avatarId, confirmReconnect);
+      setSession(nextSession);
+      setState(await loadRoomState(nextSession.room.roomCode));
+      window.localStorage.setItem(SESSION_KEY, JSON.stringify({ roomId: nextSession.room.id, studentId: nextSession.student.id }));
+      setStep("quiz");
+    } catch (caught) {
+      const message = caught instanceof Error ? caught.message : "Falha ao entrar.";
+      if (message.includes("NICKNAME_EXISTS")) setDuplicateNickname(true);
+      else setError(message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function reconnectStudent() {
+    setBusy(true);
+    setError("");
+    setDuplicateNickname(false);
+    try {
+      const nextSession = await joinRoom(roomCode, nickname.trim(), ubsName.trim(), avatarId, true);
+      setSession(nextSession);
+      setState(await loadRoomState(nextSession.room.roomCode));
+      window.localStorage.setItem(SESSION_KEY, JSON.stringify({ roomId: nextSession.room.id, studentId: nextSession.student.id }));
+      setStep("quiz");
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Falha ao reentrar.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function submitAnswer() {
+    if (!session || !currentQuestion || !selectedOptionId) return;
+    setBusy(true);
+    setError("");
+    try {
+      await answerQuestion({
+        roomId: session.room.id,
+        studentId: session.student.id,
+        questionId: currentQuestion.id,
+        selectedOptionId
+      });
+      const nextSession = await loadStudentState(session.room.id, session.student.id);
+      setSession(nextSession);
+      setState(await loadRoomState(session.room.roomCode));
+      const nextQuestion = releasedQuestions.find((question) => !nextSession.answers.some((answer) => answer.questionId === question.id));
+      setSelectedQuestionId(nextQuestion?.id ?? currentQuestion.id);
+      setSelectedOptionId("");
+      setQuestionStartedAt("");
+      setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel responder.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  if (step === "room") {
+    return (
+      <main className="app-shell">
+        <section className="entry-panel">
+          <span className="eyebrow">QuestMED Quiz</span>
+          <h1>Entre na sala</h1>
+          <form className="entry-form" onSubmit={submitRoom}>
+            <input
+              autoFocus
+              maxLength={6}
+              name="roomCode"
+              onChange={(event) => setRoomCode(normalizeCode(event.currentTarget.value))}
+              onInput={(event) => setRoomCode(normalizeCode(event.currentTarget.value))}
+              placeholder="CODIGO"
+              ref={roomInputRef}
+              type="text"
+              defaultValue={roomCode}
+            />
+            <button disabled={busy} type="submit">Continuar</button>
+          </form>
+          <a className="teacher-link" href="/professor"><LockKeyhole size={16} /> Area do professor</a>
+          {error ? <p className="entry-error">{error}</p> : null}
+        </section>
+      </main>
+    );
+  }
+
+  if (step === "student") {
+    return (
+      <main className="app-shell">
+        <section className="entry-panel">
+          <span className="eyebrow">Sala {roomCode}</span>
+          <h1>Identifique-se</h1>
+          <form className="entry-form stacked" onSubmit={submitStudent}>
+            <input
+              autoFocus
+              name="nickname"
+              onChange={(event) => setNickname(normalizeName(event.currentTarget.value))}
+              onInput={(event) => setNickname(normalizeName(event.currentTarget.value))}
+              placeholder="SEU NICKNAME"
+              ref={nicknameInputRef}
+              type="text"
+              defaultValue={nickname}
+            />
+            <input
+              list="ubs-list"
+              name="ubsName"
+              onChange={(event) => setUbsName(normalizeName(event.currentTarget.value))}
+              onInput={(event) => setUbsName(normalizeName(event.currentTarget.value))}
+              placeholder="DIGITE OU ESCOLHA UMA UBS"
+              ref={ubsInputRef}
+              type="text"
+              defaultValue={ubsName}
+            />
+            <datalist id="ubs-list">{ubsOptions.map((ubs) => <option key={ubs.id} value={ubs.name} />)}</datalist>
+            <fieldset className="avatar-picker">
+              <legend>Escolha seu avatar</legend>
+              <div>
+                {AVATAR_PRESETS.map((avatar) => (
+                  <button
+                    aria-pressed={avatarId === avatar.id}
+                    className={avatarId === avatar.id ? "avatar-choice selected" : "avatar-choice"}
+                    key={avatar.id}
+                    onClick={() => setAvatarId(avatar.id)}
+                    type="button"
+                  >
+                    <AvatarBadge avatarId={avatar.id} className="choice-avatar" name={nickname || avatar.label} />
+                    <span>{avatar.label}</span>
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+            <button disabled={busy} type="submit">Entrar</button>
+          </form>
+          {duplicateNickname ? (
+            <div className="notice-card">
+              <strong>Este nickname ja existe nesta sala.</strong>
+              <p>Se for voce, pode reentrar e continuar a atividade.</p>
+              <button disabled={busy} onClick={() => void reconnectStudent()} type="button">Reentrar</button>
+            </div>
+          ) : null}
+          {error ? <p className="entry-error">{error}</p> : null}
+        </section>
+      </main>
+    );
+  }
+
+  if (!session) return null;
+
+  return (
+    <main className="quiz-shell">
+      <section className="phone-stage" aria-label="QuestMED Quiz">
+        <header className="topbar">
+          <AvatarBadge avatarId={session.student.avatarId} className="player-avatar" name={session.student.nickname} />
+          <div>
+            <p className="eyebrow">Sala {session.room.roomCode} · {session.ubsTeam.name}</p>
+            <h1>{session.student.nickname}</h1>
+          </div>
+          <div className="score-chip rank-chip">
+            <Medal size={18} />
+            <span>{currentStudentRank}o</span>
+            <strong>{session.student.totalScore.toFixed(1)}</strong>
+          </div>
+        </header>
+
+        <div className="question-scroll">
+          <div className="meta-row">
+            <span className="id-pill">{currentQuestion?.id ?? "----"}</span>
+            <span className={remainingSeconds <= 15 ? "timer-pill danger" : "timer-pill"}>
+              <Clock3 size={16} /> {String(Math.floor(remainingSeconds / 60)).padStart(2, "0")}:{String(remainingSeconds % 60).padStart(2, "0")}
+            </span>
+          </div>
+
+          {!currentQuestion ? (
+            <section className="question-card waiting-card">
+              <h2>Aguardando questoes liberadas</h2>
+              <p>O professor ainda nao liberou questoes para esta sala.</p>
+            </section>
+          ) : (
+            <>
+              <section className="question-card">
+                <p>{currentQuestion.statement}</p>
+              </section>
+
+              <section className="options-list" aria-label="Alternativas">
+                {currentQuestion.options.map((option) => {
+                  const selected = selectedOptionId === option.id;
+                  const correct = currentAnswer && option.id === currentQuestion.correctOptionId;
+                  const wrong = currentAnswer && currentAnswer.selectedOptionId === option.id && !currentAnswer.isCorrect;
+                  return (
+                    <button
+                      className={["option-button", selected ? "selected" : "", correct ? "correct" : "", wrong ? "incorrect" : ""].join(" ")}
+                      disabled={busy || Boolean(currentAnswer)}
+                      key={option.id}
+                      onClick={() => setSelectedOptionId(option.id)}
+                      type="button"
+                    >
+                      <span className="option-letter">{option.id}</span>
+                      <span>{option.text}</span>
+                    </button>
+                  );
+                })}
+              </section>
+
+              <section className="feedback-zone">
+                {currentAnswer ? (
+                  <div className={currentAnswer.isCorrect ? "result-card correct" : "result-card incorrect"}>
+                    <strong>{currentAnswer.isCorrect ? "CORRETA" : "INCORRETA"}</strong>
+                    <span>{currentAnswer.score.toFixed(1)} ponto(s)</span>
+                    <p>{currentQuestion.explanation}</p>
+                  </div>
+                ) : null}
+              </section>
+            </>
+          )}
+        </div>
+
+        {currentQuestion && !currentAnswer ? (
+          <button className="floating-confirm-button" disabled={busy || !selectedOptionId || remainingSeconds === 0} onClick={() => void submitAnswer()} type="button" aria-label="Confirmar resposta">
+            <Check size={28} />
+          </button>
+        ) : null}
+        {error ? <p className="floating-error">{error}</p> : null}
+      </section>
+
+      <aside className="live-panel">
+        <section>
+          <span className="eyebrow">Ranking UBS</span>
+          {teamRanking.map((team, index) => (
+            <div className="rank-row" key={team.id}>
+              <strong>{index + 1}</strong>
+              <span>{team.name}<small>{team.memberCount} aluno(s)</small></span>
+              <b>{team.averageScore.toFixed(1)}</b>
+            </div>
+          ))}
+        </section>
+        <section>
+          <span className="eyebrow">Individual</span>
+          {individualRanking.slice(0, 8).map((student, index) => (
+            <div className={student.id === session.student.id ? "rank-row active" : "rank-row"} key={student.id}>
+              <AvatarBadge avatarId={student.avatarId} className="rank-avatar" name={student.nickname} />
+              <span>{student.nickname}</span>
+              <b>{student.totalScore.toFixed(1)}</b>
+            </div>
+          ))}
+        </section>
+      </aside>
+    </main>
+  );
+}
