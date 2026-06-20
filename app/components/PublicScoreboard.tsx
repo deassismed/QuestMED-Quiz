@@ -16,6 +16,11 @@ function podiumRankLabel(rank: number) {
   return "3rd";
 }
 
+function medalSrc(rank: number, small = false) {
+  if (rank < 1 || rank > 3) return "";
+  return `/leaderboard/medal-${rank}${small ? "-sm" : ""}.webp`;
+}
+
 export function PublicScoreboard({ initialState }: { initialState: RoomPublicState }) {
   const [state, setState] = useState(initialState);
   const teamRanking = useMemo(
@@ -67,7 +72,7 @@ export function PublicScoreboard({ initialState }: { initialState: RoomPublicSta
               {podiumSlots.map(({ item: student, rank }) => (
                 <article className={`podium-card podium-rank-${rank}`} key={student.id}>
                   <div className="podium-portrait">
-                    <div className="podium-medal"><span>{podiumRankLabel(rank)}</span></div>
+                    <img className="podium-medal-image" alt={podiumRankLabel(rank)} src={medalSrc(rank)} />
                     <AvatarBadge avatarId={student.avatarId} className="podium-avatar" name={student.nickname} />
                   </div>
                   <strong>{student.nickname}</strong>
@@ -93,7 +98,7 @@ export function PublicScoreboard({ initialState }: { initialState: RoomPublicSta
                 <span><i aria-hidden="true" /> {student.totalScore.toFixed(1)} pts</span>
               </div>
               <div className="rank-laurel">
-                <span>{rankLabel(index)}</span>
+                {index < 3 ? <img alt={rankLabel(index)} src={medalSrc(index + 1, true)} /> : <span>{rankLabel(index)}</span>}
               </div>
             </article>
           )})}
@@ -106,7 +111,9 @@ export function PublicScoreboard({ initialState }: { initialState: RoomPublicSta
               <AvatarBadge className="game-avatar small" name={team.name} />
               <span>{team.name}</span>
               <b><i aria-hidden="true" />{team.averageScore.toFixed(1)}</b>
-              <strong>{rankLabel(index)}</strong>
+              <strong>
+                {index < 3 ? <img alt={rankLabel(index)} src={medalSrc(index + 1, true)} /> : rankLabel(index)}
+              </strong>
             </article>
           ))}
           {teamRanking.length === 0 ? <p className="empty-ranking">Aguardando UBS.</p> : null}
