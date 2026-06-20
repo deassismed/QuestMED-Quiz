@@ -1,6 +1,6 @@
 "use client";
 
-import { Copy, ExternalLink, Loader2, Pencil, Plus } from "lucide-react";
+import { Copy, ExternalLink, Loader2, Plus } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { accessRoom, createRoom, listRooms } from "../lib/online-client";
 import type { CreateRoomResult, ProfessorRoomSummary } from "../types";
@@ -57,12 +57,13 @@ export function RoomCreator() {
   }
 
   async function openExistingRoom(roomId: string) {
+    if (openingRoomId) return;
     const nextPassword = passwordInputRef.current?.value ?? password;
     setPassword(nextPassword);
     setOpeningRoomId(roomId);
     setError("");
     try {
-      if (!nextPassword) throw new Error("Informe a senha do professor para editar a sala.");
+      if (!nextPassword) throw new Error("Informe a senha do professor para acessar a sala.");
       const result = await accessRoom(roomId, nextPassword);
       window.location.assign(`/professor/${result.room.id}/${result.adminKey}`);
     } catch (caught) {
@@ -145,7 +146,18 @@ export function RoomCreator() {
         </div>
         <div className="room-list">
           {rooms.map((summary) => (
-            <article className="room-list-item" key={summary.room.id}>
+            <article
+              aria-busy={openingRoomId === summary.room.id}
+              aria-label={`Abrir sala ${summary.room.roomCode}`}
+              className={`room-list-item ${summary.room.status} ${openingRoomId === summary.room.id ? "opening" : ""}`}
+              key={summary.room.id}
+              onClick={() => void openExistingRoom(summary.room.id)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") void openExistingRoom(summary.room.id);
+              }}
+              role="button"
+              tabIndex={0}
+            >
               <div className="room-list-code">
                 <div>
                   <span>Codigo</span>
@@ -161,14 +173,10 @@ export function RoomCreator() {
               </div>
               <div className="room-list-footer">
                 <small>{summary.lastActivityAt ? new Date(summary.lastActivityAt).toLocaleString("pt-BR") : "Sem atividade"}</small>
-                <button
-                  className="room-edit-button"
-                  disabled={Boolean(openingRoomId)}
-                  onClick={() => void openExistingRoom(summary.room.id)}
-                  type="button"
-                >
-                  {openingRoomId === summary.room.id ? <Loader2 className="spin" size={16} /> : <Pencil size={16} />} Editar sala
-                </button>
+                <span className="room-open-hint">
+                  {openingRoomId === summary.room.id ? <Loader2 className="spin" size={16} /> : null}
+                  {openingRoomId === summary.room.id ? "Abrindo..." : "Clique para entrar"}
+                </span>
               </div>
             </article>
           ))}

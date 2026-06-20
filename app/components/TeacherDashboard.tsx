@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart3, Copy, ExternalLink, Power, RefreshCw } from "lucide-react";
+import { ArrowLeft, BarChart3, Copy, ExternalLink, Power, RefreshCw } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
@@ -114,6 +114,10 @@ export function TeacherDashboard({
           <h1>{state.room.roomCode}</h1>
         </div>
         <div className="dashboard-actions">
+          <a aria-label="Todas as salas" href="/professor" title="Todas as salas">
+            <ArrowLeft size={19} />
+            <span>Todas as salas</span>
+          </a>
           <a aria-label="Abrir placar" href={statusUrl} rel="noreferrer" target="_blank" title="Abrir placar">
             <ExternalLink size={19} />
           </a>
