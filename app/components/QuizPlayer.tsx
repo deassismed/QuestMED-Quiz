@@ -26,6 +26,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const [roomCode, setRoomCode] = useState("");
   const [nickname, setNickname] = useState("");
   const [ubsName, setUbsName] = useState("");
+  const [addingNewUbs, setAddingNewUbs] = useState(false);
   const [avatarId, setAvatarId] = useState<string>(DEFAULT_AVATAR_ID);
   const [state, setState] = useState<RoomPublicState | null>(null);
   const [session, setSession] = useState<StudentSessionState | null>(null);
@@ -53,6 +54,8 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     null;
   const currentAnswer = currentQuestion ? answersByQuestion.get(currentQuestion.id) : null;
   const ubsOptions = state?.ubsTeams ?? [];
+  const canChooseUbs = nickname.trim().length > 0;
+  const canChooseAvatar = canChooseUbs && ubsName.trim().length > 0;
   const individualRanking = [...(state?.students ?? [])].sort((a, b) => b.totalScore - a.totalScore || a.joinedAt.localeCompare(b.joinedAt));
   const teamRanking = [...(state?.ubsTeams ?? [])].sort((a, b) => b.averageScore - a.averageScore || b.memberCount - a.memberCount);
   const currentStudentRank = Math.max(1, individualRanking.findIndex((student) => student.id === session?.student.id) + 1 || 1);
@@ -74,6 +77,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
           setRoomCode(next.room.roomCode);
           setNickname(next.student.nickname);
           setUbsName(next.ubsTeam.name);
+          setAddingNewUbs(false);
           setAvatarId(next.student.avatarId ?? DEFAULT_AVATAR_ID);
           setStep("quiz");
         });
@@ -300,35 +304,73 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
               type="text"
               defaultValue={nickname}
             />
-            <input
-              list="ubs-list"
-              name="ubsName"
-              onChange={(event) => setUbsName(normalizeName(event.currentTarget.value))}
-              onInput={(event) => setUbsName(normalizeName(event.currentTarget.value))}
-              placeholder="DIGITE OU ESCOLHA UMA UBS"
-              ref={ubsInputRef}
-              type="text"
-              defaultValue={ubsName}
-            />
-            <datalist id="ubs-list">{ubsOptions.map((ubs) => <option key={ubs.id} value={ubs.name} />)}</datalist>
-            <fieldset className="avatar-picker">
-              <legend>Escolha seu avatar</legend>
-              <div>
-                {AVATAR_PRESETS.map((avatar) => (
+            {canChooseUbs ? (
+              <fieldset className="ubs-picker">
+                <legend>Escolha sua UBS</legend>
+                <div className="ubs-choice-grid">
+                  {ubsOptions.map((ubs) => (
+                    <button
+                      aria-pressed={!addingNewUbs && ubsName === ubs.name}
+                      className={!addingNewUbs && ubsName === ubs.name ? "ubs-choice selected" : "ubs-choice"}
+                      key={ubs.id}
+                      onClick={() => {
+                        setAddingNewUbs(false);
+                        setUbsName(ubs.name);
+                      }}
+                      type="button"
+                    >
+                      {ubs.name}
+                      <small>{ubs.memberCount} aluno(s)</small>
+                    </button>
+                  ))}
                   <button
-                    aria-pressed={avatarId === avatar.id}
-                    className={avatarId === avatar.id ? "avatar-choice selected" : "avatar-choice"}
-                    key={avatar.id}
-                    onClick={() => setAvatarId(avatar.id)}
+                    aria-pressed={addingNewUbs}
+                    className={addingNewUbs ? "ubs-choice add-new selected" : "ubs-choice add-new"}
+                    onClick={() => {
+                      setAddingNewUbs(true);
+                      setUbsName("");
+                      window.setTimeout(() => ubsInputRef.current?.focus(), 0);
+                    }}
                     type="button"
                   >
-                    <AvatarBadge avatarId={avatar.id} className="choice-avatar" name={nickname || avatar.label} />
-                    <span>{avatar.label}</span>
+                    Add nova UBS
                   </button>
-                ))}
-              </div>
-            </fieldset>
-            <button disabled={busy} type="submit">Entrar</button>
+                </div>
+                {addingNewUbs || ubsOptions.length === 0 ? (
+                  <input
+                    name="ubsName"
+                    onChange={(event) => setUbsName(normalizeName(event.currentTarget.value))}
+                    onInput={(event) => setUbsName(normalizeName(event.currentTarget.value))}
+                    placeholder="NOME DA NOVA UBS"
+                    ref={ubsInputRef}
+                    type="text"
+                    value={ubsName}
+                  />
+                ) : (
+                  <input name="ubsName" ref={ubsInputRef} type="hidden" value={ubsName} />
+                )}
+              </fieldset>
+            ) : null}
+            {canChooseAvatar ? (
+              <fieldset className="avatar-picker">
+                <legend>Escolha seu avatar</legend>
+                <div>
+                  {AVATAR_PRESETS.map((avatar) => (
+                    <button
+                      aria-pressed={avatarId === avatar.id}
+                      className={avatarId === avatar.id ? "avatar-choice selected" : "avatar-choice"}
+                      key={avatar.id}
+                      onClick={() => setAvatarId(avatar.id)}
+                      type="button"
+                    >
+                      <AvatarBadge avatarId={avatar.id} className="choice-avatar" name={nickname || avatar.label} />
+                      <span>{avatar.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
+            ) : null}
+            <button disabled={busy || !canChooseAvatar} type="submit">Entrar</button>
           </form>
           {duplicateNickname ? (
             <div className="notice-card">
