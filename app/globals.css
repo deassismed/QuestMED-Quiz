@@ -217,7 +217,9 @@ a { color: inherit; }
 .avatar-picker > div {
   display: grid;
   gap: 14px;
-  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  grid-auto-rows: 98px;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  justify-items: center;
   max-height: 360px;
   overflow-y: auto;
   padding: 6px 4px;
@@ -233,9 +235,10 @@ a { color: inherit; }
   color: var(--ink);
   display: flex;
   justify-content: center;
-  min-height: 0;
+  height: 98px;
+  min-height: 98px;
   padding: 0;
-  width: 100%;
+  width: 98px;
 }
 
 .avatar-picker .avatar-choice:hover,
@@ -2380,9 +2383,8 @@ a { color: inherit; }
 
 .choice-avatar {
   font-size: 0.9rem;
-  aspect-ratio: 1;
-  height: auto;
-  width: min(92px, 100%);
+  height: 86px;
+  width: 86px;
 }
 
 .player-avatar {
