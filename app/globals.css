@@ -224,10 +224,11 @@ a { color: inherit; }
   scrollbar-color: rgba(15, 118, 110, 0.45) transparent;
 }
 
-.avatar-choice {
+.avatar-picker .avatar-choice {
   align-items: center;
-  background: transparent;
-  border: 0;
+  appearance: none;
+  background: transparent !important;
+  border: 0 !important;
   border-radius: 999px;
   color: var(--ink);
   display: flex;
@@ -237,12 +238,18 @@ a { color: inherit; }
   width: 100%;
 }
 
-.avatar-choice.selected {
-  background: transparent;
+.avatar-picker .avatar-choice:hover,
+.avatar-picker .avatar-choice:focus,
+.avatar-picker .avatar-choice:active,
+.avatar-picker .avatar-choice.selected {
+  background: transparent !important;
+  border: 0 !important;
   box-shadow: none;
+  outline: none;
 }
 
-.avatar-choice.selected .choice-avatar {
+.avatar-picker .avatar-choice:focus-visible .choice-avatar,
+.avatar-picker .avatar-choice.selected .choice-avatar {
   box-shadow: 0 0 0 4px #fff, 0 0 0 7px var(--accent), 0 10px 24px rgba(15, 118, 110, 0.22);
 }
 
@@ -483,6 +490,84 @@ a { color: inherit; }
   display: grid;
   gap: 10px;
   margin-top: 16px;
+}
+
+.answer-flash {
+  align-items: center;
+  animation: answerFlash 850ms ease both;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.24), transparent 70%),
+    linear-gradient(180deg, rgba(44, 41, 78, 0.96), rgba(13, 10, 34, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(2, 0, 18, 0.46);
+  color: #fff;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  left: 50%;
+  min-width: 190px;
+  padding: 22px 26px;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+}
+
+.answer-flash span {
+  align-items: center;
+  border-radius: 50%;
+  display: inline-flex;
+  height: 84px;
+  justify-content: center;
+  width: 84px;
+}
+
+.answer-flash.correct span {
+  background: rgba(16, 185, 129, 0.18);
+  color: #47d997;
+  filter: drop-shadow(0 0 18px rgba(71, 217, 151, 0.34));
+}
+
+.answer-flash.incorrect span {
+  background: rgba(255, 106, 106, 0.16);
+  color: #ff7a8a;
+  filter: drop-shadow(0 0 18px rgba(255, 122, 138, 0.3));
+}
+
+.answer-flash strong {
+  font-size: 1.45rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.answer-flash em {
+  color: #ffc33c;
+  font-style: normal;
+  font-weight: 950;
+}
+
+@keyframes answerFlash {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.76);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  38% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  82% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -52%) scale(0.92);
+  }
 }
 
 .hint-action {

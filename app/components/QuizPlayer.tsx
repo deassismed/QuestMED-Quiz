@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Clock3, LockKeyhole, Medal } from "lucide-react";
+import { Check, Clock3, LockKeyhole, Medal, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
@@ -34,6 +34,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const [selectedOptionId, setSelectedOptionId] = useState("");
   const [questionStartedAt, setQuestionStartedAt] = useState("");
   const [remainingSeconds, setRemainingSeconds] = useState(QUESTION_TIME_LIMIT_SECONDS);
+  const [answerFlash, setAnswerFlash] = useState<{ isCorrect: boolean; score: number; timeout?: boolean } | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [duplicateNickname, setDuplicateNickname] = useState(false);
@@ -52,11 +53,11 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const answeredQuestionStats = releasedQuestions
     .map((question) => ({ question, answer: answersByQuestion.get(question.id) }))
     .filter((item): item is { question: QuizQuestion; answer: NonNullable<ReturnType<typeof answersByQuestion.get>> } => Boolean(item.answer));
+  const selectedQuestion = releasedQuestions.find((question) => question.id === selectedQuestionId);
   const currentQuestion =
-    questions.find((question) => question.id === selectedQuestionId) ??
-    unansweredQuestion ??
-    releasedQuestions[0] ??
-    null;
+    selectedQuestion && !answersByQuestion.has(selectedQuestion.id)
+      ? selectedQuestion
+      : unansweredQuestion ?? releasedQuestions[0] ?? null;
   const currentAnswer = currentQuestion ? answersByQuestion.get(currentQuestion.id) : null;
   const ubsOptions = state?.ubsTeams ?? [];
   const canChooseUbs = nickname.trim().length > 0;
@@ -146,6 +147,8 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       return;
     }
     let cancelled = false;
+    setQuestionStartedAt("");
+    setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
     void startQuestionTimer({
       roomId: session.room.id,
       studentId: session.student.id,
@@ -183,12 +186,14 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       questionId: currentQuestion.id,
       selectedOptionId: "TIMEOUT"
     })
-      .then(async () => {
+      .then(async (answer) => {
+        setAnswerFlash({ isCorrect: answer.isCorrect, score: answer.score, timeout: true });
+        await delay(850);
+        setAnswerFlash(null);
         const nextSession = await loadStudentState(session.room.id, session.student.id);
         setSession(nextSession);
         setState(await loadRoomState(session.room.roomCode));
-        const nextQuestion = releasedQuestions.find((question) => !nextSession.answers.some((answer) => answer.questionId === question.id));
-        setSelectedQuestionId(nextQuestion?.id ?? currentQuestion.id);
+        setSelectedQuestionId(findNextUnansweredQuestion(questions, nextSession)?.id ?? "");
         setSelectedOptionId("");
         setQuestionStartedAt("");
         setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
@@ -267,17 +272,19 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     setBusy(true);
     setError("");
     try {
-      await answerQuestion({
+      const answer = await answerQuestion({
         roomId: session.room.id,
         studentId: session.student.id,
         questionId: currentQuestion.id,
         selectedOptionId
       });
+      setAnswerFlash({ isCorrect: answer.isCorrect, score: answer.score });
+      await delay(850);
+      setAnswerFlash(null);
       const nextSession = await loadStudentState(session.room.id, session.student.id);
       setSession(nextSession);
       setState(await loadRoomState(session.room.roomCode));
-      const nextQuestion = releasedQuestions.find((question) => !nextSession.answers.some((answer) => answer.questionId === question.id));
-      setSelectedQuestionId(nextQuestion?.id ?? currentQuestion.id);
+      setSelectedQuestionId(findNextUnansweredQuestion(questions, nextSession)?.id ?? "");
       setSelectedOptionId("");
       setQuestionStartedAt("");
       setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
@@ -454,7 +461,6 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
                     <span>{answer.selectedOptionId === "TIMEOUT" ? "Tempo esgotado" : `Marcada ${answer.selectedOptionId}`}</span>
                     <b>Gabarito {question.correctOptionId}</b>
                     <em>{answer.score.toFixed(1)} pts</em>
-                    <p>{question.explanation}</p>
                   </article>
                 ))}
               </div>
@@ -495,7 +501,6 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
                   <div className={currentAnswer.isCorrect ? "result-card correct" : "result-card incorrect"}>
                     <strong>{currentAnswer.isCorrect ? "CORRETA" : "INCORRETA"}</strong>
                     <span>{currentAnswer.score.toFixed(1)} ponto(s)</span>
-                    <p>{currentQuestion.explanation}</p>
                   </div>
                 ) : null}
               </section>
@@ -508,6 +513,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
             <Check size={28} />
           </button>
         ) : null}
+        {answerFlash ? <AnswerFlash isCorrect={answerFlash.isCorrect} score={answerFlash.score} timeout={answerFlash.timeout} /> : null}
         {error ? <p className="floating-error">{error}</p> : null}
       </section>
 
@@ -534,5 +540,26 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
         </section>
       </aside>
     </main>
+  );
+}
+
+function delay(milliseconds: number) {
+  return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
+}
+
+function findNextUnansweredQuestion(questions: QuizQuestion[], session: StudentSessionState) {
+  const answeredIds = new Set(session.answers.map((answer) => answer.questionId));
+  return questions
+    .filter((question) => session.room.releasedQuestionIds.includes(question.id))
+    .find((question) => !answeredIds.has(question.id));
+}
+
+function AnswerFlash({ isCorrect, score, timeout }: { isCorrect: boolean; score: number; timeout?: boolean }) {
+  return (
+    <div className={isCorrect ? "answer-flash correct" : "answer-flash incorrect"} role="status" aria-live="polite">
+      <span>{isCorrect ? <Check size={56} /> : <X size={56} />}</span>
+      <strong>{timeout ? "Tempo esgotado" : isCorrect ? "Correta" : "Incorreta"}</strong>
+      <em>{score.toFixed(1)} pts</em>
+    </div>
   );
 }
