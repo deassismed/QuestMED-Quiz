@@ -126,8 +126,11 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
         })
         .catch(() => undefined);
     };
+    const interval = window.setInterval(reload, 5000);
     const client = getBrowserSupabase();
-    if (!client) return;
+    if (!client) {
+      return () => window.clearInterval(interval);
+    }
     const channel = client
       .channel(`qmq-player:${session.room.id}:${session.student.id}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "qmq_rooms", filter: `id=eq.${session.room.id}` }, reload)
@@ -136,9 +139,23 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       .on("postgres_changes", { event: "*", schema: "public", table: "qmq_answers", filter: `room_id=eq.${session.room.id}` }, reload)
       .subscribe();
     return () => {
+      window.clearInterval(interval);
       void client.removeChannel(channel);
     };
   }, [session?.room.id, session?.room.roomCode, session?.student.id]);
+
+  useEffect(() => {
+    if (!session) return;
+    const nextQuestion = findNextUnansweredQuestion(questions, session);
+    if (!nextQuestion) return;
+    if (selectedQuestionId === nextQuestion.id) return;
+    if (selectedQuestionId && !answersByQuestion.has(selectedQuestionId)) return;
+    setSelectedQuestionId(nextQuestion.id);
+    setSelectedOptionId("");
+    setQuestionStartedAt("");
+    setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+    timeoutQuestionRef.current = "";
+  }, [answersByQuestion, questions, selectedQuestionId, session]);
 
   useEffect(() => {
     if (!session || !currentQuestion || currentAnswer) {
