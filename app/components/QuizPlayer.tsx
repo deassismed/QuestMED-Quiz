@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Clock3, LockKeyhole, Medal, X } from "lucide-react";
+import { Check, Clock3, LockKeyhole, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
@@ -431,18 +431,17 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
             <h1>{session.student.nickname}</h1>
           </div>
           <div className="score-chip rank-chip">
-            <Medal size={18} />
             <span>{currentStudentRank}o</span>
             <strong>{session.student.totalScore.toFixed(1)}</strong>
+            <em className={remainingSeconds <= 15 ? "score-timer danger" : "score-timer"}>
+              <Clock3 size={15} /> {String(Math.floor(remainingSeconds / 60)).padStart(2, "0")}:{String(remainingSeconds % 60).padStart(2, "0")}
+            </em>
           </div>
         </header>
 
         <div className="question-scroll">
           <div className="meta-row">
             <span className="id-pill">{currentQuestion?.id ?? "----"}</span>
-            <span className={remainingSeconds <= 15 ? "timer-pill danger" : "timer-pill"}>
-              <Clock3 size={16} /> {String(Math.floor(remainingSeconds / 60)).padStart(2, "0")}:{String(remainingSeconds % 60).padStart(2, "0")}
-            </span>
           </div>
 
           {allReleasedAnswered ? (
@@ -472,7 +471,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
             </section>
           ) : (
             <>
-              <section className="question-card">
+              <section className="question-card" key={currentQuestion.id}>
                 <p>{currentQuestion.statement}</p>
               </section>
 
