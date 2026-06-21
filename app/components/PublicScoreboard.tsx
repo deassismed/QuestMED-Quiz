@@ -39,8 +39,9 @@ export function PublicScoreboard({ initialState }: { initialState: RoomPublicSta
 
   useEffect(() => {
     const client = getBrowserSupabase();
-    if (!client) return;
     const reload = () => void loadRoomState(state.room.roomCode).then(setState).catch(() => undefined);
+    const interval = window.setInterval(reload, 5000);
+    if (!client) return () => window.clearInterval(interval);
     const channel = client
       .channel(`qmq-score:${state.room.id}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "qmq_rooms", filter: `id=eq.${state.room.id}` }, reload)
@@ -49,6 +50,7 @@ export function PublicScoreboard({ initialState }: { initialState: RoomPublicSta
       .on("postgres_changes", { event: "*", schema: "public", table: "qmq_answers", filter: `room_id=eq.${state.room.id}` }, reload)
       .subscribe();
     return () => {
+      window.clearInterval(interval);
       void client.removeChannel(channel);
     };
   }, [state.room.id, state.room.roomCode]);

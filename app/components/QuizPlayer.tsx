@@ -4,13 +4,14 @@ import { Check, Clock3, LockKeyhole, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
-import { answerQuestion, joinRoom, loadRoomState, loadStudentState, startQuestionTimer } from "../lib/online-client";
+import { answerQuestion, joinRoom, loadRoomState, loadStudentState, startQuestionTimer, startReleasedQuestions } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
 import type { QuestionOption, QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
 
 type Step = "room" | "student" | "quiz";
 
 const SESSION_KEY = "questmed-quiz-session";
+const LAST_NICKNAME_KEY = "questmed-quiz-last-nickname";
 const QUESTION_TIME_LIMIT_SECONDS = 90;
 const DISPLAY_OPTION_IDS = ["A", "B", "C", "D"] as const;
 
@@ -35,6 +36,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const [selectedOptionId, setSelectedOptionId] = useState("");
   const [questionStartedAt, setQuestionStartedAt] = useState("");
   const [remainingSeconds, setRemainingSeconds] = useState(QUESTION_TIME_LIMIT_SECONDS);
+  const [releaseNoticeSeconds, setReleaseNoticeSeconds] = useState(0);
   const [answerFlash, setAnswerFlash] = useState<{ isCorrect: boolean; score: number; timeout?: boolean } | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -51,16 +53,21 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     [session?.answers]
   );
   const releasedQuestions = questions.filter((question) => session?.room.releasedQuestionIds.includes(question.id));
+  const pendingReleaseQuestionIds = session?.pendingReleaseQuestionIds ?? [];
+  const pendingReleaseQuestionIdSet = new Set(pendingReleaseQuestionIds);
+  const availableReleasedQuestions = releasedQuestions.filter((question) => !pendingReleaseQuestionIdSet.has(question.id));
+  const pendingReleaseQuestions = releasedQuestions.filter((question) => pendingReleaseQuestionIdSet.has(question.id));
   const unansweredQuestion = releasedQuestions.find((question) => !answersByQuestion.has(question.id)) ?? null;
-  const allReleasedAnswered = releasedQuestions.length > 0 && !unansweredQuestion;
+  const availableUnansweredQuestion = availableReleasedQuestions.find((question) => !answersByQuestion.has(question.id)) ?? null;
+  const allReleasedAnswered = releasedQuestions.length > 0 && !unansweredQuestion && pendingReleaseQuestions.length === 0;
   const answeredQuestionStats = releasedQuestions
     .map((question) => ({ question, answer: answersByQuestion.get(question.id) }))
     .filter((item): item is { question: QuizQuestion; answer: NonNullable<ReturnType<typeof answersByQuestion.get>> } => Boolean(item.answer));
   const selectedQuestion = releasedQuestions.find((question) => question.id === selectedQuestionId);
   const currentQuestion =
-    selectedQuestion && !answersByQuestion.has(selectedQuestion.id)
+    selectedQuestion && !answersByQuestion.has(selectedQuestion.id) && !pendingReleaseQuestionIdSet.has(selectedQuestion.id)
       ? selectedQuestion
-      : unansweredQuestion ?? releasedQuestions[0] ?? null;
+      : availableUnansweredQuestion;
   const currentAnswer = currentQuestion ? answersByQuestion.get(currentQuestion.id) : null;
   const shuffledCurrentOptions = useMemo(
     () => currentQuestion && session ? getStudentQuestionOptions(currentQuestion, session.student.id) : [],
@@ -79,9 +86,11 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     const saved = window.localStorage.getItem(SESSION_KEY);
     if (requestedRoom) {
       setRoomCode(requestedRoom);
+      setNickname(normalizeName(window.localStorage.getItem(LAST_NICKNAME_KEY) ?? ""));
       void loadRoom(requestedRoom, true);
       return;
     }
+    setNickname(normalizeName(window.localStorage.getItem(LAST_NICKNAME_KEY) ?? ""));
     if (saved) {
       try {
         const parsed = JSON.parse(saved) as { roomId: string; studentId: string };
@@ -149,6 +158,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       .on("postgres_changes", { event: "*", schema: "public", table: "qmq_students", filter: `room_id=eq.${session.room.id}` }, reload)
       .on("postgres_changes", { event: "*", schema: "public", table: "qmq_ubs_teams", filter: `room_id=eq.${session.room.id}` }, reload)
       .on("postgres_changes", { event: "*", schema: "public", table: "qmq_answers", filter: `room_id=eq.${session.room.id}` }, reload)
+      .on("postgres_changes", { event: "*", schema: "public", table: "qmq_student_question_releases", filter: `student_id=eq.${session.student.id}` }, reload)
       .subscribe();
     return () => {
       window.clearInterval(interval);
@@ -203,6 +213,27 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     const interval = window.setInterval(updateRemaining, 250);
     return () => window.clearInterval(interval);
   }, [questionStartedAt]);
+
+  useEffect(() => {
+    if (!session?.pendingReleaseExpiresAt || pendingReleaseQuestions.length === 0) {
+      setReleaseNoticeSeconds(0);
+      return;
+    }
+    const updateRemaining = () => {
+      const remaining = Math.ceil((new Date(session.pendingReleaseExpiresAt ?? "").getTime() - Date.now()) / 1000);
+      setReleaseNoticeSeconds(Math.max(0, remaining));
+    };
+    updateRemaining();
+    const interval = window.setInterval(updateRemaining, 250);
+    return () => window.clearInterval(interval);
+  }, [pendingReleaseQuestions.length, session?.pendingReleaseExpiresAt]);
+
+  useEffect(() => {
+    if (!session || pendingReleaseQuestions.length === 0 || releaseNoticeSeconds > 0) return;
+    void loadStudentState(session.room.id, session.student.id)
+      .then(setSession)
+      .catch(() => undefined);
+  }, [pendingReleaseQuestions.length, releaseNoticeSeconds, session?.room.id, session?.student.id]);
 
   useEffect(() => {
     if (!session || !currentQuestion || currentAnswer || remainingSeconds > 0 || timeoutQuestionRef.current === currentQuestion.id) return;
@@ -268,6 +299,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       const nextSession = await joinRoom(roomCode, nextNickname, nextUbsName, avatarId, confirmReconnect);
       setSession(nextSession);
       setState(await loadRoomState(nextSession.room.roomCode));
+      window.localStorage.setItem(LAST_NICKNAME_KEY, nextSession.student.nickname);
       window.localStorage.setItem(SESSION_KEY, JSON.stringify({ roomId: nextSession.room.id, studentId: nextSession.student.id }));
       setStep("quiz");
     } catch (caught) {
@@ -287,6 +319,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       const nextSession = await joinRoom(roomCode, nickname.trim(), ubsName.trim(), avatarId, true);
       setSession(nextSession);
       setState(await loadRoomState(nextSession.room.roomCode));
+      window.localStorage.setItem(LAST_NICKNAME_KEY, nextSession.student.nickname);
       window.localStorage.setItem(SESSION_KEY, JSON.stringify({ roomId: nextSession.room.id, studentId: nextSession.student.id }));
       setStep("quiz");
     } catch (caught) {
@@ -319,6 +352,25 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Nao foi possivel responder.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function beginReleasedQuestions() {
+    if (!session) return;
+    setBusy(true);
+    setError("");
+    try {
+      const nextSession = await startReleasedQuestions({ roomId: session.room.id, studentId: session.student.id });
+      setSession(nextSession);
+      setState(await loadRoomState(session.room.roomCode));
+      setSelectedQuestionId(findNextUnansweredQuestion(questions, nextSession)?.id ?? "");
+      setSelectedOptionId("");
+      setQuestionStartedAt("");
+      setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel iniciar as novas questoes.");
     } finally {
       setBusy(false);
     }
@@ -366,7 +418,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
               placeholder="SEU NICKNAME"
               ref={nicknameInputRef}
               type="text"
-              defaultValue={nickname}
+              value={nickname}
             />
             {canChooseUbs ? (
               <fieldset className="ubs-picker">
@@ -476,7 +528,17 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
             <span className="id-pill">{currentQuestion?.id ?? "----"}</span>
           </div>
 
-          {allReleasedAnswered ? (
+          {pendingReleaseQuestions.length > 0 && !currentQuestion ? (
+            <section className="new-release-card">
+              <span className="eyebrow">Novas perguntas liberadas</span>
+              <h2>{pendingReleaseQuestions.length} nova(s) questao(oes)</h2>
+              <p>Clique para iniciar este bloco. Se nao iniciar em ate 1 minuto, as questoes serao registradas como tempo esgotado.</p>
+              <strong>{String(Math.floor(releaseNoticeSeconds / 60)).padStart(2, "0")}:{String(releaseNoticeSeconds % 60).padStart(2, "0")}</strong>
+              <button disabled={busy || releaseNoticeSeconds === 0} onClick={() => void beginReleasedQuestions()} type="button">
+                Iniciar respostas
+              </button>
+            </section>
+          ) : allReleasedAnswered ? (
             <section className="completion-panel">
               <span className="eyebrow">Atividade concluida</span>
               <h2>Suas estatisticas</h2>
@@ -584,8 +646,9 @@ function delay(milliseconds: number) {
 
 function findNextUnansweredQuestion(questions: QuizQuestion[], session: StudentSessionState) {
   const answeredIds = new Set(session.answers.map((answer) => answer.questionId));
+  const pendingIds = new Set(session.pendingReleaseQuestionIds ?? []);
   return questions
-    .filter((question) => session.room.releasedQuestionIds.includes(question.id))
+    .filter((question) => session.room.releasedQuestionIds.includes(question.id) && !pendingIds.has(question.id))
     .find((question) => !answeredIds.has(question.id));
 }
 

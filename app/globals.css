@@ -349,6 +349,54 @@ a { color: inherit; }
   gap: 14px;
   padding: 18px;
 }
+
+.new-release-card {
+  background:
+    radial-gradient(circle at 50% 0, rgba(72, 240, 255, 0.16), transparent 15rem),
+    linear-gradient(180deg, rgba(40, 39, 70, 0.96), rgba(23, 22, 45, 0.96));
+  border: 1px solid rgba(72, 240, 255, 0.34);
+  border-radius: 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 20px 42px rgba(1, 0, 16, 0.24);
+  color: #f8f5ff;
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+}
+
+.new-release-card h2 {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1;
+  margin: 0;
+}
+
+.new-release-card p {
+  color: rgba(248, 245, 255, 0.78);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.new-release-card strong {
+  color: #ffc33c;
+  font-size: 2rem;
+  text-shadow: 0 0 18px rgba(255, 195, 60, 0.22);
+}
+
+.new-release-card button {
+  background: linear-gradient(180deg, #27c797, #118577);
+  border: 0;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 950;
+  min-height: 58px;
+}
+
+.new-release-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
 .completion-panel h2 {
   color: #fff;
   font-size: clamp(1.8rem, 6vw, 3rem);

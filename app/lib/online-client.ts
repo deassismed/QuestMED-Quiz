@@ -58,6 +58,16 @@ export function startQuestionTimer(body: {
   });
 }
 
+export function startReleasedQuestions(body: {
+  roomId: string;
+  studentId: string;
+}) {
+  return requestJson<StudentSessionState>("/api/student/start-released", {
+    method: "POST",
+    body: JSON.stringify(body)
+  });
+}
+
 export function loadRoomState(roomCode: string) {
   return requestJson<RoomPublicState>(`/api/rooms/${encodeURIComponent(roomCode)}`);
 }

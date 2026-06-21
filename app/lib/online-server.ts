@@ -18,6 +18,7 @@ import { normalizeAvatarId } from "./avatars";
 import { getServerSupabase } from "./supabase-server";
 
 const ROOM_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+const RELEASE_ACCEPTANCE_LIMIT_SECONDS = 60;
 
 type RoomRow = {
   id: string;
@@ -66,6 +67,14 @@ type QuestionTimerRow = {
   student_id: string;
   question_id: string;
   started_at: string;
+};
+
+type StudentQuestionReleaseRow = {
+  room_id: string;
+  student_id: string;
+  question_id: string;
+  released_at: string;
+  accepted_at: string | null;
 };
 
 function normalizeName(value: string) {
@@ -250,6 +259,7 @@ export async function getRoomPublicState(roomCode: string): Promise<RoomPublicSt
 
 export async function getRoomPublicStateById(roomId: string): Promise<RoomPublicState> {
   const room = await requireRoomById(roomId);
+  await expirePendingReleasesForRoom(room.id);
   const supabase = getServerSupabase();
   const { data: studentsData, error: studentsError } = await supabase.from("qmq_students").select("*").eq("room_id", room.id).order("joined_at");
   if (studentsError) throw studentsError;
@@ -333,10 +343,12 @@ export async function joinOnlineRoom(
     student = toStudent(data);
   }
 
+  await ensureStudentReleaseRows(room.id, student.id, room.releasedQuestionIds);
+  const pendingInfo = await getPendingReleaseInfo(room.id, student.id);
   const answers = await listAnswers(student.id);
   const publicState = await getRoomPublicStateById(room.id);
   const ubsTeam = publicState.ubsTeams.find((item) => item.id === ubsRow.id) ?? toUbs(ubsRow, [student]);
-  return { room: publicState.room, student, ubsTeam, answers };
+  return { room: publicState.room, student, ubsTeam, answers, ...pendingInfo };
 }
 
 async function listAnswers(studentId: string) {
@@ -360,6 +372,117 @@ async function updateStudentTotals(studentId: string) {
     .single<StudentRow>();
   if (error) throw error;
   return toStudent(data);
+}
+
+async function ensureStudentReleaseRows(roomId: string, studentId: string, questionIds: string[]) {
+  if (questionIds.length === 0) return;
+  const now = new Date().toISOString();
+  const { error } = await getServerSupabase()
+    .from("qmq_student_question_releases")
+    .upsert(
+      questionIds.map((questionId) => ({
+        room_id: roomId,
+        student_id: studentId,
+        question_id: questionId,
+        released_at: now
+      })),
+      { onConflict: "room_id,student_id,question_id", ignoreDuplicates: true }
+    );
+  if (error) throw error;
+}
+
+async function expirePendingReleasesForRoom(roomId: string, studentId?: string) {
+  const cutoff = new Date(Date.now() - RELEASE_ACCEPTANCE_LIMIT_SECONDS * 1000).toISOString();
+  let query = getServerSupabase()
+    .from("qmq_student_question_releases")
+    .select("*")
+    .eq("room_id", roomId)
+    .is("accepted_at", null)
+    .lt("released_at", cutoff);
+  if (studentId) query = query.eq("student_id", studentId);
+  const { data, error } = await query;
+  if (error) throw error;
+  const pendingRows = (data ?? []) as StudentQuestionReleaseRow[];
+  if (pendingRows.length === 0) return;
+
+  const studentIds = Array.from(new Set(pendingRows.map((row) => row.student_id)));
+  const { data: existingAnswers, error: answersError } = await getServerSupabase()
+    .from("qmq_answers")
+    .select("student_id,question_id")
+    .eq("room_id", roomId)
+    .in("student_id", studentIds);
+  if (answersError) throw answersError;
+  const answeredKeys = new Set(((existingAnswers ?? []) as Pick<AnswerRow, "student_id" | "question_id">[]).map((answer) => `${answer.student_id}:${answer.question_id}`));
+  const now = new Date().toISOString();
+  const timeoutRows = pendingRows
+    .filter((row) => !answeredKeys.has(`${row.student_id}:${row.question_id}`))
+    .map((row) => ({
+      id: randomUUID(),
+      room_id: roomId,
+      student_id: row.student_id,
+      question_id: row.question_id,
+      selected_option_id: "TIMEOUT",
+      is_correct: false,
+      used_hint: false,
+      score: 0,
+      answered_at: now
+    }));
+
+  if (timeoutRows.length > 0) {
+    const { error: insertError } = await getServerSupabase()
+      .from("qmq_answers")
+      .upsert(timeoutRows, { onConflict: "student_id,question_id", ignoreDuplicates: true });
+    if (insertError) throw insertError;
+  }
+
+  let acceptQuery = getServerSupabase()
+    .from("qmq_student_question_releases")
+    .update({ accepted_at: now })
+    .eq("room_id", roomId)
+    .is("accepted_at", null)
+    .lt("released_at", cutoff);
+  if (studentId) acceptQuery = acceptQuery.eq("student_id", studentId);
+  const { error: acceptError } = await acceptQuery;
+  if (acceptError) throw acceptError;
+
+  await Promise.all(studentIds.map((id) => updateStudentTotals(id)));
+}
+
+async function getPendingReleaseInfo(roomId: string, studentId: string) {
+  await expirePendingReleasesForRoom(roomId, studentId);
+  const { data, error } = await getServerSupabase()
+    .from("qmq_student_question_releases")
+    .select("*")
+    .eq("room_id", roomId)
+    .eq("student_id", studentId)
+    .is("accepted_at", null)
+    .order("released_at");
+  if (error) throw error;
+  const pendingRows = (data ?? []) as StudentQuestionReleaseRow[];
+  if (pendingRows.length === 0) return { pendingReleaseQuestionIds: [], pendingReleaseExpiresAt: null };
+
+  const answers = await listAnswers(studentId);
+  const answeredIds = new Set(answers.map((answer) => answer.questionId));
+  const activePendingRows = pendingRows.filter((row) => !answeredIds.has(row.question_id));
+  const firstReleaseAt = activePendingRows.map((row) => row.released_at).sort()[0];
+  return {
+    pendingReleaseQuestionIds: activePendingRows.map((row) => row.question_id),
+    pendingReleaseExpiresAt: firstReleaseAt
+      ? new Date(new Date(firstReleaseAt).getTime() + RELEASE_ACCEPTANCE_LIMIT_SECONDS * 1000).toISOString()
+      : null
+  };
+}
+
+export async function acceptPendingReleases(roomId: string, studentId: string): Promise<StudentSessionState> {
+  await expirePendingReleasesForRoom(roomId, studentId);
+  const { error } = await getServerSupabase()
+    .from("qmq_student_question_releases")
+    .update({ accepted_at: new Date().toISOString() })
+    .eq("room_id", roomId)
+    .eq("student_id", studentId)
+    .is("accepted_at", null);
+  if (error) throw error;
+  return getStudentState(roomId, studentId);
 }
 
 export async function ensureQuestionTimer(input: {
@@ -400,13 +523,15 @@ export async function ensureQuestionTimer(input: {
 
 export async function getStudentState(roomId: string, studentId: string): Promise<StudentSessionState> {
   const room = await requireRoomById(roomId);
+  await ensureStudentReleaseRows(roomId, studentId, room.releasedQuestionIds);
+  const pendingInfo = await getPendingReleaseInfo(roomId, studentId);
   const { data, error } = await getServerSupabase().from("qmq_students").select("*").eq("id", studentId).eq("room_id", roomId).single<StudentRow>();
   if (error) throw error;
   const student = toStudent(data);
   const publicState = await getRoomPublicStateById(roomId);
   const ubsTeam = publicState.ubsTeams.find((item) => item.id === student.ubsId);
   if (!ubsTeam) throw new Error("UBS nao encontrada.");
-  return { room, student, ubsTeam, answers: await listAnswers(studentId) };
+  return { room, student, ubsTeam, answers: await listAnswers(studentId), ...pendingInfo };
 }
 
 export async function submitAnswer(input: {
@@ -452,8 +577,19 @@ export async function submitAnswer(input: {
 
 export async function setReleasedQuestions(roomId: string, adminKey: string, questionIds: string[]) {
   if (!(await validateAdmin(roomId, adminKey))) throw new Error("Chave administrativa invalida.");
+  const room = await requireRoomById(roomId);
   const validIds = new Set(questions.map((question) => question.id));
   const releasedQuestionIds = Array.from(new Set(questionIds.map((item) => item.toUpperCase()))).filter((id) => validIds.has(id));
+  const previousIds = new Set(room.releasedQuestionIds);
+  const newlyReleasedIds = releasedQuestionIds.filter((id) => !previousIds.has(id));
+  if (newlyReleasedIds.length > 0) {
+    const { data: studentsData, error: studentsError } = await getServerSupabase()
+      .from("qmq_students")
+      .select("id")
+      .eq("room_id", roomId);
+    if (studentsError) throw studentsError;
+    await Promise.all(((studentsData ?? []) as Pick<StudentRow, "id">[]).map((student) => ensureStudentReleaseRows(roomId, student.id, newlyReleasedIds)));
+  }
   const { error } = await getServerSupabase()
     .from("qmq_rooms")
     .update({ released_question_ids: releasedQuestionIds, updated_at: new Date().toISOString() })

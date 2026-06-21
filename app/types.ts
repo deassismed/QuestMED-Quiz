@@ -78,6 +78,8 @@ export type StudentSessionState = {
   ubsTeam: UbsTeam;
   student: Student;
   answers: StudentAnswer[];
+  pendingReleaseQuestionIds: string[];
+  pendingReleaseExpiresAt: string | null;
 };
 
 export type CreateRoomResult = {
