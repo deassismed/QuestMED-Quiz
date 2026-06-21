@@ -2,7 +2,7 @@
 
 import { ArrowLeft, BarChart3, Copy, ExternalLink, Power, RefreshCw, Shuffle, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { deleteStudent, deleteUbs, finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions } from "../lib/online-client";
+import { deleteStudent, deleteUbs, finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions, updateStudentUbs } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
 import type { QuestionStats, QuizQuestion, RoomPublicState, StudentStats } from "../types";
 
@@ -129,6 +129,18 @@ export function TeacherDashboard({
     }
   }
 
+  async function changeStudentUbs(studentId: string, ubsId: string) {
+    setBusy(true);
+    setError("");
+    try {
+      setState(await updateStudentUbs(state.room.id, studentId, ubsId, adminKey));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel alterar a UBS do aluno.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function removeUbs(ubsId: string, ubsName: string, memberCount: number) {
     const message =
       memberCount > 0
@@ -244,7 +256,21 @@ export function TeacherDashboard({
                   tabIndex={0}
                 >
                   <td><strong>{student.nickname}</strong></td>
-                  <td>{state.ubsTeams.find((team) => team.id === student.ubsId)?.name ?? "-"}</td>
+                  <td>
+                    <select
+                      aria-label={`UBS de ${student.nickname}`}
+                      className="table-select"
+                      disabled={busy || state.ubsTeams.length === 0}
+                      onChange={(event) => void changeStudentUbs(student.id, event.currentTarget.value)}
+                      onClick={(event) => event.stopPropagation()}
+                      onKeyDown={(event) => event.stopPropagation()}
+                      value={student.ubsId}
+                    >
+                      {state.ubsTeams.map((team) => (
+                        <option key={team.id} value={team.id}>{team.name}</option>
+                      ))}
+                    </select>
+                  </td>
                   <td>{studentStatsBusy === student.id ? "..." : student.answeredCount}</td>
                   <td><strong>{student.totalScore.toFixed(1)}</strong></td>
                   <td>{new Date(student.lastActivityAt).toLocaleString("pt-BR")}</td>

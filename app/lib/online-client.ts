@@ -107,6 +107,16 @@ export function deleteStudent(roomId: string, studentId: string, adminKey: strin
   );
 }
 
+export function updateStudentUbs(roomId: string, studentId: string, ubsId: string, adminKey: string) {
+  return requestJson<RoomPublicState>(
+    `/api/admin/rooms/${encodeURIComponent(roomId)}/students/${encodeURIComponent(studentId)}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify({ adminKey, ubsId })
+    }
+  );
+}
+
 export function deleteUbs(roomId: string, ubsId: string, adminKey: string) {
   return requestJson<RoomPublicState>(
     `/api/admin/rooms/${encodeURIComponent(roomId)}/ubs/${encodeURIComponent(ubsId)}`,

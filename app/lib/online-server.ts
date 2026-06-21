@@ -483,6 +483,27 @@ export async function deleteRoomStudent(roomId: string, adminKey: string, studen
   return getRoomPublicStateById(roomId);
 }
 
+export async function updateRoomStudentUbs(roomId: string, adminKey: string, studentId: string, ubsId: string) {
+  if (!(await validateAdmin(roomId, adminKey))) throw new Error("Chave administrativa invalida.");
+  const supabase = getServerSupabase();
+  const { data: ubs, error: ubsError } = await supabase
+    .from("qmq_ubs_teams")
+    .select("id")
+    .eq("room_id", roomId)
+    .eq("id", ubsId)
+    .maybeSingle<Pick<UbsRow, "id">>();
+  if (ubsError) throw ubsError;
+  if (!ubs) throw new Error("UBS nao encontrada nesta sala.");
+
+  const { error } = await supabase
+    .from("qmq_students")
+    .update({ ubs_id: ubsId, last_activity_at: new Date().toISOString() })
+    .eq("room_id", roomId)
+    .eq("id", studentId);
+  if (error) throw error;
+  return getRoomPublicStateById(roomId);
+}
+
 export async function deleteRoomUbs(roomId: string, adminKey: string, ubsId: string) {
   if (!(await validateAdmin(roomId, adminKey))) throw new Error("Chave administrativa invalida.");
   const supabase = getServerSupabase();

@@ -6,12 +6,13 @@ import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
 import { answerQuestion, joinRoom, loadRoomState, loadStudentState, startQuestionTimer } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
-import type { QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
+import type { QuestionOption, QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
 
 type Step = "room" | "student" | "quiz";
 
 const SESSION_KEY = "questmed-quiz-session";
 const QUESTION_TIME_LIMIT_SECONDS = 90;
+const DISPLAY_OPTION_IDS = ["A", "B", "C", "D"] as const;
 
 function normalizeCode(value: string) {
   return value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6);
@@ -41,6 +42,8 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const roomInputRef = useRef<HTMLInputElement>(null);
   const nicknameInputRef = useRef<HTMLInputElement>(null);
   const ubsInputRef = useRef<HTMLInputElement>(null);
+  const enterButtonRef = useRef<HTMLButtonElement>(null);
+  const reconnectNoticeRef = useRef<HTMLDivElement>(null);
   const timeoutQuestionRef = useRef("");
 
   const answersByQuestion = useMemo(
@@ -59,6 +62,10 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       ? selectedQuestion
       : unansweredQuestion ?? releasedQuestions[0] ?? null;
   const currentAnswer = currentQuestion ? answersByQuestion.get(currentQuestion.id) : null;
+  const shuffledCurrentOptions = useMemo(
+    () => currentQuestion && session ? getStudentQuestionOptions(currentQuestion, session.student.id) : [],
+    [currentQuestion, session?.student.id]
+  );
   const ubsOptions = state?.ubsTeams ?? [];
   const canChooseUbs = nickname.trim().length > 0;
   const canChooseAvatar = canChooseUbs && ubsName.trim().length > 0;
@@ -115,6 +122,11 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       void client.removeChannel(channel);
     };
   }, [state?.room.id, state?.room.roomCode, step]);
+
+  useEffect(() => {
+    if (!duplicateNickname) return;
+    window.setTimeout(() => reconnectNoticeRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }), 0);
+  }, [duplicateNickname]);
 
   useEffect(() => {
     if (!session) return;
@@ -412,7 +424,10 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
                       aria-pressed={avatarId === avatar.id}
                       className={avatarId === avatar.id ? "avatar-choice selected" : "avatar-choice"}
                       key={avatar.id}
-                      onClick={() => setAvatarId(avatar.id)}
+                      onClick={() => {
+                        setAvatarId(avatar.id);
+                        window.setTimeout(() => enterButtonRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 0);
+                      }}
                       type="button"
                     >
                       <AvatarBadge avatarId={avatar.id} className="choice-avatar" name={nickname || avatar.label} />
@@ -421,10 +436,10 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
                 </div>
               </fieldset>
             ) : null}
-            <button disabled={busy || !canChooseAvatar} type="submit">Entrar</button>
+            <button disabled={busy || !canChooseAvatar} ref={enterButtonRef} type="submit">Entrar</button>
           </form>
           {duplicateNickname ? (
-            <div className="notice-card">
+            <div className="notice-card" ref={reconnectNoticeRef}>
               <strong>Este nickname ja existe nesta sala.</strong>
               <p>Se for voce, pode reentrar e continuar a atividade.</p>
               <button disabled={busy} onClick={() => void reconnectStudent()} type="button">Reentrar</button>
@@ -474,8 +489,12 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
                 {answeredQuestionStats.map(({ answer, question }) => (
                   <article className={answer.isCorrect ? "completion-answer correct" : "completion-answer"} key={question.id}>
                     <strong>{question.id}</strong>
-                    <span>{answer.selectedOptionId === "TIMEOUT" ? "Tempo esgotado" : `Marcada ${answer.selectedOptionId}`}</span>
-                    <b>Gabarito {question.correctOptionId}</b>
+                    <span>
+                      {answer.selectedOptionId === "TIMEOUT"
+                        ? "Tempo esgotado"
+                        : `Marcada ${getDisplayOptionId(question, session.student.id, answer.selectedOptionId)}`}
+                    </span>
+                    <b>Gabarito {getDisplayOptionId(question, session.student.id, question.correctOptionId)}</b>
                     <em>{answer.score.toFixed(1)} pts</em>
                   </article>
                 ))}
@@ -493,7 +512,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
               </section>
 
               <section className="options-list" aria-label="Alternativas">
-                {currentQuestion.options.map((option) => {
+                {shuffledCurrentOptions.map(({ option, displayId }) => {
                   const selected = selectedOptionId === option.id;
                   const correct = currentAnswer && option.id === currentQuestion.correctOptionId;
                   const wrong = currentAnswer && currentAnswer.selectedOptionId === option.id && !currentAnswer.isCorrect;
@@ -505,7 +524,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
                       onClick={() => setSelectedOptionId(option.id)}
                       type="button"
                     >
-                      <span className="option-letter">{option.id}</span>
+                      <span className="option-letter">{displayId}</span>
                       <span>{option.text}</span>
                     </button>
                   );
@@ -568,6 +587,41 @@ function findNextUnansweredQuestion(questions: QuizQuestion[], session: StudentS
   return questions
     .filter((question) => session.room.releasedQuestionIds.includes(question.id))
     .find((question) => !answeredIds.has(question.id));
+}
+
+function getStudentQuestionOptions(question: QuizQuestion, studentId: string) {
+  return seededShuffle(question.options, `${studentId}:${question.id}`).map((option, index) => ({
+    option,
+    displayId: DISPLAY_OPTION_IDS[index] ?? option.id
+  }));
+}
+
+function getDisplayOptionId(question: QuizQuestion, studentId: string, optionId: QuestionOption["id"]) {
+  return getStudentQuestionOptions(question, studentId).find((item) => item.option.id === optionId)?.displayId ?? optionId;
+}
+
+function seededShuffle<T>(items: T[], seedText: string) {
+  const nextItems = [...items];
+  let seed = hashSeed(seedText);
+  for (let index = nextItems.length - 1; index > 0; index -= 1) {
+    seed = nextRandomSeed(seed);
+    const swapIndex = seed % (index + 1);
+    [nextItems[index], nextItems[swapIndex]] = [nextItems[swapIndex], nextItems[index]];
+  }
+  return nextItems;
+}
+
+function hashSeed(value: string) {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function nextRandomSeed(seed: number) {
+  return (Math.imul(seed, 1664525) + 1013904223) >>> 0;
 }
 
 function AnswerFlash({ isCorrect, score, timeout }: { isCorrect: boolean; score: number; timeout?: boolean }) {
