@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Clock3, LockKeyhole, X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
 import { answerQuestion, joinRoom, loadRoomState, loadStudentState, startQuestionTimer, startReleasedQuestions } from "../lib/online-client";
@@ -63,6 +63,10 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const answeredQuestionStats = releasedQuestions
     .map((question) => ({ question, answer: answersByQuestion.get(question.id) }))
     .filter((item): item is { question: QuizQuestion; answer: NonNullable<ReturnType<typeof answersByQuestion.get>> } => Boolean(item.answer));
+  const completionStatsByQuestion = useMemo(
+    () => new Map((session?.completionQuestionStats ?? []).map((stats) => [stats.questionId, stats])),
+    [session?.completionQuestionStats]
+  );
   const selectedQuestion = releasedQuestions.find((question) => question.id === selectedQuestionId);
   const currentQuestion =
     selectedQuestion && !answersByQuestion.has(selectedQuestion.id) && !pendingReleaseQuestionIdSet.has(selectedQuestion.id)
@@ -186,7 +190,8 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       return;
     }
     let cancelled = false;
-    setQuestionStartedAt("");
+    const localStartedAt = new Date().toISOString();
+    setQuestionStartedAt(localStartedAt);
     setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
     void startQuestionTimer({
       roomId: session.room.id,
@@ -197,7 +202,11 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
         if (cancelled) return;
         setQuestionStartedAt(timer.startedAt);
       })
-      .catch((caught) => setError(caught instanceof Error ? caught.message : "Nao foi possivel iniciar o cronometro."));
+      .catch((caught) => {
+        if (cancelled) return;
+        setQuestionStartedAt(localStartedAt);
+        setError(caught instanceof Error ? caught.message : "Nao foi possivel iniciar o cronometro.");
+      });
     return () => {
       cancelled = true;
     };
@@ -206,7 +215,12 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   useEffect(() => {
     if (!questionStartedAt) return;
     const updateRemaining = () => {
-      const elapsed = Math.floor((Date.now() - new Date(questionStartedAt).getTime()) / 1000);
+      const startedAt = new Date(questionStartedAt).getTime();
+      if (Number.isNaN(startedAt)) {
+        setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+        return;
+      }
+      const elapsed = Math.floor((Date.now() - startedAt) / 1000);
       setRemainingSeconds(Math.max(0, QUESTION_TIME_LIMIT_SECONDS - elapsed));
     };
     updateRemaining();
@@ -548,18 +562,25 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
                 <div><span>Pontos</span><strong>{session.student.totalScore.toFixed(1)}</strong></div>
               </div>
               <div className="completion-answer-list">
-                {answeredQuestionStats.map(({ answer, question }) => (
-                  <article className={answer.isCorrect ? "completion-answer correct" : "completion-answer"} key={question.id}>
-                    <strong>{question.id}</strong>
-                    <span>
-                      {answer.selectedOptionId === "TIMEOUT"
-                        ? "Tempo esgotado"
-                        : `Marcada ${getDisplayOptionId(question, session.student.id, answer.selectedOptionId)}`}
-                    </span>
-                    <b>Gabarito {getDisplayOptionId(question, session.student.id, question.correctOptionId)}</b>
-                    <em>{answer.score.toFixed(1)} pts</em>
-                  </article>
-                ))}
+                {answeredQuestionStats.map(({ answer, question }) => {
+                  const stats = completionStatsByQuestion.get(question.id);
+                  const correctPercent = stats?.correctPercent ?? (answer.isCorrect ? 100 : 0);
+                  const incorrectPercent = stats?.incorrectPercent ?? (answer.isCorrect ? 0 : 100);
+                  const status = answer.selectedOptionId === "TIMEOUT" ? "Tempo esgotado" : answer.isCorrect ? "Acertou" : "Errou";
+                  return (
+                    <article
+                      className={["completion-answer-bar", answer.isCorrect ? "correct" : "", answer.selectedOptionId === "TIMEOUT" ? "timeout" : ""].join(" ")}
+                      key={question.id}
+                      style={{ "--correct-percent": `${correctPercent}%` } as CSSProperties}
+                    >
+                      <span className="completion-answer-percent left">{correctPercent.toFixed(0)}%</span>
+                      <strong>{question.id}</strong>
+                      <span>{status}</span>
+                      <em>{answer.score.toFixed(1)} pts</em>
+                      <span className="completion-answer-percent right">{incorrectPercent.toFixed(0)}%</span>
+                    </article>
+                  );
+                })}
               </div>
             </section>
           ) : !currentQuestion ? (

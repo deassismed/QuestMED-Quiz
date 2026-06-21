@@ -60,6 +60,13 @@ export type StudentAnswer = {
   answeredAt: string;
 };
 
+export type StudentCompletionQuestionStat = {
+  questionId: string;
+  totalAnswers: number;
+  correctPercent: number;
+  incorrectPercent: number;
+};
+
 export type QuestionTimer = {
   roomId: string;
   studentId: string;
@@ -78,6 +85,7 @@ export type StudentSessionState = {
   ubsTeam: UbsTeam;
   student: Student;
   answers: StudentAnswer[];
+  completionQuestionStats: StudentCompletionQuestionStat[];
   pendingReleaseQuestionIds: string[];
   pendingReleaseExpiresAt: string | null;
 };

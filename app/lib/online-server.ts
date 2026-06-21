@@ -9,6 +9,7 @@ import type {
   RoomPublicState,
   Student,
   StudentAnswer,
+  StudentCompletionQuestionStat,
   StudentStats,
   StudentSessionState,
   UbsTeam
@@ -348,7 +349,8 @@ export async function joinOnlineRoom(
   const answers = await listAnswers(student.id);
   const publicState = await getRoomPublicStateById(room.id);
   const ubsTeam = publicState.ubsTeams.find((item) => item.id === ubsRow.id) ?? toUbs(ubsRow, [student]);
-  return { room: publicState.room, student, ubsTeam, answers, ...pendingInfo };
+  const completionQuestionStats = await getCompletionQuestionStats(room.id, answers.map((answer) => answer.questionId));
+  return { room: publicState.room, student, ubsTeam, answers, completionQuestionStats, ...pendingInfo };
 }
 
 async function listAnswers(studentId: string) {
@@ -359,6 +361,29 @@ async function listAnswers(studentId: string) {
     .order("answered_at");
   if (error) throw error;
   return ((data ?? []) as AnswerRow[]).map(toAnswer);
+}
+
+async function getCompletionQuestionStats(roomId: string, questionIds: string[]): Promise<StudentCompletionQuestionStat[]> {
+  if (questionIds.length === 0) return [];
+  const { data, error } = await getServerSupabase()
+    .from("qmq_answers")
+    .select("question_id,is_correct,selected_option_id")
+    .eq("room_id", roomId)
+    .in("question_id", questionIds);
+  if (error) throw error;
+  const rows = (data ?? []) as Pick<AnswerRow, "question_id" | "is_correct" | "selected_option_id">[];
+  return questionIds.map((questionId) => {
+    const questionRows = rows.filter((answer) => answer.question_id === questionId);
+    const correctCount = questionRows.filter((answer) => answer.is_correct).length;
+    const totalAnswers = questionRows.length;
+    const correctPercent = totalAnswers ? Number(((correctCount / totalAnswers) * 100).toFixed(1)) : 0;
+    return {
+      questionId,
+      totalAnswers,
+      correctPercent,
+      incorrectPercent: Number((100 - correctPercent).toFixed(1))
+    };
+  });
 }
 
 async function updateStudentTotals(studentId: string) {
@@ -531,7 +556,9 @@ export async function getStudentState(roomId: string, studentId: string): Promis
   const publicState = await getRoomPublicStateById(roomId);
   const ubsTeam = publicState.ubsTeams.find((item) => item.id === student.ubsId);
   if (!ubsTeam) throw new Error("UBS nao encontrada.");
-  return { room, student, ubsTeam, answers: await listAnswers(studentId), ...pendingInfo };
+  const answers = await listAnswers(studentId);
+  const completionQuestionStats = await getCompletionQuestionStats(roomId, answers.map((answer) => answer.questionId));
+  return { room, student, ubsTeam, answers, completionQuestionStats, ...pendingInfo };
 }
 
 export async function submitAnswer(input: {
