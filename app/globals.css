@@ -751,7 +751,7 @@ a { color: inherit; }
   position: relative;
 }
 
-.quiz-shell .topbar > div:not(.score-chip) {
+.quiz-shell .topbar > div:not(.score-chip):not(.player-avatar) {
   min-width: 0;
 }
 
@@ -2535,7 +2535,7 @@ a { color: inherit; }
     width: clamp(128px, 12vw, 154px);
   }
 
-  .quiz-shell .topbar > div:not(.score-chip) {
+  .quiz-shell .topbar > div:not(.score-chip):not(.player-avatar) {
     padding-left: clamp(8px, 1vw, 18px);
   }
 
@@ -2586,13 +2586,15 @@ a { color: inherit; }
     padding: 16px 14px 12px;
   }
   .quiz-shell .player-avatar {
+    align-self: center;
     grid-area: avatar;
     height: 68px;
+    justify-self: start;
     margin-left: 0;
     width: 68px;
     z-index: 0;
   }
-  .quiz-shell .topbar > div:not(.score-chip) {
+  .quiz-shell .topbar > div:not(.score-chip):not(.player-avatar) {
     grid-area: identity;
     min-width: 0;
     position: relative;
