@@ -38,6 +38,8 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const [releaseNoticeSeconds, setReleaseNoticeSeconds] = useState(0);
   const [answerFlash, setAnswerFlash] = useState<{ isCorrect: boolean; score: number; timeout?: boolean } | null>(null);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
+  const [pendingAvatarId, setPendingAvatarId] = useState(DEFAULT_AVATAR_ID);
+  const [mobileAvatarConfirm, setMobileAvatarConfirm] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [duplicateNickname, setDuplicateNickname] = useState(false);
@@ -85,6 +87,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const individualRanking = [...(state?.students ?? [])].sort((a, b) => b.totalScore - a.totalScore || a.joinedAt.localeCompare(b.joinedAt));
   const teamRanking = [...(state?.ubsTeams ?? [])].sort((a, b) => b.averageScore - a.averageScore || b.memberCount - a.memberCount);
   const currentStudentRank = Math.max(1, individualRanking.findIndex((student) => student.id === session?.student.id) + 1 || 1);
+  const selectedAvatarInModal = mobileAvatarConfirm ? pendingAvatarId : (session?.student.avatarId ?? DEFAULT_AVATAR_ID);
 
   function calculateRemainingSeconds(startedAtMs: number) {
     if (!Number.isFinite(startedAtMs)) return QUESTION_TIME_LIMIT_SECONDS;
@@ -191,6 +194,14 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     if (!duplicateNickname) return;
     window.setTimeout(() => reconnectNoticeRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }), 0);
   }, [duplicateNickname]);
+
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 760px)");
+    const update = () => setMobileAvatarConfirm(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     if (!showAvatarModal) return;
@@ -499,6 +510,11 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     }
   }
 
+  function openAvatarSelector() {
+    setPendingAvatarId(session?.student.avatarId ?? DEFAULT_AVATAR_ID);
+    setShowAvatarModal(true);
+  }
+
   if (step === "room") {
     return (
       <main className="app-shell">
@@ -632,7 +648,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     <main className="quiz-shell">
       <section className="phone-stage" aria-label="QuestMED Quiz">
         <header className="topbar">
-          <button className="player-avatar-button" onClick={() => setShowAvatarModal(true)} type="button" aria-label="Trocar avatar">
+          <button className="player-avatar-button" onClick={openAvatarSelector} type="button" aria-label="Trocar avatar">
             <AvatarBadge avatarId={session.student.avatarId} className="player-avatar" name={session.student.nickname} />
           </button>
           <div>
@@ -762,17 +778,35 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
             <div className="avatar-modal-grid">
               {AVATAR_PRESETS.map((avatar) => (
                 <button
-                  aria-pressed={(session.student.avatarId ?? DEFAULT_AVATAR_ID) === avatar.id}
-                  className={(session.student.avatarId ?? DEFAULT_AVATAR_ID) === avatar.id ? "avatar-modal-choice selected" : "avatar-modal-choice"}
+                  aria-pressed={selectedAvatarInModal === avatar.id}
+                  className={selectedAvatarInModal === avatar.id ? "avatar-modal-choice selected" : "avatar-modal-choice"}
                   disabled={busy}
                   key={avatar.id}
-                  onClick={() => void changeAvatar(avatar.id)}
+                  onClick={() => {
+                    if (mobileAvatarConfirm) {
+                      setPendingAvatarId(avatar.id);
+                      return;
+                    }
+                    void changeAvatar(avatar.id);
+                  }}
                   type="button"
                 >
                   <AvatarBadge avatarId={avatar.id} className="choice-avatar" name={session.student.nickname || avatar.label} />
                 </button>
               ))}
             </div>
+            {mobileAvatarConfirm ? (
+              <footer className="avatar-modal-actions">
+                <button
+                  className="avatar-modal-confirm"
+                  disabled={busy || pendingAvatarId === (session.student.avatarId ?? DEFAULT_AVATAR_ID)}
+                  onClick={() => void changeAvatar(pendingAvatarId)}
+                  type="button"
+                >
+                  Confirmar avatar
+                </button>
+              </footer>
+            ) : null}
           </section>
         </div>
       ) : null}
