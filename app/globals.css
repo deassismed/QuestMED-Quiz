@@ -2090,11 +2090,12 @@ a { color: inherit; }
 
 .podium-avatar {
   align-self: end;
-  border: 4px solid rgba(250, 253, 255, 0.96);
+  border: 0;
   border-radius: 50%;
+  background:
+    conic-gradient(from 215deg, #ff7bc9 0 15%, #f7fbff 15% 68%, #58ecff 68% 100%);
   box-shadow:
-    0 0 0 3px rgba(72, 240, 255, 0.86),
-    0 0 0 6px rgba(255, 92, 169, 0.72),
+    0 0 0 2px rgba(72, 240, 255, 0.82),
     0 15px 34px rgba(0, 0, 0, 0.34),
     0 0 28px rgba(72, 240, 255, 0.26);
   font-size: clamp(2.35rem, 5vw, 4rem);
@@ -2102,6 +2103,7 @@ a { color: inherit; }
   margin-bottom: 0;
   max-height: none;
   min-height: 0;
+  padding: 5px;
   position: relative;
   width: clamp(92px, 10vw, 128px);
   z-index: 1;
@@ -2178,13 +2180,15 @@ a { color: inherit; }
 }
 
 .game-avatar {
-  border: 3px solid rgba(250, 253, 255, 0.92);
+  background:
+    conic-gradient(from 215deg, #ff7bc9 0 15%, #f7fbff 15% 68%, #58ecff 68% 100%);
+  border: 0;
   box-shadow:
     0 0 0 2px rgba(72, 240, 255, 0.72),
-    0 0 0 4px rgba(255, 92, 169, 0.52),
     0 10px 24px rgba(0, 0, 0, 0.24);
   font-size: 1.25rem;
   height: 42px;
+  padding: 3px;
   width: 42px;
 }
 
@@ -2495,6 +2499,12 @@ a { color: inherit; }
 }
 
 .avatar-badge.image-avatar.podium-avatar {
+  border-radius: 50%;
+}
+
+.scoreboard-shell .avatar-badge.image-avatar.podium-avatar img,
+.scoreboard-shell .avatar-badge.image-avatar.game-avatar img {
+  border: 2px solid rgba(255, 255, 255, 0.96);
   border-radius: 50%;
 }
 
