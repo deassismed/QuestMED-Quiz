@@ -84,6 +84,24 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const teamRanking = [...(state?.ubsTeams ?? [])].sort((a, b) => b.averageScore - a.averageScore || b.memberCount - a.memberCount);
   const currentStudentRank = Math.max(1, individualRanking.findIndex((student) => student.id === session?.student.id) + 1 || 1);
 
+  function forceExitToEntry(message = "A sala foi encerrada ou nao esta mais disponivel.") {
+    window.localStorage.removeItem(SESSION_KEY);
+    window.history.replaceState(null, "", "/");
+    setSession(null);
+    setState(null);
+    setRoomCode("");
+    setUbsName("");
+    setAddingNewUbs(false);
+    setSelectedQuestionId("");
+    setSelectedOptionId("");
+    setQuestionStartedAt("");
+    setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+    setAnswerFlash(null);
+    setDuplicateNickname(false);
+    setError(message);
+    setStep("room");
+  }
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const requestedRoom = normalizeCode(params.get("sala") ?? "");
@@ -99,6 +117,10 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       try {
         const parsed = JSON.parse(saved) as { roomId: string; studentId: string };
         void loadStudentState(parsed.roomId, parsed.studentId).then((next) => {
+          if (next.room.status === "finished") {
+            forceExitToEntry("Esta sala foi encerrada pelo professor.");
+            return;
+          }
           setSession(next);
           setRoomCode(next.room.roomCode);
           setNickname(next.student.nickname);
@@ -106,7 +128,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
           setAddingNewUbs(false);
           setAvatarId(next.student.avatarId ?? DEFAULT_AVATAR_ID);
           setStep("quiz");
-        });
+        }).catch(() => forceExitToEntry());
       } catch {
         window.localStorage.removeItem(SESSION_KEY);
       }
@@ -146,10 +168,14 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     const reload = () => {
       void Promise.all([loadStudentState(session.room.id, session.student.id), loadRoomState(session.room.roomCode)])
         .then(([nextSession, nextState]) => {
+          if (nextSession.room.status === "finished" || nextState.room.status === "finished") {
+            forceExitToEntry("Esta sala foi encerrada pelo professor.");
+            return;
+          }
           setSession(nextSession);
           setState(nextState);
         })
-        .catch(() => undefined);
+        .catch(() => forceExitToEntry());
     };
     const interval = window.setInterval(reload, 5000);
     const client = getBrowserSupabase();
@@ -245,8 +271,14 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   useEffect(() => {
     if (!session || pendingReleaseQuestions.length === 0 || releaseNoticeSeconds > 0) return;
     void loadStudentState(session.room.id, session.student.id)
-      .then(setSession)
-      .catch(() => undefined);
+      .then((nextSession) => {
+        if (nextSession.room.status === "finished") {
+          forceExitToEntry("Esta sala foi encerrada pelo professor.");
+          return;
+        }
+        setSession(nextSession);
+      })
+      .catch(() => forceExitToEntry());
   }, [pendingReleaseQuestions.length, releaseNoticeSeconds, session?.room.id, session?.student.id]);
 
   useEffect(() => {
@@ -265,6 +297,10 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
         await delay(850);
         setAnswerFlash(null);
         const nextSession = await loadStudentState(session.room.id, session.student.id);
+        if (nextSession.room.status === "finished") {
+          forceExitToEntry("Esta sala foi encerrada pelo professor.");
+          return;
+        }
         setSession(nextSession);
         setState(await loadRoomState(session.room.roomCode));
         setSelectedQuestionId(findNextUnansweredQuestion(questions, nextSession)?.id ?? "");
@@ -282,6 +318,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     setError("");
     try {
       const nextState = await loadRoomState(code);
+      if (nextState.room.status === "finished") throw new Error("Esta sala foi encerrada pelo professor.");
       setState(nextState);
       if (advance) setStep("student");
     } catch (caught) {
@@ -358,6 +395,10 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       await delay(850);
       setAnswerFlash(null);
       const nextSession = await loadStudentState(session.room.id, session.student.id);
+      if (nextSession.room.status === "finished") {
+        forceExitToEntry("Esta sala foi encerrada pelo professor.");
+        return;
+      }
       setSession(nextSession);
       setState(await loadRoomState(session.room.roomCode));
       setSelectedQuestionId(findNextUnansweredQuestion(questions, nextSession)?.id ?? "");
@@ -377,6 +418,10 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     setError("");
     try {
       const nextSession = await startReleasedQuestions({ roomId: session.room.id, studentId: session.student.id });
+      if (nextSession.room.status === "finished") {
+        forceExitToEntry("Esta sala foi encerrada pelo professor.");
+        return;
+      }
       setSession(nextSession);
       setState(await loadRoomState(session.room.roomCode));
       setSelectedQuestionId(findNextUnansweredQuestion(questions, nextSession)?.id ?? "");
