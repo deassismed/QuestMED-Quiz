@@ -9,19 +9,19 @@
     "options": [
       {
         "id": "A",
-        "text": "Iniciar tratamento empírico sem coleta de amostras, pois a radiografia é altamente sugestiva"
+        "text": "Solicitar baciloscopia seriada de escarro como exame inicial, reservando teste molecular para casos com baciloscopia negativa."
       },
       {
         "id": "B",
-        "text": "Solicitar teste rápido molecular para tuberculose no escarro, com avaliação de resistência à rifampicina, além de baciloscopia/cultura conforme disponibilidade e indicação."
+        "text": "Solicitar teste rápido molecular para tuberculose no escarro, com avaliação de resistência à rifampicina, complementando com baciloscopia/cultura conforme indicação."
       },
       {
         "id": "C",
-        "text": "Solicitar apenas baciloscopia seriada, sem teste molecular ou avaliação de resistência"
+        "text": "Solicitar cultura para micobactéria e aguardar o resultado antes de definir outros exames microbiológicos."
       },
       {
         "id": "D",
-        "text": "Solicitar tomografia de tórax antes de qualquer exame microbiológico do escarro"
+        "text": "Iniciar esquema básico e coletar escarro apenas se não houver melhora clínica nas primeiras semanas."
       }
     ]
   },
@@ -35,7 +35,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Manter todos os fármacos e repetir transaminases apenas ao final do tratamento"
+        "text": "Suspender apenas a pirazinamida e manter rifampicina, isoniazida e etambutol enquanto se acompanha a evolução laboratorial."
       },
       {
         "id": "B",
@@ -43,11 +43,11 @@
       },
       {
         "id": "C",
-        "text": "Suspender apenas etambutol, por ser o principal hepatotóxico do esquema básico"
+        "text": "Reduzir as doses dos quatro fármacos do esquema básico e repetir transaminases em uma semana se os sintomas persistirem."
       },
       {
         "id": "D",
-        "text": "Trocar imediatamente para monoterapia com rifampicina até normalização laboratorial"
+        "text": "Manter rifampicina e isoniazida isoladamente, retirando os demais medicamentos até normalização das enzimas hepáticas."
       }
     ]
   },
@@ -61,7 +61,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Aguardar cultura do líquor antes de iniciar tratamento, para evitar toxicidade"
+        "text": "Coletar líquor para cultura e teste molecular, mantendo observação clínica até haver confirmação microbiológica."
       },
       {
         "id": "B",
@@ -69,11 +69,11 @@
       },
       {
         "id": "C",
-        "text": "Iniciar apenas antibiótico para meningite bacteriana e reavaliar se cultura vier negativa"
+        "text": "Iniciar esquema antituberculose sem corticosteroide, adicionando corticoide apenas se houver hipertensão intracraniana documentada."
       },
       {
         "id": "D",
-        "text": "Usar esquema antituberculose sem corticosteroide, pois corticoide é contraindicado"
+        "text": "Tratar inicialmente como meningite bacteriana comum e reservar tratamento para tuberculose se a cultura bacteriana vier negativa."
       }
     ]
   },
@@ -87,7 +87,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Iniciar esquema básico 2RHZE/4RH, pois resistência à rifampicina não altera a escolha inicial"
+        "text": "Iniciar esquema básico enquanto se aguarda cultura, pois a resistência molecular à rifampicina precisa ser confirmada antes de modificar a conduta."
       },
       {
         "id": "B",
@@ -95,11 +95,11 @@
       },
       {
         "id": "C",
-        "text": "Repetir apenas o teste molecular em 2 meses antes de qualquer encaminhamento"
+        "text": "Repetir o teste molecular em nova amostra e manter seguimento ambulatorial usual até o segundo resultado."
       },
       {
         "id": "D",
-        "text": "Tratar com rifampicina em dose dobrada associada a isoniazida"
+        "text": "Associar rifampicina em dose ajustada ao peso e solicitar avaliação especializada apenas se houver falha bacteriológica."
       }
     ]
   },
@@ -113,7 +113,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Ignorar o contato se a criança estiver assintomática e a radiografia for normal"
+        "text": "Solicitar teste tuberculínico ou IGRA e encerrar a investigação se o primeiro resultado for negativo."
       },
       {
         "id": "B",
@@ -121,11 +121,11 @@
       },
       {
         "id": "C",
-        "text": "Tratar todos os contatos infantis como TB ativa, sem diferenciar infecção latente"
+        "text": "Iniciar tratamento para tuberculose ativa por ser contato domiciliar de caso bacilífero, mesmo sem sintomas ou alteração radiográfica."
       },
       {
         "id": "D",
-        "text": "Solicitar apenas teste tuberculínico e dispensar avaliação clínica e radiográfica"
+        "text": "Acompanhar clinicamente sem testes adicionais, desde que a radiografia de tórax inicial esteja normal."
       }
     ]
   },
@@ -139,7 +139,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Apenas sintomáticos, pois antivirais são contraindicados na gestação."
+        "text": "Orientar medidas sintomáticas e coletar teste viral, iniciando antiviral apenas se houver confirmação laboratorial."
       },
       {
         "id": "B",
@@ -147,11 +147,11 @@
       },
       {
         "id": "C",
-        "text": "Prescrever azitromicina para prevenir pneumonia bacteriana."
+        "text": "Reservar oseltamivir para gestantes com dispneia, dessaturação ou radiografia sugestiva de pneumonia."
       },
       {
         "id": "D",
-        "text": "Solicitar tomografia de tórax antes de qualquer tratamento."
+        "text": "Prescrever antibiótico empírico se a febre persistir por mais de 48 horas, mantendo antiviral apenas como segunda linha."
       }
     ]
   },
@@ -165,7 +165,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Síndrome gripal sem gravidade; manejo domiciliar com retorno se piora"
+        "text": "Classificar como síndrome gripal em idoso de risco e manejar ambulatorialmente com oseltamivir, retorno precoce e orientações."
       },
       {
         "id": "B",
@@ -173,11 +173,11 @@
       },
       {
         "id": "C",
-        "text": "Pneumonia comunitária leve; tratar ambulatorialmente sem avaliar oxigenação"
+        "text": "Tratar como pneumonia comunitária ambulatorial, pois a estabilidade hemodinâmica permite seguimento na UBS."
       },
       {
         "id": "D",
-        "text": "Exacerbação viral leve de doença crônica, sem necessidade de encaminhamento"
+        "text": "Solicitar radiografia de tórax antes do encaminhamento, mantendo observação na unidade enquanto aguarda o exame."
       }
     ]
   },
@@ -191,7 +191,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Aguardar confirmação laboratorial antes de iniciar antiviral em todos os casos."
+        "text": "Coletar teste para influenza e iniciar antiviral apenas se o resultado confirmar infecção pelo vírus influenza."
       },
       {
         "id": "B",
@@ -199,11 +199,11 @@
       },
       {
         "id": "C",
-        "text": "Não usar antiviral porque imunossuprimidos respondem mal e têm contraindicação."
+        "text": "Usar antiviral apenas se houver sinais de gravidade, pois a estabilidade clínica permite aguardar evolução."
       },
       {
         "id": "D",
-        "text": "Usar antibiótico de amplo espectro em vez de antiviral."
+        "text": "Priorizar antibiótico empírico, pois imunossuprimidos têm maior probabilidade de infecção bacteriana que viral."
       }
     ]
   },
@@ -217,7 +217,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Tratar apenas o primeiro caso e não comunicar o surto."
+        "text": "Tratar os sintomáticos e comunicar a vigilância apenas se houver internação, óbito ou confirmação laboratorial."
       },
       {
         "id": "B",
@@ -225,11 +225,11 @@
       },
       {
         "id": "C",
-        "text": "Suspender todas as vacinas dos residentes."
+        "text": "Coletar exames dos residentes sintomáticos e aguardar confirmação viral antes de iniciar medidas institucionais de controle."
       },
       {
         "id": "D",
-        "text": "Prescrever antibiótico profilático para todos os moradores."
+        "text": "Atualizar a vacinação dos residentes e funcionários como medida principal, sem necessidade de isolamento dos casos leves."
       }
     ]
   },
@@ -243,7 +243,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Solicitar ressonância magnética de coluna lombar em caráter prioritário."
+        "text": "Solicitar radiografia lombar por se tratar de dor após esforço ocupacional e manter repouso relativo até o resultado."
       },
       {
         "id": "B",
@@ -251,11 +251,11 @@
       },
       {
         "id": "C",
-        "text": "Prescrever repouso absoluto no leito por 7 dias."
+        "text": "Prescrever analgesia e afastamento com repouso no leito por alguns dias, retornando às atividades apenas após remissão completa."
       },
       {
         "id": "D",
-        "text": "Encaminhar imediatamente para neurocirurgia."
+        "text": "Encaminhar para avaliação especializada se a dor persistir por mais de uma semana, mesmo sem sinais de alarme."
       }
     ]
   },
@@ -269,7 +269,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Radiografia é obrigatória em toda dor lombar após exercício."
+        "text": "Solicitar radiografia para tranquilizar o paciente e excluir desalinhamento vertebral relacionado ao exercício."
       },
       {
         "id": "B",
@@ -277,11 +277,11 @@
       },
       {
         "id": "C",
-        "text": "Tomografia é preferível à radiografia em todos os casos agudos."
+        "text": "Solicitar tomografia se a dor não melhorar em 72 horas, pois radiografia tem baixa sensibilidade para lesões discais."
       },
       {
         "id": "D",
-        "text": "O exame de imagem é necessário para autorizar retorno ao trabalho."
+        "text": "Condicionar retorno ao treino e ao trabalho à realização de imagem simples da coluna lombar."
       }
     ]
   },
@@ -299,15 +299,15 @@
       },
       {
         "id": "B",
-        "text": "Apenas intensidade da dor no primeiro atendimento, sem explorar crenças ou função"
+        "text": "Intensidade da dor, resposta ao anti-inflamatório e achados segmentares no exame físico, sem explorar crenças sobre movimento."
       },
       {
         "id": "C",
-        "text": "Solicitação precoce de imagem para reduzir medo de movimento"
+        "text": "Solicitação precoce de imagem para demonstrar ausência de lesão estrutural e reduzir a evitação de atividades."
       },
       {
         "id": "D",
-        "text": "Afastamento laboral prolongado até desaparecimento completo dos sintomas"
+        "text": "Afastamento laboral até desaparecimento completo da dor, com retorno progressivo apenas após novo exame clínico normal."
       }
     ]
   },
@@ -321,7 +321,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Afastamento prolongado pode ser necessário em todos os casos, mesmo sem sinais de alarme"
+        "text": "Conceder afastamento curto inicialmente e recomendar evitar trabalho, caminhada e direção até a dor desaparecer."
       },
       {
         "id": "B",
@@ -329,11 +329,11 @@
       },
       {
         "id": "C",
-        "text": "Liberar atividades apenas quando a dor desaparecer completamente"
+        "text": "Orientar repouso domiciliar por 15 dias para reduzir inflamação e prevenir evolução para dor crônica."
       },
       {
         "id": "D",
-        "text": "Condicionar retorno gradual ao trabalho à realização de ressonância magnética"
+        "text": "Solicitar ressonância magnética antes de definir restrições funcionais ou retorno gradual ao trabalho."
       }
     ]
   },
@@ -377,15 +377,15 @@
       },
       {
         "id": "B",
-        "text": "Claudicação vascular por doença arterial periférica, favorecida por melhora ao sentar e flexionar"
+        "text": "Claudicação vascular por doença arterial periférica, pela limitação à marcha e melhora parcial com pausa."
       },
       {
         "id": "C",
-        "text": "Radiculopatia aguda por hérnia discal, típica por dor desencadeada apenas ao repouso"
+        "text": "Radiculopatia aguda por hérnia discal, favorecida por dor em membros inferiores desencadeada pela marcha."
       },
       {
         "id": "D",
-        "text": "Lombalgia mecânica inespecífica, pois a distância fixa de marcha não tem valor clínico"
+        "text": "Lombalgia mecânica inespecífica com dor referida, pois a flexão do tronco pode aliviar dor muscular comum."
       }
     ]
   },
@@ -399,7 +399,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Reavaliar apenas em 6 semanas, pois déficit motor leve costuma ser benigno"
+        "text": "Manter tratamento conservador e reavaliar em duas a quatro semanas, se não houver sintomas esfincterianos."
       },
       {
         "id": "B",
@@ -407,11 +407,11 @@
       },
       {
         "id": "C",
-        "text": "Prescrever repouso absoluto e relaxante muscular, adiando imagem se não houver dor bilateral"
+        "text": "Solicitar ressonância ambulatorial eletiva, mantendo analgesia, pois a ausência de febre reduz a urgência."
       },
       {
         "id": "D",
-        "text": "Manter tratamento conservador sem reavaliação, se não há febre ou sintomas urinários"
+        "text": "Encaminhar apenas se surgir anestesia em sela ou retenção urinária, pois o déficit motor isolado raramente muda a conduta."
       }
     ]
   },
@@ -425,7 +425,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Coletar urina da bolsa coletora e iniciar antibiótico apenas após o resultado"
+        "text": "Coletar urocultura do cateter em uso e iniciar antibiótico, trocando a sonda apenas se a cultura vier positiva."
       },
       {
         "id": "B",
@@ -433,11 +433,11 @@
       },
       {
         "id": "C",
-        "text": "Manter o cateter atual para evitar bacteremia por manipulação"
+        "text": "Trocar o cateter e aguardar o resultado da cultura antes de iniciar antibiótico, se não houver instabilidade hemodinâmica."
       },
       {
         "id": "D",
-        "text": "Tratar com antibiótico de baixa concentração tecidual, por se tratar de infecção baixa"
+        "text": "Iniciar antibiótico empírico e manter o cateter atual para evitar manipulação durante a fase aguda."
       }
     ]
   },
@@ -451,7 +451,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Tratar apenas se houver febre ou dor em flanco, pois cistite na gestação é baixo risco"
+        "text": "Coletar urocultura e aguardar o resultado antes de tratar, desde que não haja febre ou dor em flanco."
       },
       {
         "id": "B",
@@ -459,11 +459,11 @@
       },
       {
         "id": "C",
-        "text": "Usar fluoroquinolona como primeira linha por 3 dias na gestação"
+        "text": "Tratar empiricamente com antibiótico seguro e dispensar cultura se houver melhora clínica em 48 horas."
       },
       {
         "id": "D",
-        "text": "Tratar empiricamente sem cultura e dispensar controle conforme evolução"
+        "text": "Usar fluoroquinolona por curso curto, reservando beta-lactâmicos para pielonefrite ou bacteriúria assintomática."
       }
     ]
   },
@@ -481,15 +481,15 @@
       },
       {
         "id": "B",
-        "text": "Profilaxia antibiótica contínua diária como única estratégia possível"
+        "text": "Profilaxia antibiótica contínua diária como primeira escolha, pois a relação temporal com atividade sexual não muda a estratégia."
       },
       {
         "id": "C",
-        "text": "Cistoscopia obrigatória antes de qualquer medida preventiva"
+        "text": "Autotratamento de cada episódio sem estratégia preventiva, mesmo com padrão pós-coital recorrente bem definido."
       },
       {
         "id": "D",
-        "text": "Tratamento empírico do parceiro sexual fixo em todos os episódios"
+        "text": "Investigação urológica com cistoscopia antes de discutir profilaxia, apesar da ausência de sinais de complicação."
       }
     ]
   },
@@ -871,15 +871,15 @@
       },
       {
         "id": "B",
-        "text": "Manter apenas analgésicos em livre demanda, pois profilaxia só é considerada em cefaleia diária contínua."
+        "text": "Otimizar apenas o tratamento abortivo e permitir analgésicos nos dias de dor, pois profilaxia é reservada para cefaleia diária."
       },
       {
         "id": "C",
-        "text": "Solicitar tomografia de crânio de rotina antes de qualquer orientação, mesmo sem sinais de alarme."
+        "text": "Solicitar neuroimagem antes de discutir profilaxia, pois a frequência elevada das crises muda a conduta mesmo sem sinais de alarme."
       },
       {
         "id": "D",
-        "text": "Recomendar repouso absoluto sempre que houver pródromos, sem modificar tratamento farmacológico."
+        "text": "Orientar redução de gatilhos e retorno se passar de 15 dias de cefaleia por mês, sem iniciar prevenção neste momento."
       }
     ]
   },
@@ -923,15 +923,15 @@
       },
       {
         "id": "B",
-        "text": "Transformação para enxaqueca crônica obrigatória"
+        "text": "Enxaqueca crônica, definida pela mudança de localização da dor e pela perda de resposta a analgésicos simples."
       },
       {
         "id": "C",
-        "text": "Persistência de cefaleia tipo tensional sem relação com uso de medicação"
+        "text": "Cefaleia tipo tensional persistente sem relação causal provável com a frequência de analgésicos."
       },
       {
         "id": "D",
-        "text": "Cefaleia secundária por hipertensão intracraniana, independentemente do padrão temporal"
+        "text": "Cefaleia secundária por hipertensão intracraniana, presumida pela frequência maior que 15 dias por mês."
       }
     ]
   },
@@ -949,15 +949,15 @@
       },
       {
         "id": "B",
-        "text": "Aumentar analgésico para uso diário fixo e registrar resposta após 3 meses"
+        "text": "Trocar para outro analgésico de uso diário fixo e registrar resposta, pois a regularidade reduz oscilações da dor."
       },
       {
         "id": "C",
-        "text": "Focar apenas em imagem cerebral, pois sono, cafeína e uso de analgésicos não interferem"
+        "text": "Solicitar neuroimagem antes de intervir em sono, cafeína ou analgésicos, pois cefaleia quase diária deve ser presumida secundária."
       },
       {
         "id": "D",
-        "text": "Suspender toda atividade física até reduzir a frequência das crises"
+        "text": "Priorizar relaxante muscular e repouso nos dias de dor, mantendo cafeína se houver melhora subjetiva."
       }
     ]
   },
@@ -975,15 +975,15 @@
       },
       {
         "id": "B",
-        "text": "Solicitar VHS, PCR e biópsia antes de iniciar corticosteroide"
+        "text": "Coletar VHS, PCR e programar biópsia antes do corticoide, pois a confirmação diagnóstica orienta a dose inicial."
       },
       {
         "id": "C",
-        "text": "Prescrever analgésico e iniciar corticosteroide apenas se a biópsia for positiva"
+        "text": "Prescrever antiagregante e analgesia, iniciando corticoide após avaliação oftalmológica se houver novo sintoma visual."
       },
       {
         "id": "D",
-        "text": "Encaminhar eletivamente para reumatologia, pois amaurose fugaz costuma ser benigna"
+        "text": "Encaminhar para investigação ambulatorial acelerada, pois a amaurose fugaz isolada não exige tratamento no mesmo dia."
       }
     ]
   },
@@ -997,7 +997,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Não realizar investigação adicional, pois resposta ao corticoide confirma definitivamente o diagnóstico."
+        "text": "Dispensar investigação adicional se houver melhora rápida da cefaleia após prednisona."
       },
       {
         "id": "B",
@@ -1005,11 +1005,11 @@
       },
       {
         "id": "C",
-        "text": "Suspender o corticoide por 30 dias para não atrapalhar a biópsia."
+        "text": "Solicitar confirmação apenas se surgirem sintomas visuais, pois a claudicação mandibular tem baixo valor diagnóstico isolado."
       },
       {
         "id": "D",
-        "text": "Solicitar apenas eletroencefalograma."
+        "text": "Suspender temporariamente o corticoide para aumentar a chance de positividade da biópsia."
       }
     ]
   },
@@ -1023,7 +1023,7 @@
     "options": [
       {
         "id": "A",
-        "text": "VHS normal exclui definitivamente o diagnóstico."
+        "text": "VHS normal torna o diagnóstico improvável; a PCR elevada pode ser acompanhada antes de iniciar investigação específica."
       },
       {
         "id": "B",
@@ -1031,11 +1031,11 @@
       },
       {
         "id": "C",
-        "text": "Claudicação mandibular é achado específico de enxaqueca."
+        "text": "A claudicação mandibular favorece disfunção temporomandibular, devendo-se investigar arterite apenas se o VHS elevar."
       },
       {
         "id": "D",
-        "text": "A melhor conduta é apenas observar por 6 meses."
+        "text": "A combinação de VHS normal e exame clínico localizado sugere cefaleia primária, com reavaliação eletiva."
       }
     ]
   },
@@ -1101,7 +1101,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Aguardar radiografia de tórax, pois o diagnóstico de tensão nunca é clínico"
+        "text": "Solicitar radiografia portátil antes da drenagem se o paciente puder ser monitorizado durante o exame."
       },
       {
         "id": "B",
@@ -1109,11 +1109,11 @@
       },
       {
         "id": "C",
-        "text": "Solicitar tomografia de tórax antes da descompressão para definir o lado"
+        "text": "Realizar ultrassonografia à beira-leito e aguardar confirmação visual antes de qualquer intervenção."
       },
       {
         "id": "D",
-        "text": "Administrar oxigênio e analgesia, observando resposta por 30 minutos antes de descomprimir"
+        "text": "Administrar oxigênio e analgesia enquanto se prepara tomografia para confirmar o lado acometido."
       }
     ]
   },
@@ -1131,15 +1131,15 @@
       },
       {
         "id": "B",
-        "text": "Aumentar a pressão positiva para tentar reexpandir o pulmão antes de drenar"
+        "text": "Aumentar temporariamente a PEEP para tentar reexpandir o pulmão e reduzir a hipoxemia até a radiografia."
       },
       {
         "id": "C",
-        "text": "A hipótese é improvável se o paciente sedado não relata dor torácica"
+        "text": "Priorizar aspiração do tubo orotraqueal e broncodilatador, pois aumento de pressão de pico sugere obstrução de via aérea."
       },
       {
         "id": "D",
-        "text": "Aguardar radiografia se a instabilidade surgiu durante ventilação mecânica"
+        "text": "Aguardar radiografia se o paciente estiver sedado, pois a ausência de dor torácica reduz a probabilidade de pneumotórax."
       }
     ]
   },
@@ -1153,7 +1153,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Tratar como bronquite ou DPOC exacerbada e reavaliar apenas se persistir por mais 3 meses"
+        "text": "Tratar empiricamente como exacerbação de DPOC e solicitar imagem apenas se a tosse persistir após o tratamento."
       },
       {
         "id": "B",
@@ -1161,11 +1161,11 @@
       },
       {
         "id": "C",
-        "text": "Solicitar espirometria como primeiro exame, adiando imagem torácica se confirmar obstrução"
+        "text": "Solicitar baciloscopia e teste molecular para tuberculose inicialmente, deixando imagem torácica para resultado negativo."
       },
       {
         "id": "D",
-        "text": "Atribuir a hemoptise escassa ao tabagismo, desde que a saturação esteja normal"
+        "text": "Encaminhar diretamente para tomografia e oncologia, sem investigação inicial na Atenção Primária."
       }
     ]
   },
@@ -1179,11 +1179,11 @@
     "options": [
       {
         "id": "A",
-        "text": "Radiografia de tórax anual como método preferencial de rastreamento em alto risco"
+        "text": "Solicitar radiografia de tórax anual, pois é o método mais acessível para rastreamento em alto risco."
       },
       {
         "id": "B",
-        "text": "Citologia de escarro seriada como alternativa equivalente à tomografia de baixa dose"
+        "text": "Indicar citologia de escarro seriada se a paciente preferir evitar tomografia e radiação."
       },
       {
         "id": "C",
@@ -1191,7 +1191,7 @@
       },
       {
         "id": "D",
-        "text": "Não discutir rastreamento, pois cessação do tabagismo há 8 anos elimina risco relevante"
+        "text": "Não discutir rastreamento porque cessação do tabagismo há mais de 5 anos reduz o risco ao de não fumantes."
       }
     ]
   },
@@ -1209,15 +1209,15 @@
       },
       {
         "id": "B",
-        "text": "Classificar como lombalgia mecânica inespecífica sem necessidade de imagem por não haver trauma de alta energia."
+        "text": "Tratar como lombalgia mecânica inespecífica e solicitar imagem apenas se não houver melhora após duas a quatro semanas."
       },
       {
         "id": "C",
-        "text": "Solicitar apenas densitometria óssea, sem imagem da coluna, para confirmar que a dor decorre da osteoporose."
+        "text": "Solicitar densitometria óssea como exame inicial, pois ela confirma se a osteoporose explica a dor aguda."
       },
       {
         "id": "D",
-        "text": "Manter analgesia e observar por 4 a 6 semanas antes de imagem, pois não houve trauma de alta energia."
+        "text": "Encaminhar para fisioterapia e observar, pois ausência de trauma de alta energia reduz a probabilidade de fratura."
       }
     ]
   },
@@ -1257,11 +1257,11 @@
     "options": [
       {
         "id": "A",
-        "text": "Otimizar analgesia e reavaliar em 48 horas se a micção não melhorar"
+        "text": "Solicitar ressonância ambulatorial prioritária e otimizar analgesia, se a retenção urinária ainda não estiver estabelecida."
       },
       {
         "id": "B",
-        "text": "Solicitar radiografia lombar ambulatorial antes de encaminhar"
+        "text": "Solicitar radiografia lombar e encaminhar conforme achado, pois a dor bilateral sugere lesão estrutural óssea."
       },
       {
         "id": "C",
@@ -1269,7 +1269,7 @@
       },
       {
         "id": "D",
-        "text": "Encaminhar eletivamente para fisioterapia, pois lombociatalgia bilateral é comum"
+        "text": "Iniciar corticosteroide e reavaliar em 24 a 48 horas, encaminhando se o tônus anal não normalizar."
       }
     ]
   },
@@ -1283,11 +1283,11 @@
     "options": [
       {
         "id": "A",
-        "text": "Dor lombar que piora ao levantar peso"
+        "text": "Lasègue positivo com dor irradiada abaixo do joelho."
       },
       {
         "id": "B",
-        "text": "Dor irradiada unilateral abaixo do joelho"
+        "text": "Dor lombar desencadeada por esforço, com melhora parcial após anti-inflamatório."
       },
       {
         "id": "C",
@@ -1295,7 +1295,7 @@
       },
       {
         "id": "D",
-        "text": "Dor que melhora parcialmente com anti-inflamatório"
+        "text": "Parestesia unilateral em trajeto radicular sem déficit motor progressivo."
       }
     ]
   }
