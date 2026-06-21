@@ -2868,23 +2868,23 @@ a { color: inherit; }
     align-items: center;
     border-radius: 18px;
     display: grid;
-    gap: 10px 14px;
+    gap: 8px 14px;
     grid-template-areas:
       "avatar identity"
-      "score score";
-    grid-template-columns: 72px minmax(0, 1fr);
+      "avatar score";
+    grid-template-columns: 132px minmax(0, 1fr);
     margin-bottom: 14px;
-    min-height: 0;
+    min-height: 154px;
     overflow: hidden;
-    padding: 16px 14px 12px;
+    padding: 18px 16px 16px;
   }
   .quiz-shell .player-avatar {
     align-self: center;
     grid-area: avatar;
-    height: 68px;
+    height: 118px;
     justify-self: start;
-    margin-left: 6px;
-    width: 68px;
+    margin-left: 0;
+    width: 118px;
     z-index: 0;
   }
   .quiz-shell .player-avatar-button {
@@ -2900,7 +2900,7 @@ a { color: inherit; }
   }
   .quiz-shell .topbar .eyebrow {
     display: -webkit-box;
-    font-size: 0.6rem;
+    font-size: 0.66rem;
     line-height: 1.25;
     margin-bottom: 4px;
     overflow: hidden;
@@ -2908,7 +2908,7 @@ a { color: inherit; }
     -webkit-line-clamp: 2;
   }
   .quiz-shell .topbar h1 {
-    font-size: clamp(1.68rem, 9vw, 2.4rem);
+    font-size: clamp(2rem, 11vw, 3rem);
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2919,7 +2919,7 @@ a { color: inherit; }
     grid-template-columns: auto 1fr;
     min-height: 0;
     min-width: 0;
-    padding: 7px 12px;
+    padding: 8px 12px;
     width: 100%;
   }
   .quiz-shell .rank-chip span {
@@ -3003,16 +3003,22 @@ a { color: inherit; }
     .quiz-shell .topbar {
       grid-template-areas:
         "avatar identity"
-        "score score";
-      grid-template-columns: 62px minmax(0, 1fr);
+        "avatar score";
+      grid-template-columns: 112px minmax(0, 1fr);
       text-align: left;
     }
     .quiz-shell .player-avatar {
-      height: 60px;
-      width: 60px;
+      height: 102px;
+      width: 102px;
     }
     .quiz-shell .topbar h1 {
-      font-size: clamp(1.48rem, 8.4vw, 2rem);
+      font-size: clamp(1.85rem, 10vw, 2.45rem);
+    }
+    .quiz-shell .rank-chip {
+      padding: 7px 10px;
+    }
+    .quiz-shell .rank-chip strong {
+      font-size: 1.05rem;
     }
   }
   .teacher-links { grid-template-columns: 1fr; }
