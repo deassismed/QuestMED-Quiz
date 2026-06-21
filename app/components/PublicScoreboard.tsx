@@ -59,7 +59,7 @@ export function PublicScoreboard({ initialState }: { initialState: RoomPublicSta
         <span className="game-orbit" aria-hidden="true" />
         <div>
           <span className="scoreboard-live-label">{state.room.status === "active" ? "AO VIVO" : "RESULTADO FINAL"}</span>
-          <h1>Leaderboard</h1>
+          <h1>Ranking</h1>
           <p>{state.room.roomName || "QuestMED Quiz"} · Sala {state.room.roomCode}</p>
         </div>
         <span className={`room-state ${state.room.status}`}>{state.room.status === "active" ? "Online" : "Final"}</span>
@@ -107,8 +107,10 @@ export function PublicScoreboard({ initialState }: { initialState: RoomPublicSta
 
         <div className="scoreboard-panel compact game-board game-board-side">
           {teamRanking.map((team, index) => (
-            <article className="individual-score-row" key={team.id}>
-              <AvatarBadge className="game-avatar small" name={team.name} />
+            <article className={`individual-score-row team-score-row ${index < 3 ? "team-top-row" : ""}`} key={team.id}>
+              <span className="team-rank-mark">
+                {index < 3 ? <img alt={rankLabel(index)} src={medalSrc(index + 1, true)} /> : rankLabel(index)}
+              </span>
               <span>{team.name}</span>
               <b><i aria-hidden="true" />{team.averageScore.toFixed(1)}</b>
               <strong>
