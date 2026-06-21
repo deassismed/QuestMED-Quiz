@@ -68,6 +68,17 @@ export function startReleasedQuestions(body: {
   });
 }
 
+export function updateAvatar(body: {
+  roomId: string;
+  studentId: string;
+  avatarId: string;
+}) {
+  return requestJson<StudentSessionState>("/api/student/avatar", {
+    method: "PATCH",
+    body: JSON.stringify(body)
+  });
+}
+
 export function loadRoomState(roomCode: string) {
   return requestJson<RoomPublicState>(`/api/rooms/${encodeURIComponent(roomCode)}`);
 }

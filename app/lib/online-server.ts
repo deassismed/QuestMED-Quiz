@@ -510,6 +510,17 @@ export async function acceptPendingReleases(roomId: string, studentId: string): 
   return getStudentState(roomId, studentId);
 }
 
+export async function updateStudentAvatar(roomId: string, studentId: string, avatarId: string): Promise<StudentSessionState> {
+  const normalizedAvatarId = normalizeAvatarId(avatarId);
+  const { error } = await getServerSupabase()
+    .from("qmq_students")
+    .update({ avatar_id: normalizedAvatarId, last_activity_at: new Date().toISOString() })
+    .eq("room_id", roomId)
+    .eq("id", studentId);
+  if (error) throw error;
+  return getStudentState(roomId, studentId);
+}
+
 export async function ensureQuestionTimer(input: {
   roomId: string;
   studentId: string;

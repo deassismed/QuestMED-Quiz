@@ -4,7 +4,7 @@ import { Check, Clock3, LockKeyhole, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
-import { answerQuestion, joinRoom, loadRoomState, loadStudentState, startQuestionTimer, startReleasedQuestions } from "../lib/online-client";
+import { answerQuestion, joinRoom, loadRoomState, loadStudentState, startQuestionTimer, startReleasedQuestions, updateAvatar } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
 import type { QuestionOption, QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
 
@@ -37,6 +37,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const [remainingSeconds, setRemainingSeconds] = useState(QUESTION_TIME_LIMIT_SECONDS);
   const [releaseNoticeSeconds, setReleaseNoticeSeconds] = useState(0);
   const [answerFlash, setAnswerFlash] = useState<{ isCorrect: boolean; score: number; timeout?: boolean } | null>(null);
+  const [showAvatarModal, setShowAvatarModal] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [duplicateNickname, setDuplicateNickname] = useState(false);
@@ -190,6 +191,13 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     if (!duplicateNickname) return;
     window.setTimeout(() => reconnectNoticeRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }), 0);
   }, [duplicateNickname]);
+
+  useEffect(() => {
+    if (!showAvatarModal) return;
+    const close = () => setShowAvatarModal(false);
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [showAvatarModal]);
 
   useEffect(() => {
     if (!session) return;
@@ -470,6 +478,27 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     }
   }
 
+  async function changeAvatar(nextAvatarId: string) {
+    if (!session) return;
+    setBusy(true);
+    setError("");
+    try {
+      const nextSession = await updateAvatar({
+        roomId: session.room.id,
+        studentId: session.student.id,
+        avatarId: nextAvatarId
+      });
+      setSession(nextSession);
+      setAvatarId(nextSession.student.avatarId ?? DEFAULT_AVATAR_ID);
+      setState(await loadRoomState(session.room.roomCode));
+      setShowAvatarModal(false);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel alterar o avatar.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   if (step === "room") {
     return (
       <main className="app-shell">
@@ -603,7 +632,9 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     <main className="quiz-shell">
       <section className="phone-stage" aria-label="QuestMED Quiz">
         <header className="topbar">
-          <AvatarBadge avatarId={session.student.avatarId} className="player-avatar" name={session.student.nickname} />
+          <button className="player-avatar-button" onClick={() => setShowAvatarModal(true)} type="button" aria-label="Trocar avatar">
+            <AvatarBadge avatarId={session.student.avatarId} className="player-avatar" name={session.student.nickname} />
+          </button>
           <div>
             <p className="eyebrow">Sala {session.room.roomCode} · {session.ubsTeam.name}</p>
             <h1>{session.student.nickname}</h1>
@@ -720,6 +751,31 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
         {answerFlash ? <AnswerFlash isCorrect={answerFlash.isCorrect} score={answerFlash.score} timeout={answerFlash.timeout} /> : null}
         {error ? <p className="floating-error">{error}</p> : null}
       </section>
+
+      {showAvatarModal ? (
+        <div className="avatar-modal-backdrop" onClick={() => setShowAvatarModal(false)} role="presentation">
+          <section className="avatar-modal" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-label="Escolher avatar">
+            <header>
+              <span className="eyebrow">Trocar avatar</span>
+              <h2>Escolha uma imagem</h2>
+            </header>
+            <div className="avatar-modal-grid">
+              {AVATAR_PRESETS.map((avatar) => (
+                <button
+                  aria-pressed={(session.student.avatarId ?? DEFAULT_AVATAR_ID) === avatar.id}
+                  className={(session.student.avatarId ?? DEFAULT_AVATAR_ID) === avatar.id ? "avatar-modal-choice selected" : "avatar-modal-choice"}
+                  disabled={busy}
+                  key={avatar.id}
+                  onClick={() => void changeAvatar(avatar.id)}
+                  type="button"
+                >
+                  <AvatarBadge avatarId={avatar.id} className="choice-avatar" name={session.student.nickname || avatar.label} />
+                </button>
+              ))}
+            </div>
+          </section>
+        </div>
+      ) : null}
 
       <aside className="live-panel">
         <section>
