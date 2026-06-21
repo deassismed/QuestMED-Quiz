@@ -1,9 +1,11 @@
 "use client";
 
+import QRCode from "qrcode";
 import { ArrowLeft, BarChart3, Copy, ExternalLink, Power, RefreshCw, Shuffle, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { deleteStudent, deleteUbs, finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions, updateStudentUbs } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
+import { QrCodeViewer } from "./QrCodeViewer";
 import type { QuestionStats, QuizQuestion, RoomPublicState, StudentStats } from "../types";
 
 export function TeacherDashboard({
@@ -25,6 +27,7 @@ export function TeacherDashboard({
   const [studentStats, setStudentStats] = useState<StudentStats | null>(null);
   const [studentStatsBusy, setStudentStatsBusy] = useState("");
   const [releaseAmount, setReleaseAmount] = useState(5);
+  const [qrCode, setQrCode] = useState("");
   const studentUrl = useMemo(() => (origin ? `${origin}/?sala=${state.room.roomCode}` : ""), [origin, state.room.roomCode]);
   const statusUrl = useMemo(() => (origin ? `${origin}/status/${state.room.roomCode}` : ""), [origin, state.room.roomCode]);
   const teamRanking = [...state.ubsTeams].sort((a, b) => b.averageScore - a.averageScore);
@@ -33,6 +36,10 @@ export function TeacherDashboard({
   const remainingQuestions = questions.filter((question) => !releasedQuestionIds.has(question.id));
 
   useEffect(() => setOrigin(window.location.origin), []);
+  useEffect(() => {
+    if (!studentUrl) return;
+    void QRCode.toDataURL(studentUrl, { margin: 1, width: 280 }).then(setQrCode);
+  }, [studentUrl]);
   useEffect(() => {
     if (remainingQuestions.length === 0) return;
     setReleaseAmount((current) => Math.max(1, Math.min(current, remainingQuestions.length)));
@@ -194,7 +201,17 @@ export function TeacherDashboard({
             <button onClick={() => void navigator.clipboard.writeText(studentUrl)} type="button"><Copy size={17} /> Copiar entrada</button>
           </div>
         </div>
-        <a className="scoreboard-mini-link" href={statusUrl} target="_blank" rel="noreferrer">Placar publico</a>
+        <div className="teacher-side-actions">
+          {qrCode ? (
+            <QrCodeViewer
+              alt={`QR Code da sala ${state.room.roomCode}`}
+              caption=""
+              className="dashboard-qr"
+              src={qrCode}
+            />
+          ) : null}
+          <a className="scoreboard-mini-link" href={statusUrl} target="_blank" rel="noreferrer">Placar publico</a>
+        </div>
       </section>
 
       {error ? <p className="entry-error">{error}</p> : null}

@@ -34,7 +34,6 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const [session, setSession] = useState<StudentSessionState | null>(null);
   const [selectedQuestionId, setSelectedQuestionId] = useState("");
   const [selectedOptionId, setSelectedOptionId] = useState("");
-  const [questionStartedAt, setQuestionStartedAt] = useState("");
   const [remainingSeconds, setRemainingSeconds] = useState(QUESTION_TIME_LIMIT_SECONDS);
   const [releaseNoticeSeconds, setReleaseNoticeSeconds] = useState(0);
   const [answerFlash, setAnswerFlash] = useState<{ isCorrect: boolean; score: number; timeout?: boolean } | null>(null);
@@ -47,6 +46,8 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const enterButtonRef = useRef<HTMLButtonElement>(null);
   const reconnectNoticeRef = useRef<HTMLDivElement>(null);
   const timeoutQuestionRef = useRef("");
+  const activeTimerRef = useRef<{ questionId: string; startedAtMs: number } | null>(null);
+  const syncedTimerKeyRef = useRef("");
 
   const answersByQuestion = useMemo(
     () => new Map((session?.answers ?? []).map((answer) => [answer.questionId, answer])),
@@ -84,6 +85,34 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   const teamRanking = [...(state?.ubsTeams ?? [])].sort((a, b) => b.averageScore - a.averageScore || b.memberCount - a.memberCount);
   const currentStudentRank = Math.max(1, individualRanking.findIndex((student) => student.id === session?.student.id) + 1 || 1);
 
+  function calculateRemainingSeconds(startedAtMs: number) {
+    if (!Number.isFinite(startedAtMs)) return QUESTION_TIME_LIMIT_SECONDS;
+    const elapsed = Math.floor((Date.now() - startedAtMs) / 1000);
+    return Math.min(QUESTION_TIME_LIMIT_SECONDS, Math.max(0, QUESTION_TIME_LIMIT_SECONDS - elapsed));
+  }
+
+  function redrawTimer() {
+    const activeTimer = activeTimerRef.current;
+    if (!activeTimer) {
+      setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+      return;
+    }
+    setRemainingSeconds(calculateRemainingSeconds(activeTimer.startedAtMs));
+  }
+
+  function startVisualTimer(questionId: string, startedAtMs = Date.now()) {
+    activeTimerRef.current = { questionId, startedAtMs };
+    timeoutQuestionRef.current = "";
+    setRemainingSeconds(calculateRemainingSeconds(startedAtMs));
+  }
+
+  function clearVisualTimer() {
+    activeTimerRef.current = null;
+    syncedTimerKeyRef.current = "";
+    timeoutQuestionRef.current = "";
+    setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+  }
+
   function forceExitToEntry(message = "A sala foi encerrada ou nao esta mais disponivel.") {
     window.localStorage.removeItem(SESSION_KEY);
     window.history.replaceState(null, "", "/");
@@ -94,8 +123,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     setAddingNewUbs(false);
     setSelectedQuestionId("");
     setSelectedOptionId("");
-    setQuestionStartedAt("");
-    setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+    clearVisualTimer();
     setAnswerFlash(null);
     setDuplicateNickname(false);
     setError(message);
@@ -204,33 +232,46 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     if (selectedQuestionId && !answersByQuestion.has(selectedQuestionId)) return;
     setSelectedQuestionId(nextQuestion.id);
     setSelectedOptionId("");
-    setQuestionStartedAt("");
-    setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
-    timeoutQuestionRef.current = "";
+    clearVisualTimer();
   }, [answersByQuestion, questions, selectedQuestionId, session]);
 
   useEffect(() => {
     if (!session || !currentQuestion || currentAnswer) {
-      setQuestionStartedAt("");
-      setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+      clearVisualTimer();
       return;
     }
     let cancelled = false;
-    const localStartedAt = new Date().toISOString();
-    setQuestionStartedAt(localStartedAt);
-    setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+    const questionId = currentQuestion.id;
+    const syncKey = `${session.room.id}:${session.student.id}:${questionId}`;
+    if (activeTimerRef.current?.questionId !== questionId) {
+      startVisualTimer(questionId);
+    } else {
+      redrawTimer();
+    }
+
+    if (syncedTimerKeyRef.current === syncKey) {
+      return () => {
+        cancelled = true;
+      };
+    }
+    syncedTimerKeyRef.current = syncKey;
     void startQuestionTimer({
       roomId: session.room.id,
       studentId: session.student.id,
-      questionId: currentQuestion.id
+      questionId
     })
       .then((timer) => {
         if (cancelled) return;
-        setQuestionStartedAt(timer.startedAt);
+        const serverStartedAtMs = new Date(timer.startedAt).getTime();
+        if (Number.isFinite(serverStartedAtMs)) {
+          startVisualTimer(questionId, serverStartedAtMs);
+        } else {
+          redrawTimer();
+        }
       })
       .catch((caught) => {
         if (cancelled) return;
-        setQuestionStartedAt(localStartedAt);
+        redrawTimer();
         setError(caught instanceof Error ? caught.message : "Nao foi possivel iniciar o cronometro.");
       });
     return () => {
@@ -239,20 +280,17 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
   }, [currentAnswer, currentQuestion?.id, session?.room.id, session?.student.id]);
 
   useEffect(() => {
-    if (!questionStartedAt) return;
-    const updateRemaining = () => {
-      const startedAt = new Date(questionStartedAt).getTime();
-      if (Number.isNaN(startedAt)) {
-        setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+    if (!currentQuestion || currentAnswer) return;
+    redrawTimer();
+    const interval = window.setInterval(() => {
+      if (activeTimerRef.current?.questionId !== currentQuestion.id) {
+        startVisualTimer(currentQuestion.id);
         return;
       }
-      const elapsed = Math.floor((Date.now() - startedAt) / 1000);
-      setRemainingSeconds(Math.max(0, QUESTION_TIME_LIMIT_SECONDS - elapsed));
-    };
-    updateRemaining();
-    const interval = window.setInterval(updateRemaining, 250);
+      redrawTimer();
+    }, 250);
     return () => window.clearInterval(interval);
-  }, [questionStartedAt]);
+  }, [currentAnswer, currentQuestion?.id]);
 
   useEffect(() => {
     if (!session?.pendingReleaseExpiresAt || pendingReleaseQuestions.length === 0) {
@@ -305,8 +343,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
         setState(await loadRoomState(session.room.roomCode));
         setSelectedQuestionId(findNextUnansweredQuestion(questions, nextSession)?.id ?? "");
         setSelectedOptionId("");
-        setQuestionStartedAt("");
-        setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+        clearVisualTimer();
       })
       .catch((caught) => setError(caught instanceof Error ? caught.message : "Tempo esgotado."))
       .finally(() => setBusy(false));
@@ -403,8 +440,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       setState(await loadRoomState(session.room.roomCode));
       setSelectedQuestionId(findNextUnansweredQuestion(questions, nextSession)?.id ?? "");
       setSelectedOptionId("");
-      setQuestionStartedAt("");
-      setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+      clearVisualTimer();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Nao foi possivel responder.");
     } finally {
@@ -426,8 +462,7 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
       setState(await loadRoomState(session.room.roomCode));
       setSelectedQuestionId(findNextUnansweredQuestion(questions, nextSession)?.id ?? "");
       setSelectedOptionId("");
-      setQuestionStartedAt("");
-      setRemainingSeconds(QUESTION_TIME_LIMIT_SECONDS);
+      clearVisualTimer();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Nao foi possivel iniciar as novas questoes.");
     } finally {
@@ -672,7 +707,13 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
         </div>
 
         {currentQuestion && !currentAnswer && !allReleasedAnswered ? (
-          <button className="floating-confirm-button" disabled={busy || !selectedOptionId || remainingSeconds === 0} onClick={() => void submitAnswer()} type="button" aria-label="Confirmar resposta">
+          <button
+            className={selectedOptionId ? "floating-confirm-button ready" : "floating-confirm-button"}
+            disabled={busy || !selectedOptionId || remainingSeconds === 0}
+            onClick={() => void submitAnswer()}
+            type="button"
+            aria-label="Confirmar resposta"
+          >
             <Check size={28} />
           </button>
         ) : null}
