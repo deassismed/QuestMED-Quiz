@@ -2523,6 +2523,27 @@ a { color: inherit; }
   }
 }
 
+@media (min-width: 761px) {
+  .quiz-shell .topbar {
+    min-height: 150px;
+    padding-left: 0;
+  }
+
+  .quiz-shell .player-avatar {
+    height: clamp(128px, 12vw, 154px);
+    margin-left: -30px;
+    width: clamp(128px, 12vw, 154px);
+  }
+
+  .quiz-shell .topbar > div:not(.score-chip) {
+    padding-left: clamp(8px, 1vw, 18px);
+  }
+
+  .quiz-shell .topbar h1 {
+    font-size: clamp(3rem, 5.2vw, 4.9rem);
+  }
+}
+
 @media (max-width: 760px) {
   .admin-shell, .scoreboard-shell { padding: 16px; }
   .entry-form { flex-direction: column; }
@@ -2554,21 +2575,21 @@ a { color: inherit; }
     align-items: center;
     border-radius: 18px;
     display: grid;
-    gap: 8px 14px;
+    gap: 10px 14px;
     grid-template-areas:
       "avatar identity"
       "score score";
-    grid-template-columns: 60px minmax(0, 1fr);
+    grid-template-columns: 72px minmax(0, 1fr);
     margin-bottom: 14px;
     min-height: 0;
     overflow: hidden;
-    padding: 14px 12px;
+    padding: 16px 14px 12px;
   }
   .quiz-shell .player-avatar {
     grid-area: avatar;
-    height: 58px;
+    height: 68px;
     margin-left: 0;
-    width: 58px;
+    width: 68px;
     z-index: 0;
   }
   .quiz-shell .topbar > div:not(.score-chip) {
@@ -2579,14 +2600,15 @@ a { color: inherit; }
   }
   .quiz-shell .topbar .eyebrow {
     display: -webkit-box;
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     line-height: 1.25;
+    margin-bottom: 4px;
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
   .quiz-shell .topbar h1 {
-    font-size: clamp(1.62rem, 9vw, 2.28rem);
+    font-size: clamp(1.68rem, 9vw, 2.4rem);
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2597,15 +2619,18 @@ a { color: inherit; }
     grid-template-columns: auto 1fr;
     min-height: 0;
     min-width: 0;
-    padding: 8px 12px;
+    padding: 7px 12px;
     width: 100%;
   }
+  .quiz-shell .rank-chip span {
+    font-size: 0.72rem;
+  }
   .quiz-shell .rank-chip strong {
-    font-size: 1.25rem;
+    font-size: 1.18rem;
   }
   .quiz-shell .score-timer {
-    font-size: 0.92rem;
-    padding-top: 6px;
+    font-size: 0.82rem;
+    padding-top: 5px;
   }
   .quiz-shell .question-scroll {
     padding: 10px 0 76px;
@@ -2647,20 +2672,18 @@ a { color: inherit; }
   }
   @media (max-width: 390px) {
     .quiz-shell .topbar {
-      justify-items: center;
       grid-template-areas:
-        "avatar"
-        "identity"
-        "score";
-      grid-template-columns: minmax(0, 1fr);
-      text-align: center;
+        "avatar identity"
+        "score score";
+      grid-template-columns: 62px minmax(0, 1fr);
+      text-align: left;
     }
     .quiz-shell .player-avatar {
-      height: 64px;
-      width: 64px;
+      height: 60px;
+      width: 60px;
     }
     .quiz-shell .topbar h1 {
-      font-size: clamp(1.55rem, 10vw, 2.1rem);
+      font-size: clamp(1.48rem, 8.4vw, 2rem);
     }
   }
   .teacher-links { grid-template-columns: 1fr; }
