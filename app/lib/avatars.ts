@@ -4,7 +4,7 @@ export type AvatarPreset = {
   src: string;
 };
 
-export const AVATAR_PRESETS: AvatarPreset[] = Array.from({ length: 72 }, (_, index) => {
+export const AVATAR_PRESETS: AvatarPreset[] = Array.from({ length: 96 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
   return {
     id: `avatar-${number}`,
