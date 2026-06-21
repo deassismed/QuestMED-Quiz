@@ -6,15 +6,17 @@ import { useEffect, useMemo, useState } from "react";
 import { deleteStudent, deleteUbs, finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions, updateStudentUbs } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
 import { QrCodeViewer } from "./QrCodeViewer";
-import type { QuestionStats, QuizQuestion, RoomPublicState, StudentStats } from "../types";
+import type { QuestionComment, QuestionStats, QuizQuestion, RoomPublicState, StudentStats } from "../types";
 
 export function TeacherDashboard({
   adminKey,
   initialState,
+  questionComments,
   questions
 }: {
   adminKey: string;
   initialState: RoomPublicState;
+  questionComments: QuestionComment[];
   questions: QuizQuestion[];
 }) {
   const [state, setState] = useState(initialState);
@@ -25,6 +27,8 @@ export function TeacherDashboard({
   const [selectedQuestionId, setSelectedQuestionId] = useState("");
   const [selectedQuestionStats, setSelectedQuestionStats] = useState<QuestionStats | null>(null);
   const [studentStats, setStudentStats] = useState<StudentStats | null>(null);
+  const [selectedQuestionComment, setSelectedQuestionComment] = useState<QuestionComment | null>(null);
+  const [releasedQuestionStats, setReleasedQuestionStats] = useState<Record<string, QuestionStats>>({});
   const [studentStatsBusy, setStudentStatsBusy] = useState("");
   const [releaseAmount, setReleaseAmount] = useState(5);
   const [qrCode, setQrCode] = useState("");
@@ -34,6 +38,27 @@ export function TeacherDashboard({
   const studentRanking = [...state.students].sort((a, b) => b.totalScore - a.totalScore);
   const releasedQuestionIds = new Set(state.room.releasedQuestionIds);
   const remainingQuestions = questions.filter((question) => !releasedQuestionIds.has(question.id));
+  const releasedQuestionKey = state.room.releasedQuestionIds.join("|");
+  const answerActivityKey = state.students.map((student) => `${student.id}:${student.answeredCount}:${student.totalScore}`).join("|");
+  const questionCommentsById = useMemo(() => new Map(questionComments.map((comment) => [comment.questionId, comment])), [questionComments]);
+  const releasedQuestionPerformance = state.room.releasedQuestionIds
+    .flatMap((questionId) => {
+      const question = questions.find((item) => item.id === questionId);
+      if (!question) return [];
+      const stats = releasedQuestionStats[questionId];
+      const misses = stats ? stats.incorrectCount + stats.timeoutCount : 0;
+      const missPercent = stats?.totalAnswers ? Number(((misses / stats.totalAnswers) * 100).toFixed(1)) : 0;
+      return [{ question, stats, misses, missPercent }];
+    })
+    .sort((a, b) => {
+      const aAnswered = a.stats?.totalAnswers ?? 0;
+      const bAnswered = b.stats?.totalAnswers ?? 0;
+      if (aAnswered === 0 && bAnswered > 0) return 1;
+      if (bAnswered === 0 && aAnswered > 0) return -1;
+      if (b.missPercent !== a.missPercent) return b.missPercent - a.missPercent;
+      if (b.misses !== a.misses) return b.misses - a.misses;
+      return a.question.id.localeCompare(b.question.id);
+    });
 
   useEffect(() => setOrigin(window.location.origin), []);
   useEffect(() => {
@@ -50,6 +75,31 @@ export function TeacherDashboard({
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
   }, [studentStats]);
+  useEffect(() => {
+    if (!selectedQuestionComment) return;
+    const close = () => setSelectedQuestionComment(null);
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [selectedQuestionComment]);
+  useEffect(() => {
+    let cancelled = false;
+    const releasedIds = state.room.releasedQuestionIds;
+    if (releasedIds.length === 0) {
+      setReleasedQuestionStats({});
+      return;
+    }
+    void Promise.all(releasedIds.map((questionId) => loadQuestionStats(state.room.id, questionId, adminKey)))
+      .then((statsList) => {
+        if (cancelled) return;
+        setReleasedQuestionStats(Object.fromEntries(statsList.map((stats) => [stats.questionId, stats])));
+      })
+      .catch(() => {
+        if (!cancelled) setReleasedQuestionStats({});
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [adminKey, answerActivityKey, releasedQuestionKey, state.room.id]);
   useEffect(() => {
     const client = getBrowserSupabase();
     const reload = () => void loadRoomState(state.room.roomCode).then(setState).catch(() => undefined);
@@ -386,6 +436,48 @@ export function TeacherDashboard({
           />
         ) : null}
       </section>
+
+      <section className="teacher-cases-section">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">Revisao da atividade</span>
+            <h2>Questoes mais erradas</h2>
+          </div>
+        </div>
+        <div className="released-performance-list">
+          {releasedQuestionPerformance.map(({ question, stats, misses, missPercent }) => {
+            const totalAnswers = stats?.totalAnswers ?? 0;
+            const correctCount = stats?.correctCount ?? 0;
+            const hasComment = questionCommentsById.has(question.id);
+            return (
+              <button
+                className="released-performance-card"
+                disabled={!hasComment}
+                key={question.id}
+                onClick={() => {
+                  const comment = questionCommentsById.get(question.id);
+                  if (comment) setSelectedQuestionComment(comment);
+                }}
+                type="button"
+              >
+                <strong>{question.id}</strong>
+                <span>{question.theme}</span>
+                <b>{totalAnswers ? `${missPercent.toFixed(1)}% erraram` : "Sem respostas"}</b>
+                <small>{misses} erro(s) / {correctCount} acerto(s) / {totalAnswers} resposta(s)</small>
+              </button>
+            );
+          })}
+          {releasedQuestionPerformance.length === 0 ? <p className="empty-room-list">Nenhuma questao liberada ainda.</p> : null}
+        </div>
+      </section>
+
+      {selectedQuestionComment ? (
+        <QuestionCommentModal
+          comment={selectedQuestionComment}
+          onClose={() => setSelectedQuestionComment(null)}
+          question={questions.find((question) => question.id === selectedQuestionComment.questionId)}
+        />
+      ) : null}
     </main>
   );
 }
@@ -486,5 +578,52 @@ function QuestionStatsPanel({
         </>
       )}
     </section>
+  );
+}
+
+function QuestionCommentModal({
+  comment,
+  onClose,
+  question
+}: {
+  comment: QuestionComment;
+  onClose: () => void;
+  question?: QuizQuestion;
+}) {
+  return (
+    <div className="question-comment-backdrop" onClick={onClose} role="presentation">
+      <section className="question-comment-modal" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true">
+        <header>
+          <div>
+            <span className="eyebrow">Comentario didatico</span>
+            <h2>{comment.questionId}</h2>
+            <p>{question?.statement ?? comment.theme}</p>
+          </div>
+          <strong>Gabarito {comment.correctOptionId}</strong>
+        </header>
+
+        <article className="teaching-point">
+          <span>Resposta correta</span>
+          <p>{comment.correctOptionText}</p>
+        </article>
+
+        <article className="teaching-point">
+          <span>Explicacao</span>
+          <p>{comment.teachingPoint}</p>
+        </article>
+
+        <div className="comment-alternatives">
+          {comment.alternativeComments.map((alternative) => (
+            <article className={alternative.isCorrect ? "correct" : ""} key={alternative.optionId}>
+              <strong>{alternative.optionId}</strong>
+              <div>
+                <b>{alternative.optionText}</b>
+                <p>{alternative.comment}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

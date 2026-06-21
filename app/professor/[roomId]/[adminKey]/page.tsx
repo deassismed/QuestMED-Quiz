@@ -1,7 +1,8 @@
 import questionsData from "../../../../data/questions.json";
+import questionCommentsData from "../../../../data/questions_coments.json";
 import { TeacherDashboard } from "../../../components/TeacherDashboard";
 import { getRoomPublicStateById, validateAdmin } from "../../../lib/online-server";
-import type { QuizQuestion } from "../../../types";
+import type { QuestionComment, QuizQuestion } from "../../../types";
 
 export default async function AdminRoomPage({
   params
@@ -20,5 +21,12 @@ export default async function AdminRoomPage({
       </main>
     );
   }
-  return <TeacherDashboard adminKey={adminKey} initialState={await getRoomPublicStateById(roomId)} questions={questionsData as QuizQuestion[]} />;
+  return (
+    <TeacherDashboard
+      adminKey={adminKey}
+      initialState={await getRoomPublicStateById(roomId)}
+      questionComments={(questionCommentsData as { items: QuestionComment[] }).items}
+      questions={questionsData as QuizQuestion[]}
+    />
+  );
 }

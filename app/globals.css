@@ -1930,6 +1930,180 @@ a { color: inherit; }
   text-align: right;
 }
 
+.released-performance-list {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+}
+
+.released-performance-card {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 80px minmax(0, 1fr) auto auto;
+  min-height: 64px;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.released-performance-card:hover,
+.released-performance-card:focus-visible {
+  border-color: rgba(15, 118, 110, 0.44);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+  outline: none;
+}
+
+.released-performance-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.released-performance-card strong {
+  color: var(--accent-strong);
+  font-family: Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.08em;
+}
+
+.released-performance-card span {
+  font-weight: 900;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.released-performance-card b {
+  color: #b42318;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.released-performance-card small {
+  color: var(--muted);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.question-comment-backdrop {
+  align-items: stretch;
+  background: rgba(8, 12, 24, 0.74);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: clamp(12px, 2vw, 28px);
+  position: fixed;
+  z-index: 70;
+}
+
+.question-comment-modal {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 28px 90px rgba(4, 12, 28, 0.34);
+  display: grid;
+  gap: 18px;
+  max-width: 1180px;
+  overflow: auto;
+  padding: clamp(20px, 3vw, 34px);
+  width: min(100%, 1180px);
+}
+
+.question-comment-modal header {
+  align-items: start;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.question-comment-modal h2 {
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 0.95;
+  margin: 4px 0 12px;
+}
+
+.question-comment-modal header p {
+  color: var(--ink);
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.question-comment-modal header > strong {
+  background: var(--dark);
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px 16px;
+  white-space: nowrap;
+}
+
+.teaching-point {
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.teaching-point span {
+  color: var(--accent-strong);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.teaching-point p {
+  font-size: 1.08rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.comment-alternatives {
+  display: grid;
+  gap: 10px;
+}
+
+.comment-alternatives article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 48px minmax(0, 1fr);
+  padding: 14px;
+}
+
+.comment-alternatives article.correct {
+  background: #ecfdf5;
+  border-color: rgba(20, 116, 66, 0.34);
+}
+
+.comment-alternatives article > strong {
+  align-items: center;
+  background: var(--dark);
+  border-radius: 8px;
+  color: #fff;
+  display: inline-flex;
+  height: 42px;
+  justify-content: center;
+}
+
+.comment-alternatives b {
+  display: block;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.comment-alternatives p {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
 .modal-backdrop {
   align-items: center;
   background: rgba(8, 12, 24, 0.62);
@@ -3053,6 +3227,21 @@ a { color: inherit; }
   .teacher-links > div:last-child { border-bottom: 0; }
   .teacher-side-actions {
     grid-template-columns: 1fr;
+  }
+  .released-performance-card {
+    align-items: start;
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+  .released-performance-card b,
+  .released-performance-card small {
+    grid-column: 2;
+    white-space: normal;
+  }
+  .question-comment-modal header {
+    grid-template-columns: 1fr;
+  }
+  .question-comment-modal header > strong {
+    justify-self: start;
   }
   .broadcast-score-row { grid-template-columns: 54px minmax(0, 1fr) 88px; }
   .broadcast-position { font-size: 1.35rem; height: 44px; width: 44px; }

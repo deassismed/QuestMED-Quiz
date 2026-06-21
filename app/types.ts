@@ -124,6 +124,22 @@ export type QuestionStats = {
   options: QuestionOptionStat[];
 };
 
+export type QuestionAlternativeComment = {
+  optionId: QuestionOption["id"];
+  optionText: string;
+  isCorrect: boolean;
+  comment: string;
+};
+
+export type QuestionComment = {
+  questionId: string;
+  theme: string;
+  correctOptionId: QuestionOption["id"];
+  correctOptionText: string;
+  teachingPoint: string;
+  alternativeComments: QuestionAlternativeComment[];
+};
+
 export type StudentQuestionStat = {
   questionId: string;
   theme: string;
