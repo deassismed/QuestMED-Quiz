@@ -1,0 +1,1660 @@
+{
+  "metadata": {
+    "title": "Comentários didáticos por alternativa",
+    "sourceFile": "questions(3).json",
+    "generatedDate": "2026-06-21",
+    "description": "Arquivo para uso em aula posterior. Cada item referencia a questão original por questionId e traz o gabarito, o texto da alternativa correta e comentários didáticos para cada alternativa."
+  },
+  "items": [
+    {
+      "questionId": "Q001",
+      "theme": "Tuberculose",
+      "correctOptionId": "B",
+      "correctOptionText": "Solicitar teste rápido molecular para tuberculose no escarro, com avaliação de resistência à rifampicina, complementando com baciloscopia/cultura conforme indicação.",
+      "teachingPoint": "Em pessoa com sintomas respiratórios e radiografia sugestiva, deve-se priorizar confirmação bacteriológica sempre que possível. No Brasil, o teste rápido molecular para tuberculose é central no diagnóstico inicial de TB pulmonar, especialmente por detectar DNA do complexo Mycobacterium tuberculosis e resistência à rifampicina.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Solicitar baciloscopia seriada de escarro como exame inicial, reservando teste molecular para casos com baciloscopia negativa.",
+          "isCorrect": false,
+          "comment": "Inadequada. A baciloscopia pode compor a investigação, mas não deve substituir o teste rápido molecular quando disponível, pois este aumenta a rapidez diagnóstica e já avalia resistência à rifampicina."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Solicitar teste rápido molecular para tuberculose no escarro, com avaliação de resistência à rifampicina, complementando com baciloscopia/cultura conforme indicação.",
+          "isCorrect": true,
+          "comment": "Correta. Em TB pulmonar suspeita com escarro disponível, o teste rápido molecular é investigação inicial central, com detecção do complexo M. tuberculosis e resistência à rifampicina."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitar cultura para micobactéria e aguardar o resultado antes de definir outros exames microbiológicos.",
+          "isCorrect": false,
+          "comment": "Inadequada. A cultura é importante, especialmente para confirmação e sensibilidade, mas é lenta; aguardar seu resultado atrasaria o diagnóstico programático inicial."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Iniciar esquema básico e coletar escarro apenas se não houver melhora clínica nas primeiras semanas.",
+          "isCorrect": false,
+          "comment": "Inadequada. A suspeita clínica e radiológica não justifica iniciar tratamento sem coleta microbiológica quando o paciente consegue expectorar."
+        }
+      ]
+    },
+    {
+      "questionId": "Q002",
+      "theme": "Tuberculose",
+      "correctOptionId": "B",
+      "correctOptionText": "Suspender temporariamente os fármacos potencialmente hepatotóxicos, avaliar gravidade e reintroduzir de forma escalonada conforme protocolo após melhora.",
+      "teachingPoint": "Isoniazida, rifampicina e pirazinamida podem causar hepatotoxicidade. Sintomas sistêmicos com icterícia e elevação importante de transaminases exigem suspensão temporária dos fármacos hepatotóxicos, investigação de diagnósticos diferenciais e reintrodução cuidadosa após melhora, conforme gravidade e orientação especializada.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Suspender apenas a pirazinamida e manter rifampicina, isoniazida e etambutol enquanto se acompanha a evolução laboratorial.",
+          "isCorrect": false,
+          "comment": "Inadequada. A pirazinamida é hepatotóxica, mas rifampicina e isoniazida também podem causar hepatotoxicidade; em quadro sintomático com icterícia, manter os demais hepatotóxicos é inseguro."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Suspender temporariamente os fármacos potencialmente hepatotóxicos, avaliar gravidade e reintroduzir de forma escalonada conforme protocolo após melhora.",
+          "isCorrect": true,
+          "comment": "Correta. Sintomas compatíveis com hepatotoxicidade medicamentosa e transaminases muito elevadas exigem suspensão temporária dos fármacos hepatotóxicos, avaliação de gravidade e reintrodução protocolar após melhora."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Reduzir as doses dos quatro fármacos do esquema básico e repetir transaminases em uma semana se os sintomas persistirem.",
+          "isCorrect": false,
+          "comment": "Inadequada. Reduzir doses não é conduta segura diante de hepatite medicamentosa sintomática; há risco de manter toxicidade e ainda favorecer tratamento inadequado."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Manter rifampicina e isoniazida isoladamente, retirando os demais medicamentos até normalização das enzimas hepáticas.",
+          "isCorrect": false,
+          "comment": "Inadequada. Rifampicina e isoniazida são justamente fármacos hepatotóxicos relevantes; mantê-las isoladamente não trata adequadamente a TB e não resolve a segurança hepática."
+        }
+      ]
+    },
+    {
+      "questionId": "Q003",
+      "theme": "Tuberculose",
+      "correctOptionId": "B",
+      "correctOptionText": "Iniciar tratamento antituberculose prontamente e associar corticosteroide, além de investigação microbiológica.",
+      "teachingPoint": "Meningite tuberculosa é forma grave de TB extrapulmonar e atraso terapêutico aumenta morbimortalidade. Diante de suspeita clínica e liquórica compatível, deve-se iniciar tratamento antituberculose prontamente, coletando exames microbiológicos sempre que possível.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Coletar líquor para cultura e teste molecular, mantendo observação clínica até haver confirmação microbiológica.",
+          "isCorrect": false,
+          "comment": "Inadequada. A investigação microbiológica deve ser feita, mas não se deve aguardar confirmação em suspeita forte de meningite tuberculosa, pela alta morbimortalidade do atraso terapêutico."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Iniciar tratamento antituberculose prontamente e associar corticosteroide, além de investigação microbiológica.",
+          "isCorrect": true,
+          "comment": "Correta. Quadro clínico e líquor compatíveis justificam tratamento antituberculose imediato, associado a corticosteroide, além da coleta de exames diagnósticos."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Iniciar esquema antituberculose sem corticosteroide, adicionando corticoide apenas se houver hipertensão intracraniana documentada.",
+          "isCorrect": false,
+          "comment": "Inadequada. O corticosteroide é recomendado como adjuvante na meningite tuberculosa para reduzir inflamação e complicações, não apenas quando a hipertensão intracraniana já está documentada."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Tratar inicialmente como meningite bacteriana comum e reservar tratamento para tuberculose se a cultura bacteriana vier negativa.",
+          "isCorrect": false,
+          "comment": "Inadequada. Meningite bacteriana comum entra no diferencial, mas o padrão liquórico e a suspeita de TB exigem cobertura específica sem esperar cultura bacteriana negativa."
+        }
+      ]
+    },
+    {
+      "questionId": "Q004",
+      "theme": "Tuberculose",
+      "correctOptionId": "B",
+      "correctOptionText": "Notificar, coletar cultura e teste de sensibilidade ampliado, e encaminhar para manejo de tuberculose resistente em referência especializada.",
+      "teachingPoint": "Resistência à rifampicina detectada no teste molecular é achado crítico e sugere TB resistente, exigindo confirmação e investigação complementar com cultura e teste de sensibilidade. O paciente deve ser notificado e manejado em serviço de referência, com esquema apropriado para TB resistente.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Iniciar esquema básico enquanto se aguarda cultura, pois a resistência molecular à rifampicina precisa ser confirmada antes de modificar a conduta.",
+          "isCorrect": false,
+          "comment": "Inadequada. Resistência à rifampicina no teste molecular é um achado crítico; iniciar esquema básico como se fosse TB sensível pode expor o paciente a tratamento inefetivo."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Notificar, coletar cultura e teste de sensibilidade ampliado, e encaminhar para manejo de tuberculose resistente em referência especializada.",
+          "isCorrect": true,
+          "comment": "Correta. O achado sugere TB resistente e exige notificação, cultura, teste de sensibilidade ampliado e manejo em serviço de referência."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Repetir o teste molecular em nova amostra e manter seguimento ambulatorial usual até o segundo resultado.",
+          "isCorrect": false,
+          "comment": "Inadequada. Repetir teste pode ser útil em situações específicas, mas não deve atrasar encaminhamento e investigação para TB resistente."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Associar rifampicina em dose ajustada ao peso e solicitar avaliação especializada apenas se houver falha bacteriológica.",
+          "isCorrect": false,
+          "comment": "Inadequada. Aumentar dose de rifampicina não resolve resistência detectada e pode manter esquema inadequado até falha bacteriológica."
+        }
+      ]
+    },
+    {
+      "questionId": "Q005",
+      "theme": "Tuberculose",
+      "correctOptionId": "B",
+      "correctOptionText": "Investigar infecção latente e doença ativa; se doença ativa for descartada, considerar tratamento da infecção latente conforme idade, risco e resultado dos testes.",
+      "teachingPoint": "Crianças contatos de caso bacilífero devem ser avaliadas ativamente. É necessário excluir doença ativa por anamnese, exame físico e radiografia, além de avaliar infecção latente por teste tuberculínico ou IGRA quando disponível.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Solicitar teste tuberculínico ou IGRA e encerrar a investigação se o primeiro resultado for negativo.",
+          "isCorrect": false,
+          "comment": "Inadequada. Um teste inicial negativo não encerra a avaliação de contato infantil; é necessário considerar janela imunológica, risco e exclusão de doença ativa."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Investigar infecção latente e doença ativa; se doença ativa for descartada, considerar tratamento da infecção latente conforme idade, risco e resultado dos testes.",
+          "isCorrect": true,
+          "comment": "Correta. Contato infantil de caso bacilífero deve ser avaliado para doença ativa e infecção latente; se doença ativa for excluída, considera-se tratamento da ILTB conforme idade, risco e testes."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Iniciar tratamento para tuberculose ativa por ser contato domiciliar de caso bacilífero, mesmo sem sintomas ou alteração radiográfica.",
+          "isCorrect": false,
+          "comment": "Inadequada. Contato não significa doença ativa; tratar como TB ativa sem sintomas ou alteração radiográfica gera overtreatment e não diferencia infecção latente."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Acompanhar clinicamente sem testes adicionais, desde que a radiografia de tórax inicial esteja normal.",
+          "isCorrect": false,
+          "comment": "Inadequada. Radiografia normal não exclui infecção latente, e crianças contatos precisam de avaliação ativa conforme protocolos."
+        }
+      ]
+    },
+    {
+      "questionId": "Q006",
+      "theme": "Sindrome",
+      "correctOptionId": "B",
+      "correctOptionText": "Iniciar oseltamivir o mais precocemente possível, além de medidas sintomáticas e orientação de sinais de alarme.",
+      "teachingPoint": "Gestantes fazem parte do grupo de maior risco para complicações por influenza. Diante de síndrome gripal compatível, o antiviral deve ser iniciado precocemente, idealmente nas primeiras 48 horas, mas não deve ser negado apenas por ultrapassar esse período em casos de risco ou gravidade. Oseltamivir é o antiviral usualmente utilizado. Antibiótico profilático não é indicado sem evidência de infecção bacteriana.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Orientar medidas sintomáticas e coletar teste viral, iniciando antiviral apenas se houver confirmação laboratorial.",
+          "isCorrect": false,
+          "comment": "Inadequada. Gestação é grupo de risco para complicações; o antiviral não deve aguardar confirmação laboratorial se a suspeita clínica é compatível."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Iniciar oseltamivir o mais precocemente possível, além de medidas sintomáticas e orientação de sinais de alarme.",
+          "isCorrect": true,
+          "comment": "Correta. Síndrome gripal em gestante durante surto indica início precoce de oseltamivir, sintomáticos e orientação de sinais de alarme."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Reservar oseltamivir para gestantes com dispneia, dessaturação ou radiografia sugestiva de pneumonia.",
+          "isCorrect": false,
+          "comment": "Inadequada. Reservar oseltamivir apenas para gravidade perde a janela de benefício em grupo de risco."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Prescrever antibiótico empírico se a febre persistir por mais de 48 horas, mantendo antiviral apenas como segunda linha.",
+          "isCorrect": false,
+          "comment": "Inadequada. Antibiótico não previne complicação viral e só deve ser usado se houver suspeita de infecção bacteriana associada."
+        }
+      ]
+    },
+    {
+      "questionId": "Q007",
+      "theme": "Sindrome",
+      "correctOptionId": "B",
+      "correctOptionText": "Síndrome respiratória aguda grave ou complicação respiratória; encaminhar para urgência/hospital e iniciar abordagem para influenza grave e pneumonia.",
+      "teachingPoint": "Dispneia, taquipneia, saturação reduzida, alteração do estado mental e achados pulmonares sugerem síndrome respiratória aguda grave ou complicação como pneumonia. Na APS, esse paciente deve ser encaminhado para serviço de urgência/hospital, com medidas iniciais conforme disponibilidade: oxigênio se necessário, avaliação de sepse, antiviral e investigação/tratamento de coinfecção bacteriana quando indicada.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Classificar como síndrome gripal em idoso de risco e manejar ambulatorialmente com oseltamivir, retorno precoce e orientações.",
+          "isCorrect": false,
+          "comment": "Inadequada. Embora seja idoso de risco, a presença de SatO2 91%, taquipneia, confusão e estertores indica gravidade, não manejo domiciliar simples."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Síndrome respiratória aguda grave ou complicação respiratória; encaminhar para urgência/hospital e iniciar abordagem para influenza grave e pneumonia.",
+          "isCorrect": true,
+          "comment": "Correta. O quadro sugere SRAG ou complicação respiratória, exigindo encaminhamento para urgência/hospital e abordagem de influenza grave, pneumonia e oxigenação."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Tratar como pneumonia comunitária ambulatorial, pois a estabilidade hemodinâmica permite seguimento na UBS.",
+          "isCorrect": false,
+          "comment": "Inadequada. Pneumonia ambulatorial não é adequada diante de dessaturação e alteração do estado mental."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Solicitar radiografia de tórax antes do encaminhamento, mantendo observação na unidade enquanto aguarda o exame.",
+          "isCorrect": false,
+          "comment": "Inadequada. Radiografia é útil, mas não deve atrasar encaminhamento quando há sinais clínicos de gravidade."
+        }
+      ]
+    },
+    {
+      "questionId": "Q008",
+      "theme": "Sindrome",
+      "correctOptionId": "B",
+      "correctOptionText": "Iniciar antiviral empiricamente por ser grupo de risco; teste pode ser coletado conforme disponibilidade e finalidade epidemiológica/assistencial.",
+      "teachingPoint": "Imunossuprimidos têm maior risco de influenza grave e complicações. O tratamento antiviral não deve ser atrasado enquanto se aguarda confirmação laboratorial quando a suspeita clínica é compatível. A testagem pode ser útil para vigilância, controle de surtos, diagnóstico diferencial e manejo hospitalar, mas não deve retardar a terapia em grupos de risco.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Coletar teste para influenza e iniciar antiviral apenas se o resultado confirmar infecção pelo vírus influenza.",
+          "isCorrect": false,
+          "comment": "Inadequada. Em imunossuprimido com suspeita clínica, aguardar teste pode atrasar tratamento antiviral em paciente de maior risco."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Iniciar antiviral empiricamente por ser grupo de risco; teste pode ser coletado conforme disponibilidade e finalidade epidemiológica/assistencial.",
+          "isCorrect": true,
+          "comment": "Correta. Transplantado renal imunossuprimido é grupo de risco; deve receber antiviral empiricamente, com testagem se disponível e útil para vigilância ou manejo."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Usar antiviral apenas se houver sinais de gravidade, pois a estabilidade clínica permite aguardar evolução.",
+          "isCorrect": false,
+          "comment": "Inadequada. Estabilidade clínica não exclui risco aumentado de evolução grave em imunossuprimido."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Priorizar antibiótico empírico, pois imunossuprimidos têm maior probabilidade de infecção bacteriana que viral.",
+          "isCorrect": false,
+          "comment": "Inadequada. Antibiótico empírico não substitui antiviral em síndrome gripal compatível sem sinais claros de infecção bacteriana."
+        }
+      ]
+    },
+    {
+      "questionId": "Q009",
+      "theme": "Sindrome",
+      "correctOptionId": "B",
+      "correctOptionText": "Avaliar possibilidade de surto, acionar vigilância conforme fluxo local, orientar isolamento de sintomáticos, etiqueta respiratória, vacinação e manejo de contatos de risco.",
+      "teachingPoint": "Em instituições fechadas, múltiplos casos de síndrome gripal em curto intervalo sugerem surto. A APS deve apoiar identificação, notificação/acionamento da vigilância conforme normas locais, medidas de isolamento, higiene das mãos, etiqueta respiratória, revisão da cobertura vacinal, avaliação de antivirais em casos e eventualmente profilaxia em situações específicas definidas pela vigilância. Antibiótico profilático não é medida de controle de influenza.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Tratar os sintomáticos e comunicar a vigilância apenas se houver internação, óbito ou confirmação laboratorial.",
+          "isCorrect": false,
+          "comment": "Inadequada. Em instituição fechada, múltiplos casos em curto intervalo sugerem surto e devem acionar medidas coletivas antes de internação, óbito ou confirmação."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Avaliar possibilidade de surto, acionar vigilância conforme fluxo local, orientar isolamento de sintomáticos, etiqueta respiratória, vacinação e manejo de contatos de risco.",
+          "isCorrect": true,
+          "comment": "Correta. A conduta adequada é reconhecer possível surto, acionar vigilância conforme fluxo e instituir medidas de controle, vacinação e manejo de contatos de risco."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Coletar exames dos residentes sintomáticos e aguardar confirmação viral antes de iniciar medidas institucionais de controle.",
+          "isCorrect": false,
+          "comment": "Inadequada. A coleta de exames pode ajudar, mas esperar confirmação antes de medidas institucionais favorece transmissão."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Atualizar a vacinação dos residentes e funcionários como medida principal, sem necessidade de isolamento dos casos leves.",
+          "isCorrect": false,
+          "comment": "Inadequada. Vacinação é relevante, mas não substitui isolamento de sintomáticos, etiqueta respiratória, vigilância e avaliação de antivirais/profilaxia quando indicados."
+        }
+      ]
+    },
+    {
+      "questionId": "Q010",
+      "theme": "Lombalgia",
+      "correctOptionId": "B",
+      "correctOptionText": "Orientar natureza benigna provável, manter atividade conforme tolerância, analgesia proporcional e reavaliação.",
+      "teachingPoint": "O quadro é típico de lombalgia mecânica inespecífica aguda, sem sinais de alarme e sem déficit neurológico. A conduta inicial é educação, tranquilização, manutenção de atividade dentro do tolerável e analgesia proporcional. Imagem de rotina não é indicada nesse momento, e repouso absoluto tende a piorar a evolução funcional.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Solicitar radiografia lombar por se tratar de dor após esforço ocupacional e manter repouso relativo até o resultado.",
+          "isCorrect": false,
+          "comment": "Inadequada. Esforço ocupacional isolado sem sinais de alarme não indica radiografia inicial; imagem pode gerar achados incidentais e não mudar conduta."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Orientar natureza benigna provável, manter atividade conforme tolerância, analgesia proporcional e reavaliação.",
+          "isCorrect": true,
+          "comment": "Correta. Lombalgia mecânica aguda sem sinais de alarme deve ser manejada com orientação, manutenção de atividade tolerada, analgesia e reavaliação."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Prescrever analgesia e afastamento com repouso no leito por alguns dias, retornando às atividades apenas após remissão completa.",
+          "isCorrect": false,
+          "comment": "Inadequada. Repouso no leito e retorno apenas após remissão completa aumentam risco de incapacidade e cronificação."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Encaminhar para avaliação especializada se a dor persistir por mais de uma semana, mesmo sem sinais de alarme.",
+          "isCorrect": false,
+          "comment": "Inadequada. Encaminhamento especializado precoce não é necessário sem déficit neurológico, sinais sistêmicos ou evolução atípica."
+        }
+      ]
+    },
+    {
+      "questionId": "Q011",
+      "theme": "Lombalgia",
+      "correctOptionId": "B",
+      "correctOptionText": "A radiografia deve ser evitada inicialmente, pois não há sinais de alarme e o resultado provavelmente não mudará a conduta.",
+      "teachingPoint": "Na lombalgia aguda sem sinais de alarme, exames de imagem não melhoram desfechos e podem revelar achados incidentais sem relação causal com a dor. A comunicação deve explicar que não solicitar imagem pode ser a conduta mais segura, evitando medicalização, radiação desnecessária e intervenções indevidas.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Solicitar radiografia para tranquilizar o paciente e excluir desalinhamento vertebral relacionado ao exercício.",
+          "isCorrect": false,
+          "comment": "Inadequada. Solicitar imagem apenas para tranquilizar tende a reforçar crenças de fragilidade e pode revelar achados incidentais."
+        },
+        {
+          "optionId": "B",
+          "optionText": "A radiografia deve ser evitada inicialmente, pois não há sinais de alarme e o resultado provavelmente não mudará a conduta.",
+          "isCorrect": true,
+          "comment": "Correta. Na lombalgia aguda sem sinais de alarme, a imagem inicial não melhora desfechos e provavelmente não mudará a conduta."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitar tomografia se a dor não melhorar em 72 horas, pois radiografia tem baixa sensibilidade para lesões discais.",
+          "isCorrect": false,
+          "comment": "Inadequada. TC em 72 horas não é indicada se não surgirem sinais de alarme; lesões discais comuns nem sempre se correlacionam com dor."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Condicionar retorno ao treino e ao trabalho à realização de imagem simples da coluna lombar.",
+          "isCorrect": false,
+          "comment": "Inadequada. Retorno funcional não deve ser condicionado a imagem em quadro simples sem déficit ou trauma relevante."
+        }
+      ]
+    },
+    {
+      "questionId": "Q012",
+      "theme": "Lombalgia",
+      "correctOptionId": "A",
+      "correctOptionText": "Fatores psicossociais, medo de movimento, catastrofização e crenças inadequadas sobre a dor.",
+      "teachingPoint": "Medo de movimento, catastrofização, crenças de fragilidade da coluna, insatisfação ocupacional e afastamento prolongado são fatores associados à persistência da lombalgia. Na APS, educação, encorajamento de atividade gradual e abordagem biopsicossocial são parte do tratamento, não apenas medidas acessórias.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Fatores psicossociais, medo de movimento, catastrofização e crenças inadequadas sobre a dor.",
+          "isCorrect": true,
+          "comment": "Correta. Medo de movimento, catastrofização e crenças inadequadas são fatores prognósticos importantes para cronificação e devem ser abordados ativamente."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Intensidade da dor, resposta ao anti-inflamatório e achados segmentares no exame físico, sem explorar crenças sobre movimento.",
+          "isCorrect": false,
+          "comment": "Inadequada. Dor e exame físico importam, mas ignorar crenças e função perde o componente biopsicossocial central do caso."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitação precoce de imagem para demonstrar ausência de lesão estrutural e reduzir a evitação de atividades.",
+          "isCorrect": false,
+          "comment": "Inadequada. Imagem precoce não é estratégia adequada para reduzir evitação; pode reforçar medicalização e achados incidentais."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Afastamento laboral até desaparecimento completo da dor, com retorno progressivo apenas após novo exame clínico normal.",
+          "isCorrect": false,
+          "comment": "Inadequada. Afastamento até dor zero tende a reduzir funcionalidade e aumentar risco de persistência."
+        }
+      ]
+    },
+    {
+      "questionId": "Q013",
+      "theme": "Lombalgia",
+      "correctOptionId": "B",
+      "correctOptionText": "Negociar manutenção ou retorno precoce às atividades com adaptações temporárias, evitando sobrecargas intensas e repouso absoluto.",
+      "teachingPoint": "Na lombalgia mecânica inespecífica, a manutenção de atividade e o retorno funcional precoce, com adaptações temporárias quando necessário, reduzem incapacidade. Afastamentos longos devem ser individualizados e evitados quando não há justificativa clínica.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Conceder afastamento curto inicialmente e recomendar evitar trabalho, caminhada e direção até a dor desaparecer.",
+          "isCorrect": false,
+          "comment": "Inadequada. Evitar atividades cotidianas até desaparecer a dor favorece incapacidade e não é recomendado em lombalgia inespecífica."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Negociar manutenção ou retorno precoce às atividades com adaptações temporárias, evitando sobrecargas intensas e repouso absoluto.",
+          "isCorrect": true,
+          "comment": "Correta. A estratégia é preservar funcionalidade, negociar adaptações temporárias e evitar repouso absoluto."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Orientar repouso domiciliar por 15 dias para reduzir inflamação e prevenir evolução para dor crônica.",
+          "isCorrect": false,
+          "comment": "Inadequada. Repouso por 15 dias não previne dor crônica; pelo contrário, pode contribuir para descondicionamento e medo de movimento."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Solicitar ressonância magnética antes de definir restrições funcionais ou retorno gradual ao trabalho.",
+          "isCorrect": false,
+          "comment": "Inadequada. Ressonância não é necessária para definir retorno gradual em lombalgia sem sinais de alarme."
+        }
+      ]
+    },
+    {
+      "questionId": "Q014",
+      "theme": "Radiculopatia",
+      "correctOptionId": "C",
+      "correctOptionText": "L5.",
+      "teachingPoint": "Dor irradiada para face lateral da perna e dorso do pé, parestesia no hálux e fraqueza da extensão/dorsiflexão do hálux sugerem radiculopatia L5. A correlação clínica por dermátomos, miotomos e reflexos ajuda a localizar a raiz acometida e a diferenciar radiculopatia verdadeira de dor referida.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "L3.",
+          "isCorrect": false,
+          "comment": "Inadequada. Radiculopatia L3 costuma afetar região anterior da coxa e força de quadríceps/adução, não hálux e dorso do pé."
+        },
+        {
+          "optionId": "B",
+          "optionText": "L4.",
+          "isCorrect": false,
+          "comment": "Inadequada. L4 relaciona-se mais a face medial da perna, joelho/reflexo patelar e dorsiflexão menos específica que L5."
+        },
+        {
+          "optionId": "C",
+          "optionText": "L5.",
+          "isCorrect": true,
+          "comment": "Correta. Dor na face lateral da perna/dorso do pé, parestesia no hálux e fraqueza de extensão do hálux sugerem raiz L5."
+        },
+        {
+          "optionId": "D",
+          "optionText": "S1.",
+          "isCorrect": false,
+          "comment": "Inadequada. S1 costuma cursar com dor posterior da perna/lateral do pé, déficit de flexão plantar e alteração do reflexo aquileu."
+        }
+      ]
+    },
+    {
+      "questionId": "Q015",
+      "theme": "Radiculopatia",
+      "correctOptionId": "A",
+      "correctOptionText": "Claudicação neurogênica por estenose lombar.",
+      "teachingPoint": "Dor em membros inferiores precipitada pela marcha ou ortostatismo e aliviada pela flexão lombar ou sedestação sugere claudicação neurogênica por estenose lombar. O chamado 'sinal do carrinho de compras' é clássico.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Claudicação neurogênica por estenose lombar.",
+          "isCorrect": true,
+          "comment": "Correta. Dor desencadeada por marcha/ortostatismo e aliviada por sentar ou flexionar o tronco caracteriza claudicação neurogênica por estenose lombar."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Claudicação vascular por doença arterial periférica, pela limitação à marcha e melhora parcial com pausa.",
+          "isCorrect": false,
+          "comment": "Inadequada. Claudicação vascular melhora com repouso, mas não tipicamente com flexão lombar; pulsos presentes e “sinal do carrinho” favorecem causa neurogênica."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Radiculopatia aguda por hérnia discal, favorecida por dor em membros inferiores desencadeada pela marcha.",
+          "isCorrect": false,
+          "comment": "Inadequada. Hérnia discal aguda pode causar radiculopatia, mas o padrão de melhora com flexão e limitação à marcha é mais típico de estenose."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Lombalgia mecânica inespecífica com dor referida, pois a flexão do tronco pode aliviar dor muscular comum.",
+          "isCorrect": false,
+          "comment": "Inadequada. A distância de marcha limitada e melhora ao sentar/flexionar têm valor clínico e não devem ser banalizadas como lombalgia inespecífica."
+        }
+      ]
+    },
+    {
+      "questionId": "Q016",
+      "theme": "Radiculopatia",
+      "correctOptionId": "B",
+      "correctOptionText": "Encaminhar com prioridade para avaliação especializada e imagem, pela presença de déficit neurológico progressivo.",
+      "teachingPoint": "Déficit motor progressivo em radiculopatia é sinal de maior gravidade e deve acelerar investigação e avaliação especializada. A ausência de febre ou sintomas esfincterianos não torna o quadro simples, pois perda motora progressiva pode indicar compressão radicular relevante.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Manter tratamento conservador e reavaliar em duas a quatro semanas, se não houver sintomas esfincterianos.",
+          "isCorrect": false,
+          "comment": "Inadequada. Déficit motor progressivo não deve aguardar semanas como manejo conservador simples."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Encaminhar com prioridade para avaliação especializada e imagem, pela presença de déficit neurológico progressivo.",
+          "isCorrect": true,
+          "comment": "Correta. Perda motora progressiva sugere compressão radicular relevante e exige imagem e avaliação especializada com prioridade."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitar ressonância ambulatorial eletiva, mantendo analgesia, pois a ausência de febre reduz a urgência.",
+          "isCorrect": false,
+          "comment": "Inadequada. A ausência de febre reduz suspeita infecciosa, mas não reduz a gravidade do déficit motor progressivo."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Encaminhar apenas se surgir anestesia em sela ou retenção urinária, pois o déficit motor isolado raramente muda a conduta.",
+          "isCorrect": false,
+          "comment": "Inadequada. Cauda equina é emergência, mas déficit motor progressivo isolado também é sinal de alarme."
+        }
+      ]
+    },
+    {
+      "questionId": "Q017",
+      "theme": "Cistite",
+      "correctOptionId": "B",
+      "correctOptionText": "Trocar ou remover o cateter, colher cultura do novo cateter e iniciar antibiótico empírico conforme gravidade.",
+      "teachingPoint": "Na infecção urinária associada a cateter, especialmente se o cateter está em uso há vários dias, deve-se remover ou trocar o dispositivo quando ainda for necessário. A cultura deve ser coletada de urina fresca do novo cateter, não da bolsa coletora.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Coletar urocultura do cateter em uso e iniciar antibiótico, trocando a sonda apenas se a cultura vier positiva.",
+          "isCorrect": false,
+          "comment": "Inadequada. Cultura do cateter antigo pode refletir biofilme; a troca/remoção do cateter é parte da conduta quando ele está há vários dias."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Trocar ou remover o cateter, colher cultura do novo cateter e iniciar antibiótico empírico conforme gravidade.",
+          "isCorrect": true,
+          "comment": "Correta. Em ITU associada a cateter, deve-se remover ou trocar a sonda, colher cultura de urina fresca do novo cateter e iniciar antibiótico conforme gravidade."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Trocar o cateter e aguardar o resultado da cultura antes de iniciar antibiótico, se não houver instabilidade hemodinâmica.",
+          "isCorrect": false,
+          "comment": "Inadequada. Delirium, febre e leucocitose sugerem infecção sistêmica; aguardar cultura antes de antibiótico pode atrasar tratamento."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Iniciar antibiótico empírico e manter o cateter atual para evitar manipulação durante a fase aguda.",
+          "isCorrect": false,
+          "comment": "Inadequada. Manter cateter colonizado favorece persistência de biofilme e falha terapêutica."
+        }
+      ]
+    },
+    {
+      "questionId": "Q018",
+      "theme": "Cistite",
+      "correctOptionId": "B",
+      "correctOptionText": "Coletar urocultura e tratar cistite na gestação com antibiótico seguro, ajustando após antibiograma.",
+      "teachingPoint": "Cistite sintomática na gestação deve ser tratada, pois há maior risco de progressão para pielonefrite e desfechos materno-fetais adversos. A urocultura deve ser coletada antes do antibiótico sempre que possível, e o tratamento deve usar fármacos seguros na gestação, como beta-lactâmicos, nitrofurantoína em situações apropriadas ou fosfomicina para cistite baixa, conforme contexto local e sensibilidade.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Coletar urocultura e aguardar o resultado antes de tratar, desde que não haja febre ou dor em flanco.",
+          "isCorrect": false,
+          "comment": "Inadequada. Cistite sintomática na gestação deve ser tratada; aguardar urocultura aumenta risco de progressão."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Coletar urocultura e tratar cistite na gestação com antibiótico seguro, ajustando após antibiograma.",
+          "isCorrect": true,
+          "comment": "Correta. Deve-se coletar urocultura antes do antibiótico quando possível e tratar com fármaco seguro na gestação, ajustando ao antibiograma."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Tratar empiricamente com antibiótico seguro e dispensar cultura se houver melhora clínica em 48 horas.",
+          "isCorrect": false,
+          "comment": "Inadequada. Mesmo com melhora clínica, a cultura é importante na gestação para confirmar agente e orientar ajuste/controle."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Usar fluoroquinolona por curso curto, reservando beta-lactâmicos para pielonefrite ou bacteriúria assintomática.",
+          "isCorrect": false,
+          "comment": "Inadequada. Fluoroquinolonas não são primeira escolha na gestação; há opções mais seguras para cistite baixa."
+        }
+      ]
+    },
+    {
+      "questionId": "Q019",
+      "theme": "Cistite",
+      "correctOptionId": "A",
+      "correctOptionText": "Profilaxia antibiótica pós-coital, com menor exposição cumulativa que profilaxia contínua.",
+      "teachingPoint": "Em mulher com cistite recorrente claramente relacionada à atividade sexual, a profilaxia pós-coital é estratégia preferencial quando medidas gerais não bastam, pois reduz exposição antibiótica em comparação à profilaxia contínua. Cistoscopia e imagem não são rotineiras em ITU recorrente não complicada sem sinais de alarme.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Profilaxia antibiótica pós-coital, com menor exposição cumulativa que profilaxia contínua.",
+          "isCorrect": true,
+          "comment": "Correta. Cistite recorrente claramente pós-coital pode ser prevenida com profilaxia pós-coital, reduzindo exposição antibiótica em relação à profilaxia contínua."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Profilaxia antibiótica contínua diária como primeira escolha, pois a relação temporal com atividade sexual não muda a estratégia.",
+          "isCorrect": false,
+          "comment": "Inadequada. Profilaxia contínua pode ser opção em alguns casos, mas não é preferencial quando há padrão pós-coital bem definido."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Autotratamento de cada episódio sem estratégia preventiva, mesmo com padrão pós-coital recorrente bem definido.",
+          "isCorrect": false,
+          "comment": "Inadequada. Autotratamento pode ser estratégia selecionada, mas não aborda prevenção em padrão recorrente relacionado ao coito."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Investigação urológica com cistoscopia antes de discutir profilaxia, apesar da ausência de sinais de complicação.",
+          "isCorrect": false,
+          "comment": "Inadequada. Sem sinais de complicação, cistoscopia não é etapa obrigatória antes de medidas preventivas."
+        }
+      ]
+    },
+    {
+      "questionId": "Q020",
+      "theme": "Pielonefrite",
+      "correctOptionId": "C",
+      "correctOptionText": "Internação inicial, hidratação e ceftriaxona intravenosa",
+      "teachingPoint": "Na gestação, pielonefrite deve ser tratada como infecção urinária complicada. Mesmo sem sepse, a conduta mais segura é manejo hospitalar inicial, com antibiótico parenteral e observação clínica.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Tratamento ambulatorial com cefalexina oral e retorno em 48 horas",
+          "isCorrect": false,
+          "comment": "Inadequada. Pielonefrite na gestação é infecção complicada e geralmente requer manejo inicial hospitalar com antibiótico parenteral."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Aguardar resultado da urocultura antes de iniciar antibiótico, mantendo apenas sintomáticos",
+          "isCorrect": false,
+          "comment": "Inadequada. Urocultura deve ser coletada, mas antibiótico não deve aguardar resultado em quadro febril com dor em flanco."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Internação inicial, hidratação e ceftriaxona intravenosa",
+          "isCorrect": true,
+          "comment": "Correta. Gestante com pielonefrite deve receber internação inicial, hidratação e antibiótico intravenoso, como ceftriaxona, com monitorização."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Dose única de ceftriaxona intramuscular e alta, por ausência de sinais de sepse",
+          "isCorrect": false,
+          "comment": "Inadequada. Dose única intramuscular e alta é insuficiente para pielonefrite gestacional, mesmo sem sepse."
+        }
+      ]
+    },
+    {
+      "questionId": "Q021",
+      "theme": "Pielonefrite",
+      "correctOptionId": "B",
+      "correctOptionText": "Trocar para ertapenem intravenoso, conforme sensibilidade",
+      "teachingPoint": "Resistência a cefalosporinas em pielonefrite gestacional exige terapia dirigida pelo antibiograma. Em paciente estável, sem choque ou bacteremia grave, ertapenem intravenoso é opção prática para infecção por bactéria produtora de ESBL.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Manter ceftriaxona até 72 horas, pois a paciente está hemodinamicamente estável",
+          "isCorrect": false,
+          "comment": "Inadequada. O antibiograma mostra resistência a cefalosporinas; manter ceftriaxona apesar disso é terapia inadequada."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Trocar para ertapenem intravenoso, conforme sensibilidade",
+          "isCorrect": true,
+          "comment": "Correta. E. coli ESBL sensível a carbapenêmico em gestante internada deve receber terapia dirigida; ertapenem IV é opção adequada se estável."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Trocar para piperacilina-tazobactam independentemente do antibiograma",
+          "isCorrect": false,
+          "comment": "Inadequada. Piperacilina-tazobactam não deve ser escolhida independentemente do antibiograma, especialmente em ESBL e gestação."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Transicionar para cefalexina oral, pois as hemoculturas são negativas",
+          "isCorrect": false,
+          "comment": "Inadequada. Cefalexina é cefalosporina oral e não cobre adequadamente isolado ESBL resistente a cefalosporinas."
+        }
+      ]
+    },
+    {
+      "questionId": "Q022",
+      "theme": "Pielonefrite",
+      "correctOptionId": "D",
+      "correctOptionText": "Transicionar para antibiótico oral ativo, como ciprofloxacino se sensível, completando 7–10 dias no total",
+      "teachingPoint": "Após melhora clínica, ausência de bacteremia, ausência de abscesso e correção do fator mecânico com troca da nefrostomia mal posicionada, pode-se descalonar para antibiótico oral ativo, desde que haja boa biodisponibilidade e sensibilidade microbiológica. Ciprofloxacino é opção quando o isolado é sensível e não há contraindicação.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Manter ceftriaxona intravenosa por 14 dias completos, mesmo com melhora e tolerância oral",
+          "isCorrect": false,
+          "comment": "Inadequada. Manter IV por 14 dias completos pode ser desnecessário após melhora, ausência de bacteremia/abscesso e controle do fator mecânico."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Trocar para antibiótico oral de baixa concentração renal tecidual, se houver melhora clínica",
+          "isCorrect": false,
+          "comment": "Inadequada. A transição oral é possível, mas o antibiótico deve ter atividade e concentração renal/tecidual adequadas."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Suspender antibiótico imediatamente após a troca do tubo, pois o fator mecânico foi corrigido",
+          "isCorrect": false,
+          "comment": "Inadequada. Corrigir a obstrução/dispositivo é essencial, mas não substitui completar tratamento antibiótico da pielonefrite."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Transicionar para antibiótico oral ativo, como ciprofloxacino se sensível, completando 7–10 dias no total",
+          "isCorrect": true,
+          "comment": "Correta. Após melhora clínica e sensibilidade documentada, pode-se descalonar para antibiótico oral ativo, como ciprofloxacino se sensível, completando 7–10 dias no total."
+        }
+      ]
+    },
+    {
+      "questionId": "Q023",
+      "theme": "Cervicite",
+      "correctOptionId": "B",
+      "correctOptionText": "Cervicite por Chlamydia trachomatis, sem excluir coinfecção por Neisseria gonorrhoeae.",
+      "teachingPoint": "Colo friável, secreção endocervical mucopurulenta, sangramento ao toque e antecedente de relação sexual desprotegida sugerem cervicite por infecção sexualmente transmissível. Chlamydia trachomatis é uma etiologia frequente, mas Neisseria gonorrhoeae deve ser investigada por NAAT e pode exigir tratamento concomitante conforme risco epidemiológico. A disúria pode decorrer de origem genital, não necessariamente de cistite.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Cistite bacteriana não complicada.",
+          "isCorrect": false,
+          "comment": "Inadequada. Disúria pode ocorrer por cervicite; corrimento endocervical, colo friável e sangramento ao toque apontam para origem genital/IST, não cistite simples."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Cervicite por Chlamydia trachomatis, sem excluir coinfecção por Neisseria gonorrhoeae.",
+          "isCorrect": true,
+          "comment": "Correta. O quadro é típico de cervicite, frequentemente por Chlamydia trachomatis, com necessidade de considerar coinfecção por N. gonorrhoeae."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Candidíase vulvovaginal.",
+          "isCorrect": false,
+          "comment": "Inadequada. Candidíase costuma cursar com prurido, eritema vulvar e corrimento grumoso, não colo friável com secreção endocervical mucopurulenta."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Vaginose bacteriana.",
+          "isCorrect": false,
+          "comment": "Inadequada. Vaginose bacteriana causa corrimento e odor, mas não explica bem friabilidade cervical e sangramento ao toque."
+        }
+      ]
+    },
+    {
+      "questionId": "Q024",
+      "theme": "Cervicite",
+      "correctOptionId": "A",
+      "correctOptionText": "Tricomoníase, devendo tratar a paciente e os parceiros sexuais.",
+      "teachingPoint": "Corrimento amarelo-esverdeado, pH elevado, disúria, dispareunia e colo em morango sugerem tricomoníase. O tratamento deve incluir a paciente e os parceiros sexuais para reduzir reinfecção e transmissão.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Tricomoníase, devendo tratar a paciente e os parceiros sexuais.",
+          "isCorrect": true,
+          "comment": "Correta. Corrimento amarelo-esverdeado, pH elevado e colo em morango são achados sugestivos de tricomoníase; parceiros devem ser tratados."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Candidíase vulvovaginal complicada, tratando apenas a paciente com azólico",
+          "isCorrect": false,
+          "comment": "Inadequada. Candidíase costuma ter prurido, pH normal e corrimento grumoso; não explica o colo puntiforme hemorrágico típico."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Vaginose bacteriana isolada, sem necessidade de avaliação ou tratamento de parceiros",
+          "isCorrect": false,
+          "comment": "Inadequada. Vaginose bacteriana pode ter odor e pH alto, mas o colo em morango e dispareunia/disúria favorecem tricomoníase; manejo de parceiros difere."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Cervicite mucopurulenta por clamídia isolada, tratando apenas com azitromicina em dose única",
+          "isCorrect": false,
+          "comment": "Inadequada. Cervicite por clamídia isolada não explica de forma típica corrimento amarelo-esverdeado, pH elevado e colo em morango."
+        }
+      ]
+    },
+    {
+      "questionId": "Q025",
+      "theme": "Cervicite",
+      "correctOptionId": "A",
+      "correctOptionText": "O quadro sugere doença inflamatória pélvica, e o tratamento não deve aguardar confirmação laboratorial.",
+      "teachingPoint": "Corrimento purulento associado a dor pélvica, dor à mobilização cervical, dor anexial e febre sugere doença inflamatória pélvica. Nessa situação, o tratamento empírico deve ser iniciado sem aguardar NAAT ou culturas, pois atraso terapêutico aumenta risco de infertilidade, dor pélvica crônica e gestação ectópica.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "O quadro sugere doença inflamatória pélvica, e o tratamento não deve aguardar confirmação laboratorial.",
+          "isCorrect": true,
+          "comment": "Correta. Dor pélvica com dor à mobilização cervical, dor anexial, febre e corrimento purulento sugere DIP; o tratamento deve ser empírico e imediato."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Cervicite não complicada, com seguimento expectante e sem antibiótico inicial",
+          "isCorrect": false,
+          "comment": "Inadequada. Dor pélvica, febre e dor anexial tornam o quadro mais que cervicite não complicada."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Vaginose bacteriana, pois dor à mobilização do colo não altera a conduta",
+          "isCorrect": false,
+          "comment": "Inadequada. Vaginose bacteriana não explica dor à mobilização cervical/anexial; esses sinais mudam a conduta para DIP."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Candidíase complicada, pois corrimento purulento é o achado predominante",
+          "isCorrect": false,
+          "comment": "Inadequada. Candidíase não costuma causar dor pélvica, febre e dor à mobilização do colo."
+        }
+      ]
+    },
+    {
+      "questionId": "Q026",
+      "theme": "Prostatite",
+      "correctOptionId": "B",
+      "correctOptionText": "Drenagem vesical imediata, coleta de urina para cultura e antibiótico sistêmico.",
+      "teachingPoint": "O quadro sugere prostatite bacteriana aguda associada a retenção urinária aguda. A prioridade é drenagem vesical imediata, preferencialmente com cateterismo uretral cuidadoso se tecnicamente simples; se houver falha ou risco de trauma, considerar cistostomia suprapúbica.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Massagem prostática para coleta de secreção antes do antibiótico",
+          "isCorrect": false,
+          "comment": "Inadequada. Massagem prostática é contraindicada na prostatite aguda pelo risco de bacteremia e dor intensa."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Drenagem vesical imediata, coleta de urina para cultura e antibiótico sistêmico.",
+          "isCorrect": true,
+          "comment": "Correta. Prostatite bacteriana aguda com retenção urinária exige drenagem vesical, cultura e antibiótico sistêmico."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Iniciar alfa-bloqueador e antibiótico oral, adiando drenagem vesical",
+          "isCorrect": false,
+          "comment": "Inadequada. Alfa-bloqueador pode ajudar sintomas urinários, mas não substitui drenagem imediata diante de globo vesical."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Solicitar PSA para confirmar prostatite antes de iniciar tratamento",
+          "isCorrect": false,
+          "comment": "Inadequada. PSA pode elevar na prostatite e não confirma o diagnóstico; não deve atrasar tratamento."
+        }
+      ]
+    },
+    {
+      "questionId": "Q027",
+      "theme": "Prostatite",
+      "correctOptionId": "B",
+      "correctOptionText": "Solicitar imagem prostática para avaliar abscesso.",
+      "teachingPoint": "Prostatite aguda que não melhora após 48 a 72 horas de antibioticoterapia adequada deve levantar suspeita de abscesso prostático, especialmente em diabéticos, imunossuprimidos, pacientes bacterêmicos ou com dor perineal persistente. A avaliação pode ser feita com tomografia de pelve com contraste, ultrassom transretal ou ressonância, conforme disponibilidade e contexto clínico.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Transicionar para antibiótico oral apesar da febre persistente",
+          "isCorrect": false,
+          "comment": "Inadequada. Febre e leucocitose persistentes após 72 horas impedem transição segura para via oral."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Solicitar imagem prostática para avaliar abscesso.",
+          "isCorrect": true,
+          "comment": "Correta. Falha de resposta em 48–72 horas, diabetes e bacteremia aumentam suspeita de abscesso prostático, justificando imagem."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Manter apenas o mesmo antibiótico sem nova avaliação, pois febre por 72 horas é sempre esperada",
+          "isCorrect": false,
+          "comment": "Inadequada. Febre persistente não deve ser considerada sempre esperada; exige reavaliação de complicações ou foco não controlado."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Realizar massagem prostática para favorecer drenagem local",
+          "isCorrect": false,
+          "comment": "Inadequada. Massagem prostática não drena abscesso de modo seguro e pode piorar bacteremia/dor."
+        }
+      ]
+    },
+    {
+      "questionId": "Q028",
+      "theme": "Prostatite",
+      "correctOptionId": "B",
+      "correctOptionText": "Prostatite bacteriana crônica; usar antibiótico com boa penetração prostática por curso prolongado.",
+      "teachingPoint": "Infecções urinárias recorrentes em homem, especialmente pelo mesmo microrganismo, devem levantar suspeita de prostatite bacteriana crônica como reservatório infeccioso. O tratamento exige antibiótico com boa penetração prostática, como fluoroquinolona ou TMP-SMX quando sensível, geralmente por duração prolongada.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Cistite recorrente em homem; tratar cada episódio com antibiótico curto de baixa penetração prostática",
+          "isCorrect": false,
+          "comment": "Inadequada. Infecções recorrentes em homem pelo mesmo microrganismo sugerem reservatório prostático; antibiótico curto de baixa penetração tende a falhar."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Prostatite bacteriana crônica; usar antibiótico com boa penetração prostática por curso prolongado.",
+          "isCorrect": true,
+          "comment": "Correta. Prostatite bacteriana crônica é hipótese provável e requer antibiótico com boa penetração prostática por curso prolongado, guiado por sensibilidade."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Prostatite bacteriana aguda; internar mesmo na ausência de febre ou toxemia",
+          "isCorrect": false,
+          "comment": "Inadequada. Ausência de febre/toxemia e curso recorrente crônico não caracterizam prostatite bacteriana aguda."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Hiperplasia prostática benigna isolada; os episódios por mesmo microrganismo são coincidência",
+          "isCorrect": false,
+          "comment": "Inadequada. Hiperplasia prostática pode coexistir, mas episódios repetidos pelo mesmo agente não devem ser tratados como coincidência."
+        }
+      ]
+    },
+    {
+      "questionId": "Q029",
+      "theme": "Litiase",
+      "correctOptionId": "C",
+      "correctOptionText": "Antibiótico intravenoso de amplo espectro e descompressão urgente do sistema coletor.",
+      "teachingPoint": "Obstrução urinária associada a infecção sistêmica é emergência urológica. A conduta é ressuscitação, coleta de culturas sem atrasar tratamento, antibiótico intravenoso de amplo espectro e descompressão urgente por cateter duplo J ou nefrostomia percutânea, conforme disponibilidade e anatomia.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Analgesia e alta, pois a maioria dos cálculos elimina espontaneamente",
+          "isCorrect": false,
+          "comment": "Inadequada. Cálculo obstrutivo com sepse/choque não pode ser manejado com analgesia e alta."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Litotripsia extracorpórea imediata antes de controlar a sepse",
+          "isCorrect": false,
+          "comment": "Inadequada. Controle da sepse e descompressão vêm antes do tratamento definitivo do cálculo, como litotripsia."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Antibiótico intravenoso de amplo espectro e descompressão urgente do sistema coletor.",
+          "isCorrect": true,
+          "comment": "Correta. Infecção sistêmica com obstrução urinária exige antibiótico IV de amplo espectro e descompressão urgente do sistema coletor."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Aguardar resultado da urocultura antes de iniciar antibiótico ou descompressão",
+          "isCorrect": false,
+          "comment": "Inadequada. Culturas devem ser coletadas quando possível, mas não se deve aguardar resultado para antibiótico e drenagem em emergência séptica."
+        }
+      ]
+    },
+    {
+      "questionId": "Q030",
+      "theme": "Litiase",
+      "correctOptionId": "A",
+      "correctOptionText": "Ultrassonografia renal e de vias urinárias.",
+      "teachingPoint": "Na gestação, a ultrassonografia é o exame inicial preferido para suspeita de litíase, por evitar radiação ionizante. A TC pode ser considerada em situações selecionadas, quando o diagnóstico permanece incerto e a decisão clínica depende do resultado, mas não é primeira escolha em gestante estável.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Ultrassonografia renal e de vias urinárias.",
+          "isCorrect": true,
+          "comment": "Correta. Em gestante estável com suspeita de litíase, ultrassonografia renal/vias urinárias é exame inicial por evitar radiação ionizante."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Tomografia de abdome sem contraste como primeira escolha rotineira em toda gestante estável",
+          "isCorrect": false,
+          "comment": "Inadequada. TC sem contraste é excelente fora da gestação, mas não é primeira escolha rotineira em gestante estável."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Ressonância magnética com gadolínio como exame inicial padrão",
+          "isCorrect": false,
+          "comment": "Inadequada. Ressonância pode ser considerada em casos selecionados, mas gadolínio não é exame inicial padrão na gestação."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Radiografia simples de abdome para definir localização e tamanho do cálculo",
+          "isCorrect": false,
+          "comment": "Inadequada. Radiografia expõe a radiação e tem menor desempenho para litíase, não sendo exame inicial preferencial na gestação."
+        }
+      ]
+    },
+    {
+      "questionId": "Q031",
+      "theme": "Litiase",
+      "correctOptionId": "B",
+      "correctOptionText": "Obstrução em rim único com anúria e piora da função renal.",
+      "teachingPoint": "Obstrução de rim único funcional com anúria e deterioração da função renal exige descompressão urgente, mesmo sem febre. A prioridade é preservar função renal.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Tamanho proximal do cálculo, independentemente de função renal ou diurese",
+          "isCorrect": false,
+          "comment": "Inadequada. Localização/tamanho importam, mas a urgência decorre da anúria e perda de função em rim único."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Obstrução em rim único com anúria e piora da função renal.",
+          "isCorrect": true,
+          "comment": "Correta. Obstrução de rim único funcional com anúria e creatinina em elevação exige descompressão urgente para preservar função renal."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Hidronefrose discreta, mesmo com diurese preservada e função renal normal",
+          "isCorrect": false,
+          "comment": "Inadequada. Hidronefrose discreta isolada sem repercussão funcional não teria a mesma urgência."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Idade acima de 70 anos isoladamente",
+          "isCorrect": false,
+          "comment": "Inadequada. Idade avançada aumenta risco clínico, mas não é o motivo principal da intervenção urgente."
+        }
+      ]
+    },
+    {
+      "questionId": "Q032",
+      "theme": "Enxaqueca",
+      "correctOptionId": "A",
+      "correctOptionText": "Enxaqueca sem aura.",
+      "teachingPoint": "Cefaleia recorrente unilateral, pulsátil, de intensidade moderada a forte, com náuseas, fotofobia e piora com atividade rotineira é compatível com enxaqueca sem aura quando não há sinais de alarme e o exame neurológico é normal. Cefaleia tensional costuma ser bilateral, em pressão, sem náuseas e sem piora com atividade. Cefaleia em salvas é mais curta, excruciante, com sinais autonômicos ipsilaterais e agitação.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Enxaqueca sem aura.",
+          "isCorrect": true,
+          "comment": "Correta. Cefaleia unilateral pulsátil, moderada/forte, com náuseas, fotofobia e piora com atividade é compatível com enxaqueca sem aura."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Cefaleia tipo tensional episódica frequente.",
+          "isCorrect": false,
+          "comment": "Inadequada. Cefaleia tensional costuma ser bilateral, em pressão, leve/moderada, sem náuseas e sem piora com atividade."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Cefaleia em salvas episódica.",
+          "isCorrect": false,
+          "comment": "Inadequada. Cefaleia em salvas é mais curta, excruciante, orbitária e acompanhada de sinais autonômicos ipsilaterais e agitação."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Cefaleia secundária por hipertensão intracraniana.",
+          "isCorrect": false,
+          "comment": "Inadequada. Não há sinais de alarme ou achados de hipertensão intracraniana; exame neurológico é normal e padrão é recorrente típico."
+        }
+      ]
+    },
+    {
+      "questionId": "Q033",
+      "theme": "Enxaqueca",
+      "correctOptionId": "A",
+      "correctOptionText": "Triptano por via oral ou nasal, associado a antiemético se necessário, desde que não haja contraindicações.",
+      "teachingPoint": "Em crise típica de enxaqueca moderada a forte sem sinais de alarme, triptanos são opção abortiva quando analgésicos simples não foram suficientes e não há contraindicação cardiovascular ou medicamentosa. Antieméticos podem auxiliar náuseas e vômitos. Amitriptilina é usada em profilaxia, não como abortivo imediato. Opioides não são primeira linha por menor eficácia específica e risco de uso excessivo de medicação.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Triptano por via oral ou nasal, associado a antiemético se necessário, desde que não haja contraindicações.",
+          "isCorrect": true,
+          "comment": "Correta. Crise típica moderada/forte sem contraindicações e sem resposta a paracetamol justifica triptano, com antiemético se necessário."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Repetir paracetamol em doses sucessivas, sem antiemético ou fármaco específico, apesar da crise forte e da falha inicial.",
+          "isCorrect": false,
+          "comment": "Inadequada. Repetir apenas paracetamol após falha inicial é pouco adequado para crise forte com náuseas e fotofobia."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Iniciar amitriptilina hoje e aguardar efeito preventivo para resolver a crise atual.",
+          "isCorrect": false,
+          "comment": "Inadequada. Amitriptilina é preventiva; não aborta crise aguda iniciada há poucas horas."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Usar opioide como primeira linha por se tratar de dor intensa.",
+          "isCorrect": false,
+          "comment": "Inadequada. Opioides não são primeira linha em enxaqueca por menor especificidade e risco de cronificação/uso excessivo."
+        }
+      ]
+    },
+    {
+      "questionId": "Q034",
+      "theme": "Enxaqueca",
+      "correctOptionId": "A",
+      "correctOptionText": "Iniciar estratégia preventiva individualizada, revisar uso excessivo de analgésicos e orientar diário de cefaleia, sono, gatilhos e retorno programado.",
+      "teachingPoint": "Enxaqueca frequente, incapacitante ou associada a uso excessivo de analgésicos justifica plano preventivo. A abordagem inclui educação, diário de cefaleia, redução planejada do uso excessivo de medicação, identificação de gatilhos relevantes e escolha individualizada de profilaxia conforme comorbidades, preferências e contraindicações. Neuroimagem de rotina não é indicada em cefaleia primária típica com exame neurológico normal e sem sinais de alarme.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Iniciar estratégia preventiva individualizada, revisar uso excessivo de analgésicos e orientar diário de cefaleia, sono, gatilhos e retorno programado.",
+          "isCorrect": true,
+          "comment": "Correta. Frequência elevada, prejuízo funcional e uso frequente de analgésicos indicam plano preventivo, revisão de uso excessivo e diário de cefaleia."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Otimizar apenas o tratamento abortivo e permitir analgésicos nos dias de dor, pois profilaxia é reservada para cefaleia diária.",
+          "isCorrect": false,
+          "comment": "Inadequada. Profilaxia não é reservada apenas para cefaleia diária; 10 dias/mês com incapacidade já justifica prevenção."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitar neuroimagem antes de discutir profilaxia, pois a frequência elevada das crises muda a conduta mesmo sem sinais de alarme.",
+          "isCorrect": false,
+          "comment": "Inadequada. Neuroimagem de rotina não é indicada em enxaqueca típica com exame neurológico normal e sem sinais de alarme."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Orientar redução de gatilhos e retorno se passar de 15 dias de cefaleia por mês, sem iniciar prevenção neste momento.",
+          "isCorrect": false,
+          "comment": "Inadequada. Aguardar passar de 15 dias por mês perde oportunidade de prevenir cronificação e reduzir incapacidade."
+        }
+      ]
+    },
+    {
+      "questionId": "Q035",
+      "theme": "Cefaleia",
+      "correctOptionId": "A",
+      "correctOptionText": "Cefaleia tipo tensional episódica.",
+      "teachingPoint": "Cefaleia tipo tensional episódica costuma ser bilateral, em pressão ou aperto, de intensidade leve a moderada, sem piora com atividade física rotineira e sem náuseas ou vômitos. Pode haver fotofobia ou fonofobia leves, mas não o conjunto típico da enxaqueca.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Cefaleia tipo tensional episódica.",
+          "isCorrect": true,
+          "comment": "Correta. Dor bilateral em aperto, leve a moderada, sem náuseas e sem piora com atividade é típica de cefaleia tensional episódica."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Enxaqueca com aura.",
+          "isCorrect": false,
+          "comment": "Inadequada. Enxaqueca com aura exigiria sintomas neurológicos reversíveis precedendo ou acompanhando a dor, além de padrão migranoso."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Cefaleia em salvas.",
+          "isCorrect": false,
+          "comment": "Inadequada. Cefaleia em salvas é unilateral orbitária, muito intensa, curta e com sinais autonômicos."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Hemorragia subaracnoide.",
+          "isCorrect": false,
+          "comment": "Inadequada. Hemorragia subaracnoide costuma ter início súbito explosivo e sinais de gravidade, ausentes no caso."
+        }
+      ]
+    },
+    {
+      "questionId": "Q036",
+      "theme": "Cefaleia",
+      "correctOptionId": "A",
+      "correctOptionText": "Cefaleia por uso excessivo de medicação.",
+      "teachingPoint": "Uso frequente de analgésicos por muitos dias ao mês pode perpetuar ou cronificar cefaleia, gerando cefaleia por uso excessivo de medicação. A conduta envolve educação, redução/retirada estruturada do medicamento de abuso, tratamento preventivo quando indicado e acompanhamento.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Cefaleia por uso excessivo de medicação.",
+          "isCorrect": true,
+          "comment": "Correta. Uso de analgésicos em muitos dias por mês por período prolongado pode causar ou perpetuar cefaleia por uso excessivo de medicação."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Enxaqueca crônica, definida pela mudança de localização da dor e pela perda de resposta a analgésicos simples.",
+          "isCorrect": false,
+          "comment": "Inadequada. Enxaqueca crônica tem critérios próprios; o elemento central aqui é o uso quase diário de analgésicos."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Cefaleia tipo tensional persistente sem relação causal provável com a frequência de analgésicos.",
+          "isCorrect": false,
+          "comment": "Inadequada. A frequência de analgésicos é fator causal/prognóstico importante e não deve ser ignorada."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Cefaleia secundária por hipertensão intracraniana, presumida pela frequência maior que 15 dias por mês.",
+          "isCorrect": false,
+          "comment": "Inadequada. Frequência alta isolada não presume hipertensão intracraniana sem sinais clínicos compatíveis."
+        }
+      ]
+    },
+    {
+      "questionId": "Q037",
+      "theme": "Cefaleia",
+      "correctOptionId": "A",
+      "correctOptionText": "Diário de cefaleia, redução do uso excessivo de analgésicos, regularização do sono/cafeína e considerar profilaxia se persistente/incapacitante.",
+      "teachingPoint": "O manejo preventivo exige identificar fatores de perpetuação: sono irregular, excesso de cafeína, estresse e uso frequente de analgésicos. Diário de cefaleia ajuda a monitorar frequência, gatilhos e resposta terapêutica.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Diário de cefaleia, redução do uso excessivo de analgésicos, regularização do sono/cafeína e considerar profilaxia se persistente/incapacitante.",
+          "isCorrect": true,
+          "comment": "Correta. O plano deve atuar nos fatores de perpetuação: sono, cafeína, uso excessivo de analgésicos, diário e eventual profilaxia."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Trocar para outro analgésico de uso diário fixo e registrar resposta, pois a regularidade reduz oscilações da dor.",
+          "isCorrect": false,
+          "comment": "Inadequada. Analgésico diário fixo tende a perpetuar cefaleia por uso excessivo, não a prevenir cronificação."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitar neuroimagem antes de intervir em sono, cafeína ou analgésicos, pois cefaleia quase diária deve ser presumida secundária.",
+          "isCorrect": false,
+          "comment": "Inadequada. Neuroimagem pode ser indicada se houver sinais de alarme, mas não deve substituir intervenção sobre fatores modificáveis evidentes."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Priorizar relaxante muscular e repouso nos dias de dor, mantendo cafeína se houver melhora subjetiva.",
+          "isCorrect": false,
+          "comment": "Inadequada. Relaxante e repouso não tratam os principais fatores de cronificação presentes no caso."
+        }
+      ]
+    },
+    {
+      "questionId": "Q038",
+      "theme": "Arterite",
+      "correctOptionId": "A",
+      "correctOptionText": "Iniciar corticosteroide imediatamente e encaminhar com urgência para avaliação especializada, sem aguardar confirmação histológica.",
+      "teachingPoint": "Sintomas visuais em suspeita de arterite de células gigantes indicam alto risco de perda visual permanente. Corticosteroide deve ser iniciado imediatamente, antes da confirmação por biópsia ou imagem vascular, e o paciente deve ser encaminhado com urgência.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Iniciar corticosteroide imediatamente e encaminhar com urgência para avaliação especializada, sem aguardar confirmação histológica.",
+          "isCorrect": true,
+          "comment": "Correta. Arterite de células gigantes com sintoma visual recente é emergência; corticoide deve ser iniciado imediatamente e a confirmação não deve atrasar tratamento."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Coletar VHS, PCR e programar biópsia antes do corticoide, pois a confirmação diagnóstica orienta a dose inicial.",
+          "isCorrect": false,
+          "comment": "Inadequada. VHS/PCR e biópsia são importantes, mas não devem preceder corticoide quando há risco visual iminente."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Prescrever antiagregante e analgesia, iniciando corticoide após avaliação oftalmológica se houver novo sintoma visual.",
+          "isCorrect": false,
+          "comment": "Inadequada. Antiagregante e analgesia não substituem corticosteroide; esperar novo sintoma visual aumenta risco de perda permanente."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Encaminhar para investigação ambulatorial acelerada, pois a amaurose fugaz isolada não exige tratamento no mesmo dia.",
+          "isCorrect": false,
+          "comment": "Inadequada. Amaurose fugaz em suspeita de arterite temporal exige tratamento no mesmo dia, não investigação eletiva."
+        }
+      ]
+    },
+    {
+      "questionId": "Q039",
+      "theme": "Arterite",
+      "correctOptionId": "B",
+      "correctOptionText": "Programar confirmação por biópsia de artéria temporal e/ou imagem vascular conforme disponibilidade, mesmo após início do corticosteroide.",
+      "teachingPoint": "A suspeita clínica forte justifica início imediato de corticosteroide, mas a confirmação por biópsia de artéria temporal e/ou ultrassom vascular, angio-TC, angio-RM ou PET-CT, conforme o cenário, continua importante. O tratamento não deve ser suspenso para aguardar confirmação.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Dispensar investigação adicional se houver melhora rápida da cefaleia após prednisona.",
+          "isCorrect": false,
+          "comment": "Inadequada. Melhora com prednisona não confirma definitivamente arterite de células gigantes e não dispensa confirmação quando possível."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Programar confirmação por biópsia de artéria temporal e/ou imagem vascular conforme disponibilidade, mesmo após início do corticosteroide.",
+          "isCorrect": true,
+          "comment": "Correta. Após iniciar corticoide por alta suspeita, deve-se buscar confirmação por biópsia e/ou imagem vascular sem suspender tratamento."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitar confirmação apenas se surgirem sintomas visuais, pois a claudicação mandibular tem baixo valor diagnóstico isolado.",
+          "isCorrect": false,
+          "comment": "Inadequada. Claudicação mandibular tem alto valor clínico; não se deve esperar sintoma visual para confirmar."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Suspender temporariamente o corticoide para aumentar a chance de positividade da biópsia.",
+          "isCorrect": false,
+          "comment": "Inadequada. Suspender corticoide para biópsia expõe o paciente a risco de complicações visuais e sistêmicas."
+        }
+      ]
+    },
+    {
+      "questionId": "Q040",
+      "theme": "Arterite",
+      "correctOptionId": "B",
+      "correctOptionText": "A suspeita clínica continua relevante; marcadores inflamatórios devem ser interpretados em conjunto e podem ser discordantes.",
+      "teachingPoint": "Embora VHS e PCR frequentemente estejam elevados, resultados podem ser discordantes e nenhum marcador isolado deve substituir a avaliação clínica. Claudicação mandibular e cefaleia nova em idoso mantêm alta suspeita, exigindo abordagem diagnóstica e terapêutica apropriada.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "VHS normal torna o diagnóstico improvável; a PCR elevada pode ser acompanhada antes de iniciar investigação específica.",
+          "isCorrect": false,
+          "comment": "Inadequada. VHS normal não exclui arterite de células gigantes, especialmente com PCR elevada e clínica típica."
+        },
+        {
+          "optionId": "B",
+          "optionText": "A suspeita clínica continua relevante; marcadores inflamatórios devem ser interpretados em conjunto e podem ser discordantes.",
+          "isCorrect": true,
+          "comment": "Correta. Marcadores inflamatórios podem ser discordantes; a suspeita clínica forte deve guiar investigação e tratamento."
+        },
+        {
+          "optionId": "C",
+          "optionText": "A claudicação mandibular favorece disfunção temporomandibular, devendo-se investigar arterite apenas se o VHS elevar.",
+          "isCorrect": false,
+          "comment": "Inadequada. Claudicação mandibular em idoso com cefaleia temporal nova é altamente sugestiva de arterite, não apenas disfunção temporomandibular."
+        },
+        {
+          "optionId": "D",
+          "optionText": "A combinação de VHS normal e exame clínico localizado sugere cefaleia primária, com reavaliação eletiva.",
+          "isCorrect": false,
+          "comment": "Inadequada. O quadro não deve ser tratado como cefaleia primária eletiva pela idade e sintomas cranianos típicos."
+        }
+      ]
+    },
+    {
+      "questionId": "Q041",
+      "theme": "Cefaleia",
+      "correctOptionId": "A",
+      "correctOptionText": "Cefaleia em salvas.",
+      "teachingPoint": "Cefaleia em salvas é caracterizada por crises intensas, estritamente unilaterais, orbitárias/supraorbitárias/temporais, com duração de 15 a 180 minutos, sinais autonômicos ipsilaterais e agitação. O padrão diário por semanas, muitas vezes noturno, reforça o período em salvas.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Cefaleia em salvas.",
+          "isCorrect": true,
+          "comment": "Correta. Dor orbitária unilateral excruciante, 45 minutos, agitação e sinais autonômicos ipsilaterais em séries diárias é típica de cefaleia em salvas."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Enxaqueca sem aura.",
+          "isCorrect": false,
+          "comment": "Inadequada. Enxaqueca costuma durar 4–72 horas e cursar com náuseas/fotofobia, não com crises curtas autonômicas e agitação marcante."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Cefaleia tipo tensional.",
+          "isCorrect": false,
+          "comment": "Inadequada. Cefaleia tensional não é excruciante, nem unilateral orbitária com lacrimejamento/congestão nasal."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Neuralgia do trigêmeo clássica.",
+          "isCorrect": false,
+          "comment": "Inadequada. Neuralgia do trigêmeo cursa com choques muito breves, desencadeáveis por estímulos, e não episódios de 45 minutos com salvas noturnas."
+        }
+      ]
+    },
+    {
+      "questionId": "Q042",
+      "theme": "Cefaleia",
+      "correctOptionId": "A",
+      "correctOptionText": "Hemicrania paroxística.",
+      "teachingPoint": "Hemicrania paroxística cursa com crises curtas, geralmente de 2 a 30 minutos, frequentes, estritamente unilaterais, com sinais autonômicos ipsilaterais. A resposta completa à indometacina é característica diagnóstica importante.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Hemicrania paroxística.",
+          "isCorrect": true,
+          "comment": "Correta. Crises orbitotemporais unilaterais de 8–12 minutos, muito frequentes, com sinais autonômicos e resposta completa à indometacina sugerem hemicrania paroxística."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Cefaleia em salvas.",
+          "isCorrect": false,
+          "comment": "Inadequada. Cefaleia em salvas costuma durar 15–180 minutos e não tem resposta completa característica à indometacina."
+        },
+        {
+          "optionId": "C",
+          "optionText": "SUNCT, pela curta duração e frequência elevada, independentemente da resposta à indometacina",
+          "isCorrect": false,
+          "comment": "Inadequada. SUNCT também é curta e frequente, mas a resposta completa à indometacina favorece hemicrania paroxística."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Neuralgia do trigêmeo, pois toda dor orbitária breve deve ser classificada como neuralgia",
+          "isCorrect": false,
+          "comment": "Inadequada. Neuralgia do trigêmeo é tipicamente em choques de segundos, desencadeada por estímulos, sem esse padrão autonômico/indometacina."
+        }
+      ]
+    },
+    {
+      "questionId": "Q043",
+      "theme": "Pneumotorax",
+      "correctOptionId": "B",
+      "correctOptionText": "Descompressão imediata, seguida de drenagem torácica definitiva.",
+      "teachingPoint": "O quadro sugere pneumotórax hipertensivo, uma emergência clínica. A conduta é descompressão imediata, sem aguardar imagem, seguida de drenagem torácica definitiva.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Solicitar radiografia portátil antes da drenagem se o paciente puder ser monitorizado durante o exame.",
+          "isCorrect": false,
+          "comment": "Inadequada. Em pneumotórax hipertensivo com choque, não se deve aguardar radiografia, mesmo portátil."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Descompressão imediata, seguida de drenagem torácica definitiva.",
+          "isCorrect": true,
+          "comment": "Correta. Instabilidade, turgência jugular, desvio traqueal e murmúrio abolido indicam pneumotórax hipertensivo; a conduta é descompressão imediata e drenagem definitiva."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Realizar ultrassonografia à beira-leito e aguardar confirmação visual antes de qualquer intervenção.",
+          "isCorrect": false,
+          "comment": "Inadequada. Ultrassom pode ajudar se disponível sem atraso, mas confirmação por imagem não deve preceder intervenção em tensão clínica."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Administrar oxigênio e analgesia enquanto se prepara tomografia para confirmar o lado acometido.",
+          "isCorrect": false,
+          "comment": "Inadequada. Tomografia é contraindicada como etapa inicial em paciente instável com diagnóstico clínico provável."
+        }
+      ]
+    },
+    {
+      "questionId": "Q044",
+      "theme": "Pneumotorax",
+      "correctOptionId": "A",
+      "correctOptionText": "Pneumotórax sob ventilação positiva pode evoluir rapidamente para tensão e deve ser tratado de forma emergencial se houver instabilidade.",
+      "teachingPoint": "Sob ventilação com pressão positiva, um pneumotórax pode aumentar rapidamente e causar pneumotórax hipertensivo. Instabilidade hemodinâmica, hipoxemia súbita, aumento de pressões ventilatórias e redução unilateral do murmúrio vesicular exigem ação imediata.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Pneumotórax sob ventilação positiva pode evoluir rapidamente para tensão e deve ser tratado de forma emergencial se houver instabilidade.",
+          "isCorrect": true,
+          "comment": "Correta. Em ventilação positiva, hipoxemia súbita, aumento de pressão de pico, hipotensão e murmúrio unilateral reduzido sugerem pneumotórax com risco de tensão e exigem ação emergencial."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Aumentar temporariamente a PEEP para tentar reexpandir o pulmão e reduzir a hipoxemia até a radiografia.",
+          "isCorrect": false,
+          "comment": "Inadequada. Aumentar PEEP pode piorar pneumotórax/tensão ao elevar pressão intratorácica."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Priorizar aspiração do tubo orotraqueal e broncodilatador, pois aumento de pressão de pico sugere obstrução de via aérea.",
+          "isCorrect": false,
+          "comment": "Inadequada. Obstrução do tubo é diferencial, mas a redução unilateral do murmúrio com hipotensão torna pneumotórax uma hipótese crítica a tratar."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Aguardar radiografia se o paciente estiver sedado, pois a ausência de dor torácica reduz a probabilidade de pneumotórax.",
+          "isCorrect": false,
+          "comment": "Inadequada. Sedação impede relato de dor, mas não reduz probabilidade; aguardar radiografia em instabilidade é inseguro."
+        }
+      ]
+    },
+    {
+      "questionId": "Q045",
+      "theme": "Neoplasia",
+      "correctOptionId": "B",
+      "correctOptionText": "Solicitar radiografia de tórax com prioridade e encaminhar para investigação especializada se houver alteração suspeita ou persistência dos sinais de alarme.",
+      "teachingPoint": "Tosse persistente, perda ponderal e hemoptise em tabagista importante são sinais de alarme para câncer de pulmão. Na Atenção Primária, a conduta é não banalizar o quadro: solicitar radiografia de tórax com prioridade, avaliar diagnósticos diferenciais como tuberculose e pneumonia, e encaminhar para investigação especializada quando houver imagem suspeita ou persistência clínica relevante.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Tratar empiricamente como exacerbação de DPOC e solicitar imagem apenas se a tosse persistir após o tratamento.",
+          "isCorrect": false,
+          "comment": "Inadequada. Tosse persistente, perda ponderal e hemoptise em tabagista são sinais de alarme; tratar como DPOC sem imagem atrasaria investigação."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Solicitar radiografia de tórax com prioridade e encaminhar para investigação especializada se houver alteração suspeita ou persistência dos sinais de alarme.",
+          "isCorrect": true,
+          "comment": "Correta. Na APS, deve-se solicitar radiografia de tórax com prioridade, avaliar diferenciais e encaminhar se houver alteração suspeita ou persistência dos sinais de alarme."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitar baciloscopia e teste molecular para tuberculose inicialmente, deixando imagem torácica para resultado negativo.",
+          "isCorrect": false,
+          "comment": "Inadequada. TB deve ser considerada, mas imagem torácica não deve ser postergada diante de sinais de alarme para neoplasia."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Encaminhar diretamente para tomografia e oncologia, sem investigação inicial na Atenção Primária.",
+          "isCorrect": false,
+          "comment": "Inadequada. Encaminhamento direto sem investigação inicial pode ser necessário em alguns cenários, mas a radiografia prioritária é passo adequado e factível na APS estável."
+        }
+      ]
+    },
+    {
+      "questionId": "Q046",
+      "theme": "Neoplasia",
+      "correctOptionId": "C",
+      "correctOptionText": "Tomografia computadorizada de baixa dose pode ser discutida em pacientes de alto risco, com decisão compartilhada e considerando disponibilidade, benefícios e danos.",
+      "teachingPoint": "O rastreamento de câncer de pulmão, quando indicado, é feito com tomografia de baixa dose em pessoas de alto risco, não com radiografia ou citologia de escarro. Na Atenção Primária, a decisão deve considerar carga tabágica, idade, tempo desde cessação, disponibilidade de programa estruturado, risco de falso positivo, sobrediagnóstico, radiação, ansiedade e capacidade de seguimento.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Solicitar radiografia de tórax anual, pois é o método mais acessível para rastreamento em alto risco.",
+          "isCorrect": false,
+          "comment": "Inadequada. Radiografia de tórax não é método recomendado para rastreamento de câncer de pulmão em alto risco."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Indicar citologia de escarro seriada se a paciente preferir evitar tomografia e radiação.",
+          "isCorrect": false,
+          "comment": "Inadequada. Citologia de escarro não é alternativa equivalente à tomografia de baixa dose para rastreamento."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Tomografia computadorizada de baixa dose pode ser discutida em pacientes de alto risco, com decisão compartilhada e considerando disponibilidade, benefícios e danos.",
+          "isCorrect": true,
+          "comment": "Correta. Em paciente de alto risco, pode-se discutir tomografia de baixa dose com decisão compartilhada, considerando benefícios, danos e capacidade de seguimento."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Não discutir rastreamento porque cessação do tabagismo há mais de 5 anos reduz o risco ao de não fumantes.",
+          "isCorrect": false,
+          "comment": "Inadequada. Cessar tabagismo reduz risco, mas não o iguala rapidamente ao de nunca fumantes; 8 anos ainda mantém elegibilidade em muitos critérios de alto risco."
+        }
+      ]
+    },
+    {
+      "questionId": "Q047",
+      "theme": "Fratura",
+      "correctOptionId": "A",
+      "correctOptionText": "Suspeitar de fratura vertebral por fragilidade e solicitar imagem inicial, além de analgesia e avaliação de risco osteoporótico.",
+      "teachingPoint": "Idade avançada, osteoporose, uso crônico de corticosteroide e dor vertebral aguda após trauma mínimo sugerem fratura vertebral por fragilidade. Nessa situação, a imagem inicial é apropriada, geralmente radiografia conforme disponibilidade e contexto, com complementação por ressonância ou tomografia se houver dúvida, dor persistente, suspeita de lesão complexa ou sinais neurológicos.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Suspeitar de fratura vertebral por fragilidade e solicitar imagem inicial, além de analgesia e avaliação de risco osteoporótico.",
+          "isCorrect": true,
+          "comment": "Correta. Idade, osteoporose, corticoide crônico e dor localizada após trauma mínimo sugerem fratura vertebral por fragilidade, justificando imagem inicial."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Tratar como lombalgia mecânica inespecífica e solicitar imagem apenas se não houver melhora após duas a quatro semanas.",
+          "isCorrect": false,
+          "comment": "Inadequada. A presença de fatores de risco importantes e dor à percussão torna inadequado manejar como lombalgia inespecífica sem imagem."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitar densitometria óssea como exame inicial, pois ela confirma se a osteoporose explica a dor aguda.",
+          "isCorrect": false,
+          "comment": "Inadequada. Densitometria avalia risco/diagnóstico de osteoporose, mas não confirma fratura aguda dolorosa."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Encaminhar para fisioterapia e observar, pois ausência de trauma de alta energia reduz a probabilidade de fratura.",
+          "isCorrect": false,
+          "comment": "Inadequada. Fratura por fragilidade pode ocorrer sem trauma de alta energia; fisioterapia sem imagem pode atrasar diagnóstico."
+        }
+      ]
+    },
+    {
+      "questionId": "Q048",
+      "theme": "Fratura",
+      "correctOptionId": "A",
+      "correctOptionText": "Encaminhar emergencialmente para avaliação de compressão neurológica, com imagem avançada e avaliação especializada.",
+      "teachingPoint": "Fratura vertebral associada a fraqueza progressiva, sintomas urinários ou outros déficits neurológicos exige avaliação emergencial por possível compressão medular, conus medullaris ou cauda equina. A investigação de osteoporose é importante, mas não deve atrasar o manejo da urgência neurológica.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Encaminhar emergencialmente para avaliação de compressão neurológica, com imagem avançada e avaliação especializada.",
+          "isCorrect": true,
+          "comment": "Correta. Fratura vertebral com fraqueza progressiva e alteração urinária sugere compressão neurológica e exige avaliação emergencial com imagem avançada."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Ajustar analgesia e solicitar radiografia de controle ambulatorial, pois a fratura já foi documentada.",
+          "isCorrect": false,
+          "comment": "Inadequada. Radiografia de controle e analgesia não avaliam adequadamente compressão medular/conus/cauda equina."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Solicitar densitometria óssea antes de definir a urgência, pois a causa provável é osteoporose.",
+          "isCorrect": false,
+          "comment": "Inadequada. Densitometria é relevante depois, mas não deve atrasar investigação neurológica urgente."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Encaminhar eletivamente para ortopedia, pois sintomas urinários são esperados pela dor intensa.",
+          "isCorrect": false,
+          "comment": "Inadequada. Sintomas urinários não são esperados apenas pela dor e indicam possível comprometimento neurológico."
+        }
+      ]
+    },
+    {
+      "questionId": "Q049",
+      "theme": "Cauda",
+      "correctOptionId": "C",
+      "correctOptionText": "Encaminhamento emergencial para ressonância lombossacra e avaliação neurocirúrgica.",
+      "teachingPoint": "Lombociatalgia bilateral, anestesia em sela, disfunção urinária e redução do tônus anal são sinais clássicos de síndrome da cauda equina. Trata-se de emergência neurológica.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Solicitar ressonância ambulatorial prioritária e otimizar analgesia, se a retenção urinária ainda não estiver estabelecida.",
+          "isCorrect": false,
+          "comment": "Inadequada. Mesmo sem retenção urinária completa, anestesia em sela, alteração miccional e tônus anal reduzido indicam emergência, não RM ambulatorial."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Solicitar radiografia lombar e encaminhar conforme achado, pois a dor bilateral sugere lesão estrutural óssea.",
+          "isCorrect": false,
+          "comment": "Inadequada. Radiografia não avalia adequadamente compressão neural e atrasaria o exame correto."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Encaminhamento emergencial para ressonância lombossacra e avaliação neurocirúrgica.",
+          "isCorrect": true,
+          "comment": "Correta. O conjunto sugere síndrome da cauda equina, exigindo ressonância lombossacra emergencial e avaliação neurocirúrgica."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Iniciar corticosteroide e reavaliar em 24 a 48 horas, encaminhando se o tônus anal não normalizar.",
+          "isCorrect": false,
+          "comment": "Inadequada. Corticoide e observação não substituem investigação e descompressão quando indicada; atrasar pode causar sequelas."
+        }
+      ]
+    },
+    {
+      "questionId": "Q050",
+      "theme": "Cauda",
+      "correctOptionId": "C",
+      "correctOptionText": "Retenção urinária ou alteração recente da sensibilidade vesical.",
+      "teachingPoint": "Alteração urinária recente, especialmente retenção urinária, perda da sensação de enchimento vesical ou incontinência por transbordamento, é sinal de alarme relevante para síndrome da cauda equina. A dor mecânica ao esforço e espasmo paravertebral são comuns em lombalgia inespecífica, mas não têm o mesmo peso de gravidade.",
+      "alternativeComments": [
+        {
+          "optionId": "A",
+          "optionText": "Lasègue positivo com dor irradiada abaixo do joelho.",
+          "isCorrect": false,
+          "comment": "Inadequada. Lasègue positivo sugere radiculopatia, mas isoladamente não é o sinal de maior valor para cauda equina."
+        },
+        {
+          "optionId": "B",
+          "optionText": "Dor lombar desencadeada por esforço, com melhora parcial após anti-inflamatório.",
+          "isCorrect": false,
+          "comment": "Inadequada. Dor mecânica após esforço é comum e não é sinal específico de cauda equina."
+        },
+        {
+          "optionId": "C",
+          "optionText": "Retenção urinária ou alteração recente da sensibilidade vesical.",
+          "isCorrect": true,
+          "comment": "Correta. Retenção urinária, perda da sensação de bexiga cheia ou incontinência por transbordamento são sinais de alarme importantes para síndrome da cauda equina."
+        },
+        {
+          "optionId": "D",
+          "optionText": "Parestesia unilateral em trajeto radicular sem déficit motor progressivo.",
+          "isCorrect": false,
+          "comment": "Inadequada. Parestesia radicular unilateral pode ocorrer em ciatalgia comum; sem déficit progressivo ou sintomas esfincterianos, tem menor valor para cauda equina."
+        }
+      ]
+    }
+  ]
+}
