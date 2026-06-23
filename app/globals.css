@@ -112,6 +112,12 @@ a { color: inherit; }
   color: var(--accent-strong);
 }
 
+.secondary-command.active {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: #fff;
+}
+
 .teacher-link {
   align-items: center;
   color: var(--accent-strong);
@@ -1745,7 +1751,7 @@ a { color: inherit; }
   border-top: 1px solid var(--line);
   display: grid;
   gap: 14px;
-  grid-template-columns: 150px minmax(180px, 260px) auto;
+  grid-template-columns: 150px minmax(180px, 260px) minmax(220px, 1fr) minmax(220px, 0.7fr);
   padding: 20px 20px 0;
 }
 .random-release-panel > div,
@@ -1772,6 +1778,12 @@ a { color: inherit; }
   width: 100%;
 }
 
+.manual-release-hint {
+  color: var(--muted);
+  font-weight: 800;
+  margin: 10px 20px 0;
+}
+
 .question-release-list {
   display: grid;
   gap: 10px;
@@ -1795,6 +1807,17 @@ a { color: inherit; }
 .release-card.selected {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.14);
+}
+.release-card.choosing:not(.released) {
+  border-style: dashed;
+}
+.release-card.choosing.released {
+  cursor: not-allowed;
+}
+.release-card.manual-selected {
+  background: #dff7ff;
+  border-color: rgba(8, 145, 178, 0.5);
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
 }
 .release-card strong {
   color: var(--accent-strong);
@@ -1823,6 +1846,11 @@ a { color: inherit; }
 .release-card .release-state.released {
   background: var(--success);
   border-color: var(--success);
+  color: #fff;
+}
+.release-card .release-state.manual-selected {
+  background: #0891b2;
+  border-color: #0891b2;
   color: #fff;
 }
 

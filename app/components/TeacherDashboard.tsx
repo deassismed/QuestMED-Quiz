@@ -1,7 +1,7 @@
 "use client";
 
 import QRCode from "qrcode";
-import { ArrowLeft, BarChart3, Copy, ExternalLink, Power, RefreshCw, Shuffle, Trash2 } from "lucide-react";
+import { ArrowLeft, BarChart3, CheckSquare, Copy, ExternalLink, Power, RefreshCw, Shuffle, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { deleteStudent, deleteUbs, finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions, updateStudentUbs } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
@@ -31,6 +31,8 @@ export function TeacherDashboard({
   const [releasedQuestionStats, setReleasedQuestionStats] = useState<Record<string, QuestionStats>>({});
   const [studentStatsBusy, setStudentStatsBusy] = useState("");
   const [releaseAmount, setReleaseAmount] = useState(5);
+  const [choosingQuestions, setChoosingQuestions] = useState(false);
+  const [manualQuestionIds, setManualQuestionIds] = useState<string[]>([]);
   const [qrCode, setQrCode] = useState("");
   const studentUrl = useMemo(() => (origin ? `${origin}/?sala=${state.room.roomCode}` : ""), [origin, state.room.roomCode]);
   const statusUrl = useMemo(() => (origin ? `${origin}/status/${state.room.roomCode}` : ""), [origin, state.room.roomCode]);
@@ -69,6 +71,9 @@ export function TeacherDashboard({
     if (remainingQuestions.length === 0) return;
     setReleaseAmount((current) => Math.max(1, Math.min(current, remainingQuestions.length)));
   }, [remainingQuestions.length]);
+  useEffect(() => {
+    setManualQuestionIds((current) => current.filter((questionId) => !releasedQuestionIds.has(questionId)));
+  }, [releasedQuestionKey]);
   useEffect(() => {
     if (!studentStats) return;
     const close = () => setStudentStats(null);
@@ -134,6 +139,40 @@ export function TeacherDashboard({
     } finally {
       setBusy(false);
     }
+  }
+
+  async function toggleManualReleaseMode() {
+    setError("");
+    if (!choosingQuestions) {
+      setChoosingQuestions(true);
+      setSelectedQuestionId("");
+      setSelectedQuestionStats(null);
+      return;
+    }
+    if (manualQuestionIds.length === 0) {
+      setChoosingQuestions(false);
+      return;
+    }
+    setBusy(true);
+    try {
+      if (state.room.status === "finished") throw new Error("Esta sala ja foi encerrada.");
+      const availableSelectedIds = manualQuestionIds.filter((questionId) => !releasedQuestionIds.has(questionId));
+      if (availableSelectedIds.length === 0) throw new Error("Nenhuma questao disponivel foi selecionada.");
+      setState(await updateReleasedQuestions(state.room.id, [...state.room.releasedQuestionIds, ...availableSelectedIds], adminKey));
+      setManualQuestionIds([]);
+      setChoosingQuestions(false);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel liberar as questoes escolhidas.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function toggleManualQuestion(questionId: string) {
+    if (releasedQuestionIds.has(questionId)) return;
+    setManualQuestionIds((current) =>
+      current.includes(questionId) ? current.filter((id) => id !== questionId) : [...current, questionId]
+    );
   }
 
   async function openQuestionStats(questionId: string) {
@@ -394,28 +433,55 @@ export function TeacherDashboard({
           </label>
           <button
             className="primary-command"
-            disabled={busy || state.room.status === "finished" || remainingQuestions.length === 0}
+            disabled={busy || choosingQuestions || state.room.status === "finished" || remainingQuestions.length === 0}
             onClick={() => void releaseRandomQuestions()}
             type="button"
           >
             <Shuffle size={18} /> Liberar aleatorias
           </button>
+          <button
+            className={choosingQuestions ? "secondary-command active" : "secondary-command"}
+            disabled={busy || state.room.status === "finished" || remainingQuestions.length === 0}
+            onClick={() => void toggleManualReleaseMode()}
+            type="button"
+          >
+            <CheckSquare size={18} /> {choosingQuestions && manualQuestionIds.length > 0 ? `Liberar ${manualQuestionIds.length} escolhida(s)` : "Escolher questoes"}
+          </button>
         </div>
+        {choosingQuestions ? (
+          <p className="manual-release-hint">
+            Clique nas questoes disponiveis para selecionar. Clique novamente em Escolher questoes para liberar as selecionadas.
+          </p>
+        ) : null}
         <div className="question-release-list">
           {questions.map((question) => {
             const released = releasedQuestionIds.has(question.id);
+            const manuallySelected = manualQuestionIds.includes(question.id);
             return (
               <article
                 className={[
                   released ? "release-card released" : "release-card",
-                  selectedQuestionId === question.id ? "selected" : ""
+                  selectedQuestionId === question.id && !choosingQuestions ? "selected" : "",
+                  choosingQuestions ? "choosing" : "",
+                  manuallySelected ? "manual-selected" : ""
                 ].join(" ")}
                 key={question.id}
-                onClick={() => void openQuestionStats(question.id)}
+                onClick={() => {
+                  if (choosingQuestions) {
+                    toggleManualQuestion(question.id);
+                    return;
+                  }
+                  void openQuestionStats(question.id);
+                }}
                 role="button"
-                tabIndex={0}
+                tabIndex={released && choosingQuestions ? -1 : 0}
                 onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") void openQuestionStats(question.id);
+                  if (event.key !== "Enter" && event.key !== " ") return;
+                  if (choosingQuestions) {
+                    toggleManualQuestion(question.id);
+                    return;
+                  }
+                  void openQuestionStats(question.id);
                 }}
               >
                 <div>
@@ -423,12 +489,14 @@ export function TeacherDashboard({
                   <span>{question.area}</span>
                   <p>{question.theme}</p>
                 </div>
-                <span className={released ? "release-state released" : "release-state"}>{released ? "Liberada" : "Disponivel"}</span>
+                <span className={released ? "release-state released" : manuallySelected ? "release-state manual-selected" : "release-state"}>
+                  {released ? "Liberada" : manuallySelected ? "Selecionada" : "Disponivel"}
+                </span>
               </article>
             );
           })}
         </div>
-        {selectedQuestionId ? (
+        {selectedQuestionId && !choosingQuestions ? (
           <QuestionStatsPanel
             question={questions.find((question) => question.id === selectedQuestionId)}
             stats={selectedQuestionStats}
