@@ -3213,6 +3213,47 @@ a { color: inherit; }
   .quiz-shell .floating-confirm-button:disabled {
     opacity: 0.5;
   }
+  .avatar-modal-backdrop {
+    align-items: stretch;
+    padding: 0;
+  }
+  .avatar-modal.mobile-avatar-modal {
+    border-radius: 0;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    max-height: 100dvh;
+    max-width: none;
+    padding: 18px 16px max(18px, env(safe-area-inset-bottom, 0px));
+    width: 100%;
+  }
+  .mobile-avatar-modal h2 {
+    font-size: clamp(1.75rem, 7vw, 2.35rem);
+  }
+  .mobile-avatar-modal .avatar-modal-grid {
+    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-height: none;
+    min-height: 0;
+    padding: 4px 2px 10px;
+  }
+  .mobile-avatar-modal .avatar-modal-choice {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    min-height: 106px;
+    padding: 6px;
+  }
+  .mobile-avatar-modal .choice-avatar {
+    height: 86px;
+    width: 86px;
+  }
+  .mobile-avatar-modal .avatar-modal-actions {
+    background: linear-gradient(180deg, rgba(17, 16, 34, 0), rgba(17, 16, 34, 0.98) 22%);
+    bottom: 0;
+    margin: 0 -16px calc(-1 * max(18px, env(safe-area-inset-bottom, 0px)));
+    padding: 18px 16px max(18px, env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-avatar-modal .avatar-modal-confirm {
+    min-height: 62px;
+  }
   .completion-answer-bar {
     gap: 6px;
     grid-template-columns: 34px auto minmax(0, 1fr) auto 34px;

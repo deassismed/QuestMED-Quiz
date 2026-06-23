@@ -770,7 +770,13 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
 
       {showAvatarModal ? (
         <div className="avatar-modal-backdrop" onClick={() => setShowAvatarModal(false)} role="presentation">
-          <section className="avatar-modal" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-label="Escolher avatar">
+          <section
+            className={mobileAvatarConfirm ? "avatar-modal mobile-avatar-modal" : "avatar-modal"}
+            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Escolher avatar"
+          >
             <header>
               <span className="eyebrow">Trocar avatar</span>
               <h2>Escolha uma imagem</h2>
@@ -799,11 +805,11 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
               <footer className="avatar-modal-actions">
                 <button
                   className="avatar-modal-confirm"
-                  disabled={busy || pendingAvatarId === (session.student.avatarId ?? DEFAULT_AVATAR_ID)}
+                  disabled={busy}
                   onClick={() => void changeAvatar(pendingAvatarId)}
                   type="button"
                 >
-                  Confirmar avatar
+                  Escolher avatar
                 </button>
               </footer>
             ) : null}
