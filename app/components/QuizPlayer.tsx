@@ -3,10 +3,11 @@
 import { Check, Clock3, LockKeyhole, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
+import { QuestionResolver } from "./QuestionResolver";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
 import { answerQuestion, joinRoom, loadRoomState, loadStudentState, startQuestionTimer, startReleasedQuestions, updateAvatar } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
-import type { QuestionOption, QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
+import type { QuestionComment, QuestionOption, QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
 
 type Step = "room" | "student" | "quiz";
 
@@ -23,8 +24,9 @@ function normalizeName(value: string) {
   return value.toLocaleUpperCase("pt-BR").replace(/[^\p{L}\p{N} .'-]/gu, "");
 }
 
-export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
+export function QuizPlayer({ questionComments, questions }: { questionComments: QuestionComment[]; questions: QuizQuestion[] }) {
   const [step, setStep] = useState<Step>("room");
+  const [resolverMode, setResolverMode] = useState(false);
   const [roomCode, setRoomCode] = useState("");
   const [nickname, setNickname] = useState("");
   const [ubsName, setUbsName] = useState("");
@@ -515,6 +517,10 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
     setShowAvatarModal(true);
   }
 
+  if (resolverMode) {
+    return <QuestionResolver onBack={() => setResolverMode(false)} questionComments={questionComments} questions={questions} />;
+  }
+
   if (step === "room") {
     return (
       <main className="app-shell">
@@ -535,7 +541,12 @@ export function QuizPlayer({ questions }: { questions: QuizQuestion[] }) {
             />
             <button disabled={busy} type="submit">Continuar</button>
           </form>
-          <a className="teacher-link" href="/professor"><LockKeyhole size={16} /> Area do professor</a>
+          <div className="entry-actions">
+            <button className="resolver-entry-button" onClick={() => setResolverMode(true)} type="button">
+              Resolver questões
+            </button>
+            <a className="teacher-link" href="/professor"><LockKeyhole size={16} /> Area do professor</a>
+          </div>
           {error ? <p className="entry-error">{error}</p> : null}
         </section>
       </main>
