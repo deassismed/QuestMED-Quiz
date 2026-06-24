@@ -1,12 +1,13 @@
 "use client";
 
 import { BookOpen, Check, ChevronLeft, ChevronRight, Clock3, RotateCcw, Trophy, X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
 import type { QuestionComment, QuestionOption, QuizQuestion } from "../types";
 
 const RESOLVER_TABLE_KEY = "questmed-resolver-table";
+export const LAST_RESOLVER_STUDENT_KEY = "questmed-resolver-last-student";
 const QUESTION_TIME_LIMIT_SECONDS = 90;
 const DISPLAY_OPTION_IDS = ["A", "B", "C", "D"] as const;
 const UBS_OPTIONS = [
@@ -19,7 +20,7 @@ const UBS_OPTIONS = [
   "USF Bela Parnamirim"
 ];
 
-type ResolverStep = "identify" | "quiz";
+type ResolverStep = "resume" | "identify" | "quiz";
 type AnswerStatus = "correct" | "incorrect" | "timeout";
 
 type ResolverAnswer = {
@@ -46,6 +47,16 @@ type ResolverStudent = {
 
 type ResolverTable = {
   students: ResolverStudent[];
+};
+
+type ResolverRankingItem = {
+  id: string;
+  nickname: string;
+  ubsName: string;
+  avatarId: string;
+  answeredCount: number;
+  averageScore: number;
+  totalScore: number;
 };
 
 function normalizeName(value: string) {
@@ -75,6 +86,53 @@ function writeResolverTable(table: ResolverTable) {
   window.localStorage.setItem(RESOLVER_TABLE_KEY, JSON.stringify(table));
 }
 
+function getLastResolverStudent() {
+  if (typeof window === "undefined") return null;
+  const table = readResolverTable();
+  const lastId = window.localStorage.getItem(LAST_RESOLVER_STUDENT_KEY);
+  return table.students.find((item) => item.id === lastId) ?? [...table.students].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0] ?? null;
+}
+
+async function requestResolverJson<T>(url: string, init?: RequestInit) {
+  const response = await fetch(url, {
+    ...init,
+    cache: "no-store",
+    headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) }
+  });
+  const data = (await response.json()) as T & { error?: string };
+  if (!response.ok) throw new Error(data.error ?? "Falha ao sincronizar resolvedor.");
+  return data;
+}
+
+function getLocalRanking(table: ResolverTable): ResolverRankingItem[] {
+  return table.students
+    .filter((item) => item.answers.length > 0)
+    .map((item) => {
+      const totalScore = item.answers.reduce((sum, answer) => sum + answer.score, 0);
+      return {
+        id: item.id,
+        nickname: item.nickname,
+        ubsName: item.ubsName,
+        avatarId: item.avatarId,
+        answeredCount: item.answers.length,
+        averageScore: totalScore / item.answers.length,
+        totalScore
+      };
+    })
+    .sort((a, b) => b.averageScore - a.averageScore || b.answeredCount - a.answeredCount || a.nickname.localeCompare(b.nickname));
+}
+
+async function loadResolverRanking() {
+  return requestResolverJson<{ ranking: ResolverRankingItem[] }>("/api/resolver/ranking");
+}
+
+async function syncResolverStudent(student: ResolverStudent) {
+  return requestResolverJson<{ ranking: ResolverRankingItem[] }>("/api/resolver/sync", {
+    method: "POST",
+    body: JSON.stringify({ student })
+  });
+}
+
 function calculateAnswerScore(isCorrect: boolean, elapsedSeconds: number) {
   if (!isCorrect) return 0;
   const clampedElapsed = Math.min(Math.max(elapsedSeconds, 0), QUESTION_TIME_LIMIT_SECONDS);
@@ -92,10 +150,12 @@ export function QuestionResolver({
   questions: QuizQuestion[];
 }) {
   const [step, setStep] = useState<ResolverStep>("identify");
+  const [resumeStudent, setResumeStudent] = useState<ResolverStudent | null>(null);
   const [nickname, setNickname] = useState("");
-  const [ubsName, setUbsName] = useState(UBS_OPTIONS[0]);
+  const [ubsName, setUbsName] = useState("");
   const [avatarId, setAvatarId] = useState(DEFAULT_AVATAR_ID);
   const [table, setTable] = useState<ResolverTable>(createEmptyTable);
+  const [serverRanking, setServerRanking] = useState<ResolverRankingItem[]>([]);
   const [student, setStudent] = useState<ResolverStudent | null>(null);
   const [selectedOptionId, setSelectedOptionId] = useState<QuestionOption["id"] | "">("");
   const [remainingSeconds, setRemainingSeconds] = useState(QUESTION_TIME_LIMIT_SECONDS);
@@ -104,6 +164,8 @@ export function QuestionResolver({
   const [error, setError] = useState("");
   const timerStartedAtRef = useRef<number | null>(null);
   const timeoutQuestionRef = useRef("");
+  const questionScrollRef = useRef<HTMLDivElement>(null);
+  const actionsRef = useRef<HTMLDivElement>(null);
 
   const commentsByQuestion = useMemo(
     () => new Map(questionComments.map((comment) => [comment.questionId, comment])),
@@ -118,19 +180,25 @@ export function QuestionResolver({
   const questionNumber = student ? Math.min(student.currentIndex + 1, questions.length) : 0;
   const averageScore = student?.answers.length ? (student.answers.reduce((sum, answer) => sum + answer.score, 0) / student.answers.length) : 0;
   const totalScore = student?.answers.reduce((sum, answer) => sum + answer.score, 0) ?? 0;
-  const individualRanking = useMemo(() => {
-    return [...table.students]
-      .filter((item) => item.answers.length > 0)
-      .map((item) => ({
-        ...item,
-        averageScore: item.answers.reduce((sum, answer) => sum + answer.score, 0) / item.answers.length
-      }))
-      .sort((a, b) => b.averageScore - a.averageScore || b.answers.length - a.answers.length || a.nickname.localeCompare(b.nickname));
-  }, [table.students]);
+  const localRanking = useMemo(() => getLocalRanking(table), [table]);
+  const individualRanking = serverRanking.length > 0 ? serverRanking : localRanking;
   const currentRank = student ? Math.max(1, individualRanking.findIndex((item) => item.id === student.id) + 1 || 1) : 1;
 
   useEffect(() => {
-    setTable(readResolverTable());
+    const nextTable = readResolverTable();
+    const lastStudent = getLastResolverStudent();
+    setTable(nextTable);
+    setResumeStudent(lastStudent);
+    if (lastStudent) setStep("resume");
+    void loadResolverRanking()
+      .then((data) => setServerRanking(data.ranking))
+      .catch(() => setServerRanking(getLocalRanking(nextTable)));
+    const interval = window.setInterval(() => {
+      void loadResolverRanking()
+        .then((data) => setServerRanking(data.ranking))
+        .catch(() => setServerRanking(getLocalRanking(readResolverTable())));
+    }, 15000);
+    return () => window.clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -157,14 +225,23 @@ export function QuestionResolver({
     recordAnswer("TIMEOUT", true);
   }, [currentAnswer, currentQuestion, remainingSeconds, student]);
 
+  useEffect(() => {
+    if (!student || !currentAnswer) return;
+    window.setTimeout(() => actionsRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }), 80);
+  }, [currentAnswer?.questionId, student?.id]);
+
   function persistStudent(nextStudent: ResolverStudent) {
     const nextTable = readResolverTable();
     const existingIndex = nextTable.students.findIndex((item) => item.id === nextStudent.id);
     if (existingIndex >= 0) nextTable.students[existingIndex] = nextStudent;
     else nextTable.students.push(nextStudent);
     writeResolverTable(nextTable);
+    window.localStorage.setItem(LAST_RESOLVER_STUDENT_KEY, nextStudent.id);
     setTable(nextTable);
     setStudent(nextStudent);
+    void syncResolverStudent(nextStudent)
+      .then((data) => setServerRanking(data.ranking))
+      .catch(() => setServerRanking(getLocalRanking(nextTable)));
   }
 
   function submitIdentification(event: FormEvent<HTMLFormElement>) {
@@ -172,6 +249,10 @@ export function QuestionResolver({
     const nextNickname = normalizeName(nickname).trim();
     if (!nextNickname) {
       setError("Informe seu nome para continuar.");
+      return;
+    }
+    if (!ubsName) {
+      setError("Escolha sua UBS para continuar.");
       return;
     }
     setError("");
@@ -186,7 +267,7 @@ export function QuestionResolver({
     }
     const now = new Date().toISOString();
     const nextStudent: ResolverStudent = {
-      id: `resolver-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      id: `resolver-${hashSeed(key).toString(36)}`,
       nickname: nextNickname,
       ubsName,
       avatarId,
@@ -198,6 +279,20 @@ export function QuestionResolver({
     };
     persistStudent(nextStudent);
     setStep("quiz");
+  }
+
+  function resumeSavedStudent() {
+    if (!resumeStudent) return;
+    setNickname(resumeStudent.nickname);
+    setUbsName(resumeStudent.ubsName);
+    setAvatarId(resumeStudent.avatarId);
+    setStudent(resumeStudent);
+    setStep("quiz");
+  }
+
+  function goToMainEntry() {
+    window.localStorage.removeItem(LAST_RESOLVER_STUDENT_KEY);
+    onBack();
   }
 
   function recordAnswer(optionId: QuestionOption["id"] | "TIMEOUT", timeout = false) {
@@ -234,15 +329,23 @@ export function QuestionResolver({
     persistStudent(nextStudent);
   }
 
+  function scrollQuestionToTop() {
+    window.setTimeout(() => questionScrollRef.current?.scrollTo({ top: 0, behavior: "smooth" }), 80);
+  }
+
   function goToNextQuestion() {
     if (!student) return;
     const nextUnansweredIndex = student.questionOrder.findIndex((questionId, index) => index > student.currentIndex && !answeredIds.has(questionId));
     if (nextUnansweredIndex >= 0) {
       goToIndex(nextUnansweredIndex);
+      scrollQuestionToTop();
       return;
     }
     const firstUnansweredIndex = student.questionOrder.findIndex((questionId) => !answeredIds.has(questionId));
-    if (firstUnansweredIndex >= 0) goToIndex(firstUnansweredIndex);
+    if (firstUnansweredIndex >= 0) {
+      goToIndex(firstUnansweredIndex);
+      scrollQuestionToTop();
+    }
   }
 
   function restartBank() {
@@ -258,6 +361,32 @@ export function QuestionResolver({
     setSelectedOptionId("");
     setShowResolution(false);
     timerStartedAtRef.current = null;
+  }
+
+  if (step === "resume" && resumeStudent) {
+    const resumeAverage = resumeStudent.answers.length
+      ? resumeStudent.answers.reduce((sum, answer) => sum + answer.score, 0) / resumeStudent.answers.length
+      : 0;
+    return (
+      <main className="app-shell resolver-entry-shell">
+        <section className="entry-panel resolver-entry-panel resolver-resume-panel">
+          <span className="eyebrow">QuestMED Quiz</span>
+          <h1>Reentrar?</h1>
+          <div className="resolver-resume-card">
+            <AvatarBadge avatarId={resumeStudent.avatarId} className="rank-avatar" name={resumeStudent.nickname} />
+            <div>
+              <strong>{resumeStudent.nickname}</strong>
+              <span>{resumeStudent.ubsName}</span>
+            </div>
+            <b>{resumeAverage.toFixed(1)}</b>
+          </div>
+          <div className="resolver-resume-actions">
+            <button onClick={resumeSavedStudent} type="button">Reentrar no jogo</button>
+            <button className="resolver-back-button" onClick={goToMainEntry} type="button">Tela principal</button>
+          </div>
+        </section>
+      </main>
+    );
   }
 
   if (step === "identify") {
@@ -278,6 +407,7 @@ export function QuestionResolver({
             <label className="resolver-select-label">
               <span>Escolha sua UBS</span>
               <select onChange={(event) => setUbsName(event.currentTarget.value)} value={ubsName}>
+                <option value="">SELECIONE SUA UBS</option>
                 {UBS_OPTIONS.map((ubs) => <option key={ubs} value={ubs}>{ubs}</option>)}
               </select>
             </label>
@@ -326,10 +456,10 @@ export function QuestionResolver({
           </div>
         </header>
 
-        <div className="question-scroll">
+        <div className="question-scroll" ref={questionScrollRef}>
           <div className="meta-row">
             <span className="id-pill">{currentQuestion?.id ?? "----"}</span>
-            <span className="area-pill">{currentQuestion?.theme ?? "Banco de questoes"}</span>
+            {currentAnswer ? <span className="answered-pill">Respondida</span> : null}
             <span className="progress-pill">{student.answers.length}/{questions.length}</span>
           </div>
 
@@ -378,12 +508,12 @@ export function QuestionResolver({
                     <strong>{currentAnswer.status === "timeout" ? "TEMPO ESGOTADO" : currentAnswer.isCorrect ? "CORRETA" : "INCORRETA"}</strong>
                     <span>{currentAnswer.score.toFixed(1)} ponto(s)</span>
                   </div>
-                  <div className="resolver-nav-actions">
+                  <div className="resolver-nav-actions" ref={actionsRef}>
                     <button disabled={student.currentIndex === 0} onClick={() => goToIndex(student.currentIndex - 1)} type="button">
                       <ChevronLeft size={18} /> Anterior
                     </button>
                     <button onClick={() => setShowResolution(true)} type="button">
-                      <BookOpen size={18} /> Resolucao
+                      <BookOpen size={18} /> Revisar
                     </button>
                     <button disabled={student.answers.length >= questions.length} onClick={goToNextQuestion} type="button">
                       Proxima <ChevronRight size={18} />
@@ -409,19 +539,20 @@ export function QuestionResolver({
         {answerFlash ? <AnswerFlash isCorrect={answerFlash.isCorrect} score={answerFlash.score} timeout={answerFlash.timeout} /> : null}
       </section>
 
-      <aside className="live-panel resolver-ranking">
-        <section>
+      <aside className="resolver-ranking">
+        <section className="scoreboard-panel compact game-board game-board-side resolver-scoreboard-panel">
           <span className="eyebrow"><Trophy size={16} /> Ranking individual</span>
           {individualRanking.length === 0 ? <p className="empty-ranking">O ranking aparece apos a primeira resposta.</p> : null}
           {individualRanking.slice(0, 10).map((item, index) => (
-            <div className={item.id === student.id ? "rank-row active" : "rank-row"} key={item.id}>
-              <strong>{index + 1}</strong>
-              <span>{item.nickname}<small>{item.ubsName} · {item.answers.length} resp.</small></span>
-              <b>{item.averageScore.toFixed(1)}</b>
-            </div>
+            <article className={item.id === student.id ? "individual-score-row resolver-score-row active" : "individual-score-row resolver-score-row"} key={item.id}>
+              <span className="team-rank-mark">{index + 1}o</span>
+              <AvatarBadge avatarId={item.avatarId} className="game-avatar small" name={item.nickname} />
+              <span>{item.nickname}<small>{item.ubsName} · {item.answeredCount} resp.</small></span>
+              <b><i aria-hidden="true" />{item.averageScore.toFixed(1)}</b>
+            </article>
           ))}
         </section>
-        <section>
+        <section className="scoreboard-panel compact game-board resolver-stats-panel">
           <span className="eyebrow">Seu desempenho</span>
           <div className="resolver-stat-grid">
             <div><span>Media</span><strong>{averageScore.toFixed(1)}</strong></div>
@@ -454,37 +585,45 @@ function ResolutionModal({
   onClose: () => void;
   question: QuizQuestion;
 }) {
+  useEffect(() => {
+    const closeOnKey = () => onClose();
+    window.addEventListener("keydown", closeOnKey);
+    return () => window.removeEventListener("keydown", closeOnKey);
+  }, [onClose]);
+
   return (
-    <div className="avatar-modal-backdrop" onClick={onClose} role="presentation">
+    <div className="avatar-modal-backdrop resolver-resolution-backdrop" onClick={onClose} role="presentation">
       <section className="question-comment-modal resolver-resolution-modal" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true">
         <header>
           <div>
             <span className="eyebrow">Resolucao {question.id}</span>
-            <h2>{question.theme}</h2>
+            <h2>Comentário da questão</h2>
           </div>
-          <button onClick={onClose} type="button" aria-label="Fechar"><X size={22} /></button>
+          <button onClick={onClose} type="button"><X size={22} /> Fechar</button>
         </header>
-        <div className="resolution-summary">
-          <strong>Gabarito: {comment?.correctOptionId ?? question.correctOptionId}</strong>
-          <p>{comment?.correctOptionText ?? question.options.find((option) => option.id === question.correctOptionId)?.text}</p>
-          {answer ? <span>Sua resposta: {answer.selectedOptionId === "TIMEOUT" ? "Tempo esgotado" : answer.selectedOptionId}</span> : null}
-        </div>
-        <article>
-          <h3>Ponto-chave</h3>
-          <p>{comment?.teachingPoint ?? question.explanation}</p>
-        </article>
-        <div className="resolution-options">
-          {(comment?.alternativeComments ?? question.options.map((option) => ({
-            optionId: option.id,
-            optionText: option.text,
-            isCorrect: option.id === question.correctOptionId,
-            comment: option.id === question.correctOptionId ? question.explanation : "Revise a alternativa em comparacao com o gabarito."
-          }))).map((alternative) => (
-            <article className={alternative.isCorrect ? "resolution-option correct" : "resolution-option"} key={alternative.optionId}>
-              <strong>{alternative.optionId}</strong>
-              <p>{alternative.comment}</p>
-            </article>
-          ))}
+        <div className="resolver-resolution-content">
+          <div className="resolution-summary">
+            <strong>Gabarito: {comment?.correctOptionId ?? question.correctOptionId}</strong>
+            <p>{comment?.correctOptionText ?? question.options.find((option) => option.id === question.correctOptionId)?.text}</p>
+            {answer ? <span>Sua resposta: {answer.selectedOptionId === "TIMEOUT" ? "Tempo esgotado" : answer.selectedOptionId}</span> : null}
+          </div>
+          <article>
+            <h3>Ponto-chave</h3>
+            <p>{comment?.teachingPoint ?? question.explanation}</p>
+          </article>
+          <div className="resolution-options">
+            {(comment?.alternativeComments ?? question.options.map((option) => ({
+              optionId: option.id,
+              optionText: option.text,
+              isCorrect: option.id === question.correctOptionId,
+              comment: option.id === question.correctOptionId ? question.explanation : "Revise a alternativa em comparacao com o gabarito."
+            }))).map((alternative) => (
+              <article className={alternative.isCorrect ? "resolution-option correct" : "resolution-option"} key={alternative.optionId}>
+                <strong>{alternative.optionId}</strong>
+                <p>{alternative.comment}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </div>

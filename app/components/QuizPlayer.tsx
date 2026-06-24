@@ -3,9 +3,19 @@
 import { Check, Clock3, LockKeyhole, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
-import { QuestionResolver } from "./QuestionResolver";
+import { LAST_RESOLVER_STUDENT_KEY, QuestionResolver } from "./QuestionResolver";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
-import { answerQuestion, joinRoom, loadRoomState, loadStudentState, startQuestionTimer, startReleasedQuestions, updateAvatar } from "../lib/online-client";
+import {
+  answerQuestion,
+  getOfflineSyncSummary,
+  joinRoom,
+  loadRoomState,
+  loadStudentState,
+  startQuestionTimer,
+  startReleasedQuestions,
+  syncPendingOfflineActions,
+  updateAvatar
+} from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
 import type { QuestionComment, QuestionOption, QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
 
@@ -26,7 +36,7 @@ function normalizeName(value: string) {
 
 export function QuizPlayer({ questionComments, questions }: { questionComments: QuestionComment[]; questions: QuizQuestion[] }) {
   const [step, setStep] = useState<Step>("room");
-  const [resolverMode, setResolverMode] = useState(false);
+  const [resolverMode, setResolverMode] = useState(() => typeof window !== "undefined" && Boolean(window.localStorage.getItem(LAST_RESOLVER_STUDENT_KEY)));
   const [roomCode, setRoomCode] = useState("");
   const [nickname, setNickname] = useState("");
   const [ubsName, setUbsName] = useState("");
@@ -45,6 +55,7 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [duplicateNickname, setDuplicateNickname] = useState(false);
+  const [offlinePendingCount, setOfflinePendingCount] = useState(0);
   const roomInputRef = useRef<HTMLInputElement>(null);
   const nicknameInputRef = useRef<HTMLInputElement>(null);
   const ubsInputRef = useRef<HTMLInputElement>(null);
@@ -168,6 +179,25 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
       }
     }
   }, []);
+
+  useEffect(() => {
+    const updateOfflineSummary = () => setOfflinePendingCount(getOfflineSyncSummary().pendingTotal);
+    const syncWhenOnline = () => {
+      if (!session) return;
+      void syncPendingOfflineActions(session.room.id, session.student.id)
+        .then(updateOfflineSummary)
+        .catch(() => updateOfflineSummary());
+    };
+    updateOfflineSummary();
+    window.addEventListener("questmed-offline-state-changed", updateOfflineSummary);
+    window.addEventListener("online", syncWhenOnline);
+    const interval = window.setInterval(syncWhenOnline, 15000);
+    return () => {
+      window.removeEventListener("questmed-offline-state-changed", updateOfflineSummary);
+      window.removeEventListener("online", syncWhenOnline);
+      window.clearInterval(interval);
+    };
+  }, [session?.room.id, session?.student.id]);
 
   useEffect(() => {
     if (step !== "student" || !state?.room.id) return;
@@ -776,6 +806,11 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
           </button>
         ) : null}
         {answerFlash ? <AnswerFlash isCorrect={answerFlash.isCorrect} score={answerFlash.score} timeout={answerFlash.timeout} /> : null}
+        {offlinePendingCount > 0 ? (
+          <p className="offline-sync-notice">
+            {offlinePendingCount} registro(s) salvo(s) localmente. Sincronizo quando a conexao voltar.
+          </p>
+        ) : null}
         {error ? <p className="floating-error">{error}</p> : null}
       </section>
 
