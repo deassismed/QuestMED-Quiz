@@ -3459,6 +3459,14 @@ a { color: inherit; }
   gap: 22px;
 }
 
+.resolver-resume-list {
+  display: grid;
+  gap: 10px;
+  max-height: min(360px, 48dvh);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
 .resolver-resume-card {
   align-items: center;
   background: #f7fbfb;
@@ -3468,6 +3476,20 @@ a { color: inherit; }
   gap: 14px;
   grid-template-columns: auto minmax(0, 1fr) auto;
   padding: 14px;
+  text-align: left;
+  width: 100%;
+}
+
+button.resolver-resume-card {
+  cursor: pointer;
+}
+
+button.resolver-resume-card:hover,
+button.resolver-resume-card:focus-visible {
+  background: #eef9f2;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+  outline: none;
 }
 
 .resolver-resume-card div {
@@ -3487,6 +3509,13 @@ a { color: inherit; }
 .resolver-resume-card span {
   color: var(--muted);
   font-weight: 850;
+}
+
+.resolver-resume-card small {
+  color: var(--accent-strong);
+  font-size: 0.76rem;
+  font-weight: 900;
+  margin-top: 2px;
 }
 
 .resolver-resume-card b {
@@ -3514,6 +3543,10 @@ a { color: inherit; }
 
 .resolver-shell .resolver-stage {
   min-width: 0;
+}
+
+.resolver-shell::before {
+  display: none;
 }
 
 .resolver-shell .topbar .player-avatar {
@@ -3580,10 +3613,11 @@ a { color: inherit; }
 
 .resolver-scoreboard-panel {
   min-height: 0;
+  overflow: hidden;
 }
 
 .resolver-score-row {
-  grid-template-columns: 52px 42px minmax(0, 1fr) auto;
+  grid-template-columns: 42px minmax(0, 1fr) 54px;
   min-height: 62px;
 }
 
@@ -3592,19 +3626,45 @@ a { color: inherit; }
   border-radius: 14px;
 }
 
-.resolver-score-row > span:not(.team-rank-mark) {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
+.resolver-podium-strip {
+  gap: 8px;
+  margin-top: 2px;
 }
 
-.resolver-score-row small {
-  color: rgba(248, 245, 255, 0.58);
-  font-size: 0.74rem;
-  font-weight: 850;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.resolver-podium-strip .podium-card {
+  min-width: 0;
+  padding: 10px 6px;
+}
+
+.resolver-podium-strip .podium-portrait {
+  height: clamp(128px, 13vw, 184px);
+}
+
+.resolver-podium-strip .podium-rank-1 .podium-portrait {
+  height: clamp(154px, 15vw, 220px);
+}
+
+.resolver-podium-strip .podium-medal-image {
+  height: clamp(46px, 5vw, 72px);
+  width: clamp(46px, 5vw, 72px);
+}
+
+.resolver-podium-strip .podium-avatar {
+  height: clamp(74px, 7vw, 102px);
+  width: clamp(74px, 7vw, 102px);
+}
+
+.resolver-podium-strip .podium-rank-1 .podium-avatar {
+  height: clamp(84px, 8vw, 116px);
+  width: clamp(84px, 8vw, 116px);
+}
+
+.resolver-podium-strip .podium-card strong {
+  font-size: clamp(0.82rem, 1.4vw, 1.08rem);
+}
+
+.resolver-podium-strip .podium-card > span {
+  font-size: clamp(0.88rem, 1.6vw, 1.16rem);
 }
 
 .resolver-stats-panel {
@@ -3640,6 +3700,15 @@ a { color: inherit; }
 
 .resolver-resolution-backdrop {
   align-items: center;
+  background: rgba(5, 4, 18, 0.88);
+  display: flex;
+  height: 100dvh;
+  inset: 0;
+  justify-content: center;
+  padding: 20px;
+  position: fixed !important;
+  width: 100vw;
+  z-index: 4000 !important;
 }
 
 .resolver-resolution-modal {

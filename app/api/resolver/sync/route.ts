@@ -42,8 +42,7 @@ async function loadRanking() {
   const { data, error } = await getServerSupabase()
     .from("qmq_resolver_students")
     .select("id,nickname,ubs_name,avatar_id,total_score,answered_count,average_score")
-    .gt("answered_count", 0)
-    .order("average_score", { ascending: false })
+    .order("total_score", { ascending: false })
     .order("answered_count", { ascending: false })
     .order("nickname", { ascending: true })
     .limit(100);

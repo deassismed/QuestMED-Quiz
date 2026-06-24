@@ -106,7 +106,6 @@ async function requestResolverJson<T>(url: string, init?: RequestInit) {
 
 function getLocalRanking(table: ResolverTable): ResolverRankingItem[] {
   return table.students
-    .filter((item) => item.answers.length > 0)
     .map((item) => {
       const totalScore = item.answers.reduce((sum, answer) => sum + answer.score, 0);
       return {
@@ -115,11 +114,11 @@ function getLocalRanking(table: ResolverTable): ResolverRankingItem[] {
         ubsName: item.ubsName,
         avatarId: item.avatarId,
         answeredCount: item.answers.length,
-        averageScore: totalScore / item.answers.length,
+        averageScore: item.answers.length ? totalScore / item.answers.length : 0,
         totalScore
       };
     })
-    .sort((a, b) => b.averageScore - a.averageScore || b.answeredCount - a.answeredCount || a.nickname.localeCompare(b.nickname));
+    .sort((a, b) => b.totalScore - a.totalScore || b.answeredCount - a.answeredCount || a.nickname.localeCompare(b.nickname));
 }
 
 async function loadResolverRanking() {
@@ -138,6 +137,21 @@ function calculateAnswerScore(isCorrect: boolean, elapsedSeconds: number) {
   const clampedElapsed = Math.min(Math.max(elapsedSeconds, 0), QUESTION_TIME_LIMIT_SECONDS);
   const remainingRatio = Math.max(0, QUESTION_TIME_LIMIT_SECONDS - clampedElapsed) / QUESTION_TIME_LIMIT_SECONDS;
   return Number((10 * remainingRatio).toFixed(1));
+}
+
+function rankLabel(index: number) {
+  return `${index + 1}o`;
+}
+
+function podiumRankLabel(rank: number) {
+  if (rank === 1) return "1st";
+  if (rank === 2) return "2nd";
+  return "3rd";
+}
+
+function medalSrc(rank: number, small = false) {
+  if (rank < 1 || rank > 3) return "";
+  return `/leaderboard/medal-${rank}${small ? "-sm" : ""}.webp`;
 }
 
 export function QuestionResolver({
@@ -178,10 +192,18 @@ export function QuestionResolver({
   const answeredIds = useMemo(() => new Set(student?.answers.map((answer) => answer.questionId) ?? []), [student?.answers]);
   const completed = Boolean(student && student.answers.length >= questions.length);
   const questionNumber = student ? Math.min(student.currentIndex + 1, questions.length) : 0;
-  const averageScore = student?.answers.length ? (student.answers.reduce((sum, answer) => sum + answer.score, 0) / student.answers.length) : 0;
   const totalScore = student?.answers.reduce((sum, answer) => sum + answer.score, 0) ?? 0;
   const localRanking = useMemo(() => getLocalRanking(table), [table]);
+  const savedStudents = useMemo(
+    () => [...table.students].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)),
+    [table.students]
+  );
   const individualRanking = serverRanking.length > 0 ? serverRanking : localRanking;
+  const podiumSlots = [
+    { item: individualRanking[1], rank: 2 },
+    { item: individualRanking[0], rank: 1 },
+    { item: individualRanking[2], rank: 3 }
+  ].filter((slot): slot is { item: ResolverRankingItem; rank: number } => Boolean(slot.item));
   const currentRank = student ? Math.max(1, individualRanking.findIndex((item) => item.id === student.id) + 1 || 1) : 1;
 
   useEffect(() => {
@@ -281,13 +303,24 @@ export function QuestionResolver({
     setStep("quiz");
   }
 
-  function resumeSavedStudent() {
-    if (!resumeStudent) return;
-    setNickname(resumeStudent.nickname);
-    setUbsName(resumeStudent.ubsName);
-    setAvatarId(resumeStudent.avatarId);
-    setStudent(resumeStudent);
+  function resumeSavedStudent(nextStudent: ResolverStudent) {
+    setNickname(nextStudent.nickname);
+    setUbsName(nextStudent.ubsName);
+    setAvatarId(nextStudent.avatarId);
+    setStudent(nextStudent);
+    window.localStorage.setItem(LAST_RESOLVER_STUDENT_KEY, nextStudent.id);
     setStep("quiz");
+  }
+
+  function createNewStudent() {
+    window.localStorage.removeItem(LAST_RESOLVER_STUDENT_KEY);
+    setResumeStudent(null);
+    setNickname("");
+    setUbsName("");
+    setAvatarId(DEFAULT_AVATAR_ID);
+    setStudent(null);
+    setError("");
+    setStep("identify");
   }
 
   function goToMainEntry() {
@@ -363,25 +396,32 @@ export function QuestionResolver({
     timerStartedAtRef.current = null;
   }
 
-  if (step === "resume" && resumeStudent) {
-    const resumeAverage = resumeStudent.answers.length
-      ? resumeStudent.answers.reduce((sum, answer) => sum + answer.score, 0) / resumeStudent.answers.length
-      : 0;
+  if (step === "resume" && savedStudents.length > 0) {
     return (
       <main className="app-shell resolver-entry-shell">
         <section className="entry-panel resolver-entry-panel resolver-resume-panel">
           <span className="eyebrow">QuestMED Quiz</span>
           <h1>Reentrar?</h1>
-          <div className="resolver-resume-card">
-            <AvatarBadge avatarId={resumeStudent.avatarId} className="rank-avatar" name={resumeStudent.nickname} />
-            <div>
-              <strong>{resumeStudent.nickname}</strong>
-              <span>{resumeStudent.ubsName}</span>
-            </div>
-            <b>{resumeAverage.toFixed(1)}</b>
+          <div className="resolver-resume-list" aria-label="Perfis salvos">
+            {savedStudents.map((savedStudent) => {
+              const resumeAverage = savedStudent.answers.length
+                ? savedStudent.answers.reduce((sum, answer) => sum + answer.score, 0) / savedStudent.answers.length
+                : 0;
+              return (
+                <button className="resolver-resume-card" key={savedStudent.id} onClick={() => resumeSavedStudent(savedStudent)} type="button">
+                  <AvatarBadge avatarId={savedStudent.avatarId} className="rank-avatar" name={savedStudent.nickname} />
+                  <div>
+                    <strong>{savedStudent.nickname}</strong>
+                    <span>{savedStudent.ubsName}</span>
+                    <small>{savedStudent.answers.length}/{questions.length} respondidas</small>
+                  </div>
+                  <b>{resumeAverage.toFixed(1)}</b>
+                </button>
+              );
+            })}
           </div>
           <div className="resolver-resume-actions">
-            <button onClick={resumeSavedStudent} type="button">Reentrar no jogo</button>
+            <button onClick={createNewStudent} type="button">Novo usuario</button>
             <button className="resolver-back-button" onClick={goToMainEntry} type="button">Tela principal</button>
           </div>
         </section>
@@ -449,7 +489,7 @@ export function QuestionResolver({
           </div>
           <div className="score-chip rank-chip">
             <span>{currentRank}o</span>
-            <strong>{averageScore.toFixed(1)}</strong>
+            <strong>{totalScore.toFixed(1)}</strong>
             <em className={remainingSeconds <= 15 && !currentAnswer ? "score-timer danger" : "score-timer"}>
               <Clock3 size={15} /> {String(Math.floor(remainingSeconds / 60)).padStart(2, "0")}:{String(remainingSeconds % 60).padStart(2, "0")}
             </em>
@@ -470,7 +510,7 @@ export function QuestionResolver({
               <div className="completion-summary">
                 <div><span>Respondidas</span><strong>{student.answers.length}</strong></div>
                 <div><span>Acertos</span><strong>{student.answers.filter((answer) => answer.isCorrect).length}</strong></div>
-                <div><span>Media</span><strong>{averageScore.toFixed(1)}</strong></div>
+                <div><span>Pontuacao</span><strong>{totalScore.toFixed(1)}</strong></div>
               </div>
               <button className="resolver-primary-action" onClick={restartBank} type="button">
                 <RotateCcw size={18} /> Recomecar
@@ -540,22 +580,48 @@ export function QuestionResolver({
       </section>
 
       <aside className="resolver-ranking">
-        <section className="scoreboard-panel compact game-board game-board-side resolver-scoreboard-panel">
+        <section className="scoreboard-panel game-board resolver-scoreboard-panel">
           <span className="eyebrow"><Trophy size={16} /> Ranking individual</span>
+          {podiumSlots.length > 0 ? (
+            <section className="podium-strip resolver-podium-strip" aria-label="Top 3 alunos">
+              {podiumSlots.map(({ item, rank }) => (
+                <article className={`podium-card podium-rank-${rank}`} key={item.id}>
+                  <div className="podium-portrait">
+                    <img className="podium-medal-image" alt={podiumRankLabel(rank)} src={medalSrc(rank)} />
+                    <AvatarBadge avatarId={item.avatarId} className="podium-avatar" name={item.nickname} />
+                  </div>
+                  <strong>{item.nickname}</strong>
+                  <span><i aria-hidden="true" />{item.totalScore.toFixed(1)}</span>
+                </article>
+              ))}
+            </section>
+          ) : null}
+          {individualRanking.length > 3 ? (
+            <div className="game-section-title">
+              <span />
+              <strong>Top Ranking Alunos</strong>
+              <span />
+            </div>
+          ) : null}
           {individualRanking.length === 0 ? <p className="empty-ranking">O ranking aparece apos a primeira resposta.</p> : null}
-          {individualRanking.slice(0, 10).map((item, index) => (
-            <article className={item.id === student.id ? "individual-score-row resolver-score-row active" : "individual-score-row resolver-score-row"} key={item.id}>
-              <span className="team-rank-mark">{index + 1}o</span>
+          {individualRanking.slice(3, 10).map((item, offset) => {
+            const index = 3 + offset;
+            return (
+            <article className={item.id === student.id ? `broadcast-score-row resolver-score-row active rank-${Math.min(index + 1, 9)}` : `broadcast-score-row resolver-score-row rank-${Math.min(index + 1, 9)}`} key={item.id}>
               <AvatarBadge avatarId={item.avatarId} className="game-avatar small" name={item.nickname} />
-              <span>{item.nickname}<small>{item.ubsName} · {item.answeredCount} resp.</small></span>
-              <b><i aria-hidden="true" />{item.averageScore.toFixed(1)}</b>
+              <div className="broadcast-team">
+                <strong>{item.nickname}</strong>
+                <span><i aria-hidden="true" /> {item.totalScore.toFixed(1)} pts</span>
+              </div>
+              <div className="rank-laurel">
+                <span>{rankLabel(index)}</span>
+              </div>
             </article>
-          ))}
+          )})}
         </section>
         <section className="scoreboard-panel compact game-board resolver-stats-panel">
           <span className="eyebrow">Seu desempenho</span>
           <div className="resolver-stat-grid">
-            <div><span>Media</span><strong>{averageScore.toFixed(1)}</strong></div>
             <div><span>Total</span><strong>{totalScore.toFixed(1)}</strong></div>
             <div><span>Questao</span><strong>{questionNumber}/{questions.length}</strong></div>
           </div>
