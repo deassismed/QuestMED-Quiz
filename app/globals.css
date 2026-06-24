@@ -3416,6 +3416,17 @@ a { color: inherit; }
   max-width: 680px;
 }
 
+.resolver-entry-error {
+  font-size: 1rem;
+  margin: 0;
+  order: 0;
+}
+
+.resolver-entry-error:focus {
+  outline: 3px solid rgba(180, 35, 24, 0.18);
+  outline-offset: 3px;
+}
+
 .resolver-select-label {
   display: grid;
   gap: 8px;
@@ -3650,8 +3661,20 @@ button.resolver-resume-card:focus-visible {
 }
 
 .resolver-podium-strip .podium-avatar {
+  background: conic-gradient(from 215deg, #ff7bc9 0 15%, #f7fbff 15% 68%, #58ecff 68% 100%);
+  box-shadow:
+    0 0 0 2px rgba(72, 240, 255, 0.72),
+    0 12px 28px rgba(0, 0, 0, 0.28),
+    0 0 24px rgba(72, 240, 255, 0.2);
   height: clamp(74px, 7vw, 102px);
+  padding: 4px;
   width: clamp(74px, 7vw, 102px);
+}
+
+.resolver-shell .avatar-badge.image-avatar.podium-avatar img,
+.resolver-shell .avatar-badge.image-avatar.game-avatar img {
+  border: 2px solid rgba(255, 255, 255, 0.96);
+  border-radius: 50%;
 }
 
 .resolver-podium-strip .podium-rank-1 .podium-avatar {
@@ -3665,6 +3688,20 @@ button.resolver-resume-card:focus-visible {
 
 .resolver-podium-strip .podium-card > span {
   font-size: clamp(0.88rem, 1.6vw, 1.16rem);
+}
+
+.resolver-podium-strip .podium-card small,
+.resolver-score-row .broadcast-team small {
+  color: rgba(248, 245, 255, 0.58);
+  font-size: 0.72rem;
+  font-weight: 850;
+  line-height: 1.1;
+}
+
+.resolver-score-row .broadcast-team small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .resolver-stats-panel {

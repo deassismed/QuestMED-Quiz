@@ -180,6 +180,7 @@ export function QuestionResolver({
   const timeoutQuestionRef = useRef("");
   const questionScrollRef = useRef<HTMLDivElement>(null);
   const actionsRef = useRef<HTMLDivElement>(null);
+  const entryErrorRef = useRef<HTMLParagraphElement>(null);
 
   const commentsByQuestion = useMemo(
     () => new Map(questionComments.map((comment) => [comment.questionId, comment])),
@@ -251,6 +252,11 @@ export function QuestionResolver({
     if (!student || !currentAnswer) return;
     window.setTimeout(() => actionsRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }), 80);
   }, [currentAnswer?.questionId, student?.id]);
+
+  useEffect(() => {
+    if (step !== "identify" || !error) return;
+    window.setTimeout(() => entryErrorRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 0);
+  }, [error, step]);
 
   function persistStudent(nextStudent: ResolverStudent) {
     const nextTable = readResolverTable();
@@ -435,6 +441,7 @@ export function QuestionResolver({
         <section className="entry-panel resolver-entry-panel">
           <span className="eyebrow">QuestMED Quiz</span>
           <h1>Resolver questoes</h1>
+          {error ? <p className="entry-error resolver-entry-error" ref={entryErrorRef} tabIndex={-1}>{error}</p> : null}
           <form className="entry-form stacked" onSubmit={submitIdentification}>
             <input
               autoFocus
@@ -470,7 +477,6 @@ export function QuestionResolver({
             <button type="submit">Entrar</button>
             <button className="resolver-back-button" onClick={onBack} type="button">Voltar</button>
           </form>
-          {error ? <p className="entry-error">{error}</p> : null}
         </section>
       </main>
     );
@@ -592,6 +598,7 @@ export function QuestionResolver({
                   </div>
                   <strong>{item.nickname}</strong>
                   <span><i aria-hidden="true" />{item.totalScore.toFixed(1)}</span>
+                  <small>{item.answeredCount} questoes</small>
                 </article>
               ))}
             </section>
@@ -612,6 +619,7 @@ export function QuestionResolver({
               <div className="broadcast-team">
                 <strong>{item.nickname}</strong>
                 <span><i aria-hidden="true" /> {item.totalScore.toFixed(1)} pts</span>
+                <small>{item.answeredCount} questoes resolvidas</small>
               </div>
               <div className="rank-laurel">
                 <span>{rankLabel(index)}</span>
