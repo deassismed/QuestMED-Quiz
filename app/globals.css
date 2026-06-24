@@ -3553,7 +3553,14 @@ button.resolver-resume-card:focus-visible {
 }
 
 .resolver-shell .resolver-stage {
+  max-height: none;
   min-width: 0;
+}
+
+.resolver-shell {
+  height: auto;
+  min-height: 100dvh;
+  overflow-y: auto;
 }
 
 .resolver-shell::before {
