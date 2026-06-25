@@ -3703,8 +3703,10 @@ a { color: inherit; }
   pointer-events: none;
 }
 
-.resolver-desktop-confirm-bar {
-  display: none;
+@media (max-width: 760px) {
+  .resolver-desktop-confirm-bar {
+    display: none;
+  }
 }
 
 .resolver-exit-button {
