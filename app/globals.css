@@ -3100,6 +3100,16 @@ a { color: inherit; }
   .quiz-shell .topbar h1 {
     font-size: clamp(3rem, 5.2vw, 4.9rem);
   }
+
+  .resolver-shell .floating-confirm-button.ready,
+  .quiz-shell:not(.resolver-shell) .floating-confirm-button.ready {
+    bottom: auto;
+    position: fixed;
+    right: clamp(32px, 5vw, 72px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+  }
 }
 
 @media (max-width: 760px) {
