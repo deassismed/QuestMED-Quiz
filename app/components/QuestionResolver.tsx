@@ -707,6 +707,18 @@ export function QuestionResolver({
                   );
                 })}
               </section>
+              {!currentAnswer && selectedOptionId ? (
+                <div className="resolver-desktop-confirm-bar">
+                  <button
+                    className={selectedOptionId ? "resolver-desktop-confirm-button ready" : "resolver-desktop-confirm-button"}
+                    disabled={!selectedOptionId || remainingSeconds === 0}
+                    onClick={() => selectedOptionId && recordAnswer(selectedOptionId)}
+                    type="button"
+                  >
+                    <Check size={22} /> Confirmar resposta
+                  </button>
+                </div>
+              ) : null}
 
               {currentAnswer ? (
                 <section className="feedback-zone resolver-actions">

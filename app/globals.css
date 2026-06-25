@@ -3101,14 +3101,54 @@ a { color: inherit; }
     font-size: clamp(3rem, 5.2vw, 4.9rem);
   }
 
-  .resolver-shell .floating-confirm-button.ready,
-  .quiz-shell:not(.resolver-shell) .floating-confirm-button.ready {
-    bottom: auto;
-    position: fixed;
-    right: clamp(32px, 5vw, 72px);
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 30;
+  .resolver-shell .floating-confirm-button {
+    display: none;
+  }
+
+  .resolver-desktop-confirm-bar {
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+    padding: 20px 0 4px;
+    position: sticky;
+    z-index: 12;
+  }
+
+  .resolver-desktop-confirm-bar::before {
+    background: linear-gradient(180deg, rgba(17, 16, 34, 0), rgba(17, 16, 34, 0.96) 44%);
+    content: "";
+    inset: -38px 0 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .resolver-desktop-confirm-button {
+    align-items: center;
+    background: linear-gradient(180deg, rgba(67, 43, 143, 0.96), rgba(25, 22, 63, 0.98));
+    border: 2px solid rgba(72, 240, 255, 0.74);
+    border-radius: 999px;
+    box-shadow:
+      0 0 0 4px rgba(236, 75, 255, 0.12),
+      0 0 26px rgba(72, 240, 255, 0.3),
+      0 16px 36px rgba(1, 0, 16, 0.42);
+    color: #fff;
+    display: inline-flex;
+    font-weight: 950;
+    gap: 10px;
+    justify-content: center;
+    min-height: 56px;
+    min-width: 230px;
+    padding: 0 22px;
+  }
+
+  .resolver-desktop-confirm-button.ready {
+    border-color: rgba(72, 240, 255, 0.92);
+    box-shadow:
+      0 0 0 5px rgba(236, 75, 255, 0.16),
+      0 0 34px rgba(72, 240, 255, 0.46),
+      0 18px 42px rgba(1, 0, 16, 0.5);
   }
 }
 
@@ -3661,6 +3701,10 @@ a { color: inherit; }
 
 .resolver-shell .topbar .player-avatar {
   pointer-events: none;
+}
+
+.resolver-desktop-confirm-bar {
+  display: none;
 }
 
 .resolver-exit-button {
