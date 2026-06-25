@@ -477,6 +477,8 @@ export function QuestionResolver({
 
   function restartBank() {
     if (!student) return;
+    const confirmed = window.confirm("Tem certeza de que deseja recomecar? As respostas deste usuario neste dispositivo serao zeradas para iniciar novamente.");
+    if (!confirmed) return;
     const now = new Date().toISOString();
     persistStudent({
       ...student,
