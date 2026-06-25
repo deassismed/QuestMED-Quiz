@@ -59,6 +59,12 @@ type ResolverRankingItem = {
   totalScore: number;
 };
 
+type ExistingResolverConfirmation = {
+  student: ResolverStudent;
+  answeredCount: number;
+  totalScore: number;
+};
+
 function normalizeName(value: string) {
   return value.toLocaleUpperCase("pt-BR").replace(/[^\p{L}\p{N} .'-]/gu, "");
 }
@@ -206,6 +212,7 @@ export function QuestionResolver({
   const [remainingSeconds, setRemainingSeconds] = useState(QUESTION_TIME_LIMIT_SECONDS);
   const [showResolution, setShowResolution] = useState(false);
   const [answerFlash, setAnswerFlash] = useState<{ isCorrect: boolean; score: number; timeout?: boolean } | null>(null);
+  const [existingConfirmation, setExistingConfirmation] = useState<ExistingResolverConfirmation | null>(null);
   const [error, setError] = useState("");
   const timerStartedAtRef = useRef<number | null>(null);
   const timeoutQuestionRef = useRef("");
@@ -308,6 +315,26 @@ export function QuestionResolver({
       .catch(() => setServerRanking(getLocalRanking(nextTable)));
   }
 
+  function askToResumeExisting(nextStudent: ResolverStudent) {
+    setExistingConfirmation({
+      student: nextStudent,
+      answeredCount: nextStudent.answers.length,
+      totalScore: nextStudent.answers.reduce((sum, answer) => sum + answer.score, 0)
+    });
+  }
+
+  function confirmExistingStudent() {
+    if (!existingConfirmation) return;
+    saveStudentLocally(existingConfirmation.student);
+    setExistingConfirmation(null);
+    setStep("quiz");
+  }
+
+  function cancelExistingStudent() {
+    setExistingConfirmation(null);
+    setError("Altere o nome ou a UBS para criar outro usuario.");
+  }
+
   async function submitIdentification(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextNickname = normalizeName(nickname).trim();
@@ -326,8 +353,7 @@ export function QuestionResolver({
     try {
       const serverData = await loadResolverStudent(nextNickname, ubsName);
       if (serverData.student) {
-        saveStudentLocally(mergeResolverStudents(existing, serverData.student));
-        setStep("quiz");
+        askToResumeExisting(mergeResolverStudents(existing, serverData.student));
         return;
       }
     } catch {
@@ -338,8 +364,7 @@ export function QuestionResolver({
     }
     if (existing) {
       const updated = { ...existing, avatarId, updatedAt: new Date().toISOString() };
-      persistStudent(updated);
-      setStep("quiz");
+      askToResumeExisting(updated);
       return;
     }
     const now = new Date().toISOString();
@@ -474,16 +499,23 @@ export function QuestionResolver({
       totalQuestions: questions.length,
       totalScore
     });
-    const printWindow = window.open("", "_blank", "noopener,noreferrer,width=960,height=720");
+    const printWindow = window.open("about:blank", "_blank", "width=960,height=720");
     if (!printWindow) {
-      setError("Nao foi possivel abrir a janela do PDF. Permita pop-ups para gerar o arquivo.");
+      window.alert("Nao foi possivel abrir a janela do PDF. Permita pop-ups para gerar o arquivo.");
       return;
     }
     printWindow.document.open();
     printWindow.document.write(html);
     printWindow.document.close();
-    printWindow.focus();
-    window.setTimeout(() => printWindow.print(), 300);
+    let printed = false;
+    const printReport = () => {
+      if (printed || printWindow.closed) return;
+      printed = true;
+      printWindow.focus();
+      printWindow.print();
+    };
+    printWindow.onload = printReport;
+    window.setTimeout(printReport, 500);
   }
 
   if (step === "resume" && savedStudents.length > 0) {
@@ -540,19 +572,44 @@ export function QuestionResolver({
           <form className="entry-form stacked" onSubmit={submitIdentification}>
             <input
               autoFocus
-              onChange={(event) => setNickname(normalizeName(event.currentTarget.value))}
-              onInput={(event) => setNickname(normalizeName(event.currentTarget.value))}
+              onChange={(event) => {
+                setExistingConfirmation(null);
+                setNickname(normalizeName(event.currentTarget.value));
+              }}
+              onInput={(event) => {
+                setExistingConfirmation(null);
+                setNickname(normalizeName(event.currentTarget.value));
+              }}
               placeholder="SEU NOME"
               type="text"
               value={nickname}
             />
             <label className="resolver-select-label">
               <span>Escolha sua UBS</span>
-              <select onChange={(event) => setUbsName(event.currentTarget.value)} value={ubsName}>
+              <select
+                onChange={(event) => {
+                  setExistingConfirmation(null);
+                  setUbsName(event.currentTarget.value);
+                }}
+                value={ubsName}
+              >
                 <option value="">SELECIONE SUA UBS</option>
                 {UBS_OPTIONS.map((ubs) => <option key={ubs} value={ubs}>{ubs}</option>)}
               </select>
             </label>
+            {existingConfirmation ? (
+              <section className="resolver-existing-warning" role="alert">
+                <strong>Usuario ja existe nesta UBS</strong>
+                <p>
+                  Encontramos {existingConfirmation.student.nickname} vinculado a {existingConfirmation.student.ubsName} com {existingConfirmation.answeredCount}/{questions.length} questoes respondidas.
+                </p>
+                <p>Tem certeza de que e o mesmo usuario? Ao continuar, ele vai recomecar de onde parou da ultima vez.</p>
+                <div>
+                  <button onClick={confirmExistingStudent} type="button">Sim, continuar</button>
+                  <button onClick={cancelExistingStudent} type="button">Nao, alterar</button>
+                </div>
+              </section>
+            ) : null}
             <fieldset className="avatar-picker resolver-avatar-picker">
               <legend>Escolha seu avatar</legend>
               <div>
@@ -582,6 +639,9 @@ export function QuestionResolver({
   return (
     <main className="quiz-shell resolver-shell">
       <section className="phone-stage resolver-stage" aria-label="Resolver questoes">
+        <button className="resolver-exit-button" onClick={goToMainEntry} type="button">
+          Sair
+        </button>
         <header className="topbar">
           <AvatarBadge avatarId={student.avatarId} className="player-avatar" name={student.nickname} />
           <div>
