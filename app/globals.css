@@ -3479,37 +3479,47 @@ a { color: inherit; }
 }
 
 .resolver-resume-card {
-  align-items: center;
   background: #f7fbfb;
   border: 1px solid #d6e5e2;
   border-radius: 8px;
+  min-height: 96px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.resolver-resume-open {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: inherit;
   display: grid;
   gap: 14px;
   grid-template-columns: auto minmax(0, 1fr) auto;
-  padding: 14px;
+  min-height: 96px;
+  padding: 14px 48px 14px 14px;
   text-align: left;
   width: 100%;
 }
 
-button.resolver-resume-card {
-  cursor: pointer;
-}
-
-button.resolver-resume-card:hover,
-button.resolver-resume-card:focus-visible {
+.resolver-resume-card:hover,
+.resolver-resume-card:focus-within {
   background: #eef9f2;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+}
+
+.resolver-resume-open:focus-visible {
   outline: none;
 }
 
-.resolver-resume-card div {
+.resolver-resume-open div {
   display: grid;
   gap: 3px;
   min-width: 0;
 }
 
-.resolver-resume-card strong {
+.resolver-resume-open strong {
   color: var(--ink);
   font-size: 1.12rem;
   overflow: hidden;
@@ -3517,21 +3527,46 @@ button.resolver-resume-card:focus-visible {
   white-space: nowrap;
 }
 
-.resolver-resume-card span {
+.resolver-resume-open span {
   color: var(--muted);
   font-weight: 850;
 }
 
-.resolver-resume-card small {
+.resolver-resume-open small {
   color: var(--accent-strong);
   font-size: 0.76rem;
   font-weight: 900;
   margin-top: 2px;
 }
 
-.resolver-resume-card b {
+.resolver-resume-open b {
   color: var(--accent-strong);
   font-size: 1.4rem;
+}
+
+.resolver-delete-local {
+  align-items: center;
+  background: rgba(180, 35, 24, 0.08);
+  border: 1px solid rgba(180, 35, 24, 0.14);
+  border-radius: 50%;
+  color: var(--danger);
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  opacity: 0.76;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transition: background 0.16s ease, opacity 0.16s ease, transform 0.16s ease;
+  width: 30px;
+}
+
+.resolver-delete-local:hover,
+.resolver-delete-local:focus-visible {
+  background: rgba(180, 35, 24, 0.14);
+  opacity: 1;
+  outline: none;
+  transform: scale(1.04);
 }
 
 .resolver-resume-actions {

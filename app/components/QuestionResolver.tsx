@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, Check, ChevronLeft, ChevronRight, Clock3, FileText, RotateCcw, Trophy, X } from "lucide-react";
+import { BookOpen, Check, ChevronLeft, ChevronRight, Clock3, FileText, RotateCcw, Trash2, Trophy, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
@@ -132,6 +132,11 @@ async function syncResolverStudent(student: ResolverStudent) {
   });
 }
 
+async function loadResolverStudent(nickname: string, ubsName: string) {
+  const params = new URLSearchParams({ nickname, ubsName });
+  return requestResolverJson<{ student: ResolverStudent | null }>(`/api/resolver/student?${params.toString()}`);
+}
+
 function calculateAnswerScore(isCorrect: boolean, elapsedSeconds: number) {
   if (!isCorrect) return 0;
   const clampedElapsed = Math.min(Math.max(elapsedSeconds, 0), QUESTION_TIME_LIMIT_SECONDS);
@@ -152,6 +157,32 @@ function podiumRankLabel(rank: number) {
 function medalSrc(rank: number, small = false) {
   if (rank < 1 || rank > 3) return "";
   return `/leaderboard/medal-${rank}${small ? "-sm" : ""}.webp`;
+}
+
+function mergeQuestionOrder(...orders: string[][]) {
+  const seen = new Set<string>();
+  return orders.flat().filter((questionId) => {
+    if (seen.has(questionId)) return false;
+    seen.add(questionId);
+    return true;
+  });
+}
+
+function mergeResolverStudents(localStudent: ResolverStudent | undefined, serverStudent: ResolverStudent) {
+  if (!localStudent) return serverStudent;
+  const answersByQuestion = new Map(serverStudent.answers.map((answer) => [answer.questionId, answer]));
+  for (const answer of localStudent.answers) {
+    if (!answersByQuestion.has(answer.questionId)) answersByQuestion.set(answer.questionId, answer);
+  }
+  const answers = [...answersByQuestion.values()].sort((a, b) => a.answeredAt.localeCompare(b.answeredAt));
+  return {
+    ...serverStudent,
+    avatarId: serverStudent.answers.length >= localStudent.answers.length ? serverStudent.avatarId : localStudent.avatarId,
+    questionOrder: mergeQuestionOrder(serverStudent.questionOrder, localStudent.questionOrder, answers.map((answer) => answer.questionId)),
+    currentIndex: Math.max(serverStudent.currentIndex, localStudent.currentIndex, answers.length > 0 ? answers.length - 1 : 0),
+    answers,
+    updatedAt: [serverStudent.updatedAt, localStudent.updatedAt].sort().at(-1) ?? serverStudent.updatedAt
+  };
 }
 
 export function QuestionResolver({
@@ -258,7 +289,7 @@ export function QuestionResolver({
     window.setTimeout(() => entryErrorRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 0);
   }, [error, step]);
 
-  function persistStudent(nextStudent: ResolverStudent) {
+  function saveStudentLocally(nextStudent: ResolverStudent) {
     const nextTable = readResolverTable();
     const existingIndex = nextTable.students.findIndex((item) => item.id === nextStudent.id);
     if (existingIndex >= 0) nextTable.students[existingIndex] = nextStudent;
@@ -267,12 +298,17 @@ export function QuestionResolver({
     window.localStorage.setItem(LAST_RESOLVER_STUDENT_KEY, nextStudent.id);
     setTable(nextTable);
     setStudent(nextStudent);
+    return nextTable;
+  }
+
+  function persistStudent(nextStudent: ResolverStudent) {
+    const nextTable = saveStudentLocally(nextStudent);
     void syncResolverStudent(nextStudent)
       .then((data) => setServerRanking(data.ranking))
       .catch(() => setServerRanking(getLocalRanking(nextTable)));
   }
 
-  function submitIdentification(event: FormEvent<HTMLFormElement>) {
+  async function submitIdentification(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextNickname = normalizeName(nickname).trim();
     if (!nextNickname) {
@@ -287,6 +323,19 @@ export function QuestionResolver({
     const nextTable = readResolverTable();
     const key = getStudentKey(nextNickname, ubsName);
     const existing = nextTable.students.find((item) => getStudentKey(item.nickname, item.ubsName) === key);
+    try {
+      const serverData = await loadResolverStudent(nextNickname, ubsName);
+      if (serverData.student) {
+        saveStudentLocally(mergeResolverStudents(existing, serverData.student));
+        setStep("quiz");
+        return;
+      }
+    } catch {
+      if (!existing) {
+        setError("Nao foi possivel verificar se ja existe progresso salvo. Tente novamente antes de iniciar.");
+        return;
+      }
+    }
     if (existing) {
       const updated = { ...existing, avatarId, updatedAt: new Date().toISOString() };
       persistStudent(updated);
@@ -327,6 +376,20 @@ export function QuestionResolver({
     setStudent(null);
     setError("");
     setStep("identify");
+  }
+
+  function deleteLocalStudent(studentId: string) {
+    const nextTable = readResolverTable();
+    const nextStudents = nextTable.students.filter((item) => item.id !== studentId);
+    const updatedTable = { students: nextStudents };
+    writeResolverTable(updatedTable);
+    if (window.localStorage.getItem(LAST_RESOLVER_STUDENT_KEY) === studentId) {
+      window.localStorage.removeItem(LAST_RESOLVER_STUDENT_KEY);
+    }
+    setTable(updatedTable);
+    if (resumeStudent?.id === studentId) setResumeStudent(null);
+    if (student?.id === studentId) setStudent(null);
+    if (nextStudents.length === 0) setStep("identify");
   }
 
   function goToMainEntry() {
@@ -435,15 +498,26 @@ export function QuestionResolver({
                 ? savedStudent.answers.reduce((sum, answer) => sum + answer.score, 0) / savedStudent.answers.length
                 : 0;
               return (
-                <button className="resolver-resume-card" key={savedStudent.id} onClick={() => resumeSavedStudent(savedStudent)} type="button">
-                  <AvatarBadge avatarId={savedStudent.avatarId} className="rank-avatar" name={savedStudent.nickname} />
-                  <div>
-                    <strong>{savedStudent.nickname}</strong>
-                    <span>{savedStudent.ubsName}</span>
-                    <small>{savedStudent.answers.length}/{questions.length} respondidas</small>
-                  </div>
-                  <b>{resumeAverage.toFixed(1)}</b>
-                </button>
+                <article className="resolver-resume-card" key={savedStudent.id}>
+                  <button className="resolver-resume-open" onClick={() => resumeSavedStudent(savedStudent)} type="button">
+                    <AvatarBadge avatarId={savedStudent.avatarId} className="rank-avatar" name={savedStudent.nickname} />
+                    <div>
+                      <strong>{savedStudent.nickname}</strong>
+                      <span>{savedStudent.ubsName}</span>
+                      <small>{savedStudent.answers.length}/{questions.length} respondidas</small>
+                    </div>
+                    <b>{resumeAverage.toFixed(1)}</b>
+                  </button>
+                  <button
+                    aria-label={`Excluir perfil local de ${savedStudent.nickname}`}
+                    className="resolver-delete-local"
+                    onClick={() => deleteLocalStudent(savedStudent.id)}
+                    title="Excluir deste dispositivo"
+                    type="button"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </article>
               );
             })}
           </div>

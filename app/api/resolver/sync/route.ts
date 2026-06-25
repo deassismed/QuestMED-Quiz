@@ -34,6 +34,23 @@ type ResolverStudentRankRow = {
   average_score: number | string;
 };
 
+type ResolverStudentRow = {
+  id: string;
+  created_at: string;
+  question_order: string[];
+  current_index: number;
+};
+
+type ResolverAnswerRow = {
+  question_id: string;
+  selected_option_id: QuestionOption["id"] | "TIMEOUT";
+  is_correct: boolean;
+  status: "correct" | "incorrect" | "timeout";
+  score: number | string;
+  elapsed_seconds: number;
+  answered_at: string;
+};
+
 function normalizeName(value: string) {
   return value.trim().replace(/\s+/g, " ").toLocaleUpperCase("pt-BR").replace(/[^\p{L}\p{N} .'-]/gu, "");
 }
@@ -63,10 +80,44 @@ export async function POST(request: Request) {
     const body = (await request.json()) as { student?: ResolverStudentInput };
     const student = body.student;
     if (!student?.id) throw new Error("Aluno invalido.");
-    const totalScore = Number(student.answers.reduce((sum, answer) => sum + Number(answer.score ?? 0), 0).toFixed(1));
-    const answeredCount = student.answers.length;
-    const averageScore = answeredCount ? Number((totalScore / answeredCount).toFixed(1)) : 0;
     const supabase = getServerSupabase();
+    const { data: existingStudent, error: existingStudentError } = await supabase
+      .from("qmq_resolver_students")
+      .select("id,created_at,question_order,current_index")
+      .eq("id", student.id)
+      .maybeSingle();
+    if (existingStudentError) throw existingStudentError;
+
+    const { data: existingAnswers, error: existingAnswersError } = await supabase
+      .from("qmq_resolver_answers")
+      .select("question_id,selected_option_id,is_correct,status,score,elapsed_seconds,answered_at")
+      .eq("student_id", student.id);
+    if (existingAnswersError) throw existingAnswersError;
+
+    const existingAnswersByQuestion = new Map(
+      ((existingAnswers ?? []) as ResolverAnswerRow[]).map((answer) => [answer.question_id, answer])
+    );
+    const newAnswers = student.answers.filter((answer) => !existingAnswersByQuestion.has(answer.questionId));
+    const mergedAnswers = [
+      ...((existingAnswers ?? []) as ResolverAnswerRow[]).map((answer) => ({
+        questionId: answer.question_id,
+        selectedOptionId: answer.selected_option_id,
+        isCorrect: answer.is_correct,
+        status: answer.status,
+        score: Number(answer.score ?? 0),
+        elapsedSeconds: answer.elapsed_seconds,
+        answeredAt: answer.answered_at
+      })),
+      ...newAnswers
+    ];
+    const totalScore = Number(mergedAnswers.reduce((sum, answer) => sum + Number(answer.score ?? 0), 0).toFixed(1));
+    const answeredCount = mergedAnswers.length;
+    const averageScore = answeredCount ? Number((totalScore / answeredCount).toFixed(1)) : 0;
+    const existing = existingStudent as ResolverStudentRow | null;
+    const questionOrder = existing?.question_order?.length && existing.question_order.length >= student.questionOrder.length
+      ? existing.question_order
+      : student.questionOrder;
+    const currentIndex = Math.max(existing?.current_index ?? 0, student.currentIndex, answeredCount > 0 ? answeredCount - 1 : 0);
 
     const { error: studentError } = await supabase.from("qmq_resolver_students").upsert({
       id: student.id,
@@ -74,19 +125,19 @@ export async function POST(request: Request) {
       nickname_normalized: normalizeName(student.nickname),
       ubs_name: student.ubsName,
       avatar_id: student.avatarId,
-      question_order: student.questionOrder,
-      current_index: student.currentIndex,
+      question_order: questionOrder,
+      current_index: currentIndex,
       total_score: totalScore,
       answered_count: answeredCount,
       average_score: averageScore,
-      created_at: student.createdAt,
+      created_at: existing?.created_at ?? student.createdAt,
       updated_at: student.updatedAt
     });
     if (studentError) throw studentError;
 
-    if (student.answers.length > 0) {
-      const { error: answersError } = await supabase.from("qmq_resolver_answers").upsert(
-        student.answers.map((answer) => ({
+    if (newAnswers.length > 0) {
+      const { error: answersError } = await supabase.from("qmq_resolver_answers").insert(
+        newAnswers.map((answer) => ({
           student_id: student.id,
           question_id: answer.questionId,
           selected_option_id: answer.selectedOptionId,
@@ -95,8 +146,7 @@ export async function POST(request: Request) {
           score: answer.score,
           elapsed_seconds: answer.elapsedSeconds,
           answered_at: answer.answeredAt
-        })),
-        { onConflict: "student_id,question_id" }
+        }))
       );
       if (answersError) throw answersError;
     }
