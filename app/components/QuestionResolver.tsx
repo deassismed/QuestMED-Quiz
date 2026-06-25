@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, Check, ChevronLeft, ChevronRight, Clock3, RotateCcw, Trophy, X } from "lucide-react";
+import { BookOpen, Check, ChevronLeft, ChevronRight, Clock3, FileText, RotateCcw, Trophy, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
@@ -402,6 +402,27 @@ export function QuestionResolver({
     timerStartedAtRef.current = null;
   }
 
+  function generateAnswersPdf() {
+    if (!student || student.answers.length === 0) return;
+    const html = buildResolverReportHtml({
+      commentsByQuestion,
+      questionsById,
+      student,
+      totalQuestions: questions.length,
+      totalScore
+    });
+    const printWindow = window.open("", "_blank", "noopener,noreferrer,width=960,height=720");
+    if (!printWindow) {
+      setError("Nao foi possivel abrir a janela do PDF. Permita pop-ups para gerar o arquivo.");
+      return;
+    }
+    printWindow.document.open();
+    printWindow.document.write(html);
+    printWindow.document.close();
+    printWindow.focus();
+    window.setTimeout(() => printWindow.print(), 300);
+  }
+
   if (step === "resume" && savedStudents.length > 0) {
     return (
       <main className="app-shell resolver-entry-shell">
@@ -520,6 +541,9 @@ export function QuestionResolver({
               </div>
               <button className="resolver-primary-action" onClick={restartBank} type="button">
                 <RotateCcw size={18} /> Recomecar
+              </button>
+              <button className="resolver-primary-action secondary" onClick={generateAnswersPdf} type="button">
+                <FileText size={18} /> Gerar PDF
               </button>
             </section>
           ) : currentQuestion ? (
@@ -720,6 +744,190 @@ function getDisplayOptions(question: QuizQuestion, studentId: string) {
     option,
     displayId: DISPLAY_OPTION_IDS[index] ?? option.id
   }));
+}
+
+function buildResolverReportHtml({
+  commentsByQuestion,
+  questionsById,
+  student,
+  totalQuestions,
+  totalScore
+}: {
+  commentsByQuestion: Map<string, QuestionComment>;
+  questionsById: Map<string, QuizQuestion>;
+  student: ResolverStudent;
+  totalQuestions: number;
+  totalScore: number;
+}) {
+  const answersByQuestion = new Map(student.answers.map((answer) => [answer.questionId, answer]));
+  const answeredQuestions = student.questionOrder
+    .map((questionId) => {
+      const question = questionsById.get(questionId);
+      const answer = answersByQuestion.get(questionId);
+      if (!question || !answer) return null;
+      return { answer, question };
+    })
+    .filter((item): item is { answer: ResolverAnswer; question: QuizQuestion } => Boolean(item));
+  const correctCount = student.answers.filter((answer) => answer.isCorrect).length;
+  const generatedAt = new Intl.DateTimeFormat("pt-BR", {
+    dateStyle: "short",
+    timeStyle: "short"
+  }).format(new Date());
+
+  return `<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>QuestMED - Respostas de ${escapeHtml(student.nickname)}</title>
+  <style>
+    @page { margin: 16mm; }
+    * { box-sizing: border-box; }
+    body {
+      color: #172033;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      line-height: 1.45;
+      margin: 0;
+    }
+    header {
+      border-bottom: 2px solid #1b8a5a;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 { color: #106642; font-size: 24px; margin-bottom: 6px; }
+    h2 { color: #106642; font-size: 16px; margin-bottom: 8px; }
+    h3 { font-size: 13px; margin-bottom: 4px; }
+    .summary {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 14px;
+    }
+    .summary div {
+      border: 1px solid #d7e3df;
+      border-radius: 6px;
+      padding: 8px;
+    }
+    .summary span {
+      color: #5b6677;
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+    .summary strong { display: block; font-size: 15px; margin-top: 2px; }
+    article {
+      border: 1px solid #dfe7e4;
+      border-radius: 8px;
+      margin: 0 0 14px;
+      padding: 14px;
+      page-break-inside: avoid;
+    }
+    .meta {
+      color: #5b6677;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .statement { font-size: 13px; margin-bottom: 10px; }
+    .answer {
+      background: #f4faf7;
+      border-left: 4px solid #1b8a5a;
+      margin: 10px 0;
+      padding: 8px 10px;
+    }
+    .answer.incorrect { border-left-color: #cf3d3d; }
+    .answer.timeout { border-left-color: #c27b16; }
+    .option-list { margin: 8px 0 0; padding-left: 0; }
+    .option-list li { list-style: none; margin: 0 0 5px; }
+    .comment-block {
+      background: #f7f9fb;
+      border-radius: 6px;
+      margin-top: 10px;
+      padding: 10px;
+    }
+    .alternative-comment {
+      border-top: 1px solid #dfe7e4;
+      margin-top: 8px;
+      padding-top: 8px;
+    }
+    .correct-label { color: #106642; font-weight: 700; }
+    .muted { color: #5b6677; }
+    @media print {
+      body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>QuestMED Quiz - Relatorio do resolvedor</h1>
+    <p><strong>${escapeHtml(student.nickname)}</strong> - ${escapeHtml(student.ubsName)}</p>
+    <p class="muted">Gerado em ${escapeHtml(generatedAt)}</p>
+    <section class="summary" aria-label="Resumo">
+      <div><span>Respondidas</span><strong>${student.answers.length}/${totalQuestions}</strong></div>
+      <div><span>Acertos</span><strong>${correctCount}</strong></div>
+      <div><span>Erros</span><strong>${student.answers.length - correctCount}</strong></div>
+      <div><span>Pontuacao</span><strong>${totalScore.toFixed(1)}</strong></div>
+    </section>
+  </header>
+  <main>
+    ${answeredQuestions.map(({ answer, question }, index) => renderResolverReportQuestion(question, answer, commentsByQuestion.get(question.id), index)).join("")}
+  </main>
+</body>
+</html>`;
+}
+
+function renderResolverReportQuestion(question: QuizQuestion, answer: ResolverAnswer, comment: QuestionComment | undefined, index: number) {
+  const selectedOption = answer.selectedOptionId === "TIMEOUT"
+    ? null
+    : question.options.find((option) => option.id === answer.selectedOptionId);
+  const answerClass = answer.status === "timeout" ? "timeout" : answer.isCorrect ? "" : "incorrect";
+  const selectedLabel = answer.selectedOptionId === "TIMEOUT"
+    ? "Tempo esgotado"
+    : `${answer.selectedOptionId}) ${selectedOption?.text ?? "Alternativa nao localizada"}`;
+  const fallbackAlternativeComments = question.options.map((option) => ({
+    optionId: option.id,
+    isCorrect: option.id === question.correctOptionId,
+    comment: option.id === question.correctOptionId ? question.explanation : "Revise a alternativa em comparacao com o gabarito."
+  }));
+  const alternativeComments = comment?.alternativeComments ?? fallbackAlternativeComments;
+
+  return `<article>
+    <div class="meta">
+      <span>Questao ${index + 1}</span>
+      <span>${escapeHtml(question.id)}</span>
+      <span>${escapeHtml(question.theme)}</span>
+    </div>
+    <p class="statement">${escapeHtml(question.statement)}</p>
+    <ul class="option-list">
+      ${question.options.map((option) => `<li><strong>${escapeHtml(option.id)})</strong> ${escapeHtml(option.text)}</li>`).join("")}
+    </ul>
+    <div class="answer ${answerClass}">
+      <h3>Resposta do aluno</h3>
+      <p>${escapeHtml(selectedLabel)}</p>
+      <p><strong>${answer.status === "timeout" ? "Tempo esgotado" : answer.isCorrect ? "Correta" : "Incorreta"}</strong> - ${answer.score.toFixed(1)} ponto(s)</p>
+    </div>
+    <div class="comment-block">
+      <h3>Explicacao</h3>
+      <p><strong>Gabarito: ${escapeHtml(comment?.correctOptionId ?? question.correctOptionId)}</strong> - ${escapeHtml(comment?.correctOptionText ?? question.options.find((option) => option.id === question.correctOptionId)?.text ?? "")}</p>
+      <p>${escapeHtml(comment?.teachingPoint ?? question.explanation)}</p>
+      ${alternativeComments.map((alternative) => `<div class="alternative-comment">
+        <p><strong class="${alternative.isCorrect ? "correct-label" : ""}">${escapeHtml(alternative.optionId)}</strong> ${alternative.isCorrect ? "<span class=\"correct-label\">correta</span>" : ""}</p>
+        <p>${escapeHtml(alternative.comment)}</p>
+      </div>`).join("")}
+    </div>
+  </article>`;
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 function shuffleQuestions(items: string[], seedText: string) {

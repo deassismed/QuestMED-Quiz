@@ -3586,6 +3586,12 @@ button.resolver-resume-card:focus-visible {
   padding: 0 18px;
 }
 
+.resolver-primary-action.secondary {
+  background: #ffffff;
+  border: 1px solid rgba(17, 133, 119, 0.28);
+  color: var(--accent-strong);
+}
+
 .resolver-actions {
   margin-bottom: 12px;
 }
