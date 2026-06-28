@@ -26,23 +26,37 @@ type ResolverAnswerRow = {
   answered_at: string;
 };
 
+const PAGE_SIZE = 1000;
+
 async function loadResolverAdminState() {
   const supabase = getServerSupabase();
-  const { data: studentsData, error: studentsError } = await supabase
-    .from("qmq_resolver_students")
-    .select("id,nickname,ubs_name,avatar_id,total_score,answered_count,average_score,created_at,updated_at")
-    .order("total_score", { ascending: false })
-    .order("answered_count", { ascending: false })
-    .order("nickname", { ascending: true });
-  if (studentsError) throw studentsError;
+  const studentsData: ResolverStudentRow[] = [];
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from("qmq_resolver_students")
+      .select("id,nickname,ubs_name,avatar_id,total_score,answered_count,average_score,created_at,updated_at")
+      .order("total_score", { ascending: false })
+      .order("answered_count", { ascending: false })
+      .order("nickname", { ascending: true })
+      .range(from, from + PAGE_SIZE - 1);
+    if (error) throw error;
+    studentsData.push(...((data ?? []) as ResolverStudentRow[]));
+    if (!data || data.length < PAGE_SIZE) break;
+  }
 
-  const { data: answersData, error: answersError } = await supabase
-    .from("qmq_resolver_answers")
-    .select("student_id,question_id,selected_option_id,is_correct,status,score,elapsed_seconds,answered_at")
-    .order("answered_at", { ascending: true });
-  if (answersError) throw answersError;
+  const answersData: ResolverAnswerRow[] = [];
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from("qmq_resolver_answers")
+      .select("student_id,question_id,selected_option_id,is_correct,status,score,elapsed_seconds,answered_at")
+      .order("answered_at", { ascending: true })
+      .range(from, from + PAGE_SIZE - 1);
+    if (error) throw error;
+    answersData.push(...((data ?? []) as ResolverAnswerRow[]));
+    if (!data || data.length < PAGE_SIZE) break;
+  }
 
-  const answers = ((answersData ?? []) as ResolverAnswerRow[]).map((answer) => ({
+  const answers = answersData.map((answer) => ({
     studentId: answer.student_id,
     questionId: answer.question_id,
     selectedOptionId: answer.selected_option_id,
@@ -59,7 +73,7 @@ async function loadResolverAdminState() {
     answersByStudent.set(answer.studentId, list);
   }
 
-  const students = ((studentsData ?? []) as ResolverStudentRow[]).map((student) => ({
+  const students = studentsData.map((student) => ({
     id: student.id,
     nickname: student.nickname,
     ubsName: student.ubs_name,
