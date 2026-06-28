@@ -228,6 +228,14 @@ export async function createRoomAdminAccess(roomId: string): Promise<RoomAdminAc
   return { room, adminKey };
 }
 
+export async function deleteOnlineRoom(roomId: string) {
+  const { error } = await getServerSupabase()
+    .from("qmq_rooms")
+    .delete()
+    .eq("id", roomId);
+  if (error) throw error;
+}
+
 export async function listProfessorRooms(): Promise<ProfessorRoomSummary[]> {
   const supabase = getServerSupabase();
   const { data: roomsData, error: roomsError } = await supabase.from("qmq_rooms").select("*").order("created_at", { ascending: false });

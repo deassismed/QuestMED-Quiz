@@ -430,6 +430,13 @@ export function accessRoom(roomId: string, password: string) {
   });
 }
 
+export function deleteRoom(roomId: string, password: string) {
+  return requestJson<{ ok: true }>("/api/professor/rooms", {
+    method: "DELETE",
+    body: JSON.stringify({ roomId, password })
+  });
+}
+
 export function updateReleasedQuestions(roomId: string, releasedQuestionIds: string[], adminKey: string) {
   return requestJson<RoomPublicState>(`/api/admin/rooms/${encodeURIComponent(roomId)}/released-questions`, {
     method: "POST",

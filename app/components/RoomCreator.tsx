@@ -1,8 +1,8 @@
 "use client";
 
-import { Copy, ExternalLink, Loader2, Plus } from "lucide-react";
+import { Copy, ExternalLink, Loader2, Plus, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
-import { accessRoom, createRoom, listRooms } from "../lib/online-client";
+import { accessRoom, createRoom, deleteRoom, listRooms } from "../lib/online-client";
 import type { CreateRoomResult, ProfessorRoomSummary } from "../types";
 
 export function RoomCreator() {
@@ -13,6 +13,7 @@ export function RoomCreator() {
   const [origin, setOrigin] = useState("");
   const [busy, setBusy] = useState(false);
   const [openingRoomId, setOpeningRoomId] = useState("");
+  const [deletingRoomId, setDeletingRoomId] = useState("");
   const [error, setError] = useState("");
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const roomNameInputRef = useRef<HTMLInputElement>(null);
@@ -57,7 +58,7 @@ export function RoomCreator() {
   }
 
   async function openExistingRoom(roomId: string) {
-    if (openingRoomId) return;
+    if (openingRoomId || deletingRoomId) return;
     const nextPassword = passwordInputRef.current?.value ?? password;
     setPassword(nextPassword);
     setOpeningRoomId(roomId);
@@ -69,6 +70,32 @@ export function RoomCreator() {
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Nao foi possivel acessar a sala.");
       setOpeningRoomId("");
+    }
+  }
+
+  function openResolverAdmin() {
+    const nextPassword = passwordInputRef.current?.value ?? password;
+    setPassword(nextPassword);
+    if (nextPassword) window.sessionStorage.setItem("questmed-professor-password", nextPassword);
+    window.location.assign("/professor/resolvedor");
+  }
+
+  async function removeExistingRoom(room: ProfessorRoomSummary["room"]) {
+    if (deletingRoomId) return;
+    const nextPassword = passwordInputRef.current?.value ?? password;
+    setPassword(nextPassword);
+    setError("");
+    try {
+      if (!nextPassword) throw new Error("Informe a senha do professor para excluir a sala.");
+      const label = room.roomName ? `${room.roomName} (${room.roomCode})` : room.roomCode;
+      if (!window.confirm(`Excluir a sala ${label}? Alunos, UBS, respostas e timers vinculados tambem serao apagados.`)) return;
+      setDeletingRoomId(room.id);
+      await deleteRoom(room.id, nextPassword);
+      setRooms((current) => current.filter((summary) => summary.room.id !== room.id));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel excluir a sala.");
+    } finally {
+      setDeletingRoomId("");
     }
   }
 
@@ -145,11 +172,39 @@ export function RoomCreator() {
           </div>
         </div>
         <div className="room-list">
+          <article
+            aria-label="Abrir controle do resolvedor"
+            className="room-list-item resolver-admin-room-card active"
+            onClick={openResolverAdmin}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") openResolverAdmin();
+            }}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="room-list-code">
+              <div>
+                <span>Modulo</span>
+                <strong>RESOLVEDOR</strong>
+              </div>
+              <span className="room-status active">controle</span>
+            </div>
+            <p>Respostas dos alunos no resolvedor</p>
+            <div className="room-list-metrics">
+              <span><strong>alunos</strong></span>
+              <span><strong>UBS</strong></span>
+              <span><strong>questoes</strong></span>
+            </div>
+            <div className="room-list-footer">
+              <small>Ranking, respostas e pontuacao</small>
+              <span className="room-open-hint">Clique para entrar</span>
+            </div>
+          </article>
           {rooms.map((summary) => (
             <article
-              aria-busy={openingRoomId === summary.room.id}
+              aria-busy={openingRoomId === summary.room.id || deletingRoomId === summary.room.id}
               aria-label={`Abrir sala ${summary.room.roomCode}`}
-              className={`room-list-item ${summary.room.status} ${openingRoomId === summary.room.id ? "opening" : ""}`}
+              className={`room-list-item ${summary.room.status} ${openingRoomId === summary.room.id || deletingRoomId === summary.room.id ? "opening" : ""}`}
               key={summary.room.id}
               onClick={() => void openExistingRoom(summary.room.id)}
               onKeyDown={(event) => {
@@ -165,6 +220,20 @@ export function RoomCreator() {
                 </div>
                 <span className={`room-status ${summary.room.status}`}>{summary.room.status}</span>
               </div>
+              <button
+                aria-label={`Excluir sala ${summary.room.roomCode}`}
+                className="room-delete-button"
+                disabled={Boolean(deletingRoomId)}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  void removeExistingRoom(summary.room);
+                }}
+                onKeyDown={(event) => event.stopPropagation()}
+                title="Excluir sala"
+                type="button"
+              >
+                {deletingRoomId === summary.room.id ? <Loader2 className="spin" size={15} /> : <Trash2 size={15} />}
+              </button>
               <p>{summary.room.roomName || "Sem nome"}</p>
               <div className="room-list-metrics">
                 <span><strong>{summary.studentCount}</strong> alunos</span>

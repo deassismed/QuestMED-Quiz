@@ -1446,6 +1446,7 @@ a { color: inherit; }
   display: grid;
   gap: 10px;
   padding: 16px;
+  position: relative;
   transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 .room-list-item:hover, .room-list-item:focus-visible {
@@ -1517,6 +1518,36 @@ a { color: inherit; }
   min-height: 38px;
   padding: 0 12px;
 }
+.room-delete-button {
+  align-items: center;
+  background: rgba(180, 35, 24, 0.08);
+  border: 1px solid rgba(180, 35, 24, 0.16);
+  border-radius: 8px;
+  color: var(--danger);
+  display: inline-flex;
+  height: 32px;
+  justify-content: center;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 32px;
+}
+.room-delete-button:hover,
+.room-delete-button:focus-visible {
+  background: rgba(180, 35, 24, 0.14);
+  outline: none;
+}
+.room-list-item:has(.room-delete-button) .room-list-code {
+  padding-right: 38px;
+}
+.resolver-admin-room-card {
+  background: linear-gradient(135deg, #e8f4ff 0%, #f7fffb 100%);
+  border-color: rgba(14, 165, 233, 0.34);
+}
+.resolver-admin-room-card .room-list-code strong {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  letter-spacing: 0.04em;
+}
 
 .dashboard-header, .scoreboard-header {
   align-items: center;
@@ -1567,6 +1598,40 @@ a { color: inherit; }
   align-content: start;
   display: grid;
   gap: 12px;
+}
+.resolver-admin-overview {
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 240px);
+}
+.resolver-admin-average {
+  align-content: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+  padding: 22px;
+}
+.resolver-admin-average span,
+.resolver-admin-average small {
+  color: var(--muted);
+  font-weight: 900;
+}
+.resolver-admin-average strong {
+  color: var(--accent-strong);
+  font-size: 3rem;
+  line-height: 1;
+}
+.resolver-admin-student {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+}
+.resolver-admin-student .avatar-badge {
+  height: 38px;
+  width: 38px;
+}
+.resolver-admin-question {
+  cursor: default;
 }
 .teacher-links {
   background: #fff;
