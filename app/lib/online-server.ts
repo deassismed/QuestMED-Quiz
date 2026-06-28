@@ -301,8 +301,19 @@ export async function joinOnlineRoom(
       .insert({ id: randomUUID(), room_id: room.id, name: normalizedUbs, name_normalized: normalizedUbs })
       .select("*")
       .single<UbsRow>();
-    if (error) throw error;
-    ubsRow = data;
+    if (error) {
+      if (error.code !== "23505") throw error;
+      const { data: concurrentUbs, error: concurrentUbsError } = await supabase
+        .from("qmq_ubs_teams")
+        .select("*")
+        .eq("room_id", room.id)
+        .eq("name_normalized", normalizedUbs)
+        .single<UbsRow>();
+      if (concurrentUbsError) throw concurrentUbsError;
+      ubsRow = concurrentUbs;
+    } else {
+      ubsRow = data;
+    }
   }
 
   const { data: existingStudent, error: studentFindError } = await supabase
