@@ -34,6 +34,11 @@ type ResolverStudentRankRow = {
   average_score: number | string;
 };
 
+type ResolverAnswerRankRow = {
+  student_id: string;
+  score: number | string;
+};
+
 type ResolverStudentRow = {
   id: string;
   created_at: string;
@@ -56,23 +61,44 @@ function normalizeName(value: string) {
 }
 
 async function loadRanking() {
-  const { data, error } = await getServerSupabase()
+  const supabase = getServerSupabase();
+  const { data, error } = await supabase
     .from("qmq_resolver_students")
     .select("id,nickname,ubs_name,avatar_id,total_score,answered_count,average_score")
-    .order("total_score", { ascending: false })
-    .order("answered_count", { ascending: false })
-    .order("nickname", { ascending: true })
-    .limit(100);
+    .order("nickname", { ascending: true });
   if (error) throw error;
-  return ((data ?? []) as ResolverStudentRankRow[]).map((row) => ({
-    id: row.id,
-    nickname: row.nickname,
-    ubsName: row.ubs_name,
-    avatarId: row.avatar_id,
-    totalScore: Number(row.total_score ?? 0),
-    answeredCount: row.answered_count,
-    averageScore: Number(row.average_score ?? 0)
-  }));
+
+  const { data: answerData, error: answerError } = await supabase
+    .from("qmq_resolver_answers")
+    .select("student_id,score");
+  if (answerError) throw answerError;
+
+  const answersByStudent = new Map<string, ResolverAnswerRankRow[]>();
+  for (const answer of (answerData ?? []) as ResolverAnswerRankRow[]) {
+    const answers = answersByStudent.get(answer.student_id) ?? [];
+    answers.push(answer);
+    answersByStudent.set(answer.student_id, answers);
+  }
+
+  return ((data ?? []) as ResolverStudentRankRow[])
+    .map((row) => {
+      const answers = answersByStudent.get(row.id) ?? [];
+      const answeredCount = answers.length;
+      const totalScore = answeredCount
+        ? Number(answers.reduce((sum, answer) => sum + Number(answer.score ?? 0), 0).toFixed(1))
+        : Number(row.total_score ?? 0);
+      return {
+        id: row.id,
+        nickname: row.nickname,
+        ubsName: row.ubs_name,
+        avatarId: row.avatar_id,
+        totalScore,
+        answeredCount,
+        averageScore: answeredCount ? Number((totalScore / answeredCount).toFixed(1)) : Number(row.average_score ?? 0)
+      };
+    })
+    .sort((a, b) => b.totalScore - a.totalScore || b.answeredCount - a.answeredCount || a.nickname.localeCompare(b.nickname, "pt-BR"))
+    .slice(0, 100);
 }
 
 export async function POST(request: Request) {

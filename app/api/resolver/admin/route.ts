@@ -73,18 +73,25 @@ async function loadResolverAdminState() {
     answersByStudent.set(answer.studentId, list);
   }
 
-  const students = studentsData.map((student) => ({
-    id: student.id,
-    nickname: student.nickname,
-    ubsName: student.ubs_name,
-    avatarId: student.avatar_id,
-    totalScore: Number(student.total_score ?? 0),
-    answeredCount: student.answered_count,
-    averageScore: Number(student.average_score ?? 0),
-    createdAt: student.created_at,
-    updatedAt: student.updated_at,
-    answers: answersByStudent.get(student.id) ?? []
-  }));
+  const students = studentsData.map((student) => {
+    const studentAnswers = answersByStudent.get(student.id) ?? [];
+    const answeredCount = studentAnswers.length;
+    const totalScore = answeredCount
+      ? Number(studentAnswers.reduce((sum, answer) => sum + answer.score, 0).toFixed(1))
+      : Number(student.total_score ?? 0);
+    return {
+      id: student.id,
+      nickname: student.nickname,
+      ubsName: student.ubs_name,
+      avatarId: student.avatar_id,
+      totalScore,
+      answeredCount,
+      averageScore: answeredCount ? Number((totalScore / answeredCount).toFixed(1)) : Number(student.average_score ?? 0),
+      createdAt: student.created_at,
+      updatedAt: student.updated_at,
+      answers: studentAnswers
+    };
+  });
 
   const ubsTeams = Array.from(new Set(students.map((student) => student.ubsName)))
     .map((ubsName) => {
