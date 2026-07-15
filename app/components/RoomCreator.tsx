@@ -1,6 +1,6 @@
 "use client";
 
-import { Copy, ExternalLink, Loader2, Plus, Trash2 } from "lucide-react";
+import { Copy, ExternalLink, Loader2, Plus, RefreshCw, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { accessRoom, createRoom, deleteRoom, listRooms } from "../lib/online-client";
 import type { CreateRoomResult, ProfessorRoomSummary } from "../types";
@@ -15,6 +15,7 @@ export function RoomCreator() {
   const [openingRoomId, setOpeningRoomId] = useState("");
   const [deletingRoomId, setDeletingRoomId] = useState("");
   const [error, setError] = useState("");
+  const [hasStoredPassword, setHasStoredPassword] = useState(false);
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const roomNameInputRef = useRef<HTMLInputElement>(null);
 
@@ -22,6 +23,7 @@ export function RoomCreator() {
     setOrigin(window.location.origin);
     const savedPassword = window.sessionStorage.getItem("questmed-professor-password") ?? "";
     if (!savedPassword) return;
+    setHasStoredPassword(true);
     setPassword(savedPassword);
     if (passwordInputRef.current) passwordInputRef.current.value = savedPassword;
     void loadExistingRooms(savedPassword);
@@ -114,46 +116,6 @@ export function RoomCreator() {
         <p>Crie salas, compartilhe o codigo com os alunos e acompanhe UBS e pontuacoes.</p>
       </header>
 
-      <section className="create-room-panel">
-        <form className="create-room-controls" onSubmit={submitCreateRoom}>
-          <label>Senha do professor</label>
-          <input
-            onChange={(event) => setPassword(event.currentTarget.value)}
-            onInput={(event) => setPassword(event.currentTarget.value)}
-            name="password"
-            placeholder="Senha"
-            ref={passwordInputRef}
-            type="password"
-            defaultValue={password}
-          />
-          <label>Nome da sala</label>
-          <input
-            onChange={(event) => setRoomName(event.currentTarget.value)}
-            onInput={(event) => setRoomName(event.currentTarget.value)}
-            name="roomName"
-            placeholder="Turma MFC - manha"
-            ref={roomNameInputRef}
-            type="text"
-            defaultValue={roomName}
-          />
-          <button className="primary-command" disabled={busy} type="submit">
-            {busy ? <Loader2 className="spin" size={18} /> : <Plus size={18} />} Criar sala
-          </button>
-          <button
-            className="secondary-command"
-            disabled={busy}
-            onClick={(event) => {
-              const form = event.currentTarget.form;
-              const formData = form ? new FormData(form) : null;
-              void loadExistingRooms(passwordInputRef.current?.value ?? String(formData?.get("password") ?? password));
-            }}
-            type="button"
-          >
-            Atualizar salas
-          </button>
-        </form>
-      </section>
-
       {created ? (
         <section className="room-created-panel">
           <div className="room-created-copy">
@@ -177,6 +139,16 @@ export function RoomCreator() {
             <span className="eyebrow">Historico</span>
             <h2>Salas recentes</h2>
           </div>
+          <button
+            aria-label="Atualizar salas"
+            className="refresh-rooms-button"
+            disabled={busy}
+            onClick={() => void loadExistingRooms(passwordInputRef.current?.value ?? password)}
+            title="Atualizar salas"
+            type="button"
+          >
+            {busy ? <Loader2 className="spin" size={18} /> : <RefreshCw size={18} />}
+          </button>
         </div>
         <div className="room-list">
           <article
@@ -256,8 +228,46 @@ export function RoomCreator() {
               </div>
             </article>
           ))}
-          {rooms.length === 0 ? <p className="empty-room-list">Informe a senha e atualize para ver as salas.</p> : null}
+          {rooms.length === 0 ? (
+            <p className="empty-room-list">{hasStoredPassword ? "Nenhuma sala criada ainda." : "Informe a senha e atualize para ver as salas."}</p>
+          ) : null}
         </div>
+      </section>
+
+      <section className="create-room-panel create-room-panel-bottom">
+        <form className="create-room-controls create-room-controls-compact" onSubmit={submitCreateRoom}>
+          {!hasStoredPassword ? (
+            <>
+              <label>Senha do professor</label>
+              <input
+                onChange={(event) => setPassword(event.currentTarget.value)}
+                onInput={(event) => setPassword(event.currentTarget.value)}
+                name="password"
+                placeholder="Senha"
+                ref={passwordInputRef}
+                type="password"
+                defaultValue={password}
+              />
+            </>
+          ) : (
+            <input name="password" ref={passwordInputRef} type="hidden" value={password} />
+          )}
+          <label>Nome da sala</label>
+          <div className="create-room-inline">
+            <input
+              onChange={(event) => setRoomName(event.currentTarget.value)}
+              onInput={(event) => setRoomName(event.currentTarget.value)}
+              name="roomName"
+              placeholder="Turma MFC - manha"
+              ref={roomNameInputRef}
+              type="text"
+              defaultValue={roomName}
+            />
+            <button className="primary-command" disabled={busy} type="submit">
+              {busy ? <Loader2 className="spin" size={18} /> : <Plus size={18} />} Criar sala
+            </button>
+          </div>
+        </form>
       </section>
     </main>
   );
