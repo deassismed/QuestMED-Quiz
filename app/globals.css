@@ -4127,9 +4127,9 @@ a { color: inherit; }
 .entry-shell {
   align-items: center;
   background:
-    linear-gradient(90deg, rgba(5, 9, 18, 0.72), rgba(5, 9, 18, 0.34) 48%, rgba(5, 9, 18, 0.78)),
-    linear-gradient(180deg, rgba(5, 9, 18, 0.15), rgba(5, 9, 18, 0.85)),
-    url("/fundo-entrada.webp") center / cover no-repeat;
+    linear-gradient(90deg, rgba(5, 9, 18, 0.42), rgba(5, 9, 18, 0.08) 48%, rgba(5, 9, 18, 0.18)),
+    linear-gradient(180deg, rgba(5, 9, 18, 0.04), rgba(5, 9, 18, 0.34)),
+    url("/fundo-quiz.webp") center / cover no-repeat;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -4144,8 +4144,8 @@ a { color: inherit; }
 
 .entry-shell::before {
   background:
-    radial-gradient(circle at 50% 78%, rgba(255, 128, 47, 0.24), transparent 28%),
-    linear-gradient(90deg, rgba(5, 9, 18, 0.88), transparent 28%, transparent 70%, rgba(5, 9, 18, 0.88));
+    radial-gradient(circle at 12% 42%, rgba(80, 232, 255, 0.1), transparent 24%),
+    linear-gradient(90deg, rgba(5, 9, 18, 0.64), transparent 30%, transparent 76%, rgba(5, 9, 18, 0.2));
   content: "";
   inset: 0;
   pointer-events: none;
@@ -4153,7 +4153,7 @@ a { color: inherit; }
 }
 
 .entry-shell::after {
-  background: rgba(5, 9, 18, 0.12);
+  background: rgba(5, 9, 18, 0.02);
   backdrop-filter: saturate(1.05);
   content: "";
   inset: 0;
@@ -4199,17 +4199,18 @@ a { color: inherit; }
 }
 
 .entry-hero {
-  align-content: end;
+  align-content: center;
   align-self: stretch;
   background: transparent !important;
   border: 0;
   box-shadow: none;
-  gap: 20px;
+  gap: 12px;
+  justify-items: start;
   margin: 0;
-  max-width: 1120px !important;
+  max-width: 420px !important;
   min-height: calc(100svh - 48px);
-  padding: min(7rem, 11vh) clamp(20px, 5vw, 56px) clamp(26px, 6vh, 58px) !important;
-  width: min(100%, 1120px) !important;
+  padding: clamp(48px, 9vh, 92px) clamp(18px, 4vw, 64px) clamp(26px, 6vh, 58px) !important;
+  width: min(100%, 420px) !important;
 }
 
 .entry-hero .eyebrow {
@@ -4234,12 +4235,13 @@ a { color: inherit; }
 
 .entry-choice-grid {
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  grid-template-columns: 1fr;
+  width: min(100%, 330px);
 }
 
 .entry-choice-card {
-  align-content: start;
+  align-items: center;
   background: rgba(6, 12, 24, 0.86);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
@@ -4247,9 +4249,10 @@ a { color: inherit; }
   color: #fff;
   cursor: pointer;
   display: grid;
-  gap: 13px;
-  min-height: 250px;
-  padding: 22px;
+  gap: 14px;
+  grid-template-columns: 58px minmax(0, 1fr) 28px;
+  min-height: 92px;
+  padding: 16px 18px;
   text-align: left;
   transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease, background 160ms ease;
 }
@@ -4290,7 +4293,7 @@ a { color: inherit; }
 }
 
 .entry-choice-card strong {
-  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
   line-height: 1.1;
   text-shadow: 0 3px 16px rgba(0, 0, 0, 0.92);
 }
@@ -4312,10 +4315,17 @@ a { color: inherit; }
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.86);
 }
 
+.entry-choice-arrow {
+  color: #74fff0;
+  justify-self: end;
+}
+
 .hero-resolver-button {
-  background: rgba(6, 12, 24, 0.78);
+  background: rgba(6, 12, 24, 0.72);
   border-color: rgba(255, 255, 255, 0.28);
   justify-self: start;
+  min-height: 42px;
+  padding: 0 18px;
 }
 
 .hero-entry-error {
@@ -4466,12 +4476,8 @@ a { color: inherit; }
     max-width: 520px;
   }
 
-  .entry-choice-grid {
-    grid-template-columns: 1fr;
-  }
-
   .entry-choice-card {
-    min-height: 178px;
+    min-height: 82px;
   }
 
   .entry-form {
@@ -4506,7 +4512,8 @@ a { color: inherit; }
 
   .entry-choice-card {
     gap: 8px;
-    min-height: 142px;
+    grid-template-columns: 48px minmax(0, 1fr) 24px;
+    min-height: 76px;
     padding: 14px;
   }
 
