@@ -1,7 +1,7 @@
 "use client";
 
 import QRCode from "qrcode";
-import { ArrowLeft, BarChart3, CheckSquare, ExternalLink, Plus, Power, RefreshCw, Shuffle, Trash2 } from "lucide-react";
+import { ArrowLeft, BarChart3, CheckSquare, ExternalLink, LogOut, Plus, Power, RefreshCw, Shuffle, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { createUbs, deleteStudent, deleteUbs, finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions, updateStudentUbs } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
@@ -270,6 +270,11 @@ export function TeacherDashboard({
     }
   }
 
+  function exitProfessorArea() {
+    window.sessionStorage.removeItem("questmed-professor-password");
+    window.location.assign("/");
+  }
+
   return (
     <main className="admin-shell">
       <header className="dashboard-header">
@@ -299,6 +304,9 @@ export function TeacherDashboard({
           </button>
           <button className="danger-command" disabled={busy || state.room.status === "finished"} onClick={() => void closeRoom()} type="button">
             <Power size={18} /> Encerrar
+          </button>
+          <button className="professor-exit-button compact" onClick={exitProfessorArea} type="button">
+            <LogOut size={18} /> SAIR
           </button>
         </div>
       </header>

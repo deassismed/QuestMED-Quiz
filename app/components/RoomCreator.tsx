@@ -1,6 +1,6 @@
 "use client";
 
-import { Copy, ExternalLink, Loader2, Plus, RefreshCw, Trash2 } from "lucide-react";
+import { Copy, ExternalLink, Loader2, LogOut, Plus, RefreshCw, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { accessRoom, createRoom, deleteRoom, listRooms } from "../lib/online-client";
 import type { CreateRoomResult, ProfessorRoomSummary } from "../types";
@@ -108,12 +108,22 @@ export function RoomCreator() {
     }
   }
 
+  function exitProfessorArea() {
+    window.sessionStorage.removeItem("questmed-professor-password");
+    window.location.assign("/");
+  }
+
   return (
     <main className="admin-shell">
       <header className="admin-title">
-        <span className="eyebrow">QuestMED Quiz</span>
-        <h1>Area do professor</h1>
-        <p>Crie salas, compartilhe o codigo com os alunos e acompanhe UBS e pontuacoes.</p>
+        <div>
+          <span className="eyebrow">QuestMED Quiz</span>
+          <h1>Area do professor</h1>
+          <p>Crie salas, compartilhe o codigo com os alunos e acompanhe UBS e pontuacoes.</p>
+        </div>
+        <button className="professor-exit-button" onClick={exitProfessorArea} type="button">
+          <LogOut size={18} /> SAIR
+        </button>
       </header>
 
       {created ? (

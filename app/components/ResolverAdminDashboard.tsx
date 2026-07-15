@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, Loader2, RefreshCw, Trash2 } from "lucide-react";
+import { ArrowLeft, Loader2, LogOut, RefreshCw, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import type { QuizQuestion } from "../types";
 import { AvatarBadge } from "./AvatarBadge";
@@ -98,6 +98,11 @@ export function ResolverAdminDashboard({ questions }: { questions: QuizQuestion[
     }
   }
 
+  function exitProfessorArea() {
+    window.sessionStorage.removeItem("questmed-professor-password");
+    window.location.assign("/");
+  }
+
   return (
     <main className="admin-shell">
       <header className="dashboard-header">
@@ -116,6 +121,9 @@ export function ResolverAdminDashboard({ questions }: { questions: QuizQuestion[
           </button>
           <button className="danger-command" disabled={busy || !state} onClick={() => void clearResolver()} type="button">
             <Trash2 size={18} /> Limpar
+          </button>
+          <button className="professor-exit-button compact" onClick={exitProfessorArea} type="button">
+            <LogOut size={18} /> SAIR
           </button>
         </div>
       </header>
