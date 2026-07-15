@@ -1386,11 +1386,25 @@ a { color: inherit; }
   padding: 28px;
 }
 
+.create-room-panel-bottom {
+  justify-items: stretch;
+}
+
 .create-room-controls {
   display: grid;
   gap: 10px;
   max-width: 480px;
   width: 100%;
+}
+
+.create-room-controls-compact {
+  max-width: none;
+}
+
+.create-room-inline {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(220px, 1fr) auto;
 }
 
 .create-room-controls label, .share-field span {
@@ -1433,7 +1447,36 @@ a { color: inherit; }
 }
 
 .existing-rooms-panel { display: grid; gap: 20px; padding: 24px; }
+.existing-rooms-heading {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+}
 .existing-rooms-heading h2 { margin: 5px 0 0; }
+.refresh-rooms-button {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--accent-strong);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 48px;
+  justify-content: center;
+  width: 48px;
+}
+.refresh-rooms-button:hover:not(:disabled),
+.refresh-rooms-button:focus-visible {
+  border-color: rgba(15, 118, 110, 0.38);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+  outline: none;
+}
+.refresh-rooms-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
 .room-list {
   display: grid;
   gap: 10px;
@@ -4090,6 +4133,14 @@ a { color: inherit; }
 }
 
 @media (max-width: 760px) {
+  .create-room-inline {
+    grid-template-columns: 1fr;
+  }
+
+  .existing-rooms-heading {
+    align-items: flex-start;
+  }
+
   .entry-actions {
     align-items: stretch;
     display: grid;
