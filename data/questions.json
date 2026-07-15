@@ -107,25 +107,25 @@
     "id": "Q005",
     "area": "Banco clinico",
     "theme": "Lombalgia",
-    "statement": "Homem de 31 anos apresenta lombalgia há oito meses. A dor começou insidiosamente, piora na segunda metade da noite e melhora ao levantar-se e caminhar. Há rigidez matinal de 45 minutos e história prévia de uveíte anterior. Qual característica mais favorece uma etiologia inflamatória?",
-    "explanation": "A melhora com exercício e a piora com repouso são características de dor inflamatória. A localização lombar e a ausência de irradiação são inespecíficas. Dor após permanecer em pé pode ocorrer em condições mecânicas.",
+    "statement": "Homem de 31 anos apresenta lombalgia há oito meses, de início insidioso. A dor é mais intensa na segunda metade da noite, melhora ao levantar-se e caminhar e se associa a rigidez matinal de aproximadamente 45 minutos. Relata episódio prévio de uveíte anterior. Qual é a hipótese diagnóstica mais provável?",
+    "explanation": "O início antes dos 45 anos, a duração superior a três meses, a piora noturna, a melhora com movimento, a rigidez matinal prolongada e o antecedente de uveíte anterior favorecem espondiloartrite axial. Lombalgia mecânica tende a piorar com atividade e melhorar com repouso. Hérnia discal costuma produzir sintomas radiculares, e fibromialgia se associa a dor difusa, fadiga e sono não reparador.",
     "correctOptionId": "A",
     "options": [
       {
         "id": "A",
-        "text": "Melhora da dor com atividade física."
+        "text": "Espondiloartrite axial."
       },
       {
         "id": "B",
-        "text": "Localização da dor na região lombar baixa."
+        "text": "Lombalgia mecânica inespecífica."
       },
       {
         "id": "C",
-        "text": "Ausência de irradiação abaixo do joelho."
+        "text": "Radiculopatia por hérnia discal."
       },
       {
         "id": "D",
-        "text": "Presença de dor após períodos prolongados em pé."
+        "text": "Fibromialgia."
       }
     ]
   },
@@ -133,8 +133,8 @@
     "id": "Q006",
     "area": "Banco clinico",
     "theme": "Lombalgia",
-    "statement": "Paciente de 28 anos apresenta quadro clínico sugestivo de espondiloartrite axial. A radiografia das articulações sacroilíacas é normal, mas persiste elevada suspeita clínica. Qual é o exame de imagem mais apropriado para prosseguir a investigação?",
-    "explanation": "A ressonância das sacroilíacas pode identificar inflamação ativa antes do aparecimento de alterações radiográficas. Tomografia demonstra melhor alterações estruturais, mas não é o exame preferencial para inflamação precoce. Cintilografia e ultrassonografia têm menor utilidade nesse contexto.",
+    "statement": "Homem de 28 anos apresenta dor lombar há nove meses, iniciada insidiosamente, com rigidez matinal de aproximadamente uma hora, piora durante o repouso e melhora ao movimentar-se. Relata episódio prévio de uveíte anterior. A radiografia das articulações sacroilíacas não demonstra alterações. Qual exame de imagem é mais apropriado para prosseguir a investigação?",
+    "explanation": "O padrão de dor inflamatória, o início antes dos 45 anos e o antecedente de uveíte aumentam a suspeita de espondiloartrite axial. Quando a radiografia das articulações sacroilíacas é normal, a ressonância magnética dessas articulações é o exame mais apropriado para detectar inflamação ativa precoce, especialmente edema de medula óssea. A tomografia demonstra melhor alterações ósseas estruturais, mas não é o método preferido para inflamação inicial. Cintilografia e ultrassonografia apresentam menor utilidade.",
     "correctOptionId": "C",
     "options": [
       {
@@ -1043,8 +1043,8 @@
     "id": "Q041",
     "area": "Banco clinico",
     "theme": "Dispneia e condições respiratórias",
-    "statement": "Homem tabagista apresenta tosse, emagrecimento e lesão pulmonar cavitária. Tanto tuberculose quanto neoplasia pulmonar são consideradas. Qual estratégia é mais apropriada?",
-    "explanation": "Tuberculose e neoplasia podem apresentar sobreposição clínica e radiológica. A abordagem correta é obter material microbiológico e investigar estruturalmente a lesão. Tratamentos empíricos simultâneos ou atraso de três meses são inadequados.",
+    "statement": "Homem de 64 anos, tabagista de 45 maços-ano, apresenta tosse há dois meses, emagrecimento de 6 kg, sudorese noturna e episódios de hemoptise. A tomografia de tórax mostra lesão cavitária de paredes espessas no lobo superior direito, associada a linfonodomegalia hilar. Qual é a estratégia diagnóstica mais apropriada?",
+    "explanation": "O quadro permite considerar tanto tuberculose pulmonar quanto neoplasia cavitária. Essas hipóteses não são mutuamente excludentes e não devem ser tratadas empiricamente sem confirmação. A abordagem adequada é obter amostras respiratórias para investigação microbiológica, incluindo teste molecular rápido, baciloscopia e cultura, e prosseguir simultaneamente com investigação estrutural e obtenção de tecido quando indicada.",
     "correctOptionId": "C",
     "options": [
       {
@@ -1095,25 +1095,25 @@
     "id": "Q043",
     "area": "Banco clinico",
     "theme": "Dispneia e condições respiratórias",
-    "statement": "Paciente com síndrome gripal apresenta piora súbita após oito dias, com dispneia, febre recorrente e estertores focais. Qual complicação deve ser considerada prioritariamente?",
-    "explanation": "Piora após melhora inicial, febre recorrente, dispneia e achados focais sugerem pneumonia secundária. As demais alternativas não explicam a deterioração respiratória e os estertores localizados.",
+    "statement": "Homem de 58 anos apresentou febre, mialgia e tosse seca, com melhora parcial após cinco dias. No oitavo dia, evoluiu com nova elevação da temperatura, dispneia, expectoração purulenta e estertores focais na base direita. Qual é a complicação mais provável?",
+    "explanation": "A piora após melhora inicial, com retorno da febre, expectoração purulenta, dispneia e achados pulmonares focais, sugere pneumonia bacteriana secundária ao quadro viral. Broncoespasmo pode causar sibilos difusos, embolia pulmonar não costuma produzir expectoração purulenta e estertores focais, e insuficiência cardíaca geralmente se associa a congestão bilateral e outros sinais de sobrecarga.",
     "correctOptionId": "D",
     "options": [
       {
         "id": "A",
-        "text": "Cefaleia por uso excessivo de analgésicos."
+        "text": "Exacerbação de broncoespasmo pós-viral."
       },
       {
         "id": "B",
-        "text": "Rinossinusite viral prolongada."
+        "text": "Embolia pulmonar associada à imobilidade."
       },
       {
         "id": "C",
-        "text": "Reação adversa ao antitérmico."
+        "text": "Insuficiência cardíaca descompensada."
       },
       {
         "id": "D",
-        "text": "Pneumonia secundária ao quadro viral."
+        "text": "Pneumonia bacteriana secundária ao quadro viral."
       }
     ]
   },
@@ -1173,25 +1173,25 @@
     "id": "Q046",
     "area": "Banco clinico",
     "theme": "Disúria e condições urogenitais",
-    "statement": "Mulher de 26 anos apresenta disúria, polaciúria e urgência há dois dias. Não tem febre, corrimento vaginal, dor lombar, gravidez ou comorbidades. Qual é a abordagem mais adequada?",
-    "explanation": "Disúria, urgência e polaciúria sem sintomas vaginais ou sistêmicos permitem diagnóstico clínico de cistite não complicada e tratamento empírico. Não há indicação de tomografia, internação ou avaliação urológica inicial.",
+    "statement": "Mulher de 26 anos apresenta disúria, polaciúria e urgência urinária há dois dias. Nega febre, dor lombar, corrimento vaginal, gestação ou comorbidades. Qual é a abordagem inicial mais adequada?",
+    "explanation": "A combinação de disúria, polaciúria e urgência, sem sintomas vaginais ou sistêmicos, é altamente sugestiva de cistite aguda não complicada. Em mulher jovem e não gestante, pode-se iniciar tratamento empírico sem urocultura de rotina. Urocultura é indicada em situações como gestação, recorrência, falha terapêutica, apresentação atípica ou suspeita de infecção complicada.",
     "correctOptionId": "B",
     "options": [
       {
         "id": "A",
-        "text": "Solicitar tomografia antes de iniciar qualquer tratamento."
+        "text": "Solicitar urocultura e aguardar o resultado antes de iniciar o tratamento."
       },
       {
         "id": "B",
-        "text": "Tratar empiricamente como cistite aguda não complicada."
+        "text": "Iniciar tratamento empírico para cistite aguda não complicada."
       },
       {
         "id": "C",
-        "text": "Encaminhar para avaliação urológica por provável obstrução."
+        "text": "Solicitar ultrassonografia das vias urinárias antes de prescrever antibiótico."
       },
       {
         "id": "D",
-        "text": "Internar para antibioticoterapia intravenosa."
+        "text": "Realizar exame ginecológico obrigatório antes de definir a conduta."
       }
     ]
   },
@@ -1329,25 +1329,25 @@
     "id": "Q052",
     "area": "Banco clinico",
     "theme": "Disúria e condições urogenitais",
-    "statement": "Paciente com prostatite bacteriana aguda apresenta retenção urinária, com globo vesical doloroso. Qual é a melhor conduta?",
-    "explanation": "Retenção urinária associada à prostatite requer drenagem, antibiótico e avaliação urológica. Massagem prostática é contraindicada. Finasterida tem efeito tardio e PSA não deve atrasar o tratamento.",
+    "statement": "Homem de 66 anos com febre, dor perineal e próstata intensamente dolorosa ao toque evolui com incapacidade súbita de urinar e globo vesical palpável. Qual é a conduta mais adequada?",
+    "explanation": "O quadro é compatível com prostatite bacteriana aguda complicada por retenção urinária. É necessário iniciar antibioticoterapia, promover drenagem urinária e solicitar avaliação urológica. A via de drenagem deve ser individualizada; em alguns casos, a drenagem suprapúbica é preferida para evitar instrumentação uretral sobre uma próstata intensamente inflamada. Massagem prostática é contraindicada pelo risco de bacteremia.",
     "correctOptionId": "C",
     "options": [
       {
         "id": "A",
-        "text": "Realizar massagem prostática para obtenção de secreção."
+        "text": "Realizar massagem prostática e aguardar micção espontânea após analgesia."
       },
       {
         "id": "B",
-        "text": "Prescrever finasterida e reavaliar em quatro semanas."
+        "text": "Iniciar alfabloqueador e programar reavaliação ambulatorial em 48 horas."
       },
       {
         "id": "C",
-        "text": "Promover drenagem urinária, iniciar antibiótico e avaliar com urologia."
+        "text": "Iniciar antibiótico, promover drenagem urinária e solicitar avaliação urológica."
       },
       {
         "id": "D",
-        "text": "Solicitar PSA antes de iniciar qualquer intervenção."
+        "text": "Realizar sondagem uretral repetida até obter esvaziamento vesical completo."
       }
     ]
   },
@@ -1485,25 +1485,25 @@
     "id": "Q058",
     "area": "Banco clinico",
     "theme": "Disúria e condições urogenitais",
-    "statement": "Homem assintomático apresenta cálculo renal de 4 mm, não obstrutivo, identificado incidentalmente. Qual é a estratégia inicial mais razoável?",
-    "explanation": "Cálculo pequeno, não obstrutivo e assintomático pode ser acompanhado, com orientação sobre hidratação, prevenção e imagem seriada. Procedimentos invasivos, antibiótico e cateter não são justificados sem sintomas ou complicações.",
+    "statement": "Homem de 46 anos, assintomático, realiza ultrassonografia por outro motivo, que identifica cálculo renal calicial de 4 mm, sem hidronefrose. Não apresenta infecção urinária, rim único ou alteração da função renal. Qual é a conduta inicial mais apropriada?",
+    "explanation": "Cálculo renal pequeno, assintomático e não obstrutivo pode ser acompanhado com vigilância clínica e por imagem, associado a orientação preventiva e avaliação de fatores de risco. Intervenção é considerada quando há crescimento, sintomas, infecção, obstrução, rim único ou circunstâncias ocupacionais e clínicas específicas.",
     "correctOptionId": "B",
     "options": [
       {
         "id": "A",
-        "text": "Nefrolitotomia percutânea imediata."
+        "text": "Indicar ureterorrenolitotripsia por se tratar de cálculo renal persistente."
       },
       {
         "id": "B",
-        "text": "Vigilância clínica e por imagem, com orientação preventiva."
+        "text": "Adotar vigilância clínica e por imagem, com orientação preventiva."
       },
       {
         "id": "C",
-        "text": "Antibioticoterapia profilática contínua."
+        "text": "Iniciar citrato de potássio sem avaliação metabólica ou composição do cálculo."
       },
       {
         "id": "D",
-        "text": "Cateter duplo J até a eliminação do cálculo."
+        "text": "Prescrever alfabloqueador até documentar a eliminação espontânea do cálculo."
       }
     ]
   },
@@ -1537,25 +1537,25 @@
     "id": "Q060",
     "area": "Banco clinico",
     "theme": "Disúria e condições urogenitais",
-    "statement": "Mulher não gestante, assintomática, apresenta urocultura positiva solicitada durante avaliação de rotina. Não realizará procedimento urológico invasivo. Qual é a conduta mais adequada?",
-    "explanation": "Bacteriúria assintomática não deve ser tratada em mulheres não gestantes que não realizarão procedimento urológico invasivo. Repetir culturas e tratar persistentemente não traz benefício e aumenta o risco de resistência e eventos adversos.",
+    "statement": "Mulher de 67 anos, com diabetes tipo 2 controlado, realiza urocultura durante avaliação de rotina. O exame identifica crescimento bacteriano significativo, mas ela nega disúria, urgência, polaciúria, febre ou dor lombar. Não está gestante e não realizará procedimento urológico. Qual é a conduta mais adequada?",
+    "explanation": "Bacteriúria assintomática não deve ser tratada em mulheres não gestantes, inclusive na presença de diabetes, pois o tratamento não reduz infecção sintomática ou complicações e aumenta eventos adversos e resistência. As principais indicações de rastreio e tratamento são gestação e procedimentos urológicos com provável trauma de mucosa.",
     "correctOptionId": "A",
     "options": [
       {
         "id": "A",
-        "text": "Não tratar a bacteriúria assintomática."
+        "text": "Não prescrever antibiótico e orientar avaliação se surgirem sintomas urinários."
       },
       {
         "id": "B",
-        "text": "Prescrever antibiótico por três dias."
+        "text": "Tratar devido ao diabetes, mesmo na ausência de manifestações urinárias."
       },
       {
         "id": "C",
-        "text": "Repetir a urocultura e tratar se permanecer positiva."
+        "text": "Repetir a urocultura e tratar apenas se o mesmo microrganismo persistir."
       },
       {
         "id": "D",
-        "text": "Solicitar ultrassonografia e iniciar profilaxia antimicrobiana."
+        "text": "Iniciar profilaxia antimicrobiana para prevenir pielonefrite e sepse."
       }
     ]
   }
