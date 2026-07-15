@@ -565,6 +565,7 @@ export function TeacherDashboard({
           comment={selectedQuestionComment}
           onClose={() => setSelectedQuestionComment(null)}
           question={questions.find((question) => question.id === selectedQuestionComment.questionId)}
+          stats={releasedQuestionStats[selectedQuestionComment.questionId] ?? null}
         />
       ) : null}
     </main>
@@ -673,12 +674,15 @@ function QuestionStatsPanel({
 function QuestionCommentModal({
   comment,
   onClose,
-  question
+  question,
+  stats
 }: {
   comment: QuestionComment;
   onClose: () => void;
   question?: QuizQuestion;
+  stats: QuestionStats | null;
 }) {
+  const statsByOption = new Map((stats?.options ?? []).map((option) => [option.optionId, option]));
   return (
     <div className="question-comment-backdrop" onClick={onClose} role="presentation">
       <section className="question-comment-modal" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true">
@@ -690,6 +694,15 @@ function QuestionCommentModal({
           </div>
           <strong>Gabarito {comment.correctOptionId}</strong>
         </header>
+
+        {stats ? (
+          <div className="comment-stats-summary">
+            <div><span>Respostas</span><strong>{stats.totalAnswers}</strong></div>
+            <div><span>Acertos</span><strong>{stats.correctCount}</strong></div>
+            <div><span>Erros</span><strong>{stats.incorrectCount}</strong></div>
+            <div><span>Tempo esgotado</span><strong>{stats.timeoutCount}</strong></div>
+          </div>
+        ) : null}
 
         <article className="teaching-point">
           <span>Resposta correta</span>
@@ -707,6 +720,11 @@ function QuestionCommentModal({
               <strong>{alternative.optionId}</strong>
               <div>
                 <b>{alternative.optionText}</b>
+                {statsByOption.has(alternative.optionId) ? (
+                  <span className="comment-choice-stat">
+                    {statsByOption.get(alternative.optionId)?.count ?? 0} escolha(s) · {statsByOption.get(alternative.optionId)?.percent.toFixed(1) ?? "0.0"}%
+                  </span>
+                ) : null}
                 <p>{alternative.comment}</p>
               </div>
             </article>
