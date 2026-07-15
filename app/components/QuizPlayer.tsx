@@ -9,6 +9,7 @@ import {
   answerQuestion,
   getOfflineSyncSummary,
   joinRoom,
+  loadActiveRooms,
   loadRoomState,
   loadStudentState,
   listRooms,
@@ -18,7 +19,7 @@ import {
   updateAvatar
 } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
-import type { QuestionComment, QuestionOption, QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
+import type { PublicRoomSummary, QuestionComment, QuestionOption, QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
 
 type Step = "room" | "student" | "quiz";
 type EntryMode = "home" | "room";
@@ -57,6 +58,9 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
   const [mobileAvatarConfirm, setMobileAvatarConfirm] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [activeRooms, setActiveRooms] = useState<PublicRoomSummary[]>([]);
+  const [roomsLoading, setRoomsLoading] = useState(false);
+  const [roomsError, setRoomsError] = useState("");
   const [showProfessorAccess, setShowProfessorAccess] = useState(false);
   const [professorPassword, setProfessorPassword] = useState("");
   const [professorError, setProfessorError] = useState("");
@@ -434,6 +438,29 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
     await loadRoom(nextRoomCode, true);
   }
 
+  async function openStudentRooms() {
+    setEntryMode("room");
+    setError("");
+    setRoomsError("");
+    setRoomsLoading(true);
+    try {
+      const data = await loadActiveRooms();
+      setActiveRooms(data.rooms);
+    } catch (caught) {
+      setActiveRooms([]);
+      setRoomsError(caught instanceof Error ? caught.message : "Nao foi possivel buscar as salas abertas.");
+    } finally {
+      setRoomsLoading(false);
+    }
+  }
+
+  async function selectActiveRoom(nextRoomCode: string) {
+    const normalizedRoomCode = normalizeCode(nextRoomCode);
+    if (normalizedRoomCode.length !== 6) return;
+    setRoomCode(normalizedRoomCode);
+    await loadRoom(normalizedRoomCode, true);
+  }
+
   async function enterProfessorArea(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setProfessorBusy(true);
@@ -590,7 +617,7 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
                 <strong>PROFESSOR</strong>
                 <ArrowRight className="entry-choice-arrow" size={22} />
               </button>
-              <button className="entry-choice-card student" onClick={() => setEntryMode("room")} type="button">
+              <button className="entry-choice-card student" onClick={() => void openStudentRooms()} type="button">
                 <span className="entry-choice-icon"><Users size={30} /></span>
                 <strong>ALUNOS</strong>
                 <ArrowRight className="entry-choice-arrow" size={22} />
@@ -609,21 +636,28 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
             </button>
             <span className="eyebrow">Alunos e UBS</span>
             <h1>Escolha sua sala</h1>
-            <p>Digite o codigo informado pelo professor para continuar.</p>
-            <form className="entry-form compact" onSubmit={submitRoom}>
-              <input
-                autoFocus
-                maxLength={6}
-                name="roomCode"
-                onChange={(event) => setRoomCode(normalizeCode(event.currentTarget.value))}
-                onInput={(event) => setRoomCode(normalizeCode(event.currentTarget.value))}
-                placeholder="CODIGO DA SALA"
-                ref={roomInputRef}
-                type="text"
-                value={roomCode}
-              />
-              <button disabled={busy || roomCode.length !== 6} type="submit">Continuar</button>
-            </form>
+            {roomsLoading ? (
+              <div className="rooms-loading" role="status">Buscando salas abertas...</div>
+            ) : activeRooms.length > 0 ? (
+              <div className="student-room-grid">
+                {activeRooms.map((item) => (
+                  <button
+                    className="student-room-card"
+                    disabled={busy}
+                    key={item.room.id}
+                    onClick={() => void selectActiveRoom(item.room.roomCode)}
+                    type="button"
+                  >
+                    <span>{item.room.roomName || "Sala aberta"}</span>
+                    <strong>{item.room.roomCode}</strong>
+                    <small>{item.studentCount} aluno(s) · {item.ubsCount} UBS</small>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <p className="empty-room-list">Aguarde o professor criar a sala</p>
+            )}
+            {roomsError ? <p className="entry-error">{roomsError}</p> : null}
             {error ? <p className="entry-error">{error}</p> : null}
           </section>
         )}

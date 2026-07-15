@@ -108,6 +108,12 @@ export type ProfessorRoomSummary = {
   lastActivityAt: string | null;
 };
 
+export type PublicRoomSummary = {
+  room: OnlineRoom;
+  studentCount: number;
+  ubsCount: number;
+};
+
 export type QuestionOptionStat = {
   optionId: QuestionOption["id"] | "TIMEOUT";
   count: number;

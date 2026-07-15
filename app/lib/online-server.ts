@@ -3,6 +3,7 @@ import type {
   CreateRoomResult,
   OnlineRoom,
   ProfessorRoomSummary,
+  PublicRoomSummary,
   QuestionStats,
   QuestionTimer,
   RoomAdminAccessResult,
@@ -259,6 +260,36 @@ export async function listProfessorRooms(): Promise<ProfessorRoomSummary[]> {
       lastActivityAt: roomStudents.map((student) => student.lastActivityAt).sort((a, b) => b.localeCompare(a))[0] ?? null
     };
   });
+}
+
+export async function listPublicActiveRooms(): Promise<PublicRoomSummary[]> {
+  const supabase = getServerSupabase();
+  const { data: roomsData, error: roomsError } = await supabase
+    .from("qmq_rooms")
+    .select("*")
+    .eq("status", "active")
+    .order("created_at", { ascending: false });
+  if (roomsError) throw roomsError;
+  const rooms = ((roomsData ?? []) as RoomRow[]).map(toRoom);
+  if (rooms.length === 0) return [];
+
+  const roomIds = rooms.map((room) => room.id);
+  const { data: studentsData, error: studentsError } = await supabase
+    .from("qmq_students")
+    .select("id,room_id")
+    .in("room_id", roomIds);
+  if (studentsError) throw studentsError;
+  const { data: ubsData, error: ubsError } = await supabase
+    .from("qmq_ubs_teams")
+    .select("id,room_id")
+    .in("room_id", roomIds);
+  if (ubsError) throw ubsError;
+
+  return rooms.map((room) => ({
+    room,
+    studentCount: (studentsData ?? []).filter((student) => student.room_id === room.id).length,
+    ubsCount: (ubsData ?? []).filter((ubs) => ubs.room_id === room.id).length
+  }));
 }
 
 export async function getRoomPublicState(roomCode: string): Promise<RoomPublicState> {

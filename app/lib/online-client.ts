@@ -3,6 +3,7 @@
 import { calculateAnswerScore, getQuestion } from "./quiz";
 import type {
   CreateRoomResult,
+  PublicRoomSummary,
   QuestionStats,
   QuestionTimer,
   RoomAdminAccessResult,
@@ -407,6 +408,10 @@ export async function loadRoomState(roomCode: string) {
     if (cached && isNetworkLikeError(error)) return cached;
     throw error;
   }
+}
+
+export function loadActiveRooms() {
+  return requestJson<{ rooms: PublicRoomSummary[] }>("/api/rooms");
 }
 
 export function createRoom(roomName: string, password: string) {
