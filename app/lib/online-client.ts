@@ -14,7 +14,7 @@ import type {
 } from "../types";
 
 const OFFLINE_STATE_KEY = "questmed-online-offline-state";
-const REQUEST_TIMEOUT_MS = 8000;
+const REQUEST_TIMEOUT_MS = 16000;
 
 type PendingAnswer = {
   id: string;
@@ -117,23 +117,32 @@ function isNetworkLikeError(error: unknown) {
   return /fetch|network|abort|timeout|failed|load|comunicacao|supabase|econn|epipe/i.test(error.message);
 }
 
+function normalizeRequestError(error: unknown) {
+  if (error instanceof DOMException && error.name === "AbortError") {
+    return new Error("Supabase nao respondeu. Verifique se o projeto esta ativo e as chaves estao corretas.");
+  }
+  if (error instanceof Error && /abort|timeout|signal/i.test(error.message)) {
+    return new Error("Supabase nao respondeu. Verifique se o projeto esta ativo e as chaves estao corretas.");
+  }
+  return error;
+}
+
 async function requestJson<T>(url: string, init?: RequestInit) {
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-  const response = await fetch(url, {
-    ...init,
-    cache: "no-store",
-    headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
-    signal: controller.signal
-  });
-  window.clearTimeout(timeout);
   try {
+    const response = await fetch(url, {
+      ...init,
+      cache: "no-store",
+      headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
+      signal: controller.signal
+    });
+    window.clearTimeout(timeout);
     const data = (await response.json()) as T & { error?: string };
     if (!response.ok) throw new Error(data.error ?? "Falha de comunicacao.");
     return data;
   } catch (error) {
-    if (!response.ok) throw error;
-    throw new Error("Falha ao interpretar resposta do servidor.");
+    throw normalizeRequestError(error);
   } finally {
     window.clearTimeout(timeout);
   }
