@@ -123,6 +123,22 @@ export function TeacherDashboard({
     };
   }, [state.room.id, state.room.roomCode]);
 
+  async function openQuestionComment(questionId: string) {
+    const comment = questionCommentsById.get(questionId);
+    if (!comment) return;
+    setSelectedQuestionComment(comment);
+    if (releasedQuestionStats[questionId]) return;
+    setStatsBusy(questionId);
+    try {
+      const stats = await loadQuestionStats(state.room.id, questionId, adminKey);
+      setReleasedQuestionStats((current) => ({ ...current, [questionId]: stats }));
+    } catch {
+      setError("Nao foi possivel carregar as estatisticas da questao.");
+    } finally {
+      setStatsBusy((current) => (current === questionId ? "" : current));
+    }
+  }
+
   async function releaseRandomQuestions() {
     setBusy(true);
     setError("");
@@ -543,10 +559,7 @@ export function TeacherDashboard({
                 className="released-performance-card"
                 disabled={!hasComment}
                 key={question.id}
-                onClick={() => {
-                  const comment = questionCommentsById.get(question.id);
-                  if (comment) setSelectedQuestionComment(comment);
-                }}
+                onClick={() => void openQuestionComment(question.id)}
                 type="button"
               >
                 <strong>{question.id}</strong>
@@ -715,20 +728,21 @@ function QuestionCommentModal({
         </article>
 
         <div className="comment-alternatives">
-          {comment.alternativeComments.map((alternative) => (
-            <article className={alternative.isCorrect ? "correct" : ""} key={alternative.optionId}>
-              <strong>{alternative.optionId}</strong>
-              <div>
-                <b>{alternative.optionText}</b>
-                {statsByOption.has(alternative.optionId) ? (
+          {comment.alternativeComments.map((alternative) => {
+            const optionStats = statsByOption.get(alternative.optionId);
+            return (
+              <article className={alternative.isCorrect ? "correct" : ""} key={alternative.optionId}>
+                <strong>{alternative.optionId}</strong>
+                <div>
+                  <b>{alternative.optionText}</b>
                   <span className="comment-choice-stat">
-                    {statsByOption.get(alternative.optionId)?.count ?? 0} escolha(s) · {statsByOption.get(alternative.optionId)?.percent.toFixed(1) ?? "0.0"}%
+                    {optionStats?.count ?? 0} escolha(s) · {optionStats?.percent.toFixed(1) ?? "0.0"}%
                   </span>
-                ) : null}
-                <p>{alternative.comment}</p>
-              </div>
-            </article>
-          ))}
+                  <p>{alternative.comment}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
     </div>
