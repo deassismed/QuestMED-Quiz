@@ -486,6 +486,16 @@ export function deleteUbs(roomId: string, ubsId: string, adminKey: string) {
   );
 }
 
+export function createUbs(roomId: string, ubsName: string, adminKey: string) {
+  return requestJson<RoomPublicState>(
+    `/api/admin/rooms/${encodeURIComponent(roomId)}/ubs`,
+    {
+      method: "POST",
+      body: JSON.stringify({ adminKey, ubsName })
+    }
+  );
+}
+
 export function loadQuestionStats(roomId: string, questionId: string, adminKey: string) {
   return requestJson<QuestionStats>(
     `/api/admin/rooms/${encodeURIComponent(roomId)}/question-stats?questionId=${encodeURIComponent(questionId)}&adminKey=${encodeURIComponent(adminKey)}`

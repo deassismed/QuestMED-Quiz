@@ -201,27 +201,38 @@ a { color: inherit; }
 .ubs-choice-grid {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
 }
 
 .ubs-choice {
-  align-items: flex-start;
+  align-content: center;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--ink);
   display: grid;
-  gap: 4px;
+  gap: 6px;
+  grid-template-columns: minmax(0, 1fr);
   justify-items: start;
-  min-height: 62px;
-  padding: 12px 14px;
+  min-height: 74px;
+  padding: 13px 16px;
   text-align: left;
+}
+
+.ubs-choice-name {
+  display: block;
+  font-weight: 950;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-wrap: normal;
+  text-wrap: pretty;
 }
 
 .ubs-choice small {
   color: var(--muted);
   font-size: 0.76rem;
   font-weight: 850;
+  line-height: 1.2;
 }
 
 .ubs-choice.add-new {
@@ -1602,7 +1613,7 @@ a { color: inherit; }
   padding: 22px;
 }
 .dashboard-room-name, .scoreboard-header p { color: rgba(255,255,255,0.7); font-weight: 800; margin: 6px 0; }
-.dashboard-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.dashboard-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 9px; }
 .dashboard-actions > a, .dashboard-actions > button {
   align-items: center;
   background: #fff;
@@ -1633,8 +1644,8 @@ a { color: inherit; }
 
 .teacher-overview {
   display: grid;
-  gap: 18px;
-  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .teacher-side-actions {
@@ -1704,6 +1715,35 @@ a { color: inherit; }
   gap: 7px;
   padding: 0;
 }
+
+.teacher-overview:not(.resolver-admin-overview) .teacher-links {
+  background: transparent;
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  overflow: visible;
+}
+
+.teacher-overview:not(.resolver-admin-overview) .teacher-links > div {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 12px;
+}
+
+.teacher-overview:not(.resolver-admin-overview) .teacher-links span {
+  font-size: 0.72rem;
+}
+
+.teacher-overview:not(.resolver-admin-overview) .teacher-links strong {
+  font-size: 1.45rem;
+  line-height: 1;
+}
 .scoreboard-mini-link {
   align-items: center;
   background: #fff;
@@ -1715,6 +1755,42 @@ a { color: inherit; }
   justify-content: center;
   min-height: 48px;
   text-decoration: none;
+}
+
+.table-toolbar {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 12px;
+}
+
+.compact-table-toolbar {
+  border-bottom: 1px solid var(--line);
+}
+
+.add-ubs-button {
+  align-items: center;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.add-ubs-button:hover:not(:disabled),
+.add-ubs-button:focus-visible {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  outline: none;
+}
+
+.add-ubs-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .dashboard-qr {
@@ -1729,6 +1805,29 @@ a { color: inherit; }
   min-height: 190px;
   padding: 12px;
   width: 100%;
+}
+
+.dashboard-header-qr {
+  align-self: center;
+  box-shadow: none;
+  height: 64px;
+  min-height: 64px;
+  padding: 5px;
+  width: 64px;
+}
+
+.dashboard-header-qr img {
+  height: 52px;
+  max-width: none;
+  width: 52px;
+}
+
+.dashboard-header-qr .qr-expand-icon {
+  height: 22px;
+  padding: 4px;
+  right: -6px;
+  top: -6px;
+  width: 22px;
 }
 
 .qr-code-trigger {

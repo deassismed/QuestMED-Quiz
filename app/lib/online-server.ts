@@ -746,6 +746,26 @@ export async function deleteRoomUbs(roomId: string, adminKey: string, ubsId: str
   return getRoomPublicStateById(roomId);
 }
 
+export async function createRoomUbs(roomId: string, adminKey: string, ubsName: string) {
+  if (!(await validateAdmin(roomId, adminKey))) throw new Error("Chave administrativa invalida.");
+  const normalizedUbs = normalizeName(ubsName);
+  if (!normalizedUbs) throw new Error("Informe o nome da UBS.");
+  const supabase = getServerSupabase();
+  const { error } = await supabase
+    .from("qmq_ubs_teams")
+    .upsert(
+      {
+        id: randomUUID(),
+        room_id: roomId,
+        name: normalizedUbs,
+        name_normalized: normalizedUbs
+      },
+      { onConflict: "room_id,name_normalized", ignoreDuplicates: true }
+    );
+  if (error) throw error;
+  return getRoomPublicStateById(roomId);
+}
+
 export async function getQuestionStats(roomId: string, adminKey: string, questionId: string): Promise<QuestionStats> {
   if (!(await validateAdmin(roomId, adminKey))) throw new Error("Chave administrativa invalida.");
   const question = getQuestion(questionId);

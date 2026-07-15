@@ -1,9 +1,9 @@
 "use client";
 
 import QRCode from "qrcode";
-import { ArrowLeft, BarChart3, CheckSquare, Copy, ExternalLink, Power, RefreshCw, Shuffle, Trash2 } from "lucide-react";
+import { ArrowLeft, BarChart3, CheckSquare, ExternalLink, Plus, Power, RefreshCw, Shuffle, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { deleteStudent, deleteUbs, finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions, updateStudentUbs } from "../lib/online-client";
+import { createUbs, deleteStudent, deleteUbs, finishRoom, loadQuestionStats, loadRoomState, loadStudentStats, updateReleasedQuestions, updateStudentUbs } from "../lib/online-client";
 import { getBrowserSupabase } from "../lib/supabase-browser";
 import { QrCodeViewer } from "./QrCodeViewer";
 import type { QuestionComment, QuestionStats, QuizQuestion, RoomPublicState, StudentStats } from "../types";
@@ -256,6 +256,20 @@ export function TeacherDashboard({
     }
   }
 
+  async function addUbs() {
+    const ubsName = window.prompt("Nome da UBS");
+    if (!ubsName?.trim()) return;
+    setBusy(true);
+    setError("");
+    try {
+      setState(await createUbs(state.room.id, ubsName, adminKey));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel adicionar a UBS.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <main className="admin-shell">
       <header className="dashboard-header">
@@ -265,6 +279,14 @@ export function TeacherDashboard({
           <h1>{state.room.roomCode}</h1>
         </div>
         <div className="dashboard-actions">
+          {qrCode ? (
+            <QrCodeViewer
+              alt={`QR Code da sala ${state.room.roomCode}`}
+              caption=""
+              className="dashboard-qr dashboard-header-qr"
+              src={qrCode}
+            />
+          ) : null}
           <a aria-label="Todas as salas" href="/professor" title="Todas as salas">
             <ArrowLeft size={19} />
             <span>Todas as salas</span>
@@ -285,32 +307,23 @@ export function TeacherDashboard({
         <div className="teacher-links">
           <div><span>Alunos</span><strong>{state.students.length}</strong></div>
           <div><span>UBS</span><strong>{state.ubsTeams.length}</strong></div>
-          <div>
-            <span>Link</span>
-            <button onClick={() => void navigator.clipboard.writeText(studentUrl)} type="button"><Copy size={17} /> Copiar entrada</button>
-          </div>
-        </div>
-        <div className="teacher-side-actions">
-          {qrCode ? (
-            <QrCodeViewer
-              alt={`QR Code da sala ${state.room.roomCode}`}
-              caption=""
-              className="dashboard-qr"
-              src={qrCode}
-            />
-          ) : null}
-          <a className="scoreboard-mini-link" href={statusUrl} target="_blank" rel="noreferrer">Placar publico</a>
         </div>
       </section>
 
       {error ? <p className="entry-error">{error}</p> : null}
 
       <section className="groups-section">
-        <div className="section-heading">
-          <div>
-            <span className="eyebrow">Tempo real</span>
-            <h2>UBS</h2>
-          </div>
+        <div className="table-toolbar compact-table-toolbar">
+          <button
+            aria-label="Adicionar UBS"
+            className="add-ubs-button"
+            disabled={busy || state.room.status === "finished"}
+            onClick={() => void addUbs()}
+            title="Adicionar UBS"
+            type="button"
+          >
+            <Plus size={18} />
+          </button>
         </div>
         <div className="data-table-wrap">
           <table className="data-table">

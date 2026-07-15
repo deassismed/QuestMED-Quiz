@@ -711,7 +711,7 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
             <ArrowLeft size={18} />
             Trocar sala
           </button>
-          <span className="eyebrow">Sala {roomCode}</span>
+          <span className="eyebrow">Sala {state?.room.roomName || state?.room.roomCode || roomCode}</span>
           <h1>Identifique-se</h1>
           <form className="entry-form stacked" onSubmit={submitStudent}>
             <input
@@ -739,7 +739,7 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
                       }}
                       type="button"
                     >
-                      {ubs.name}
+                      <span className="ubs-choice-name">{ubs.name}</span>
                       <small>{ubs.memberCount} aluno(s)</small>
                     </button>
                   ))}
