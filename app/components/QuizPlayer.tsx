@@ -583,30 +583,21 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
         onMouseDown={entryMode === "room" ? () => setEntryMode("home") : undefined}
       >
         {entryMode === "home" ? (
-          <section className="entry-panel entry-hero">
-            <span className="eyebrow">QuestMED Quiz</span>
-            <h1>Entre no desafio de questoes</h1>
-            <p>Escolha como deseja acessar a atividade: painel do professor, jogo dos alunos ou resolucao individual.</p>
+          <section className="entry-panel entry-hero" aria-label="Entrada QuestMED Quiz">
             <div className="entry-choice-grid">
               <button className="entry-choice-card professor" onClick={() => setShowProfessorAccess(true)} type="button">
                 <span className="entry-choice-icon"><GraduationCap size={30} /></span>
                 <strong>PROFESSOR</strong>
-                <small>Criar salas, liberar questoes, acompanhar UBS e projetar o placar.</small>
-                <span className="entry-choice-action">
-                  Abrir painel do professor <ArrowRight size={18} />
-                </span>
+                <ArrowRight className="entry-choice-arrow" size={22} />
               </button>
               <button className="entry-choice-card student" onClick={() => setEntryMode("room")} type="button">
                 <span className="entry-choice-icon"><Users size={30} /></span>
                 <strong>ALUNOS</strong>
-                <small>Entrar com o codigo da sala, escolher UBS e responder as questoes liberadas.</small>
-                <span className="entry-choice-action">
-                  Informar codigo da sala <ArrowRight size={18} />
-                </span>
+                <ArrowRight className="entry-choice-arrow" size={22} />
               </button>
             </div>
             <button className="resolver-entry-button hero-resolver-button" onClick={() => setResolverMode(true)} type="button">
-              Resolver questoes
+              Resolvedor
             </button>
             {error ? <p className="entry-error hero-entry-error">{error}</p> : null}
           </section>
