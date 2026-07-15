@@ -11,31 +11,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "A",
       "correctOptionText": "Manter atividades toleradas, orientar analgesia e evitar repouso prolongado.",
-      "teachingPoint": "A alternativa A é correta porque a lombalgia mecânica aguda, sem sinais de alarme, deve ser manejada com educação, manutenção de atividades e analgesia. A imagem inicial não melhora o desfecho nesse cenário. Repouso prolongado favorece incapacidade, e não há indicação de ressonância ou avaliação cirúrgica.",
+      "teachingPoint": "O caso é compatível com lombalgia mecânica aguda inespecífica: início após esforço, dor axial sem irradiação, exame neurológico normal e ausência de sinais de alarme. A conduta inicial deve combinar orientação sobre o caráter geralmente autolimitado, manutenção das atividades conforme tolerância, medidas analgésicas e reavaliação clínica. Exames de imagem não são indicados de rotina, pois raramente modificam a conduta e podem identificar alterações incidentais sem relação causal com a dor.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Manter atividades toleradas, orientar analgesia e evitar repouso prolongado.",
           "isCorrect": true,
-          "comment": "Correta. A alternativa A é correta porque a lombalgia mecânica aguda, sem sinais de alarme, deve ser manejada com educação, manutenção de atividades e analgesia. A imagem inicial não melhora o desfecho nesse cenário. Repouso prolongado favorece incapacidade, e não há indicação de ressonância ou avaliação cirúrgica."
+          "comment": "Correta. Na lombalgia mecânica aguda sem sinais de alarme, recomenda-se estimular a manutenção das atividades habituais dentro do limite tolerado, oferecer analgesia e desencorajar o repouso prolongado. A educação sobre o bom prognóstico e a orientação para retorno caso surjam déficits neurológicos, febre, perda ponderal ou alterações esfincterianas fazem parte do manejo inicial."
         },
         {
           "optionId": "B",
           "optionText": "Solicitar radiografia lombar antes de iniciar o tratamento sintomático.",
           "isCorrect": false,
-          "comment": "Incorreta. A alternativa A é correta porque a lombalgia mecânica aguda, sem sinais de alarme, deve ser manejada com educação, manutenção de atividades e analgesia. A imagem inicial não melhora o desfecho nesse cenário. Repouso prolongado favorece incapacidade, e não há indicação de ressonância ou avaliação cirúrgica."
+          "comment": "Incorreta. A radiografia simples pode ser útil quando há suspeita de fratura, trauma relevante, osteoporose importante ou deformidade estrutural, mas não deve anteceder o tratamento sintomático de uma lombalgia aguda inespecífica. Além da baixa capacidade de avaliar discos e estruturas neurais, o exame pode revelar alterações degenerativas incidentais que não explicam os sintomas."
         },
         {
           "optionId": "C",
           "optionText": "Prescrever repouso no leito até o desaparecimento completo da dor.",
           "isCorrect": false,
-          "comment": "Incorreta. A alternativa A é correta porque a lombalgia mecânica aguda, sem sinais de alarme, deve ser manejada com educação, manutenção de atividades e analgesia. A imagem inicial não melhora o desfecho nesse cenário. Repouso prolongado favorece incapacidade, e não há indicação de ressonância ou avaliação cirúrgica."
+          "comment": "Incorreta. O repouso no leito até o desaparecimento completo da dor favorece descondicionamento, rigidez, medo de movimento e maior incapacidade funcional. Pode-se reduzir temporariamente uma atividade que exacerbe muito a dor, mas o objetivo é manter mobilidade e retomar progressivamente as tarefas usuais, sem exigir ausência total de sintomas."
         },
         {
           "optionId": "D",
           "optionText": "Solicitar ressonância magnética e encaminhar para avaliação especializada.",
           "isCorrect": false,
-          "comment": "Incorreta. A alternativa A é correta porque a lombalgia mecânica aguda, sem sinais de alarme, deve ser manejada com educação, manutenção de atividades e analgesia. A imagem inicial não melhora o desfecho nesse cenário. Repouso prolongado favorece incapacidade, e não há indicação de ressonância ou avaliação cirúrgica."
+          "comment": "Incorreta. Ressonância magnética e avaliação especializada precoce são reservadas para situações como síndrome da cauda equina, déficit neurológico progressivo, suspeita de infecção, neoplasia, fratura oculta ou persistência relevante dos sintomas quando o resultado possa modificar a conduta. Nenhum desses elementos está presente no caso."
         }
       ]
     },
@@ -44,31 +44,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "C",
       "correctOptionText": "Solicitar ressonância lombossacra urgente e acionar equipe cirúrgica.",
-      "teachingPoint": "A dificuldade miccional, a anestesia em sela, a redução do tônus anal e o déficit bilateral sugerem síndrome da cauda equina. É necessária ressonância urgente e avaliação cirúrgica. Eletroneuromiografia, tratamento ambulatorial ou radiografia atrasariam uma intervenção potencialmente tempo-dependente.",
+      "teachingPoint": "A associação de disfunção vesical recente, redução da sensibilidade perineal, diminuição do tônus anal e déficit motor sugere síndrome da cauda equina, uma emergência neurológica. A prioridade é confirmar rapidamente a compressão com ressonância lombossacra e obter avaliação cirúrgica urgente, pois o atraso na descompressão pode resultar em déficits esfincterianos, sexuais e motores permanentes. Medidas sintomáticas ou exames eletrofisiológicos não devem retardar essa abordagem.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Solicitar eletroneuromiografia ambulatorial e iniciar gabapentina.",
           "isCorrect": false,
-          "comment": "Incorreta. A dificuldade miccional, a anestesia em sela, a redução do tônus anal e o déficit bilateral sugerem síndrome da cauda equina. É necessária ressonância urgente e avaliação cirúrgica. Eletroneuromiografia, tratamento ambulatorial ou radiografia atrasariam uma intervenção potencialmente tempo-dependente."
+          "comment": "Incorreta. A eletroneuromiografia é útil na investigação eletiva de radiculopatias e neuropatias periféricas, geralmente após tempo suficiente para surgirem alterações eletrofisiológicas. Ela não demonstra adequadamente uma compressão aguda da cauda equina. A gabapentina pode reduzir dor neuropática, mas não trata a compressão nem previne dano neurológico."
         },
         {
           "optionId": "B",
           "optionText": "Prescrever anti-inflamatório e reavaliar o exame neurológico em 48 horas.",
           "isCorrect": false,
-          "comment": "Incorreta. A dificuldade miccional, a anestesia em sela, a redução do tônus anal e o déficit bilateral sugerem síndrome da cauda equina. É necessária ressonância urgente e avaliação cirúrgica. Eletroneuromiografia, tratamento ambulatorial ou radiografia atrasariam uma intervenção potencialmente tempo-dependente."
+          "comment": "Incorreta. Anti-inflamatório e reavaliação em 48 horas seriam aceitáveis apenas em lombociatalgia sem sinais de alarme. Retenção ou dificuldade urinária, anestesia em sela, hipotonia anal e déficit motor indicam possível compressão grave; aguardar pode permitir progressão para disfunção esfincteriana e déficit neurológico irreversíveis."
         },
         {
           "optionId": "C",
           "optionText": "Solicitar ressonância lombossacra urgente e acionar equipe cirúrgica.",
           "isCorrect": true,
-          "comment": "Correta. A dificuldade miccional, a anestesia em sela, a redução do tônus anal e o déficit bilateral sugerem síndrome da cauda equina. É necessária ressonância urgente e avaliação cirúrgica. Eletroneuromiografia, tratamento ambulatorial ou radiografia atrasariam uma intervenção potencialmente tempo-dependente."
+          "comment": "Correta. A ressonância lombossacra é o exame de escolha para localizar e caracterizar a compressão das raízes da cauda equina. A equipe cirúrgica deve ser acionada simultaneamente, sem transformar o exame em motivo para atraso. Avaliação do resíduo pós-miccional e manejo vesical podem ser necessários, mas não substituem a investigação e a descompressão urgentes."
         },
         {
           "optionId": "D",
           "optionText": "Realizar radiografia simples e encaminhar para fisioterapia motora.",
           "isCorrect": false,
-          "comment": "Incorreta. A dificuldade miccional, a anestesia em sela, a redução do tônus anal e o déficit bilateral sugerem síndrome da cauda equina. É necessária ressonância urgente e avaliação cirúrgica. Eletroneuromiografia, tratamento ambulatorial ou radiografia atrasariam uma intervenção potencialmente tempo-dependente."
+          "comment": "Incorreta. A radiografia simples avalia principalmente estruturas ósseas e não exclui compressão do saco dural por hérnia discal, tumor, abscesso ou hematoma. Fisioterapia não deve ser iniciada diante de sinais de síndrome da cauda equina antes da exclusão de uma lesão compressiva que exija tratamento cirúrgico."
         }
       ]
     },
@@ -77,31 +77,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "B",
       "correctOptionText": "Claudicação neurogênica por estenose do canal lombar.",
-      "teachingPoint": "A piora em ortostatismo e a melhora ao sentar ou flexionar o tronco caracterizam claudicação neurogênica. Na claudicação vascular, ficar parado geralmente alivia e os pulsos podem estar reduzidos. Polineuropatia não apresenta esse padrão postural, e hérnia discal aguda não costuma produzir quadro crônico bilateral dependente da marcha.",
+      "teachingPoint": "O padrão descrito é típico de claudicação neurogênica por estenose do canal lombar: sintomas bilaterais precipitados pela marcha ou pela permanência em ortostatismo e aliviados ao sentar ou flexionar o tronco, o chamado sinal do carrinho de supermercado. A extensão lombar reduz o espaço do canal, enquanto a flexão tende a ampliá-lo. Pulsos preservados e alívio dependente da posição ajudam a diferenciá-la da claudicação vascular.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Claudicação vascular por doença arterial periférica.",
           "isCorrect": false,
-          "comment": "Incorreta. A piora em ortostatismo e a melhora ao sentar ou flexionar o tronco caracterizam claudicação neurogênica. Na claudicação vascular, ficar parado geralmente alivia e os pulsos podem estar reduzidos. Polineuropatia não apresenta esse padrão postural, e hérnia discal aguda não costuma produzir quadro crônico bilateral dependente da marcha."
+          "comment": "Incorreta. Na claudicação vascular por doença arterial periférica, a dor costuma surgir de forma reprodutível com o esforço muscular e melhorar apenas com a interrupção da marcha, mesmo que o paciente permaneça em pé. Pulsos reduzidos, extremidades frias, alterações tróficas e índice tornozelo-braquial anormal reforçam essa hipótese, ausentes no caso."
         },
         {
           "optionId": "B",
           "optionText": "Claudicação neurogênica por estenose do canal lombar.",
           "isCorrect": true,
-          "comment": "Correta. A piora em ortostatismo e a melhora ao sentar ou flexionar o tronco caracterizam claudicação neurogênica. Na claudicação vascular, ficar parado geralmente alivia e os pulsos podem estar reduzidos. Polineuropatia não apresenta esse padrão postural, e hérnia discal aguda não costuma produzir quadro crônico bilateral dependente da marcha."
+          "comment": "Correta. A estenose lombar produz compressão dinâmica das raízes, geralmente pior com extensão da coluna, ortostatismo e caminhada. A melhora ao sentar ou inclinar-se para a frente e a preservação dos pulsos distais são achados clássicos de claudicação neurogênica, especialmente em pacientes mais idosos."
         },
         {
           "optionId": "C",
           "optionText": "Polineuropatia periférica distal de causa metabólica.",
           "isCorrect": false,
-          "comment": "Incorreta. A piora em ortostatismo e a melhora ao sentar ou flexionar o tronco caracterizam claudicação neurogênica. Na claudicação vascular, ficar parado geralmente alivia e os pulsos podem estar reduzidos. Polineuropatia não apresenta esse padrão postural, e hérnia discal aguda não costuma produzir quadro crônico bilateral dependente da marcha."
+          "comment": "Incorreta. A polineuropatia metabólica costuma causar parestesias, queimação e perda sensitiva distal simétrica em padrão de meias, com sintomas persistentes ou noturnos. Ela não costuma ser desencadeada de modo previsível pela ortostase nem melhorar rapidamente com a flexão do tronco."
         },
         {
           "optionId": "D",
           "optionText": "Radiculopatia aguda por hérnia discal sequestrada.",
           "isCorrect": false,
-          "comment": "Incorreta. A piora em ortostatismo e a melhora ao sentar ou flexionar o tronco caracterizam claudicação neurogênica. Na claudicação vascular, ficar parado geralmente alivia e os pulsos podem estar reduzidos. Polineuropatia não apresenta esse padrão postural, e hérnia discal aguda não costuma produzir quadro crônico bilateral dependente da marcha."
+          "comment": "Incorreta. Hérnia discal aguda geralmente provoca dor radicular unilateral, em distribuição dermatomérica, por vezes agravada por tosse, espirro ou manobra de Valsalva, podendo haver déficit focal. Um quadro bilateral, crônico e dependente da extensão ou da marcha é mais compatível com estenose degenerativa do canal."
         }
       ]
     },
@@ -110,31 +110,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "D",
       "correctOptionText": "Radiografia da coluna toracolombar.",
-      "teachingPoint": "Radiografia é a investigação inicial de uma possível fratura vertebral por fragilidade. A ressonância é reservada para dúvida diagnóstica, déficit neurológico ou avaliação de complicações. Eletroneuromiografia e tomografia abdominal não respondem à hipótese principal.",
+      "teachingPoint": "Idade avançada, trauma de baixa energia, fratura prévia por fragilidade e uso de glicocorticoide aumentam fortemente a probabilidade de fratura vertebral osteoporótica. Na ausência de déficit neurológico, a radiografia da coluna toracolombar é a investigação inicial usual para identificar redução da altura vertebral, deformidade em cunha ou colapso. Ressonância ou tomografia podem ser necessárias se a radiografia for inconclusiva, se houver suspeita de complicação ou se for preciso definir a idade da fratura.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Ressonância magnética lombar de urgência.",
           "isCorrect": false,
-          "comment": "Incorreta. Radiografia é a investigação inicial de uma possível fratura vertebral por fragilidade. A ressonância é reservada para dúvida diagnóstica, déficit neurológico ou avaliação de complicações. Eletroneuromiografia e tomografia abdominal não respondem à hipótese principal."
+          "comment": "Incorreta. A ressonância é muito sensível para edema ósseo, fratura oculta, comprometimento do canal e diferenciação entre fraturas recentes e antigas. Entretanto, sem déficit neurológico ou dúvida após a avaliação inicial, não é o primeiro exame obrigatório; a radiografia direcionada é mais simples e geralmente suficiente para iniciar a investigação."
         },
         {
           "optionId": "B",
           "optionText": "Eletroneuromiografia dos membros inferiores.",
           "isCorrect": false,
-          "comment": "Incorreta. Radiografia é a investigação inicial de uma possível fratura vertebral por fragilidade. A ressonância é reservada para dúvida diagnóstica, déficit neurológico ou avaliação de complicações. Eletroneuromiografia e tomografia abdominal não respondem à hipótese principal."
+          "comment": "Incorreta. A eletroneuromiografia avalia a função de raízes, plexos, nervos periféricos e músculos, sendo utilizada em radiculopatias ou neuropatias selecionadas. Ela não diagnostica fratura vertebral e não responde à principal hipótese levantada pela dor focal após trauma de baixa energia."
         },
         {
           "optionId": "C",
           "optionText": "Tomografia de abdome com contraste intravenoso.",
           "isCorrect": false,
-          "comment": "Incorreta. Radiografia é a investigação inicial de uma possível fratura vertebral por fragilidade. A ressonância é reservada para dúvida diagnóstica, déficit neurológico ou avaliação de complicações. Eletroneuromiografia e tomografia abdominal não respondem à hipótese principal."
+          "comment": "Incorreta. A tomografia de abdome com contraste é destinada à avaliação de doenças intra-abdominais e não constitui exame direcionado para uma suspeita de fratura vertebral por fragilidade. Além de expor a paciente a radiação e contraste sem benefício esperado, pode não fornecer as reconstruções adequadas da coluna."
         },
         {
           "optionId": "D",
           "optionText": "Radiografia da coluna toracolombar.",
           "isCorrect": true,
-          "comment": "Correta. Radiografia é a investigação inicial de uma possível fratura vertebral por fragilidade. A ressonância é reservada para dúvida diagnóstica, déficit neurológico ou avaliação de complicações. Eletroneuromiografia e tomografia abdominal não respondem à hipótese principal."
+          "comment": "Correta. Radiografias em incidências adequadas da coluna toracolombar são o exame inicial para pesquisar fratura por compressão, perda de altura vertebral e deformidade. Um resultado normal não exclui totalmente fratura oculta; se a dor focal persistir ou houver elevada suspeita clínica, deve-se complementar com ressonância ou tomografia direcionada."
         }
       ]
     },
@@ -143,31 +143,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "A",
       "correctOptionText": "Melhora da dor com atividade física.",
-      "teachingPoint": "A melhora com exercício e a piora com repouso são características de dor inflamatória. A localização lombar e a ausência de irradiação são inespecíficas. Dor após permanecer em pé pode ocorrer em condições mecânicas.",
+      "teachingPoint": "Dor lombar inflamatória é sugerida por início antes dos 40–45 anos, instalação insidiosa, melhora com exercício, ausência de melhora com repouso, dor noturna — especialmente na segunda metade da noite — e rigidez matinal prolongada. A uveíte anterior é uma manifestação extra-articular associada às espondiloartrites. Nenhum achado isolado confirma o diagnóstico, mas a combinação aumenta a probabilidade clínica.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Melhora da dor com atividade física.",
           "isCorrect": true,
-          "comment": "Correta. A melhora com exercício e a piora com repouso são características de dor inflamatória. A localização lombar e a ausência de irradiação são inespecíficas. Dor após permanecer em pé pode ocorrer em condições mecânicas."
+          "comment": "Correta. A melhora com atividade física e a piora durante repouso prolongado são características centrais da dor inflamatória. No caso, esse achado se associa a início jovem, dor noturna, rigidez matinal de 45 minutos e antecedente de uveíte, conjunto que deve levantar suspeita de espondiloartrite axial."
         },
         {
           "optionId": "B",
           "optionText": "Localização da dor na região lombar baixa.",
           "isCorrect": false,
-          "comment": "Incorreta. A melhora com exercício e a piora com repouso são características de dor inflamatória. A localização lombar e a ausência de irradiação são inespecíficas. Dor após permanecer em pé pode ocorrer em condições mecânicas."
+          "comment": "Incorreta. A localização na região lombar baixa é inespecífica e ocorre tanto em condições mecânicas quanto inflamatórias. Para aumentar a probabilidade de etiologia inflamatória, é necessário considerar o comportamento da dor, a idade de início, a rigidez matinal, a dor noturna e manifestações associadas."
         },
         {
           "optionId": "C",
           "optionText": "Ausência de irradiação abaixo do joelho.",
           "isCorrect": false,
-          "comment": "Incorreta. A melhora com exercício e a piora com repouso são características de dor inflamatória. A localização lombar e a ausência de irradiação são inespecíficas. Dor após permanecer em pé pode ocorrer em condições mecânicas."
+          "comment": "Incorreta. A ausência de irradiação abaixo do joelho ajuda principalmente a afastar uma síndrome radicular lombossacra típica, mas não diferencia adequadamente dor mecânica de dor inflamatória. Ambas podem permanecer restritas à região lombar ou glútea."
         },
         {
           "optionId": "D",
           "optionText": "Presença de dor após períodos prolongados em pé.",
           "isCorrect": false,
-          "comment": "Incorreta. A melhora com exercício e a piora com repouso são características de dor inflamatória. A localização lombar e a ausência de irradiação são inespecíficas. Dor após permanecer em pé pode ocorrer em condições mecânicas."
+          "comment": "Incorreta. Dor após permanecer muito tempo em pé pode ocorrer por sobrecarga mecânica, artropatia facetária ou estenose lombar e, isoladamente, não caracteriza inflamação. Na dor inflamatória, o padrão mais relevante é piora com repouso e melhora ao movimentar-se."
         }
       ]
     },
@@ -176,31 +176,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "C",
       "correctOptionText": "Ressonância magnética das articulações sacroilíacas.",
-      "teachingPoint": "A ressonância das sacroilíacas pode identificar inflamação ativa antes do aparecimento de alterações radiográficas. Tomografia demonstra melhor alterações estruturais, mas não é o exame preferencial para inflamação precoce. Cintilografia e ultrassonografia têm menor utilidade nesse contexto.",
+      "teachingPoint": "Na suspeita de espondiloartrite axial com radiografia sacroilíaca normal, a ressonância magnética das articulações sacroilíacas é o exame mais útil para detectar inflamação ativa precoce, especialmente edema de medula óssea. A tomografia é superior para alterações estruturais crônicas, mas expõe à radiação e é menos adequada para identificar atividade inflamatória inicial.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Tomografia computadorizada da coluna lombar.",
           "isCorrect": false,
-          "comment": "Incorreta. A ressonância das sacroilíacas pode identificar inflamação ativa antes do aparecimento de alterações radiográficas. Tomografia demonstra melhor alterações estruturais, mas não é o exame preferencial para inflamação precoce. Cintilografia e ultrassonografia têm menor utilidade nesse contexto."
+          "comment": "Incorreta. A tomografia computadorizada da coluna lombar avalia bem estruturas ósseas, fraturas e alterações degenerativas, mas não é o exame de escolha para investigar sacroileíte inflamatória precoce. Além disso, o alvo anatômico principal são as articulações sacroilíacas, não a coluna lombar."
         },
         {
           "optionId": "B",
           "optionText": "Cintilografia óssea de corpo inteiro.",
           "isCorrect": false,
-          "comment": "Incorreta. A ressonância das sacroilíacas pode identificar inflamação ativa antes do aparecimento de alterações radiográficas. Tomografia demonstra melhor alterações estruturais, mas não é o exame preferencial para inflamação precoce. Cintilografia e ultrassonografia têm menor utilidade nesse contexto."
+          "comment": "Incorreta. A cintilografia óssea pode demonstrar aumento inespecífico do metabolismo ósseo, mas apresenta baixa especificidade e sensibilidade limitada para sacroileíte. Não permite caracterizar adequadamente edema de medula óssea nem outras lesões inflamatórias precoces."
         },
         {
           "optionId": "C",
           "optionText": "Ressonância magnética das articulações sacroilíacas.",
           "isCorrect": true,
-          "comment": "Correta. A ressonância das sacroilíacas pode identificar inflamação ativa antes do aparecimento de alterações radiográficas. Tomografia demonstra melhor alterações estruturais, mas não é o exame preferencial para inflamação precoce. Cintilografia e ultrassonografia têm menor utilidade nesse contexto."
+          "comment": "Correta. A ressonância magnética das articulações sacroilíacas pode evidenciar edema de medula óssea, osteíte, sinovite e entesite antes do aparecimento de alterações radiográficas. É o exame preferencial quando a suspeita clínica permanece elevada apesar de radiografia normal."
         },
         {
           "optionId": "D",
           "optionText": "Ultrassonografia musculoesquelética da região lombar.",
           "isCorrect": false,
-          "comment": "Incorreta. A ressonância das sacroilíacas pode identificar inflamação ativa antes do aparecimento de alterações radiográficas. Tomografia demonstra melhor alterações estruturais, mas não é o exame preferencial para inflamação precoce. Cintilografia e ultrassonografia têm menor utilidade nesse contexto."
+          "comment": "Incorreta. A ultrassonografia musculoesquelética tem utilidade em enteses e articulações periféricas superficiais, mas não avalia adequadamente as articulações sacroilíacas, que são profundas. Portanto, não substitui a ressonância na investigação de espondiloartrite axial."
         }
       ]
     },
@@ -209,31 +209,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "B",
       "correctOptionText": "Investigar comprometimento vertebral por neoplasia com prioridade.",
-      "teachingPoint": "Antecedente de câncer, dor noturna, perda ponderal e dor vertebral focal exigem investigação prioritária de metástase. Fisioterapia ou analgesia isolada podem retardar o diagnóstico. A radiografia simples tem sensibilidade limitada e não deve ser a única investigação em situação de alta suspeita.",
+      "teachingPoint": "História prévia de neoplasia, dor progressiva ou noturna, perda ponderal e dor vertebral focal são sinais de alarme para comprometimento neoplásico da coluna. Nesse contexto, a investigação deve ser prioritária e não condicionada à resposta ao tratamento sintomático. A ressonância da coluna é geralmente o método mais sensível para avaliar metástase vertebral e possível extensão epidural.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Iniciar fisioterapia e reavaliar após seis semanas.",
           "isCorrect": false,
-          "comment": "Incorreta. Antecedente de câncer, dor noturna, perda ponderal e dor vertebral focal exigem investigação prioritária de metástase. Fisioterapia ou analgesia isolada podem retardar o diagnóstico. A radiografia simples tem sensibilidade limitada e não deve ser a única investigação em situação de alta suspeita."
+          "comment": "Incorreta. Fisioterapia é apropriada na lombalgia mecânica sem sinais de alarme, mas pode retardar o diagnóstico neste caso. Antecedente de câncer, dor noturna, perda de peso e dor vertebral localizada exigem investigação imediata de doença secundária."
         },
         {
           "optionId": "B",
           "optionText": "Investigar comprometimento vertebral por neoplasia com prioridade.",
           "isCorrect": true,
-          "comment": "Correta. Antecedente de câncer, dor noturna, perda ponderal e dor vertebral focal exigem investigação prioritária de metástase. Fisioterapia ou analgesia isolada podem retardar o diagnóstico. A radiografia simples tem sensibilidade limitada e não deve ser a única investigação em situação de alta suspeita."
+          "comment": "Correta. O conjunto de sinais clínicos eleva substancialmente a probabilidade de metástase vertebral ou outra complicação oncológica. A investigação deve ocorrer com prioridade, preferencialmente por método capaz de avaliar corpo vertebral, canal medular e partes moles."
         },
         {
           "optionId": "C",
           "optionText": "Prescrever anti-inflamatório e solicitar radiografia se não houver melhora.",
           "isCorrect": false,
-          "comment": "Incorreta. Antecedente de câncer, dor noturna, perda ponderal e dor vertebral focal exigem investigação prioritária de metástase. Fisioterapia ou analgesia isolada podem retardar o diagnóstico. A radiografia simples tem sensibilidade limitada e não deve ser a única investigação em situação de alta suspeita."
+          "comment": "Incorreta. Analgesia pode ser oferecida, mas não deve ser a única conduta nem justificar adiamento da investigação. A radiografia simples pode permanecer normal em fases iniciais e não exclui metástase vertebral."
         },
         {
           "optionId": "D",
           "optionText": "Orientar atividade física progressiva por provável lombalgia inespecífica.",
           "isCorrect": false,
-          "comment": "Incorreta. Antecedente de câncer, dor noturna, perda ponderal e dor vertebral focal exigem investigação prioritária de metástase. Fisioterapia ou analgesia isolada podem retardar o diagnóstico. A radiografia simples tem sensibilidade limitada e não deve ser a única investigação em situação de alta suspeita."
+          "comment": "Incorreta. Atividade física progressiva é recomendada na lombalgia inespecífica, porém o caso não deve ser classificado como inespecífico antes de excluir causa neoplásica. Os sinais de alarme modificam completamente a estratégia diagnóstica."
         }
       ]
     },
@@ -242,31 +242,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "A",
       "correctOptionText": "Fratura vertebral por fragilidade.",
-      "teachingPoint": "Uso crônico de glicocorticoide e dor súbita vertebral localizada sugerem fratura por fragilidade. Não há febre ou fatores infecciosos que favoreçam espondilodiscite. A ausência de sintomas radiculares reduz a probabilidade de radiculopatia, e artrite reumatoide não explica isoladamente dor focal vertebral súbita.",
+      "teachingPoint": "O uso crônico de glicocorticoides acelera a perda de massa óssea, aumenta a fragilidade vertebral e pode causar fraturas mesmo sem trauma significativo. Dor súbita, focal e reproduzida à percussão vertebral é um padrão típico de fratura por fragilidade. A ausência de febre, déficit neurológico ou sintomas radiculares reduz a probabilidade dos principais diagnósticos alternativos.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Fratura vertebral por fragilidade.",
           "isCorrect": true,
-          "comment": "Correta. Uso crônico de glicocorticoide e dor súbita vertebral localizada sugerem fratura por fragilidade. Não há febre ou fatores infecciosos que favoreçam espondilodiscite. A ausência de sintomas radiculares reduz a probabilidade de radiculopatia, e artrite reumatoide não explica isoladamente dor focal vertebral súbita."
+          "comment": "Correta. Glicocorticoide crônico é importante fator de risco para osteoporose secundária. A dor vertebral súbita e localizada, desencadeada por movimento mínimo e acompanhada de dor à percussão, é altamente sugestiva de fratura vertebral por fragilidade."
         },
         {
           "optionId": "B",
           "optionText": "Espondilodiscite bacteriana.",
           "isCorrect": false,
-          "comment": "Incorreta. Uso crônico de glicocorticoide e dor súbita vertebral localizada sugerem fratura por fragilidade. Não há febre ou fatores infecciosos que favoreçam espondilodiscite. A ausência de sintomas radiculares reduz a probabilidade de radiculopatia, e artrite reumatoide não explica isoladamente dor focal vertebral súbita."
+          "comment": "Incorreta. Espondilodiscite costuma causar dor persistente, frequentemente progressiva e pouco mecânica, podendo associar-se a febre, bacteremia, imunossupressão ou elevação de marcadores inflamatórios. O início súbito após esforço mínimo favorece fratura."
         },
         {
           "optionId": "C",
           "optionText": "Radiculopatia lombossacra.",
           "isCorrect": false,
-          "comment": "Incorreta. Uso crônico de glicocorticoide e dor súbita vertebral localizada sugerem fratura por fragilidade. Não há febre ou fatores infecciosos que favoreçam espondilodiscite. A ausência de sintomas radiculares reduz a probabilidade de radiculopatia, e artrite reumatoide não explica isoladamente dor focal vertebral súbita."
+          "comment": "Incorreta. Radiculopatia lombossacra geralmente produz dor irradiada em trajeto dermatomérico, parestesias, alterações reflexas ou déficit motor. Dor exclusivamente focal sobre uma vértebra não é o padrão esperado."
         },
         {
           "optionId": "D",
           "optionText": "Exacerbação da artrite reumatoide.",
           "isCorrect": false,
-          "comment": "Incorreta. Uso crônico de glicocorticoide e dor súbita vertebral localizada sugerem fratura por fragilidade. Não há febre ou fatores infecciosos que favoreçam espondilodiscite. A ausência de sintomas radiculares reduz a probabilidade de radiculopatia, e artrite reumatoide não explica isoladamente dor focal vertebral súbita."
+          "comment": "Incorreta. A artrite reumatoide pode causar dor musculoesquelética, mas não explica de forma adequada dor toracolombar súbita e focal. Neste caso, o tratamento com prednisona é mais relevante como fator de risco para osteoporose do que a própria artrite."
         }
       ]
     },
@@ -275,31 +275,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "D",
       "correctOptionText": "Orientar exercícios adaptados, medidas posturais e analgesia segura.",
-      "teachingPoint": "A dor lombopélvica mecânica na gestação é manejada com exercícios adaptados, fisioterapia, ajustes posturais e analgesia segura. Repouso prolongado e suspensão completa das atividades não são recomendados. AINEs devem ser evitados, especialmente nas fases mais avançadas da gestação.",
+      "teachingPoint": "A dor lombopélvica relacionada à gestação costuma piorar com movimentos de transferência de carga, como virar na cama, subir escadas ou apoiar-se em uma perna. Na ausência de sinais obstétricos, infecciosos ou neurológicos, o manejo é conservador, com educação, exercícios adaptados, fisioterapia, modificação de atividades e analgesia compatível com a gestação.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Suspender exercícios físicos até o parto.",
           "isCorrect": false,
-          "comment": "Incorreta. A dor lombopélvica mecânica na gestação é manejada com exercícios adaptados, fisioterapia, ajustes posturais e analgesia segura. Repouso prolongado e suspensão completa das atividades não são recomendados. AINEs devem ser evitados, especialmente nas fases mais avançadas da gestação."
+          "comment": "Incorreta. A suspensão completa de exercícios favorece descondicionamento e pode piorar a incapacidade. Atividade física adaptada, respeitando dor e limitações obstétricas, costuma ser segura e benéfica."
         },
         {
           "optionId": "B",
           "optionText": "Manter ibuprofeno conforme necessidade.",
           "isCorrect": false,
-          "comment": "Incorreta. A dor lombopélvica mecânica na gestação é manejada com exercícios adaptados, fisioterapia, ajustes posturais e analgesia segura. Repouso prolongado e suspensão completa das atividades não são recomendados. AINEs devem ser evitados, especialmente nas fases mais avançadas da gestação."
+          "comment": "Incorreta. O ibuprofeno e outros anti-inflamatórios não esteroides devem ser evitados na gestação, sobretudo a partir da segunda metade, devido ao risco de oligodrâmnio, disfunção renal fetal e fechamento prematuro do ducto arterioso."
         },
         {
           "optionId": "C",
           "optionText": "Indicar repouso no leito e afastamento das atividades.",
           "isCorrect": false,
-          "comment": "Incorreta. A dor lombopélvica mecânica na gestação é manejada com exercícios adaptados, fisioterapia, ajustes posturais e analgesia segura. Repouso prolongado e suspensão completa das atividades não são recomendados. AINEs devem ser evitados, especialmente nas fases mais avançadas da gestação."
+          "comment": "Incorreta. Repouso no leito não trata a causa mecânica da dor e aumenta riscos como perda de condicionamento, tromboembolismo e maior limitação funcional. O afastamento total deve ser reservado para situações obstétricas específicas."
         },
         {
           "optionId": "D",
           "optionText": "Orientar exercícios adaptados, medidas posturais e analgesia segura.",
           "isCorrect": true,
-          "comment": "Correta. A dor lombopélvica mecânica na gestação é manejada com exercícios adaptados, fisioterapia, ajustes posturais e analgesia segura. Repouso prolongado e suspensão completa das atividades não são recomendados. AINEs devem ser evitados, especialmente nas fases mais avançadas da gestação."
+          "comment": "Correta. Exercícios de estabilização e fortalecimento adaptados, fisioterapia, medidas posturais e modificação das atividades que desencadeiam dor constituem a base do tratamento. Analgesia segura pode ser utilizada quando necessária."
         }
       ]
     },
@@ -308,31 +308,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "B",
       "correctOptionText": "Suspender o AINE e priorizar medidas não farmacológicas e paracetamol judicioso.",
-      "teachingPoint": "AINEs devem ser suspensos na gestação avançada devido aos riscos fetais, incluindo repercussões renais e fechamento prematuro do ducto arterioso. A troca por outro AINE não elimina esses riscos. Normalidade ultrassonográfica não torna o uso seguro.",
+      "teachingPoint": "Anti-inflamatórios não esteroides devem ser evitados na gestação avançada. Após aproximadamente 20 semanas, podem causar disfunção renal fetal e oligodrâmnio; no terceiro trimestre, aumentam também o risco de constrição ou fechamento prematuro do ducto arterioso. A conduta é suspender o AINE e priorizar medidas não farmacológicas, utilizando paracetamol de forma criteriosa quando indicado.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Manter o ibuprofeno apenas nos dias de dor intensa.",
           "isCorrect": false,
-          "comment": "Incorreta. AINEs devem ser suspensos na gestação avançada devido aos riscos fetais, incluindo repercussões renais e fechamento prematuro do ducto arterioso. A troca por outro AINE não elimina esses riscos. Normalidade ultrassonográfica não torna o uso seguro."
+          "comment": "Incorreta. O risco fetal não depende apenas da frequência de uso. Mesmo uso intermitente pode ser problemático na gestação avançada, especialmente se repetido por vários dias."
         },
         {
           "optionId": "B",
           "optionText": "Suspender o AINE e priorizar medidas não farmacológicas e paracetamol judicioso.",
           "isCorrect": true,
-          "comment": "Correta. AINEs devem ser suspensos na gestação avançada devido aos riscos fetais, incluindo repercussões renais e fechamento prematuro do ducto arterioso. A troca por outro AINE não elimina esses riscos. Normalidade ultrassonográfica não torna o uso seguro."
+          "comment": "Correta. A suspensão do ibuprofeno elimina uma exposição potencialmente nociva. Medidas físicas, exercícios adaptados e paracetamol em dose e duração adequadas são opções mais seguras, após avaliação clínica."
         },
         {
           "optionId": "C",
           "optionText": "Substituir o ibuprofeno por outro AINE de meia-vida mais curta.",
           "isCorrect": false,
-          "comment": "Incorreta. AINEs devem ser suspensos na gestação avançada devido aos riscos fetais, incluindo repercussões renais e fechamento prematuro do ducto arterioso. A troca por outro AINE não elimina esses riscos. Normalidade ultrassonográfica não torna o uso seguro."
+          "comment": "Incorreta. Os riscos fetais são relacionados ao mecanismo farmacológico da classe dos AINEs, e não apenas à meia-vida do medicamento. Trocar por outro AINE não torna o tratamento seguro."
         },
         {
           "optionId": "D",
           "optionText": "Manter o medicamento desde que a ultrassonografia fetal esteja normal.",
           "isCorrect": false,
-          "comment": "Incorreta. AINEs devem ser suspensos na gestação avançada devido aos riscos fetais, incluindo repercussões renais e fechamento prematuro do ducto arterioso. A troca por outro AINE não elimina esses riscos. Normalidade ultrassonográfica não torna o uso seguro."
+          "comment": "Incorreta. Ultrassonografia normal em determinado momento não impede o aparecimento posterior de oligodrâmnio ou alterações ductais. A normalidade do exame não autoriza a manutenção de uma exposição evitável."
         }
       ]
     },
@@ -341,31 +341,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "C",
       "correctOptionText": "Adotar abordagem biopsicossocial com metas funcionais e retorno gradual.",
-      "teachingPoint": "Medo de movimento, insônia, humor deprimido e afastamento laboral são fatores de cronificação. A abordagem deve ser biopsicossocial e orientada à recuperação funcional. Novas imagens podem reforçar a medicalização, e ausência total de dor não é requisito para retorno gradual às atividades.",
+      "teachingPoint": "Na lombalgia crônica, medo de movimento, catastrofização, insônia, humor deprimido, afastamento laboral e crenças de dano estrutural são fatores psicossociais associados à incapacidade persistente. O tratamento deve ser biopsicossocial, com educação, exposição gradual ao movimento, metas funcionais, manejo do sono e do humor e planejamento de retorno progressivo às atividades.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Solicitar nova ressonância para demonstrar que não existe lesão estrutural.",
           "isCorrect": false,
-          "comment": "Incorreta. Medo de movimento, insônia, humor deprimido e afastamento laboral são fatores de cronificação. A abordagem deve ser biopsicossocial e orientada à recuperação funcional. Novas imagens podem reforçar a medicalização, e ausência total de dor não é requisito para retorno gradual às atividades."
+          "comment": "Incorreta. Uma nova ressonância raramente modifica o manejo na ausência de sinais de alarme. Achados degenerativos incidentais podem reforçar medo, medicalização e crenças de fragilidade, mesmo quando não explicam a dor."
         },
         {
           "optionId": "B",
           "optionText": "Manter afastamento até que o paciente permaneça completamente sem dor.",
           "isCorrect": false,
-          "comment": "Incorreta. Medo de movimento, insônia, humor deprimido e afastamento laboral são fatores de cronificação. A abordagem deve ser biopsicossocial e orientada à recuperação funcional. Novas imagens podem reforçar a medicalização, e ausência total de dor não é requisito para retorno gradual às atividades."
+          "comment": "Incorreta. Esperar ausência completa de dor antes do retorno às atividades favorece descondicionamento e incapacidade. O objetivo inicial deve ser recuperar função de forma gradual, mesmo que persista algum desconforto."
         },
         {
           "optionId": "C",
           "optionText": "Adotar abordagem biopsicossocial com metas funcionais e retorno gradual.",
           "isCorrect": true,
-          "comment": "Correta. Medo de movimento, insônia, humor deprimido e afastamento laboral são fatores de cronificação. A abordagem deve ser biopsicossocial e orientada à recuperação funcional. Novas imagens podem reforçar a medicalização, e ausência total de dor não é requisito para retorno gradual às atividades."
+          "comment": "Correta. A abordagem biopsicossocial reconhece fatores físicos, emocionais, ocupacionais e comportamentais. Metas funcionais graduais e participação ativa do paciente apresentam maior utilidade do que estratégias centradas exclusivamente em imagem ou repouso."
         },
         {
           "optionId": "D",
           "optionText": "Encaminhar diretamente para cirurgia por falha do tratamento conservador.",
           "isCorrect": false,
-          "comment": "Incorreta. Medo de movimento, insônia, humor deprimido e afastamento laboral são fatores de cronificação. A abordagem deve ser biopsicossocial e orientada à recuperação funcional. Novas imagens podem reforçar a medicalização, e ausência total de dor não é requisito para retorno gradual às atividades."
+          "comment": "Incorreta. Cirurgia é reservada para indicações estruturais específicas, como compressão neural relevante ou instabilidade, e não para lombalgia crônica inespecífica associada a fatores psicossociais."
         }
       ]
     },
@@ -374,31 +374,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "A",
       "correctOptionText": "Dor crônica primária associada à sensibilização central e catastrofização.",
-      "teachingPoint": "O quadro é compatível com dor crônica primária, sensibilização central e comportamento de evitação. A ausência de alteração estrutural e a distribuição variável tornam hérnia discal e radiculopatia improváveis. Sintomas desproporcionais não significam simulação consciente.",
+      "teachingPoint": "Dor crônica primária e sensibilização central envolvem amplificação do processamento nociceptivo, frequentemente associada a dor variável, fadiga, sono não reparador, hipervigilância e evitação de atividades. A ausência de lesão estrutural relevante não invalida os sintomas e não deve ser interpretada como simulação.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Dor crônica primária associada à sensibilização central e catastrofização.",
           "isCorrect": true,
-          "comment": "Correta. O quadro é compatível com dor crônica primária, sensibilização central e comportamento de evitação. A ausência de alteração estrutural e a distribuição variável tornam hérnia discal e radiculopatia improváveis. Sintomas desproporcionais não significam simulação consciente."
+          "comment": "Correta. A combinação de dor variável, fadiga, sono não reparador, exames sem correlação estrutural e medo de movimento é compatível com dor crônica primária, sensibilização central e catastrofização."
         },
         {
           "optionId": "B",
           "optionText": "Hérnia discal intermitente não demonstrada nos exames de imagem.",
           "isCorrect": false,
-          "comment": "Incorreta. O quadro é compatível com dor crônica primária, sensibilização central e comportamento de evitação. A ausência de alteração estrutural e a distribuição variável tornam hérnia discal e radiculopatia improváveis. Sintomas desproporcionais não significam simulação consciente."
+          "comment": "Incorreta. Hérnia discal costuma produzir quadro mais anatômico, com dor radicular, parestesias ou déficits compatíveis com uma raiz. Uma hipótese estrutural não demonstrada não deve ser usada para explicar sintomas difusos e variáveis."
         },
         {
           "optionId": "C",
           "optionText": "Simulação deliberada dos sintomas para obtenção de benefícios secundários.",
           "isCorrect": false,
-          "comment": "Incorreta. O quadro é compatível com dor crônica primária, sensibilização central e comportamento de evitação. A ausência de alteração estrutural e a distribuição variável tornam hérnia discal e radiculopatia improváveis. Sintomas desproporcionais não significam simulação consciente."
+          "comment": "Incorreta. Simulação pressupõe produção consciente e intencional de sintomas com finalidade externa. Sintomas persistentes, sofrimento e ausência de achados estruturais não constituem evidência de simulação."
         },
         {
           "optionId": "D",
           "optionText": "Radiculopatia lombar de baixa intensidade com exame neurológico normal.",
           "isCorrect": false,
-          "comment": "Incorreta. O quadro é compatível com dor crônica primária, sensibilização central e comportamento de evitação. A ausência de alteração estrutural e a distribuição variável tornam hérnia discal e radiculopatia improváveis. Sintomas desproporcionais não significam simulação consciente."
+          "comment": "Incorreta. Radiculopatia exige correlação clínica com distribuição dermatomérica, sinais sensitivos, motores ou reflexos. Dor musculoesquelética difusa e exame neurológico normal tornam esse diagnóstico menos provável."
         }
       ]
     },
@@ -407,31 +407,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "D",
       "correctOptionText": "Não realizar imagem inicialmente, salvo evolução desfavorável.",
-      "teachingPoint": "Na lombalgia ou lombociatalgia sem sinais de alarme e sem déficit progressivo, não se recomenda imagem inicial. Radiografia, tomografia e ressonância não modificam o manejo imediato e podem revelar achados incidentais sem relação causal com os sintomas.",
+      "teachingPoint": "Na lombalgia ou lombociatalgia aguda sem sinais de alarme, déficit neurológico progressivo ou suspeita de doença específica, exames de imagem não devem ser solicitados de rotina. A maioria dos casos melhora com tratamento conservador, e achados incidentais podem gerar intervenções desnecessárias. A imagem passa a ser considerada quando há evolução desfavorável, déficit progressivo ou planejamento de procedimento invasivo.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Solicitar tomografia para excluir hérnia discal.",
           "isCorrect": false,
-          "comment": "Incorreta. Na lombalgia ou lombociatalgia sem sinais de alarme e sem déficit progressivo, não se recomenda imagem inicial. Radiografia, tomografia e ressonância não modificam o manejo imediato e podem revelar achados incidentais sem relação causal com os sintomas."
+          "comment": "Incorreta. A tomografia não é necessária para excluir hérnia discal em um quadro agudo sem déficit ou sinais de alarme. Além de envolver radiação, apresenta menor capacidade do que a ressonância para avaliar discos e raízes."
         },
         {
           "optionId": "B",
           "optionText": "Solicitar radiografia para avaliar o alinhamento vertebral.",
           "isCorrect": false,
-          "comment": "Incorreta. Na lombalgia ou lombociatalgia sem sinais de alarme e sem déficit progressivo, não se recomenda imagem inicial. Radiografia, tomografia e ressonância não modificam o manejo imediato e podem revelar achados incidentais sem relação causal com os sintomas."
+          "comment": "Incorreta. Alterações de alinhamento ou degenerativas em radiografias são frequentes e pouco correlacionadas com sintomas. Sem trauma relevante ou suspeita de fratura, a radiografia não modifica o manejo inicial."
         },
         {
           "optionId": "C",
           "optionText": "Solicitar ressonância para definir a raiz acometida.",
           "isCorrect": false,
-          "comment": "Incorreta. Na lombalgia ou lombociatalgia sem sinais de alarme e sem déficit progressivo, não se recomenda imagem inicial. Radiografia, tomografia e ressonância não modificam o manejo imediato e podem revelar achados incidentais sem relação causal com os sintomas."
+          "comment": "Incorreta. A ressonância pode identificar hérnias em pessoas assintomáticas e não é necessária para definir a raiz acometida quando a avaliação clínica é suficiente e não há indicação de intervenção imediata."
         },
         {
           "optionId": "D",
           "optionText": "Não realizar imagem inicialmente, salvo evolução desfavorável.",
           "isCorrect": true,
-          "comment": "Correta. Na lombalgia ou lombociatalgia sem sinais de alarme e sem déficit progressivo, não se recomenda imagem inicial. Radiografia, tomografia e ressonância não modificam o manejo imediato e podem revelar achados incidentais sem relação causal com os sintomas."
+          "comment": "Correta. O manejo inicial deve ser clínico, com orientação, manutenção de atividades e analgesia conforme necessidade. A imagem fica reservada para sinais de alarme, déficit progressivo ou ausência de melhora em situação na qual o resultado alteraria a conduta."
         }
       ]
     },
@@ -440,31 +440,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "B",
       "correctOptionText": "Manter atividades toleradas e retomar progressivamente a função.",
-      "teachingPoint": "Manutenção das atividades toleradas e retorno funcional progressivo reduzem incapacidade. Repouso no leito, evitação de movimentos e cintas de uso contínuo podem aumentar medo, descondicionamento e cronificação.",
+      "teachingPoint": "Na lombalgia crônica inespecífica, a manutenção de atividades toleradas e o retorno progressivo à função reduzem incapacidade e medo de movimento. Repouso prolongado, restrição excessiva e uso contínuo de suportes externos favorecem descondicionamento e dependência, sem benefício consistente sobre a evolução da dor.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Permanecer no leito por 48 a 72 horas em cada exacerbação.",
           "isCorrect": false,
-          "comment": "Incorreta. Manutenção das atividades toleradas e retorno funcional progressivo reduzem incapacidade. Repouso no leito, evitação de movimentos e cintas de uso contínuo podem aumentar medo, descondicionamento e cronificação."
+          "comment": "Incorreta. Repouso no leito por vários dias pode aumentar rigidez, perda de força, medo de movimento e tempo de afastamento. Mesmo nas exacerbações, recomenda-se manter mobilidade dentro do tolerável."
         },
         {
           "optionId": "B",
           "optionText": "Manter atividades toleradas e retomar progressivamente a função.",
           "isCorrect": true,
-          "comment": "Correta. Manutenção das atividades toleradas e retorno funcional progressivo reduzem incapacidade. Repouso no leito, evitação de movimentos e cintas de uso contínuo podem aumentar medo, descondicionamento e cronificação."
+          "comment": "Correta. A orientação deve enfatizar segurança do movimento, retomada gradual das tarefas e metas funcionais. A presença de alguma dor não significa dano progressivo nem contraindica atividade."
         },
         {
           "optionId": "C",
           "optionText": "Evitar flexão, caminhada e exercícios até resolução completa da dor.",
           "isCorrect": false,
-          "comment": "Incorreta. Manutenção das atividades toleradas e retorno funcional progressivo reduzem incapacidade. Repouso no leito, evitação de movimentos e cintas de uso contínuo podem aumentar medo, descondicionamento e cronificação."
+          "comment": "Incorreta. Proibir flexão, caminhada e exercícios até desaparecimento completo da dor reforça comportamento de evitação. Os movimentos devem ser reintroduzidos de forma graduada e adaptada."
         },
         {
           "optionId": "D",
           "optionText": "Utilizar cinta lombar continuamente durante atividades cotidianas.",
           "isCorrect": false,
-          "comment": "Incorreta. Manutenção das atividades toleradas e retorno funcional progressivo reduzem incapacidade. Repouso no leito, evitação de movimentos e cintas de uso contínuo podem aumentar medo, descondicionamento e cronificação."
+          "comment": "Incorreta. Cintas lombares podem ser utilizadas pontualmente em situações selecionadas, mas o uso contínuo não apresenta benefício consistente e pode favorecer dependência, menor ativação muscular e percepção de fragilidade."
         }
       ]
     },
@@ -473,31 +473,31 @@
       "theme": "Lombalgia",
       "correctOptionId": "C",
       "correctOptionText": "Fatores psicossociais associados à cronificação.",
-      "teachingPoint": "Insônia, medo, conflito ocupacional e expectativas negativas são yellow flags, associadas a pior prognóstico funcional. Não são sinais de doença estrutural grave, compressão radicular ou critérios específicos de espondiloartrite.",
+      "teachingPoint": "Yellow flags são fatores psicossociais associados a maior risco de persistência da dor e incapacidade, como medo de movimento, catastrofização, humor deprimido, insônia, conflitos ocupacionais e expectativas passivas de cura. Diferem das red flags, que sugerem doença grave, e dos achados neurológicos objetivos, que podem indicar compressão radicular.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Sinais vermelhos de doença estrutural grave.",
           "isCorrect": false,
-          "comment": "Incorreta. Insônia, medo, conflito ocupacional e expectativas negativas são yellow flags, associadas a pior prognóstico funcional. Não são sinais de doença estrutural grave, compressão radicular ou critérios específicos de espondiloartrite."
+          "comment": "Incorreta. Red flags incluem história de câncer, febre, perda ponderal inexplicada, trauma relevante, imunossupressão, alterações esfincterianas ou déficit neurológico grave. Insônia, medo e conflito ocupacional não indicam diretamente doença estrutural grave."
         },
         {
           "optionId": "B",
           "optionText": "Sinais neurológicos de compressão radicular.",
           "isCorrect": false,
-          "comment": "Incorreta. Insônia, medo, conflito ocupacional e expectativas negativas são yellow flags, associadas a pior prognóstico funcional. Não são sinais de doença estrutural grave, compressão radicular ou critérios específicos de espondiloartrite."
+          "comment": "Incorreta. Compressão radicular é sugerida por dor dermatomérica, déficit motor, alteração sensitiva ou reflexa e testes de tensão neural positivos. Os elementos apresentados são psicossociais, não déficits neurológicos."
         },
         {
           "optionId": "C",
           "optionText": "Fatores psicossociais associados à cronificação.",
           "isCorrect": true,
-          "comment": "Correta. Insônia, medo, conflito ocupacional e expectativas negativas são yellow flags, associadas a pior prognóstico funcional. Não são sinais de doença estrutural grave, compressão radicular ou critérios específicos de espondiloartrite."
+          "comment": "Correta. Medo de movimento, expectativas negativas, sofrimento emocional e conflito no trabalho são yellow flags e se associam a pior prognóstico funcional, maior afastamento laboral e cronificação."
         },
         {
           "optionId": "D",
           "optionText": "Critérios diagnósticos de espondiloartrite axial.",
           "isCorrect": false,
-          "comment": "Incorreta. Insônia, medo, conflito ocupacional e expectativas negativas são yellow flags, associadas a pior prognóstico funcional. Não são sinais de doença estrutural grave, compressão radicular ou critérios específicos de espondiloartrite."
+          "comment": "Incorreta. Espondiloartrite axial é sugerida por início antes dos 45 anos, dor inflamatória, rigidez matinal, melhora com exercício, uveíte, psoríase ou doença inflamatória intestinal. Os achados descritos não constituem critérios dessa condição."
         }
       ]
     },
@@ -506,31 +506,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "A",
       "correctOptionText": "Cefaleia do tipo tensional crônica.",
-      "teachingPoint": "A dor bilateral, em pressão, sem piora com atividade e sem náuseas é típica de cefaleia tensional. Enxaqueca costuma ser pulsátil, moderada ou forte e acompanhada de náusea ou foto e fonofobia. Hemicrania contínua é estritamente unilateral, e salvas apresenta crises curtas com sintomas autonômicos intensos.",
+      "teachingPoint": "A cefaleia do tipo tensional crônica ocorre em pelo menos 15 dias por mês por mais de três meses. Tipicamente é bilateral, em pressão ou aperto, de intensidade leve a moderada e não piora com atividades físicas habituais. Náuseas e vômitos não são características esperadas. A diferenciação em relação à enxaqueca depende principalmente da qualidade da dor, dos sintomas associados e da repercussão da atividade física.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Cefaleia do tipo tensional crônica.",
           "isCorrect": true,
-          "comment": "Correta. A dor bilateral, em pressão, sem piora com atividade e sem náuseas é típica de cefaleia tensional. Enxaqueca costuma ser pulsátil, moderada ou forte e acompanhada de náusea ou foto e fonofobia. Hemicrania contínua é estritamente unilateral, e salvas apresenta crises curtas com sintomas autonômicos intensos."
+          "comment": "Correta. A frequência de 20 dias por mês caracteriza padrão crônico. Dor bilateral, em pressão, leve a moderada, sem piora com atividade física e sem náuseas corresponde ao fenótipo típico da cefaleia do tipo tensional crônica."
         },
         {
           "optionId": "B",
           "optionText": "Enxaqueca crônica sem aura.",
           "isCorrect": false,
-          "comment": "Incorreta. A dor bilateral, em pressão, sem piora com atividade e sem náuseas é típica de cefaleia tensional. Enxaqueca costuma ser pulsátil, moderada ou forte e acompanhada de náusea ou foto e fonofobia. Hemicrania contínua é estritamente unilateral, e salvas apresenta crises curtas com sintomas autonômicos intensos."
+          "comment": "Incorreta. Enxaqueca crônica exige cefaleia em pelo menos 15 dias por mês, com características de enxaqueca em pelo menos oito desses dias. Esperam-se manifestações como dor pulsátil, intensidade moderada ou forte, piora com atividade, náusea, fotofobia ou fonofobia, ausentes no caso."
         },
         {
           "optionId": "C",
           "optionText": "Hemicrania contínua.",
           "isCorrect": false,
-          "comment": "Incorreta. A dor bilateral, em pressão, sem piora com atividade e sem náuseas é típica de cefaleia tensional. Enxaqueca costuma ser pulsátil, moderada ou forte e acompanhada de náusea ou foto e fonofobia. Hemicrania contínua é estritamente unilateral, e salvas apresenta crises curtas com sintomas autonômicos intensos."
+          "comment": "Incorreta. Hemicrania contínua é uma cefaleia diária, persistente e estritamente unilateral, geralmente acompanhada por exacerbações e sintomas autonômicos ipsilaterais. A resposta completa à indometacina é característica diagnóstica."
         },
         {
           "optionId": "D",
           "optionText": "Cefaleia em salvas.",
           "isCorrect": false,
-          "comment": "Incorreta. A dor bilateral, em pressão, sem piora com atividade e sem náuseas é típica de cefaleia tensional. Enxaqueca costuma ser pulsátil, moderada ou forte e acompanhada de náusea ou foto e fonofobia. Hemicrania contínua é estritamente unilateral, e salvas apresenta crises curtas com sintomas autonômicos intensos."
+          "comment": "Incorreta. Cefaleia em salvas produz crises muito intensas, estritamente unilaterais, orbitárias ou temporais, com duração de 15 a 180 minutos, sintomas autonômicos ipsilaterais e inquietação. Não se apresenta como dor bilateral leve ou moderada em pressão."
         }
       ]
     },
@@ -539,31 +539,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "C",
       "correctOptionText": "Enxaqueca com sintomas autonômicos cranianos.",
-      "teachingPoint": "A duração prolongada, o caráter pulsátil, as náuseas, a fotofobia e a preferência por permanecer imóvel indicam enxaqueca. Sintomas autonômicos podem ocorrer na enxaqueca. Nas cefaleias trigêminoautonômicas, as crises costumam ser mais curtas e acompanhadas de inquietação.",
+      "teachingPoint": "Sintomas autonômicos cranianos, como lacrimejamento e congestão nasal, podem ocorrer durante crises de enxaqueca e não definem isoladamente uma cefaleia trigêmino-autonômica. A duração prolongada, a náusea, a fotofobia, o caráter pulsátil e a preferência por permanecer imóvel favorecem enxaqueca. Nas cefaleias em salvas e na hemicrania paroxística, as crises são mais curtas e geralmente provocam inquietação.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Cefaleia em salvas.",
           "isCorrect": false,
-          "comment": "Incorreta. A duração prolongada, o caráter pulsátil, as náuseas, a fotofobia e a preferência por permanecer imóvel indicam enxaqueca. Sintomas autonômicos podem ocorrer na enxaqueca. Nas cefaleias trigêminoautonômicas, as crises costumam ser mais curtas e acompanhadas de inquietação."
+          "comment": "Incorreta. Na cefaleia em salvas, as crises duram de 15 a 180 minutos, são excruciantes e costumam provocar agitação ou necessidade de caminhar. Uma crise de 18 horas com náusea, fotofobia e repouso voluntário é muito mais compatível com enxaqueca."
         },
         {
           "optionId": "B",
           "optionText": "Hemicrania paroxística.",
           "isCorrect": false,
-          "comment": "Incorreta. A duração prolongada, o caráter pulsátil, as náuseas, a fotofobia e a preferência por permanecer imóvel indicam enxaqueca. Sintomas autonômicos podem ocorrer na enxaqueca. Nas cefaleias trigêminoautonômicas, as crises costumam ser mais curtas e acompanhadas de inquietação."
+          "comment": "Incorreta. Hemicrania paroxística produz crises estritamente unilaterais, geralmente de 2 a 30 minutos, repetidas várias vezes ao dia e com resposta absoluta à indometacina. A duração de 18 horas não corresponde a esse diagnóstico."
         },
         {
           "optionId": "C",
           "optionText": "Enxaqueca com sintomas autonômicos cranianos.",
           "isCorrect": true,
-          "comment": "Correta. A duração prolongada, o caráter pulsátil, as náuseas, a fotofobia e a preferência por permanecer imóvel indicam enxaqueca. Sintomas autonômicos podem ocorrer na enxaqueca. Nas cefaleias trigêminoautonômicas, as crises costumam ser mais curtas e acompanhadas de inquietação."
+          "comment": "Correta. Dor unilateral pulsátil, náusea, fotofobia, duração de várias horas e piora funcional com preferência por imobilidade são características de enxaqueca. O lacrimejamento ipsilateral pode ocorrer como sintoma autonômico craniano associado."
         },
         {
           "optionId": "D",
           "optionText": "Rinossinusite aguda recorrente.",
           "isCorrect": false,
-          "comment": "Incorreta. A duração prolongada, o caráter pulsátil, as náuseas, a fotofobia e a preferência por permanecer imóvel indicam enxaqueca. Sintomas autonômicos podem ocorrer na enxaqueca. Nas cefaleias trigêminoautonômicas, as crises costumam ser mais curtas e acompanhadas de inquietação."
+          "comment": "Incorreta. Rinossinusite aguda costuma acompanhar obstrução nasal persistente, secreção purulenta, redução do olfato, febre ou dor facial relacionada a um quadro infeccioso. Crises estereotipadas, pulsáteis e associadas a náusea e fotofobia não são típicas."
         }
       ]
     },
@@ -572,31 +572,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "B",
       "correctOptionText": "Iniciar tratamento preventivo para enxaqueca.",
-      "teachingPoint": "Frequência elevada e incapacidade funcional justificam profilaxia, mesmo que o tratamento agudo seja eficaz. Manter apenas abortivos aumenta o risco de uso excessivo. Neuroimagem não é obrigatória na ausência de sinais de alerta, e opioides não são tratamento preventivo apropriado.",
+      "teachingPoint": "O tratamento preventivo da enxaqueca deve ser considerado quando há crises frequentes, incapacidade relevante, resposta insuficiente ou contraindicação ao tratamento agudo, uso excessivo de sintomáticos ou preferência do paciente. A decisão não depende apenas do número de dias de dor: oito dias mensais com prejuízo laboral importante constituem indicação razoável para profilaxia.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Manter exclusivamente a medicação abortiva.",
           "isCorrect": false,
-          "comment": "Incorreta. Frequência elevada e incapacidade funcional justificam profilaxia, mesmo que o tratamento agudo seja eficaz. Manter apenas abortivos aumenta o risco de uso excessivo. Neuroimagem não é obrigatória na ausência de sinais de alerta, e opioides não são tratamento preventivo apropriado."
+          "comment": "Incorreta. Manter apenas medicação abortiva não aborda a frequência elevada nem o prejuízo funcional. Essa estratégia pode aumentar a exposição a sintomáticos e favorecer cefaleia por uso excessivo de medicação."
         },
         {
           "optionId": "B",
           "optionText": "Iniciar tratamento preventivo para enxaqueca.",
           "isCorrect": true,
-          "comment": "Correta. Frequência elevada e incapacidade funcional justificam profilaxia, mesmo que o tratamento agudo seja eficaz. Manter apenas abortivos aumenta o risco de uso excessivo. Neuroimagem não é obrigatória na ausência de sinais de alerta, e opioides não são tratamento preventivo apropriado."
+          "comment": "Correta. A frequência de oito dias de cefaleia por mês, associada a repercussão laboral importante, justifica discutir e iniciar tratamento preventivo, além de manter uma opção adequada para as crises agudas."
         },
         {
           "optionId": "C",
           "optionText": "Solicitar neuroimagem antes de qualquer tratamento.",
           "isCorrect": false,
-          "comment": "Incorreta. Frequência elevada e incapacidade funcional justificam profilaxia, mesmo que o tratamento agudo seja eficaz. Manter apenas abortivos aumenta o risco de uso excessivo. Neuroimagem não é obrigatória na ausência de sinais de alerta, e opioides não são tratamento preventivo apropriado."
+          "comment": "Incorreta. Neuroimagem não é requisito para iniciar profilaxia quando o padrão é típico de enxaqueca, o exame neurológico é normal e não existem sinais de alerta. O exame deve ser orientado pela suspeita de cefaleia secundária."
         },
         {
           "optionId": "D",
           "optionText": "Substituir o analgésico por opioide de ação prolongada.",
           "isCorrect": false,
-          "comment": "Incorreta. Frequência elevada e incapacidade funcional justificam profilaxia, mesmo que o tratamento agudo seja eficaz. Manter apenas abortivos aumenta o risco de uso excessivo. Neuroimagem não é obrigatória na ausência de sinais de alerta, e opioides não são tratamento preventivo apropriado."
+          "comment": "Incorreta. Opioides de ação prolongada não são tratamento preventivo de enxaqueca. Têm eficácia limitada, risco de dependência, efeitos adversos e associação com cronificação e uso excessivo de medicação."
         }
       ]
     },
@@ -605,31 +605,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "D",
       "correctOptionText": "Reduzir o uso de sintomáticos e iniciar tratamento preventivo.",
-      "teachingPoint": "O uso frequente de triptanos e analgésicos associado à cefaleia quase diária caracteriza provável cefaleia por uso excessivo de medicação. É necessário reduzir os sintomáticos e instituir prevenção. Trocar o triptano ou manter o uso excessivo perpetua o quadro.",
+      "teachingPoint": "Cefaleia por uso excessivo de medicação deve ser suspeitada quando um paciente com cefaleia prévia passa a apresentar dor em pelo menos 15 dias por mês durante uso frequente de medicamentos agudos. Para triptanos, o limiar é de pelo menos 10 dias por mês. O manejo inclui educação, redução ou retirada do medicamento excessivamente utilizado e instituição ou otimização da prevenção.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Trocar o triptano por outro da mesma classe.",
           "isCorrect": false,
-          "comment": "Incorreta. O uso frequente de triptanos e analgésicos associado à cefaleia quase diária caracteriza provável cefaleia por uso excessivo de medicação. É necessário reduzir os sintomáticos e instituir prevenção. Trocar o triptano ou manter o uso excessivo perpetua o quadro."
+          "comment": "Incorreta. Trocar um triptano por outro mantém o uso frequente da mesma classe e não corrige o mecanismo de perpetuação da cefaleia. A prioridade é reduzir a frequência de uso dos medicamentos agudos."
         },
         {
           "optionId": "B",
           "optionText": "Manter os sintomáticos até que a profilaxia faça efeito.",
           "isCorrect": false,
-          "comment": "Incorreta. O uso frequente de triptanos e analgésicos associado à cefaleia quase diária caracteriza provável cefaleia por uso excessivo de medicação. É necessário reduzir os sintomáticos e instituir prevenção. Trocar o triptano ou manter o uso excessivo perpetua o quadro."
+          "comment": "Incorreta. Manter sintomáticos em excesso até a profilaxia fazer efeito prolonga o ciclo de cefaleia quase diária. Pode ser necessário um plano estruturado de retirada, tratamento de resgate limitado e acompanhamento próximo."
         },
         {
           "optionId": "C",
           "optionText": "Solicitar ressonância por mudança da frequência da dor.",
           "isCorrect": false,
-          "comment": "Incorreta. O uso frequente de triptanos e analgésicos associado à cefaleia quase diária caracteriza provável cefaleia por uso excessivo de medicação. É necessário reduzir os sintomáticos e instituir prevenção. Trocar o triptano ou manter o uso excessivo perpetua o quadro."
+          "comment": "Incorreta. A mudança de frequência exige reavaliação clínica, mas neste caso existe uma explicação evidente: uso de triptano em 14 dias e de outros analgésicos em mais dez dias. Sem sinais de alerta ou alterações neurológicas, a ressonância não é a conduta central."
         },
         {
           "optionId": "D",
           "optionText": "Reduzir o uso de sintomáticos e iniciar tratamento preventivo.",
           "isCorrect": true,
-          "comment": "Correta. O uso frequente de triptanos e analgésicos associado à cefaleia quase diária caracteriza provável cefaleia por uso excessivo de medicação. É necessário reduzir os sintomáticos e instituir prevenção. Trocar o triptano ou manter o uso excessivo perpetua o quadro."
+          "comment": "Correta. O padrão é compatível com cefaleia por uso excessivo de medicação sobreposta à enxaqueca. O tratamento deve reduzir os sintomáticos, orientar limites de uso e iniciar ou ajustar uma estratégia preventiva."
         }
       ]
     },
@@ -638,31 +638,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "A",
       "correctOptionText": "Rinossinusite bacteriana provável pelo padrão de dupla piora.",
-      "teachingPoint": "Persistência por mais de dez dias e piora após melhora inicial favorecem rinossinusite bacteriana. O padrão não é de infecção viral em resolução. A associação com secreção purulenta e sintomas nasais torna enxaqueca ou cefaleia tensional menos prováveis.",
+      "teachingPoint": "Rinossinusite bacteriana aguda é sugerida por sintomas persistentes por pelo menos dez dias sem melhora, início grave com febre alta e secreção purulenta ou piora após melhora inicial, denominada dupla piora. Secreção purulenta isolada não diferencia adequadamente infecção viral de bacteriana; o padrão temporal é decisivo.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Rinossinusite bacteriana provável pelo padrão de dupla piora.",
           "isCorrect": true,
-          "comment": "Correta. Persistência por mais de dez dias e piora após melhora inicial favorecem rinossinusite bacteriana. O padrão não é de infecção viral em resolução. A associação com secreção purulenta e sintomas nasais torna enxaqueca ou cefaleia tensional menos prováveis."
+          "comment": "Correta. A persistência por 11 dias associada à melhora inicial seguida de nova piora da dor e da secreção caracteriza dupla piora, um dos padrões clínicos que favorecem rinossinusite bacteriana."
         },
         {
           "optionId": "B",
           "optionText": "Rinossinusite viral não complicada em resolução espontânea.",
           "isCorrect": false,
-          "comment": "Incorreta. Persistência por mais de dez dias e piora após melhora inicial favorecem rinossinusite bacteriana. O padrão não é de infecção viral em resolução. A associação com secreção purulenta e sintomas nasais torna enxaqueca ou cefaleia tensional menos prováveis."
+          "comment": "Incorreta. Uma rinossinusite viral não complicada costuma atingir o pico nos primeiros dias e apresentar melhora progressiva. A piora após uma fase de aparente recuperação não corresponde ao curso viral habitual."
         },
         {
           "optionId": "C",
           "optionText": "Enxaqueca com sintomas nasais e indicação de triptano.",
           "isCorrect": false,
-          "comment": "Incorreta. Persistência por mais de dez dias e piora após melhora inicial favorecem rinossinusite bacteriana. O padrão não é de infecção viral em resolução. A associação com secreção purulenta e sintomas nasais torna enxaqueca ou cefaleia tensional menos prováveis."
+          "comment": "Incorreta. Enxaqueca pode cursar com congestão ou rinorreia, mas não costuma produzir secreção purulenta persistente por 11 dias nem um padrão infeccioso de dupla piora. Triptano não trata rinossinusite bacteriana."
         },
         {
           "optionId": "D",
           "optionText": "Cefaleia tensional associada a infecção respiratória viral.",
           "isCorrect": false,
-          "comment": "Incorreta. Persistência por mais de dez dias e piora após melhora inicial favorecem rinossinusite bacteriana. O padrão não é de infecção viral em resolução. A associação com secreção purulenta e sintomas nasais torna enxaqueca ou cefaleia tensional menos prováveis."
+          "comment": "Incorreta. Cefaleia tensional produz dor em pressão, sem sintomas nasais purulentos ou evolução infecciosa. A associação temporal com obstrução nasal e piora da secreção aponta para doença dos seios paranasais."
         }
       ]
     },
@@ -671,31 +671,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "B",
       "correctOptionText": "Tratar a dor, repetir as medidas e avaliar adesão ao tratamento.",
-      "teachingPoint": "Pressão elevada sem lesão aguda de órgão-alvo não caracteriza emergência hipertensiva. Deve-se tratar fatores precipitantes, repetir a aferição e revisar a terapia crônica. Redução intravenosa rápida pode ser prejudicial, e neuroimagem ou UTI não são indicadas apenas pelo valor pressórico.",
+      "teachingPoint": "Pressão arterial muito elevada sem lesão aguda de órgão-alvo não constitui emergência hipertensiva. Dor, ansiedade, técnica inadequada de aferição e baixa adesão podem elevar transitoriamente a pressão. A conduta inicial é repetir a medida em condições adequadas, tratar sintomas, avaliar adesão e ajustar o tratamento de forma gradual, evitando redução intravenosa rápida.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Administrar nitroprussiato para normalizar rapidamente a pressão.",
           "isCorrect": false,
-          "comment": "Incorreta. Pressão elevada sem lesão aguda de órgão-alvo não caracteriza emergência hipertensiva. Deve-se tratar fatores precipitantes, repetir a aferição e revisar a terapia crônica. Redução intravenosa rápida pode ser prejudicial, e neuroimagem ou UTI não são indicadas apenas pelo valor pressórico."
+          "comment": "Incorreta. Nitroprussiato é reservado para emergências hipertensivas com lesão aguda de órgão-alvo e necessidade de controle titulado. Reduzir rapidamente a pressão sem essa indicação pode causar hipoperfusão cerebral, coronariana ou renal."
         },
         {
           "optionId": "B",
           "optionText": "Tratar a dor, repetir as medidas e avaliar adesão ao tratamento.",
           "isCorrect": true,
-          "comment": "Correta. Pressão elevada sem lesão aguda de órgão-alvo não caracteriza emergência hipertensiva. Deve-se tratar fatores precipitantes, repetir a aferição e revisar a terapia crônica. Redução intravenosa rápida pode ser prejudicial, e neuroimagem ou UTI não são indicadas apenas pelo valor pressórico."
+          "comment": "Correta. Na ausência de déficit neurológico, edema agudo de pulmão, síndrome coronariana, dissecção de aorta, encefalopatia ou outra lesão aguda, deve-se tratar a dor, repetir corretamente a pressão e revisar adesão e esquema terapêutico."
         },
         {
           "optionId": "C",
           "optionText": "Solicitar tomografia de crânio antes de qualquer intervenção.",
           "isCorrect": false,
-          "comment": "Incorreta. Pressão elevada sem lesão aguda de órgão-alvo não caracteriza emergência hipertensiva. Deve-se tratar fatores precipitantes, repetir a aferição e revisar a terapia crônica. Redução intravenosa rápida pode ser prejudicial, e neuroimagem ou UTI não são indicadas apenas pelo valor pressórico."
+          "comment": "Incorreta. Cefaleia leve e exame neurológico normal, sem sinais de alerta, não tornam a tomografia obrigatória. A indicação de imagem depende do padrão da cefaleia e da suspeita de evento intracraniano, não apenas do valor pressórico."
         },
         {
           "optionId": "D",
           "optionText": "Internar em terapia intensiva para monitorização pressórica contínua.",
           "isCorrect": false,
-          "comment": "Incorreta. Pressão elevada sem lesão aguda de órgão-alvo não caracteriza emergência hipertensiva. Deve-se tratar fatores precipitantes, repetir a aferição e revisar a terapia crônica. Redução intravenosa rápida pode ser prejudicial, e neuroimagem ou UTI não são indicadas apenas pelo valor pressórico."
+          "comment": "Incorreta. Internação em terapia intensiva é indicada quando há emergência hipertensiva ou necessidade de fármacos intravenosos e monitorização contínua. Pressão elevada isolada, sem dano agudo, costuma ser manejada ambulatorialmente."
         }
       ]
     },
@@ -704,31 +704,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "C",
       "correctOptionText": "Polissonografia para investigação de apneia do sono.",
-      "teachingPoint": "Ronco, apneias observadas, obesidade, sonolência e cefaleia matinal sugerem apneia obstrutiva do sono, investigada por polissonografia. Não há elementos para doença vascular cerebral, alteração da pressão liquórica ou arterite temporal.",
+      "teachingPoint": "Cefaleia matinal pode ocorrer na apneia obstrutiva do sono e geralmente melhora poucas horas após despertar. Roncos intensos, pausas respiratórias observadas, obesidade e sonolência diurna aumentam muito a probabilidade pré-teste. A polissonografia confirma o diagnóstico e quantifica a gravidade por meio do índice de apneia-hipopneia.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Angiorressonância cerebral.",
           "isCorrect": false,
-          "comment": "Incorreta. Ronco, apneias observadas, obesidade, sonolência e cefaleia matinal sugerem apneia obstrutiva do sono, investigada por polissonografia. Não há elementos para doença vascular cerebral, alteração da pressão liquórica ou arterite temporal."
+          "comment": "Incorreta. Angiorressonância é indicada para suspeitas vasculares intracranianas específicas, como aneurisma, malformação ou trombose. O conjunto de roncos, apneias testemunhadas e sonolência aponta prioritariamente para distúrbio respiratório do sono."
         },
         {
           "optionId": "B",
           "optionText": "Punção lombar com medida da pressão de abertura.",
           "isCorrect": false,
-          "comment": "Incorreta. Ronco, apneias observadas, obesidade, sonolência e cefaleia matinal sugerem apneia obstrutiva do sono, investigada por polissonografia. Não há elementos para doença vascular cerebral, alteração da pressão liquórica ou arterite temporal."
+          "comment": "Incorreta. Punção lombar com pressão de abertura é utilizada na investigação de hipertensão intracraniana ou infecção, após avaliação de contraindicações. O caso não apresenta papiledema, sintomas visuais típicos ou outros achados que sustentem essa hipótese."
         },
         {
           "optionId": "C",
           "optionText": "Polissonografia para investigação de apneia do sono.",
           "isCorrect": true,
-          "comment": "Correta. Ronco, apneias observadas, obesidade, sonolência e cefaleia matinal sugerem apneia obstrutiva do sono, investigada por polissonografia. Não há elementos para doença vascular cerebral, alteração da pressão liquórica ou arterite temporal."
+          "comment": "Correta. A polissonografia registra eventos respiratórios, dessaturação, estágios do sono e despertares, permitindo confirmar apneia obstrutiva do sono e orientar o tratamento."
         },
         {
           "optionId": "D",
           "optionText": "Biópsia de artéria temporal.",
           "isCorrect": false,
-          "comment": "Incorreta. Ronco, apneias observadas, obesidade, sonolência e cefaleia matinal sugerem apneia obstrutiva do sono, investigada por polissonografia. Não há elementos para doença vascular cerebral, alteração da pressão liquórica ou arterite temporal."
+          "comment": "Incorreta. Biópsia de artéria temporal é utilizada para confirmar arterite de células gigantes em pacientes geralmente acima de 50 anos com cefaleia recente, claudicação mandibular, alterações visuais ou marcadores inflamatórios elevados."
         }
       ]
     },
@@ -737,31 +737,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "A",
       "correctOptionText": "Repouso relativo breve e retorno progressivo às atividades.",
-      "teachingPoint": "O quadro é compatível com sintomas pós-concussivos leves, sem critérios clínicos descritos para neuroimagem imediata. Recomenda-se repouso relativo curto e retorno gradual. Repouso absoluto prolongado pode retardar a recuperação, e anticonvulsivantes não são indicados preventivamente.",
+      "teachingPoint": "Cefaleia, irritabilidade e dificuldade de concentração após trauma leve, com Glasgow 15 e exame neurológico normal, são compatíveis com concussão. Na ausência de critérios clínicos para neuroimagem, recomenda-se repouso relativo por 24 a 48 horas, seguido de retorno gradual às atividades cognitivas e físicas, com orientações de alarme e reavaliação se houver piora.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Repouso relativo breve e retorno progressivo às atividades.",
           "isCorrect": true,
-          "comment": "Correta. O quadro é compatível com sintomas pós-concussivos leves, sem critérios clínicos descritos para neuroimagem imediata. Recomenda-se repouso relativo curto e retorno gradual. Repouso absoluto prolongado pode retardar a recuperação, e anticonvulsivantes não são indicados preventivamente."
+          "comment": "Correta. Repouso relativo breve reduz sobrecarga inicial sem provocar os efeitos negativos da inatividade prolongada. Após esse período, as atividades devem ser retomadas progressivamente, abaixo do limiar de exacerbação importante dos sintomas."
         },
         {
           "optionId": "B",
           "optionText": "Tomografia imediata e repetição sistemática após 24 horas.",
           "isCorrect": false,
-          "comment": "Incorreta. O quadro é compatível com sintomas pós-concussivos leves, sem critérios clínicos descritos para neuroimagem imediata. Recomenda-se repouso relativo curto e retorno gradual. Repouso absoluto prolongado pode retardar a recuperação, e anticonvulsivantes não são indicados preventivamente."
+          "comment": "Incorreta. Tomografia imediata é reservada para critérios de maior risco, como rebaixamento do nível de consciência, vômitos repetidos, déficit focal, sinais de fratura, anticoagulação ou mecanismo preocupante. Repetição sistemática em 24 horas também não é indicada em paciente estável."
         },
         {
           "optionId": "C",
           "optionText": "Repouso absoluto em ambiente escuro durante duas semanas.",
           "isCorrect": false,
-          "comment": "Incorreta. O quadro é compatível com sintomas pós-concussivos leves, sem critérios clínicos descritos para neuroimagem imediata. Recomenda-se repouso relativo curto e retorno gradual. Repouso absoluto prolongado pode retardar a recuperação, e anticonvulsivantes não são indicados preventivamente."
+          "comment": "Incorreta. Repouso absoluto por duas semanas pode prolongar sintomas, aumentar descondicionamento e retardar o retorno funcional. A recomendação atual é limitar o repouso estrito e iniciar progressão gradual."
         },
         {
           "optionId": "D",
           "optionText": "Tratamento preventivo com anticonvulsivante por três meses.",
           "isCorrect": false,
-          "comment": "Incorreta. O quadro é compatível com sintomas pós-concussivos leves, sem critérios clínicos descritos para neuroimagem imediata. Recomenda-se repouso relativo curto e retorno gradual. Repouso absoluto prolongado pode retardar a recuperação, e anticonvulsivantes não são indicados preventivamente."
+          "comment": "Incorreta. Anticonvulsivantes profiláticos não são indicados após concussão simples sem crise convulsiva ou lesão intracraniana estrutural. A profilaxia é reservada a situações específicas de trauma cranioencefálico grave."
         }
       ]
     },
@@ -770,31 +770,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "D",
       "correctOptionText": "Iniciar sulfato de magnésio e tratar a hipertensão grave.",
-      "teachingPoint": "Cefaleia, sintomas visuais, dor epigástrica e hipertensão grave no puerpério indicam pré-eclâmpsia com sinais de gravidade. Sulfato de magnésio previne eclâmpsia e a pressão deve ser tratada prontamente. A investigação por imagem não deve atrasar a estabilização.",
+      "teachingPoint": "Pré-eclâmpsia pode surgir ou se manifestar no puerpério. Hipertensão grave, cefaleia intensa, escotomas e dor epigástrica representam sinais de gravidade e risco de eclâmpsia, acidente vascular cerebral e complicações hepáticas. A conduta deve ser imediata, com sulfato de magnésio para prevenção de convulsões e tratamento urgente da pressão arterial grave.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Realizar blood patch por provável cefaleia pós-punção.",
           "isCorrect": false,
-          "comment": "Incorreta. Cefaleia, sintomas visuais, dor epigástrica e hipertensão grave no puerpério indicam pré-eclâmpsia com sinais de gravidade. Sulfato de magnésio previne eclâmpsia e a pressão deve ser tratada prontamente. A investigação por imagem não deve atrasar a estabilização."
+          "comment": "Incorreta. Cefaleia pós-punção geralmente é ortostática, piora ao sentar ou ficar em pé e melhora ao deitar. Hipertensão grave, escotomas e dor epigástrica apontam para pré-eclâmpsia puerperal, situação na qual blood patch não é a prioridade."
         },
         {
           "optionId": "B",
           "optionText": "Prescrever analgésico e reavaliar após o período de repouso.",
           "isCorrect": false,
-          "comment": "Incorreta. Cefaleia, sintomas visuais, dor epigástrica e hipertensão grave no puerpério indicam pré-eclâmpsia com sinais de gravidade. Sulfato de magnésio previne eclâmpsia e a pressão deve ser tratada prontamente. A investigação por imagem não deve atrasar a estabilização."
+          "comment": "Incorreta. Analgesia isolada e observação atrasariam o tratamento de uma emergência obstétrica. A paciente apresenta manifestações neurológicas e pressão em faixa grave, com risco imediato de convulsão e evento cerebrovascular."
         },
         {
           "optionId": "C",
           "optionText": "Solicitar ressonância e aguardar o resultado antes do tratamento.",
           "isCorrect": false,
-          "comment": "Incorreta. Cefaleia, sintomas visuais, dor epigástrica e hipertensão grave no puerpério indicam pré-eclâmpsia com sinais de gravidade. Sulfato de magnésio previne eclâmpsia e a pressão deve ser tratada prontamente. A investigação por imagem não deve atrasar a estabilização."
+          "comment": "Incorreta. Neuroimagem pode ser necessária se houver déficit focal, alteração de consciência, convulsão atípica ou dúvida diagnóstica, mas não se deve aguardar o exame para tratar hipertensão grave e prevenir eclâmpsia."
         },
         {
           "optionId": "D",
           "optionText": "Iniciar sulfato de magnésio e tratar a hipertensão grave.",
           "isCorrect": true,
-          "comment": "Correta. Cefaleia, sintomas visuais, dor epigástrica e hipertensão grave no puerpério indicam pré-eclâmpsia com sinais de gravidade. Sulfato de magnésio previne eclâmpsia e a pressão deve ser tratada prontamente. A investigação por imagem não deve atrasar a estabilização."
+          "comment": "Correta. Deve-se iniciar sulfato de magnésio e reduzir a pressão grave com agente apropriado, além de monitorização materna e investigação de complicações. O tratamento é tempo-dependente."
         }
       ]
     },
@@ -803,31 +803,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "B",
       "correctOptionText": "Iniciar glicocorticoide imediatamente e confirmar o diagnóstico.",
-      "teachingPoint": "O risco de perda visual exige glicocorticoide imediato, antes da confirmação definitiva. Aguardar biópsia pode resultar em cegueira irreversível. Triptano e tomografia não tratam a vasculite nem reduzem o risco isquêmico ocular.",
+      "teachingPoint": "Cefaleia temporal nova em pessoa idosa, sensibilidade do couro cabeludo, claudicação mandibular e perda visual transitória são altamente sugestivas de arterite de células gigantes. O tratamento com glicocorticoide deve começar imediatamente para reduzir o risco de perda visual permanente, sem aguardar biópsia ou imagem. A confirmação diagnóstica deve ser organizada rapidamente.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Solicitar biópsia e aguardar o resultado antes de tratar.",
           "isCorrect": false,
-          "comment": "Incorreta. O risco de perda visual exige glicocorticoide imediato, antes da confirmação definitiva. Aguardar biópsia pode resultar em cegueira irreversível. Triptano e tomografia não tratam a vasculite nem reduzem o risco isquêmico ocular."
+          "comment": "Incorreta. A biópsia da artéria temporal é útil para confirmação, mas esperar o resultado expõe a paciente a risco de cegueira irreversível. O glicocorticoide deve ser iniciado antes, e a biópsia ainda pode permanecer informativa se realizada precocemente após o início do tratamento."
         },
         {
           "optionId": "B",
           "optionText": "Iniciar glicocorticoide imediatamente e confirmar o diagnóstico.",
           "isCorrect": true,
-          "comment": "Correta. O risco de perda visual exige glicocorticoide imediato, antes da confirmação definitiva. Aguardar biópsia pode resultar em cegueira irreversível. Triptano e tomografia não tratam a vasculite nem reduzem o risco isquêmico ocular."
+          "comment": "Correta. A combinação de claudicação mandibular e sintoma visual transitório representa alto risco isquêmico. Deve-se iniciar glicocorticoide imediatamente e prosseguir com confirmação por biópsia ou ultrassonografia vascular, conforme disponibilidade e protocolo."
         },
         {
           "optionId": "C",
           "optionText": "Prescrever triptano e solicitar avaliação oftalmológica eletiva.",
           "isCorrect": false,
-          "comment": "Incorreta. O risco de perda visual exige glicocorticoide imediato, antes da confirmação definitiva. Aguardar biópsia pode resultar em cegueira irreversível. Triptano e tomografia não tratam a vasculite nem reduzem o risco isquêmico ocular."
+          "comment": "Incorreta. Triptano é utilizado em crises de enxaqueca e não trata vasculite de grandes vasos. Além disso, avaliação oftalmológica apenas eletiva é inadequada diante de perda visual transitória e risco de comprometimento permanente."
         },
         {
           "optionId": "D",
           "optionText": "Solicitar tomografia de crânio e repetir os marcadores inflamatórios.",
           "isCorrect": false,
-          "comment": "Incorreta. O risco de perda visual exige glicocorticoide imediato, antes da confirmação definitiva. Aguardar biópsia pode resultar em cegueira irreversível. Triptano e tomografia não tratam a vasculite nem reduzem o risco isquêmico ocular."
+          "comment": "Incorreta. Tomografia de crânio não confirma arterite de células gigantes, e repetir marcadores inflamatórios não deve atrasar o tratamento. VHS e proteína C reativa ajudam na avaliação, mas resultados normais não excluem completamente a doença."
         }
       ]
     },
