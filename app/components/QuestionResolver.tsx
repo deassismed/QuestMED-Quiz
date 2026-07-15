@@ -708,18 +708,18 @@ export function QuestionResolver({
                 })}
               </section>
               {!currentAnswer && selectedOptionId ? (
-                <div className="resolver-desktop-confirm-bar">
+                <div className="resolver-inline-confirm-zone">
                   <button
-                    className={selectedOptionId ? "resolver-desktop-confirm-button ready" : "resolver-desktop-confirm-button"}
+                    className={selectedOptionId ? "floating-confirm-button resolver-inline-confirm-button ready" : "floating-confirm-button resolver-inline-confirm-button"}
                     disabled={!selectedOptionId || remainingSeconds === 0}
                     onClick={() => selectedOptionId && recordAnswer(selectedOptionId)}
                     type="button"
+                    aria-label="Confirmar resposta"
                   >
-                    <Check size={22} /> Confirmar resposta
+                    <Check size={28} />
                   </button>
                 </div>
               ) : null}
-
               {currentAnswer ? (
                 <section className="feedback-zone resolver-actions">
                   <div className={currentAnswer.isCorrect ? "result-card correct" : "result-card incorrect"}>
@@ -745,7 +745,7 @@ export function QuestionResolver({
 
         {currentQuestion && !currentAnswer && !completed ? (
           <button
-            className={selectedOptionId ? "floating-confirm-button ready" : "floating-confirm-button"}
+            className={selectedOptionId ? "floating-confirm-button resolver-mobile-confirm-button ready" : "floating-confirm-button resolver-mobile-confirm-button"}
             disabled={!selectedOptionId || remainingSeconds === 0}
             onClick={() => selectedOptionId && recordAnswer(selectedOptionId)}
             type="button"

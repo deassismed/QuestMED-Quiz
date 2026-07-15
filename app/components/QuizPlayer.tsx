@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Check, Clock3, GraduationCap, Users, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Check, Clock3, GraduationCap, Users, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { LAST_RESOLVER_STUDENT_KEY, QuestionResolver } from "./QuestionResolver";
@@ -622,10 +622,12 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
                 <strong>ALUNOS</strong>
                 <ArrowRight className="entry-choice-arrow" size={22} />
               </button>
+              <button className="entry-choice-card questions" onClick={() => setResolverMode(true)} type="button">
+                <span className="entry-choice-icon"><BookOpen size={30} /></span>
+                <strong>QUESTÕES</strong>
+                <ArrowRight className="entry-choice-arrow" size={22} />
+              </button>
             </div>
-            <button className="resolver-entry-button hero-resolver-button" onClick={() => setResolverMode(true)} type="button">
-              Resolvedor
-            </button>
             {error ? <p className="entry-error hero-entry-error">{error}</p> : null}
           </section>
         ) : (
