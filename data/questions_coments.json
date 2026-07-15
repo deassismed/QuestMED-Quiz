@@ -3,7 +3,7 @@
     "title": "Comentários didáticos por alternativa",
     "sourceFile": "60 Questões Inéditas para Residência Médica.pdf",
     "generatedDate": "2026-07-11",
-    "description": "Arquivo para uso em aula posterior. Cada item referencia a questão original por questionId e traz o gabarito, o texto da alternativa correta e comentários didáticos para cada alternativa."
+    "description": "Arquivo final com comentários didáticos individualizados para as 60 questões. Cada item referencia a questão original, apresenta o ponto de ensino e explica separadamente por que cada alternativa está correta ou incorreta."
   },
   "items": [
     {
@@ -836,31 +836,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "A",
       "correctOptionText": "Excluir lesão estrutural da fossa posterior ou transição craniocervical.",
-      "teachingPoint": "Cefaleia precipitada por tosse ou Valsalva requer exclusão de causas secundárias, sobretudo alterações de fossa posterior. Somente após imagem adequada pode-se considerar cefaleia primária da tosse. Triptano e biópsia temporal não correspondem ao padrão clínico.",
+      "teachingPoint": "A cefaleia desencadeada exclusivamente por tosse, espirro ou manobra de Valsalva pode ser primária, mas esse diagnóstico exige exclusão prévia de causas secundárias. Entre as principais estão malformação de Chiari tipo I, tumores de fossa posterior, hidrocefalia e outras alterações da transição craniocervical. A investigação deve incluir neuroimagem adequada, mesmo quando o exame neurológico é normal.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Excluir lesão estrutural da fossa posterior ou transição craniocervical.",
           "isCorrect": true,
-          "comment": "Correta. Cefaleia precipitada por tosse ou Valsalva requer exclusão de causas secundárias, sobretudo alterações de fossa posterior. Somente após imagem adequada pode-se considerar cefaleia primária da tosse. Triptano e biópsia temporal não correspondem ao padrão clínico."
+          "comment": "Correta. Cefaleia abrupta e breve precipitada por aumento da pressão intratorácica exige inicialmente exclusão de lesões da fossa posterior e da junção craniocervical, especialmente malformação de Chiari. Somente após investigação estrutural negativa pode-se considerar cefaleia primária da tosse."
         },
         {
           "optionId": "B",
           "optionText": "Confirmar enxaqueca por meio de teste terapêutico com triptano.",
           "isCorrect": false,
-          "comment": "Incorreta. Cefaleia precipitada por tosse ou Valsalva requer exclusão de causas secundárias, sobretudo alterações de fossa posterior. Somente após imagem adequada pode-se considerar cefaleia primária da tosse. Triptano e biópsia temporal não correspondem ao padrão clínico."
+          "comment": "Incorreta. A enxaqueca costuma durar horas, pode ser agravada por atividade física e associa-se a náusea, fotofobia ou fonofobia. Uma resposta a triptano não confirmaria o diagnóstico nem excluiria uma lesão estrutural responsável pela cefaleia provocada por Valsalva."
         },
         {
           "optionId": "C",
           "optionText": "Diagnosticar cefaleia primária da tosse sem necessidade de exames.",
           "isCorrect": false,
-          "comment": "Incorreta. Cefaleia precipitada por tosse ou Valsalva requer exclusão de causas secundárias, sobretudo alterações de fossa posterior. Somente após imagem adequada pode-se considerar cefaleia primária da tosse. Triptano e biópsia temporal não correspondem ao padrão clínico."
+          "comment": "Incorreta. Cefaleia primária da tosse é diagnóstico de exclusão. A ausência de alterações no exame neurológico não elimina malformações da fossa posterior, que podem manifestar-se apenas por dor desencadeada por tosse ou esforço."
         },
         {
           "optionId": "D",
           "optionText": "Investigar arterite de células gigantes com biópsia temporal.",
           "isCorrect": false,
-          "comment": "Incorreta. Cefaleia precipitada por tosse ou Valsalva requer exclusão de causas secundárias, sobretudo alterações de fossa posterior. Somente após imagem adequada pode-se considerar cefaleia primária da tosse. Triptano e biópsia temporal não correspondem ao padrão clínico."
+          "comment": "Incorreta. Arterite de células gigantes deve ser lembrada em pessoas com mais de 50 anos quando há cefaleia nova persistente, claudicação mandibular, sensibilidade temporal, sintomas visuais ou inflamação sistêmica. Crises de segundos provocadas exclusivamente por tosse não constituem sua apresentação típica."
         }
       ]
     },
@@ -869,31 +869,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "C",
       "correctOptionText": "Indometacina em dose adequada.",
-      "teachingPoint": "Hemicrania contínua é unilateral, persistente e absolutamente responsiva à indometacina. Oxigênio e verapamil são utilizados sobretudo na cefaleia em salvas. Carbamazepina é mais característica do tratamento de neuralgias.",
+      "teachingPoint": "Hemicrania contínua caracteriza-se por dor estritamente unilateral, presente continuamente por mais de três meses, com exacerbações que podem acompanhar lacrimejamento, congestão nasal, ptose ou inquietação. A resposta completa à indometacina é um critério diagnóstico essencial e permite diferenciá-la de outras cefaleias trigêmino-autonômicas.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Verapamil em dose crescente.",
           "isCorrect": false,
-          "comment": "Incorreta. Hemicrania contínua é unilateral, persistente e absolutamente responsiva à indometacina. Oxigênio e verapamil são utilizados sobretudo na cefaleia em salvas. Carbamazepina é mais característica do tratamento de neuralgias."
+          "comment": "Incorreta. Verapamil é o principal tratamento preventivo da cefaleia em salvas. Pode reduzir a frequência dos períodos de salvas, mas não constitui teste diagnóstico para uma dor unilateral contínua e não apresenta a resposta característica observada com indometacina."
         },
         {
           "optionId": "B",
           "optionText": "Oxigênio em alto fluxo.",
           "isCorrect": false,
-          "comment": "Incorreta. Hemicrania contínua é unilateral, persistente e absolutamente responsiva à indometacina. Oxigênio e verapamil são utilizados sobretudo na cefaleia em salvas. Carbamazepina é mais característica do tratamento de neuralgias."
+          "comment": "Incorreta. Oxigênio em alto fluxo é tratamento abortivo de primeira linha para crises de cefaleia em salvas. Ele não costuma abolir a dor basal persistente da hemicrania contínua e não funciona como teste terapêutico específico."
         },
         {
           "optionId": "C",
           "optionText": "Indometacina em dose adequada.",
           "isCorrect": true,
-          "comment": "Correta. Hemicrania contínua é unilateral, persistente e absolutamente responsiva à indometacina. Oxigênio e verapamil são utilizados sobretudo na cefaleia em salvas. Carbamazepina é mais característica do tratamento de neuralgias."
+          "comment": "Correta. A remissão completa da dor com indometacina, em dose terapêutica tolerada, é característica da hemicrania contínua. Resposta parcial ou apenas redução da intensidade não possui o mesmo valor diagnóstico."
         },
         {
           "optionId": "D",
           "optionText": "Carbamazepina em dose baixa.",
           "isCorrect": false,
-          "comment": "Incorreta. Hemicrania contínua é unilateral, persistente e absolutamente responsiva à indometacina. Oxigênio e verapamil são utilizados sobretudo na cefaleia em salvas. Carbamazepina é mais característica do tratamento de neuralgias."
+          "comment": "Incorreta. Carbamazepina é utilizada principalmente em neuralgia do trigêmeo, que produz paroxismos muito breves, em choque, desencadeados por estímulos faciais. Não é o teste terapêutico indicado para uma cefaleia unilateral contínua."
         }
       ]
     },
@@ -902,31 +902,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "B",
       "correctOptionText": "Hipotensão intracraniana espontânea.",
-      "teachingPoint": "A ortostase como gatilho, o alívio em decúbito e o realce paquimeníngeo são típicos de hipotensão intracraniana. Hipertensão intracraniana geralmente apresenta papiledema e pode piorar em decúbito. Os demais diagnósticos não explicam tão bem o padrão postural.",
+      "teachingPoint": "Hipotensão intracraniana espontânea decorre geralmente de perda de líquido cerebrospinal por vazamento espinal. O achado clínico clássico é cefaleia ortostática, que piora ao ficar sentado ou em pé e melhora em decúbito. Realce paquimeníngeo difuso, ingurgitamento venoso e deslocamento inferior de estruturas encefálicas são achados possíveis na ressonância.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Hipertensão intracraniana idiopática.",
           "isCorrect": false,
-          "comment": "Incorreta. A ortostase como gatilho, o alívio em decúbito e o realce paquimeníngeo são típicos de hipotensão intracraniana. Hipertensão intracraniana geralmente apresenta papiledema e pode piorar em decúbito. Os demais diagnósticos não explicam tão bem o padrão postural."
+          "comment": "Incorreta. Hipertensão intracraniana idiopática costuma ocorrer com cefaleia menos dependente da ortostase, papiledema, obscurecimentos visuais transitórios e zumbido pulsátil. A dor pode piorar ao deitar ou com Valsalva, e a pressão de abertura do líquor encontra-se elevada."
         },
         {
           "optionId": "B",
           "optionText": "Hipotensão intracraniana espontânea.",
           "isCorrect": true,
-          "comment": "Correta. A ortostase como gatilho, o alívio em decúbito e o realce paquimeníngeo são típicos de hipotensão intracraniana. Hipertensão intracraniana geralmente apresenta papiledema e pode piorar em decúbito. Os demais diagnósticos não explicam tão bem o padrão postural."
+          "comment": "Correta. A melhora em decúbito, a piora ao ficar em pé e o realce paquimeníngeo difuso formam um conjunto típico de hipotensão intracraniana espontânea. Zumbido, diplopia e sintomas auditivos também podem ocorrer por tração de nervos cranianos e alteração da pressão liquórica."
         },
         {
           "optionId": "C",
           "optionText": "Trombose venosa cerebral.",
           "isCorrect": false,
-          "comment": "Incorreta. A ortostase como gatilho, o alívio em decúbito e o realce paquimeníngeo são típicos de hipotensão intracraniana. Hipertensão intracraniana geralmente apresenta papiledema e pode piorar em decúbito. Os demais diagnósticos não explicam tão bem o padrão postural."
+          "comment": "Incorreta. Trombose venosa cerebral pode causar cefaleia, convulsões, papiledema ou déficit focal, especialmente em situações de hipercoagulabilidade. O diagnóstico é feito por venografia, e o realce paquimeníngeo com padrão ortostático é mais característico de hipotensão liquórica."
         },
         {
           "optionId": "D",
           "optionText": "Enxaqueca vestibular.",
           "isCorrect": false,
-          "comment": "Incorreta. A ortostase como gatilho, o alívio em decúbito e o realce paquimeníngeo são típicos de hipotensão intracraniana. Hipertensão intracraniana geralmente apresenta papiledema e pode piorar em decúbito. Os demais diagnósticos não explicam tão bem o padrão postural."
+          "comment": "Incorreta. Enxaqueca vestibular associa episódios de vertigem a história ou características migranosas, como fotofobia, fonofobia e cefaleia pulsátil. Não explica adequadamente a dependência postural marcada nem o realce paquimeníngeo difuso."
         }
       ]
     },
@@ -935,31 +935,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "D",
       "correctOptionText": "Cefaleia hípnica.",
-      "teachingPoint": "A cefaleia hípnica ocorre exclusivamente durante o sono, geralmente em pessoas mais velhas, sem sintomas autonômicos importantes. Salvas costuma ser unilateral e autonômica. Apneia pode causar cefaleia ao despertar, mas não crises estereotipadas que acordam o paciente. Arterite apresentaria outros sinais sistêmicos.",
+      "teachingPoint": "Cefaleia hípnica é uma cefaleia primária rara que ocorre exclusivamente durante o sono e desperta o paciente, predominando após os 50 anos. As crises geralmente duram de 15 minutos a algumas horas, podem ser bilaterais e não costumam apresentar sintomas autonômicos intensos. Antes de confirmá-la, devem ser excluídas causas secundárias e outros distúrbios relacionados ao sono.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Cefaleia em salvas.",
           "isCorrect": false,
-          "comment": "Incorreta. A cefaleia hípnica ocorre exclusivamente durante o sono, geralmente em pessoas mais velhas, sem sintomas autonômicos importantes. Salvas costuma ser unilateral e autonômica. Apneia pode causar cefaleia ao despertar, mas não crises estereotipadas que acordam o paciente. Arterite apresentaria outros sinais sistêmicos."
+          "comment": "Incorreta. Cefaleia em salvas também pode despertar o paciente durante a noite, mas costuma ser estritamente unilateral, orbitária ou temporal, de intensidade excruciante, acompanhada de lacrimejamento, congestão nasal, ptose e inquietação."
         },
         {
           "optionId": "B",
           "optionText": "Apneia obstrutiva do sono.",
           "isCorrect": false,
-          "comment": "Incorreta. A cefaleia hípnica ocorre exclusivamente durante o sono, geralmente em pessoas mais velhas, sem sintomas autonômicos importantes. Salvas costuma ser unilateral e autonômica. Apneia pode causar cefaleia ao despertar, mas não crises estereotipadas que acordam o paciente. Arterite apresentaria outros sinais sistêmicos."
+          "comment": "Incorreta. Apneia obstrutiva do sono pode produzir cefaleia matinal ao despertar, geralmente difusa e associada a roncos, pausas respiratórias e sonolência diurna. Não costuma causar crises estereotipadas de uma hora que despertam o paciente sempre no mesmo período da noite."
         },
         {
           "optionId": "C",
           "optionText": "Arterite de células gigantes.",
           "isCorrect": false,
-          "comment": "Incorreta. A cefaleia hípnica ocorre exclusivamente durante o sono, geralmente em pessoas mais velhas, sem sintomas autonômicos importantes. Salvas costuma ser unilateral e autonômica. Apneia pode causar cefaleia ao despertar, mas não crises estereotipadas que acordam o paciente. Arterite apresentaria outros sinais sistêmicos."
+          "comment": "Incorreta. Arterite de células gigantes pode causar cefaleia nova em idosos, mas geralmente é persistente e associa-se a sensibilidade temporal, claudicação mandibular, sintomas visuais ou elevação de marcadores inflamatórios. A ocorrência exclusiva durante o sono não é típica."
         },
         {
           "optionId": "D",
           "optionText": "Cefaleia hípnica.",
           "isCorrect": true,
-          "comment": "Correta. A cefaleia hípnica ocorre exclusivamente durante o sono, geralmente em pessoas mais velhas, sem sintomas autonômicos importantes. Salvas costuma ser unilateral e autonômica. Apneia pode causar cefaleia ao despertar, mas não crises estereotipadas que acordam o paciente. Arterite apresentaria outros sinais sistêmicos."
+          "comment": "Correta. Idade avançada, crises que surgem apenas durante o sono, duração aproximada de uma hora, padrão bilateral e ausência de sintomas autonômicos são compatíveis com cefaleia hípnica."
         }
       ]
     },
@@ -968,31 +968,31 @@
       "theme": "Cefaleia",
       "correctOptionId": "A",
       "correctOptionText": "Educação, exercícios cervicais e correção dos fatores mecânicos.",
-      "teachingPoint": "Dor reproduzida por movimento cervical e palpação sugere cefaleia cervicogênica, inicialmente tratada com medidas físicas e correção biomecânica. Oxigênio, indometacina e neuroimagem rotineira não correspondem à apresentação sem sinais de alerta.",
+      "teachingPoint": "Cefaleia cervicogênica é atribuída a estruturas da coluna cervical e costuma iniciar-se na região cervical ou occipital, irradiando para a cabeça. Limitação da amplitude de movimento e reprodução da dor por rotação cervical ou palpação reforçam o diagnóstico. Sem sinais de alarme, o manejo inicial inclui educação, exercícios terapêuticos, fisioterapia e correção de fatores biomecânicos.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Educação, exercícios cervicais e correção dos fatores mecânicos.",
           "isCorrect": true,
-          "comment": "Correta. Dor reproduzida por movimento cervical e palpação sugere cefaleia cervicogênica, inicialmente tratada com medidas físicas e correção biomecânica. Oxigênio, indometacina e neuroimagem rotineira não correspondem à apresentação sem sinais de alerta."
+          "comment": "Correta. A reprodução da dor por movimento cervical e palpação suboccipital favorece origem musculoesquelética. Educação, mobilidade, fortalecimento, ajustes ergonômicos e tratamento manual quando indicado são medidas iniciais apropriadas."
         },
         {
           "optionId": "B",
           "optionText": "Oxigênio em alto fluxo e verapamil como profilaxia.",
           "isCorrect": false,
-          "comment": "Incorreta. Dor reproduzida por movimento cervical e palpação sugere cefaleia cervicogênica, inicialmente tratada com medidas físicas e correção biomecânica. Oxigênio, indometacina e neuroimagem rotineira não correspondem à apresentação sem sinais de alerta."
+          "comment": "Incorreta. Oxigênio em alto fluxo e verapamil são utilizados, respectivamente, no tratamento agudo e preventivo da cefaleia em salvas. O caso não apresenta crises orbitárias intensas, sintomas autonômicos ou inquietação."
         },
         {
           "optionId": "C",
           "optionText": "Indometacina em dose plena para confirmação diagnóstica.",
           "isCorrect": false,
-          "comment": "Incorreta. Dor reproduzida por movimento cervical e palpação sugere cefaleia cervicogênica, inicialmente tratada com medidas físicas e correção biomecânica. Oxigênio, indometacina e neuroimagem rotineira não correspondem à apresentação sem sinais de alerta."
+          "comment": "Incorreta. Resposta completa à indometacina é utilizada no diagnóstico de hemicrania contínua e hemicrania paroxística. Uma dor provocada por rotação do pescoço, com sensibilidade suboccipital, aponta para mecanismo cervical."
         },
         {
           "optionId": "D",
           "optionText": "Ressonância de encéfalo antes de qualquer medida terapêutica.",
           "isCorrect": false,
-          "comment": "Incorreta. Dor reproduzida por movimento cervical e palpação sugere cefaleia cervicogênica, inicialmente tratada com medidas físicas e correção biomecânica. Oxigênio, indometacina e neuroimagem rotineira não correspondem à apresentação sem sinais de alerta."
+          "comment": "Incorreta. Ressonância de encéfalo não é obrigatória diante de apresentação típica, exame neurológico normal e ausência de sinais de alerta. A imagem deve ser solicitada quando houver suspeita de causa secundária ou evolução atípica."
         }
       ]
     },
@@ -1001,31 +1001,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "B",
       "correctOptionText": "Investigar neoplasia pulmonar com tomografia e obtenção de tecido.",
-      "teachingPoint": "Tabagismo, hemoptise, perda ponderal e opacidade persistente exigem investigação de câncer pulmonar com tomografia e diagnóstico tecidual. Antibiótico isolado ou broncodilatador atrasariam o diagnóstico. Tuberculose permanece diferencial, mas também exige confirmação microbiológica.",
+      "teachingPoint": "Tabagismo importante, hemoptise, perda ponderal e opacidade pulmonar persistente constituem sinais de alarme para neoplasia pulmonar. A investigação deve incluir tomografia de tórax para caracterização e estadiamento inicial, seguida de obtenção de tecido pelo método mais seguro e de maior rendimento, como broncoscopia, punção transtorácica ou amostragem linfonodal.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Tratar empiricamente como pneumonia e repetir radiografia em seis meses.",
           "isCorrect": false,
-          "comment": "Incorreta. Tabagismo, hemoptise, perda ponderal e opacidade persistente exigem investigação de câncer pulmonar com tomografia e diagnóstico tecidual. Antibiótico isolado ou broncodilatador atrasariam o diagnóstico. Tuberculose permanece diferencial, mas também exige confirmação microbiológica."
+          "comment": "Incorreta. Tratar como pneumonia e aguardar seis meses atrasaria a investigação de uma provável neoplasia. Quando uma opacidade persiste e se associa a hemoptise e perda de peso, a avaliação deve ser imediata, mesmo que tenha ocorrido tratamento antimicrobiano prévio."
         },
         {
           "optionId": "B",
           "optionText": "Investigar neoplasia pulmonar com tomografia e obtenção de tecido.",
           "isCorrect": true,
-          "comment": "Correta. Tabagismo, hemoptise, perda ponderal e opacidade persistente exigem investigação de câncer pulmonar com tomografia e diagnóstico tecidual. Antibiótico isolado ou broncodilatador atrasariam o diagnóstico. Tuberculose permanece diferencial, mas também exige confirmação microbiológica."
+          "comment": "Correta. O conjunto clínico apresenta alta probabilidade de câncer pulmonar. A tomografia define melhor a lesão, linfonodos e possíveis metástases, enquanto a confirmação histológica determina o tipo tumoral e orienta o tratamento."
         },
         {
           "optionId": "C",
           "optionText": "Prescrever broncodilatador e acompanhar a resposta clínica.",
           "isCorrect": false,
-          "comment": "Incorreta. Tabagismo, hemoptise, perda ponderal e opacidade persistente exigem investigação de câncer pulmonar com tomografia e diagnóstico tecidual. Antibiótico isolado ou broncodilatador atrasariam o diagnóstico. Tuberculose permanece diferencial, mas também exige confirmação microbiológica."
+          "comment": "Incorreta. Broncodilatadores podem aliviar sintomas em doença obstrutiva concomitante, mas não esclarecem uma opacidade persistente nem explicam perda ponderal e hemoptise. Observar apenas a resposta clínica pode retardar o diagnóstico."
         },
         {
           "optionId": "D",
           "optionText": "Iniciar tratamento para tuberculose sem coleta de amostras respiratórias.",
           "isCorrect": false,
-          "comment": "Incorreta. Tabagismo, hemoptise, perda ponderal e opacidade persistente exigem investigação de câncer pulmonar com tomografia e diagnóstico tecidual. Antibiótico isolado ou broncodilatador atrasariam o diagnóstico. Tuberculose permanece diferencial, mas também exige confirmação microbiológica."
+          "comment": "Incorreta. Tuberculose é um diagnóstico diferencial relevante, sobretudo em lesões de lobos superiores, mas deve ser investigada com escarro para teste molecular rápido, baciloscopia e cultura quando possível. Tratamento empírico sem coleta de amostras pode mascarar diagnósticos e dificultar confirmação e avaliação de resistência."
         }
       ]
     },
@@ -1034,31 +1034,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "C",
       "correctOptionText": "Oxigênio, internação e toracocentese diagnóstica e terapêutica.",
-      "teachingPoint": "Derrame volumoso com hipoxemia requer estabilização, internação e drenagem diagnóstica e terapêutica. Manejo ambulatorial é inseguro. Antibiótico ou broncodilatador isolados não tratam a repercussão mecânica do derrame.",
+      "teachingPoint": "Derrame pleural volumoso com dispneia intensa, hipoxemia e colapso pulmonar produz repercussão ventilatória e requer estabilização hospitalar. A toracocentese pode ser simultaneamente terapêutica, ao aliviar a compressão, e diagnóstica, permitindo análise bioquímica, microbiológica e citológica do líquido. A drenagem deve ser realizada de forma monitorada.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Acompanhamento ambulatorial com analgesia e nova imagem.",
           "isCorrect": false,
-          "comment": "Incorreta. Derrame volumoso com hipoxemia requer estabilização, internação e drenagem diagnóstica e terapêutica. Manejo ambulatorial é inseguro. Antibiótico ou broncodilatador isolados não tratam a repercussão mecânica do derrame."
+          "comment": "Incorreta. Acompanhamento ambulatorial é inadequado diante de hipoxemia e grande efeito mecânico sobre o pulmão. A demora pode levar a piora respiratória e impede a investigação imediata da provável etiologia maligna."
         },
         {
           "optionId": "B",
           "optionText": "Antibioticoterapia oral e reavaliação em 48 horas.",
           "isCorrect": false,
-          "comment": "Incorreta. Derrame volumoso com hipoxemia requer estabilização, internação e drenagem diagnóstica e terapêutica. Manejo ambulatorial é inseguro. Antibiótico ou broncodilatador isolados não tratam a repercussão mecânica do derrame."
+          "comment": "Incorreta. Antibiótico oral seria apropriado apenas se houvesse quadro infeccioso leve claramente definido. Ele não remove o líquido, não reexpande o pulmão e não corrige a insuficiência respiratória provocada pelo derrame volumoso."
         },
         {
           "optionId": "C",
           "optionText": "Oxigênio, internação e toracocentese diagnóstica e terapêutica.",
           "isCorrect": true,
-          "comment": "Correta. Derrame volumoso com hipoxemia requer estabilização, internação e drenagem diagnóstica e terapêutica. Manejo ambulatorial é inseguro. Antibiótico ou broncodilatador isolados não tratam a repercussão mecânica do derrame."
+          "comment": "Correta. Oxigênio e internação tratam a repercussão imediata, enquanto a toracocentese alivia a dispneia e fornece material para determinar se o derrame é maligno, infeccioso ou de outra natureza."
         },
         {
           "optionId": "D",
           "optionText": "Broncodilatador inalatório e alta após melhora da saturação.",
           "isCorrect": false,
-          "comment": "Incorreta. Derrame volumoso com hipoxemia requer estabilização, internação e drenagem diagnóstica e terapêutica. Manejo ambulatorial é inseguro. Antibiótico ou broncodilatador isolados não tratam a repercussão mecânica do derrame."
+          "comment": "Incorreta. Broncodilatador atua sobre obstrução das vias aéreas, não sobre compressão pulmonar por líquido pleural. Melhora transitória da saturação não torna segura a alta sem drenagem e investigação."
         }
       ]
     },
@@ -1067,31 +1067,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "A",
       "correctOptionText": "Tratamento sintomático e orientações sobre sinais de alarme.",
-      "teachingPoint": "Paciente jovem, sem risco elevado ou gravidade e fora da fase de maior benefício antiviral pode receber tratamento sintomático. Antibióticos e corticoides não são indicados rotineiramente em síndrome gripal não complicada. Não há critério para internação.",
+      "teachingPoint": "Síndrome gripal não complicada em adulto jovem, sem comorbidades, hipoxemia ou sinais de gravidade pode ser manejada com hidratação, antitérmicos ou analgésicos, repouso relativo e orientações sobre sinais de alarme. Antibióticos e corticoides sistêmicos não devem ser prescritos rotineiramente. Antiviral é priorizado para grupos de risco, doença grave ou situações definidas por protocolos epidemiológicos.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Tratamento sintomático e orientações sobre sinais de alarme.",
           "isCorrect": true,
-          "comment": "Correta. Paciente jovem, sem risco elevado ou gravidade e fora da fase de maior benefício antiviral pode receber tratamento sintomático. Antibióticos e corticoides não são indicados rotineiramente em síndrome gripal não complicada. Não há critério para internação."
+          "comment": "Correta. A paciente não apresenta dispneia, instabilidade, hipoxemia ou fatores de risco para complicações. O manejo sintomático é suficiente, com orientação para retornar se surgirem falta de ar, dor torácica, confusão, desidratação ou piora persistente."
         },
         {
           "optionId": "B",
           "optionText": "Amoxicilina-clavulanato por suspeita de infecção bacteriana.",
           "isCorrect": false,
-          "comment": "Incorreta. Paciente jovem, sem risco elevado ou gravidade e fora da fase de maior benefício antiviral pode receber tratamento sintomático. Antibióticos e corticoides não são indicados rotineiramente em síndrome gripal não complicada. Não há critério para internação."
+          "comment": "Incorreta. Febre, mialgia, cefaleia e tosse seca há poucos dias são compatíveis com infecção viral. Amoxicilina-clavulanato não reduz a duração da influenza e expõe a efeitos adversos e seleção de resistência bacteriana."
         },
         {
           "optionId": "C",
           "optionText": "Internação para observação por risco de insuficiência respiratória.",
           "isCorrect": false,
-          "comment": "Incorreta. Paciente jovem, sem risco elevado ou gravidade e fora da fase de maior benefício antiviral pode receber tratamento sintomático. Antibióticos e corticoides não são indicados rotineiramente em síndrome gripal não complicada. Não há critério para internação."
+          "comment": "Incorreta. Internação é indicada na presença de insuficiência respiratória, instabilidade hemodinâmica, alteração do estado mental, incapacidade de hidratação ou outra complicação. O simples risco teórico de piora não justifica observação hospitalar."
         },
         {
           "optionId": "D",
           "optionText": "Corticoide sistêmico para redução da duração dos sintomas.",
           "isCorrect": false,
-          "comment": "Incorreta. Paciente jovem, sem risco elevado ou gravidade e fora da fase de maior benefício antiviral pode receber tratamento sintomático. Antibióticos e corticoides não são indicados rotineiramente em síndrome gripal não complicada. Não há critério para internação."
+          "comment": "Incorreta. Corticoide sistêmico não reduz de forma confiável a duração da síndrome gripal não complicada e pode aumentar eventos adversos. Seu uso deve ser reservado a outra indicação clínica concomitante, como exacerbação de asma."
         }
       ]
     },
@@ -1100,31 +1100,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "D",
       "correctOptionText": "Iniciar oseltamivir precocemente, sem aguardar confirmação.",
-      "teachingPoint": "Gestantes são grupo de risco para complicações da influenza, devendo receber oseltamivir precocemente, sem aguardar teste. Antibiótico não previne pneumonia viral e a gestação não contraindica o antiviral recomendado.",
+      "teachingPoint": "Gestantes e puérperas constituem grupo de maior risco para complicações da influenza. Diante de síndrome gripal durante circulação viral, o oseltamivir deve ser iniciado o mais precocemente possível, idealmente nas primeiras 48 horas, sem aguardar confirmação laboratorial. A gestação não contraindica o antiviral recomendado.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Apenas tratamento sintomático, pois a gestação contraindica antiviral.",
           "isCorrect": false,
-          "comment": "Incorreta. Gestantes são grupo de risco para complicações da influenza, devendo receber oseltamivir precocemente, sem aguardar teste. Antibiótico não previne pneumonia viral e a gestação não contraindica o antiviral recomendado."
+          "comment": "Incorreta. A gestação aumenta, e não reduz, a indicação de tratamento antiviral precoce. Oseltamivir é a opção preferencial porque há ampla experiência de uso e o benefício potencial supera os riscos conhecidos."
         },
         {
           "optionId": "B",
           "optionText": "Azitromicina para prevenir pneumonia bacteriana secundária.",
           "isCorrect": false,
-          "comment": "Incorreta. Gestantes são grupo de risco para complicações da influenza, devendo receber oseltamivir precocemente, sem aguardar teste. Antibiótico não previne pneumonia viral e a gestação não contraindica o antiviral recomendado."
+          "comment": "Incorreta. Azitromicina não previne pneumonia bacteriana secundária e não possui atividade contra o vírus influenza. Antibióticos devem ser reservados para evidência clínica de coinfecção bacteriana."
         },
         {
           "optionId": "C",
           "optionText": "Aguardar confirmação laboratorial antes de iniciar tratamento.",
           "isCorrect": false,
-          "comment": "Incorreta. Gestantes são grupo de risco para complicações da influenza, devendo receber oseltamivir precocemente, sem aguardar teste. Antibiótico não previne pneumonia viral e a gestação não contraindica o antiviral recomendado."
+          "comment": "Incorreta. Aguardar teste pode perder a janela de maior benefício do antiviral. O tratamento em grupos de risco é baseado na suspeita clínica e epidemiológica, e um resultado negativo não exclui completamente influenza."
         },
         {
           "optionId": "D",
           "optionText": "Iniciar oseltamivir precocemente, sem aguardar confirmação.",
           "isCorrect": true,
-          "comment": "Correta. Gestantes são grupo de risco para complicações da influenza, devendo receber oseltamivir precocemente, sem aguardar teste. Antibiótico não previne pneumonia viral e a gestação não contraindica o antiviral recomendado."
+          "comment": "Correta. A gestante apresenta síndrome gripal de início recente durante circulação de influenza. O oseltamivir deve ser iniciado imediatamente, associado a medidas sintomáticas e orientação sobre sinais de gravidade."
         }
       ]
     },
@@ -1133,31 +1133,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "A",
       "correctOptionText": "Antibiótico oral direcionado à pneumonia comunitária não complicada.",
-      "teachingPoint": "Pneumonia comunitária leve, em paciente sem comorbidades e com manejo ambulatorial, pode ser tratada com antimicrobiano oral apropriado. Cobertura para MRSA ou Pseudomonas deve ser reservada para fatores de risco. Aminoglicosídeo isolado e combinações amplas são inadequados.",
+      "teachingPoint": "Pneumonia adquirida na comunidade de baixa gravidade, em adulto sem comorbidades e apto a tratamento ambulatorial, deve receber antimicrobiano oral de espectro compatível com os patógenos habituais. Em muitos protocolos, amoxicilina é uma opção inicial. Cobertura para Pseudomonas aeruginosa ou MRSA depende de fatores de risco específicos e não deve ser utilizada rotineiramente.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Antibiótico oral direcionado à pneumonia comunitária não complicada.",
           "isCorrect": true,
-          "comment": "Correta. Pneumonia comunitária leve, em paciente sem comorbidades e com manejo ambulatorial, pode ser tratada com antimicrobiano oral apropriado. Cobertura para MRSA ou Pseudomonas deve ser reservada para fatores de risco. Aminoglicosídeo isolado e combinações amplas são inadequados."
+          "comment": "Correta. Estabilidade hemodinâmica, saturação normal, ausência de comorbidades e possibilidade de seguimento permitem tratamento ambulatorial com antimicrobiano oral dirigido aos agentes usuais da pneumonia comunitária, conforme protocolo local."
         },
         {
           "optionId": "B",
           "optionText": "Associação intravenosa com cobertura para Pseudomonas e MRSA.",
           "isCorrect": false,
-          "comment": "Incorreta. Pneumonia comunitária leve, em paciente sem comorbidades e com manejo ambulatorial, pode ser tratada com antimicrobiano oral apropriado. Cobertura para MRSA ou Pseudomonas deve ser reservada para fatores de risco. Aminoglicosídeo isolado e combinações amplas são inadequados."
+          "comment": "Incorreta. Esquemas intravenosos com cobertura para Pseudomonas e MRSA são reservados a doença grave ou fatores de risco validados, como isolamento prévio desses patógenos ou exposição hospitalar relevante. Uso indiscriminado aumenta toxicidade e resistência."
         },
         {
           "optionId": "C",
           "optionText": "Aminoglicosídeo isolado por curto período.",
           "isCorrect": false,
-          "comment": "Incorreta. Pneumonia comunitária leve, em paciente sem comorbidades e com manejo ambulatorial, pode ser tratada com antimicrobiano oral apropriado. Cobertura para MRSA ou Pseudomonas deve ser reservada para fatores de risco. Aminoglicosídeo isolado e combinações amplas são inadequados."
+          "comment": "Incorreta. Aminoglicosídeos apresentam baixa penetração pulmonar quando usados isoladamente e não cobrem adequadamente os principais agentes da pneumonia comunitária. Além disso, podem causar nefrotoxicidade e ototoxicidade."
         },
         {
           "optionId": "D",
           "optionText": "Fluoroquinolona obrigatoriamente associada a macrolídeo.",
           "isCorrect": false,
-          "comment": "Incorreta. Pneumonia comunitária leve, em paciente sem comorbidades e com manejo ambulatorial, pode ser tratada com antimicrobiano oral apropriado. Cobertura para MRSA ou Pseudomonas deve ser reservada para fatores de risco. Aminoglicosídeo isolado e combinações amplas são inadequados."
+          "comment": "Incorreta. Fluoroquinolona respiratória pode ser opção em situações selecionadas, sobretudo quando há comorbidades ou alergias, mas não precisa ser obrigatoriamente associada a macrolídeo. Essa combinação amplia desnecessariamente o espectro e aumenta o risco de eventos adversos."
         }
       ]
     },
@@ -1166,31 +1166,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "B",
       "correctOptionText": "Aumentam a pontuação de gravidade e favorecem avaliação hospitalar.",
-      "teachingPoint": "Frequência respiratória elevada e ureia aumentada são componentes de escores de gravidade e favorecem avaliação hospitalar. Não determinam isoladamente ventilação mecânica ou cobertura antipseudomonas. O tratamento domiciliar não deve ser decidido apenas pela ausência de febre.",
+      "teachingPoint": "A avaliação da pneumonia adquirida na comunidade deve combinar julgamento clínico com instrumentos de gravidade. Idade igual ou superior a 65 anos, frequência respiratória de pelo menos 30 irpm e ureia elevada aumentam a pontuação do CURB-65 e indicam maior risco de complicações e mortalidade. Esses achados favorecem avaliação hospitalar, mas não determinam isoladamente ventilação mecânica nem definem quais microrganismos devem ser cobertos.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Confirmam necessidade obrigatória de ventilação mecânica.",
           "isCorrect": false,
-          "comment": "Incorreta. Frequência respiratória elevada e ureia aumentada são componentes de escores de gravidade e favorecem avaliação hospitalar. Não determinam isoladamente ventilação mecânica ou cobertura antipseudomonas. O tratamento domiciliar não deve ser decidido apenas pela ausência de febre."
+          "comment": "Incorreta. Taquipneia e ureia elevada indicam maior gravidade, mas não confirmam necessidade obrigatória de ventilação mecânica. Suporte ventilatório invasivo é indicado conforme falência respiratória, incapacidade de proteger a via aérea, exaustão, hipercapnia progressiva ou hipoxemia refratária."
         },
         {
           "optionId": "B",
           "optionText": "Aumentam a pontuação de gravidade e favorecem avaliação hospitalar.",
           "isCorrect": true,
-          "comment": "Correta. Frequência respiratória elevada e ureia aumentada são componentes de escores de gravidade e favorecem avaliação hospitalar. Não determinam isoladamente ventilação mecânica ou cobertura antipseudomonas. O tratamento domiciliar não deve ser decidido apenas pela ausência de febre."
+          "comment": "Correta. Frequência respiratória de 32 irpm, ureia elevada e idade de 70 anos elevam a pontuação em escores prognósticos, como o CURB-65. O paciente necessita avaliação hospitalar e análise conjunta de oxigenação, comorbidades, suporte domiciliar e possibilidade de deterioração clínica."
         },
         {
           "optionId": "C",
           "optionText": "Indicam cobertura empírica obrigatória para Pseudomonas.",
           "isCorrect": false,
-          "comment": "Incorreta. Frequência respiratória elevada e ureia aumentada são componentes de escores de gravidade e favorecem avaliação hospitalar. Não determinam isoladamente ventilação mecânica ou cobertura antipseudomonas. O tratamento domiciliar não deve ser decidido apenas pela ausência de febre."
+          "comment": "Incorreta. A gravidade da pneumonia não constitui, por si só, fator de risco específico para Pseudomonas aeruginosa. Cobertura antipseudomonas é considerada principalmente diante de isolamento respiratório prévio, doença pulmonar estrutural relevante ou exposição hospitalar recente a antibióticos intravenosos, conforme o contexto epidemiológico."
         },
         {
           "optionId": "D",
           "optionText": "Permitem tratamento domiciliar desde que não haja febre.",
           "isCorrect": false,
-          "comment": "Incorreta. Frequência respiratória elevada e ureia aumentada são componentes de escores de gravidade e favorecem avaliação hospitalar. Não determinam isoladamente ventilação mecânica ou cobertura antipseudomonas. O tratamento domiciliar não deve ser decidido apenas pela ausência de febre."
+          "comment": "Incorreta. A ausência de febre não define baixo risco nem autoriza tratamento domiciliar. Pessoas idosas podem apresentar pneumonia grave sem febre, e a taquipneia e a elevação da ureia já demonstram repercussão sistêmica relevante."
         }
       ]
     },
@@ -1199,31 +1199,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "C",
       "correctOptionText": "Admissão em unidade de terapia intensiva.",
-      "teachingPoint": "Hipotensão persistente, confusão, hipoxemia e infiltrados multilobares indicam pneumonia grave e necessidade de terapia intensiva. Enfermaria ou observação breve não oferecem suporte adequado.",
+      "teachingPoint": "Pneumonia multilobar associada a confusão, frequência respiratória elevada, hipoxemia e hipotensão persistente após reposição volêmica caracteriza doença grave. A hipotensão refratária sugere choque séptico, enquanto a hipoxemia pode exigir suporte ventilatório escalonado. Esses pacientes necessitam monitorização contínua e acesso imediato a vasopressores, ventilação e manejo de disfunções orgânicas em unidade de terapia intensiva.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Tratamento ambulatorial com retorno diário.",
           "isCorrect": false,
-          "comment": "Incorreta. Hipotensão persistente, confusão, hipoxemia e infiltrados multilobares indicam pneumonia grave e necessidade de terapia intensiva. Enfermaria ou observação breve não oferecem suporte adequado."
+          "comment": "Incorreta. Tratamento ambulatorial é contraindicado diante de instabilidade hemodinâmica, alteração do estado mental, hipoxemia e comprometimento multilobar. Retornos diários não substituem monitorização contínua nem capacidade de intervenção imediata."
         },
         {
           "optionId": "B",
           "optionText": "Internação em enfermaria sem monitorização contínua.",
           "isCorrect": false,
-          "comment": "Incorreta. Hipotensão persistente, confusão, hipoxemia e infiltrados multilobares indicam pneumonia grave e necessidade de terapia intensiva. Enfermaria ou observação breve não oferecem suporte adequado."
+          "comment": "Incorreta. Uma enfermaria sem monitorização contínua não oferece suporte adequado para hipotensão persistente e insuficiência respiratória. A paciente pode necessitar de vasopressor, ventilação não invasiva ou invasiva e reavaliação frequente da perfusão."
         },
         {
           "optionId": "C",
           "optionText": "Admissão em unidade de terapia intensiva.",
           "isCorrect": true,
-          "comment": "Correta. Hipotensão persistente, confusão, hipoxemia e infiltrados multilobares indicam pneumonia grave e necessidade de terapia intensiva. Enfermaria ou observação breve não oferecem suporte adequado."
+          "comment": "Correta. O quadro reúne múltiplos critérios de pneumonia grave e sugere choque séptico. A admissão em terapia intensiva permite monitorização hemodinâmica, suporte respiratório, antibioticoterapia intravenosa precoce e tratamento imediato da disfunção orgânica."
         },
         {
           "optionId": "D",
           "optionText": "Observação por seis horas e alta se houver melhora da febre.",
           "isCorrect": false,
-          "comment": "Incorreta. Hipotensão persistente, confusão, hipoxemia e infiltrados multilobares indicam pneumonia grave e necessidade de terapia intensiva. Enfermaria ou observação breve não oferecem suporte adequado."
+          "comment": "Incorreta. Melhora da febre após algumas horas não comprova reversão da hipoxemia, da confusão ou da hipotensão. A decisão de alta deve considerar estabilidade global, e não apenas a temperatura corporal."
         }
       ]
     },
@@ -1232,31 +1232,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "A",
       "correctOptionText": "Indicam inclusão de antimicrobiano com atividade antipseudomonas.",
-      "teachingPoint": "Internação recente com antibiótico intravenoso e isolamento respiratório prévio de Pseudomonas justificam cobertura antipseudomonas empírica. Macrolídeo isolado ou tratamento usual não contemplam o risco microbiológico.",
+      "teachingPoint": "Na pneumonia adquirida na comunidade, a cobertura empírica para Pseudomonas aeruginosa deve ser reservada a pacientes com fatores de risco validados. Isolamento respiratório prévio desse agente e hospitalização recente com uso de antibiótico intravenoso aumentam substancialmente a probabilidade de infecção por Pseudomonas. Bronquiectasias reforçam esse risco por favorecerem colonização crônica e infecções recorrentes.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Indicam inclusão de antimicrobiano com atividade antipseudomonas.",
           "isCorrect": true,
-          "comment": "Correta. Internação recente com antibiótico intravenoso e isolamento respiratório prévio de Pseudomonas justificam cobertura antipseudomonas empírica. Macrolídeo isolado ou tratamento usual não contemplam o risco microbiológico."
+          "comment": "Correta. O isolamento respiratório prévio de Pseudomonas, associado a bronquiectasias e antibioticoterapia intravenosa recente, justifica incluir inicialmente um betalactâmico com atividade antipseudomonas ou outro esquema adequado ao perfil local. Culturas devem ser obtidas para posterior descalonamento."
         },
         {
           "optionId": "B",
           "optionText": "Permitem utilizar exclusivamente macrolídeo por via oral.",
           "isCorrect": false,
-          "comment": "Incorreta. Internação recente com antibiótico intravenoso e isolamento respiratório prévio de Pseudomonas justificam cobertura antipseudomonas empírica. Macrolídeo isolado ou tratamento usual não contemplam o risco microbiológico."
+          "comment": "Incorreta. Macrolídeo oral isolado não oferece cobertura confiável contra Pseudomonas e é insuficiente para pneumonia grave. Além disso, a gravidade exige tratamento intravenoso e monitorização hospitalar."
         },
         {
           "optionId": "C",
           "optionText": "Indicam cobertura apenas para germes atípicos.",
           "isCorrect": false,
-          "comment": "Incorreta. Internação recente com antibiótico intravenoso e isolamento respiratório prévio de Pseudomonas justificam cobertura antipseudomonas empírica. Macrolídeo isolado ou tratamento usual não contemplam o risco microbiológico."
+          "comment": "Incorreta. Germes atípicos podem integrar o espectro da pneumonia comunitária, mas não explicam a necessidade específica criada pelo isolamento prévio de Pseudomonas. Cobrir apenas agentes atípicos deixaria sem tratamento o patógeno de maior risco neste caso."
         },
         {
           "optionId": "D",
           "optionText": "Não modificam o esquema habitual da pneumonia comunitária.",
           "isCorrect": false,
-          "comment": "Incorreta. Internação recente com antibiótico intravenoso e isolamento respiratório prévio de Pseudomonas justificam cobertura antipseudomonas empírica. Macrolídeo isolado ou tratamento usual não contemplam o risco microbiológico."
+          "comment": "Incorreta. Esses antecedentes modificam diretamente a escolha empírica. Ignorá-los e utilizar apenas o esquema habitual pode resultar em tratamento inicial inadequado, fator associado a pior evolução em pneumonia grave."
         }
       ]
     },
@@ -1265,31 +1265,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "D",
       "correctOptionText": "Teste molecular rápido e pesquisa bacteriológica no escarro.",
-      "teachingPoint": "O quadro é típico de tuberculose pulmonar, devendo ser investigado com teste molecular rápido e exames bacteriológicos do escarro. Espirometria, sorologia e citologia isolada não confirmam a principal hipótese.",
+      "teachingPoint": "Tosse prolongada, febre vespertina, sudorese noturna, emagrecimento e cavitação em lobo superior formam um quadro clássico de tuberculose pulmonar. A investigação etiológica deve priorizar amostra respiratória para teste molecular rápido, que identifica o complexo Mycobacterium tuberculosis e resistência à rifampicina, associada à pesquisa bacteriológica por baciloscopia e cultura conforme disponibilidade.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Espirometria com prova broncodilatadora.",
           "isCorrect": false,
-          "comment": "Incorreta. O quadro é típico de tuberculose pulmonar, devendo ser investigado com teste molecular rápido e exames bacteriológicos do escarro. Espirometria, sorologia e citologia isolada não confirmam a principal hipótese."
+          "comment": "Incorreta. Espirometria avalia distúrbios ventilatórios obstrutivos ou restritivos, mas não identifica a etiologia de uma lesão cavitária com sintomas constitucionais. Além disso, deve ser evitada enquanto houver suspeita de tuberculose transmissível sem controle apropriado."
         },
         {
           "optionId": "B",
           "optionText": "Citologia oncótica de escarro isoladamente.",
           "isCorrect": false,
-          "comment": "Incorreta. O quadro é típico de tuberculose pulmonar, devendo ser investigado com teste molecular rápido e exames bacteriológicos do escarro. Espirometria, sorologia e citologia isolada não confirmam a principal hipótese."
+          "comment": "Incorreta. Citologia de escarro pode eventualmente detectar células malignas, mas possui sensibilidade limitada e não substitui a investigação microbiológica da principal hipótese. Também não fornece teste de resistência do Mycobacterium tuberculosis."
         },
         {
           "optionId": "C",
           "optionText": "Sorologia para agentes respiratórios atípicos.",
           "isCorrect": false,
-          "comment": "Incorreta. O quadro é típico de tuberculose pulmonar, devendo ser investigado com teste molecular rápido e exames bacteriológicos do escarro. Espirometria, sorologia e citologia isolada não confirmam a principal hipótese."
+          "comment": "Incorreta. Sorologias para agentes respiratórios atípicos não são exames prioritários nesse padrão subagudo ou crônico com cavitação apical. Esses agentes geralmente não produzem o conjunto clínico típico apresentado."
         },
         {
           "optionId": "D",
           "optionText": "Teste molecular rápido e pesquisa bacteriológica no escarro.",
           "isCorrect": true,
-          "comment": "Correta. O quadro é típico de tuberculose pulmonar, devendo ser investigado com teste molecular rápido e exames bacteriológicos do escarro. Espirometria, sorologia e citologia isolada não confirmam a principal hipótese."
+          "comment": "Correta. O teste molecular rápido no escarro permite diagnóstico mais precoce e avaliação inicial de resistência à rifampicina. Baciloscopia e cultura complementam a investigação, ajudam a avaliar transmissibilidade e possibilitam estudo mais amplo de sensibilidade."
         }
       ]
     },
@@ -1298,31 +1298,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "B",
       "correctOptionText": "Estabilizar, instituir precaução respiratória e transferir ao hospital.",
-      "teachingPoint": "Hemoptise volumosa com hipoxemia e instabilidade exige estabilização, isolamento e transferência para serviço capaz de realizar broncoscopia ou embolização. Acompanhamento na UBS, espera ou tratamento sintomático são inadequados.",
+      "teachingPoint": "Hemoptise volumosa com hipoxemia e instabilidade hemodinâmica é uma emergência, independentemente da etiologia. O risco imediato decorre principalmente de asfixia por inundação das vias aéreas, além da perda sanguínea. A prioridade é proteger a via aérea, ofertar oxigênio, obter acesso venoso, corrigir instabilidade, posicionar o pulmão suspeito de sangramento para baixo quando identificado e transferir para serviço com broncoscopia e embolização arterial.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Iniciar esquema para tuberculose e acompanhar na UBS.",
           "isCorrect": false,
-          "comment": "Incorreta. Hemoptise volumosa com hipoxemia e instabilidade exige estabilização, isolamento e transferência para serviço capaz de realizar broncoscopia ou embolização. Acompanhamento na UBS, espera ou tratamento sintomático são inadequados."
+          "comment": "Incorreta. Mesmo que a tuberculose seja provável, iniciar o esquema específico não controla imediatamente a hemorragia nem protege a via aérea. A instabilidade e a hipoxemia tornam o acompanhamento na atenção básica inseguro."
         },
         {
           "optionId": "B",
           "optionText": "Estabilizar, instituir precaução respiratória e transferir ao hospital.",
           "isCorrect": true,
-          "comment": "Correta. Hemoptise volumosa com hipoxemia e instabilidade exige estabilização, isolamento e transferência para serviço capaz de realizar broncoscopia ou embolização. Acompanhamento na UBS, espera ou tratamento sintomático são inadequados."
+          "comment": "Correta. A abordagem inicial deve seguir o ABC, com estabilização respiratória e circulatória. A suspeita de tuberculose exige precaução respiratória, mas não deve atrasar a transferência para unidade capaz de localizar e controlar o sangramento por broncoscopia ou embolização."
         },
         {
           "optionId": "C",
           "optionText": "Solicitar radiografia de controle e aguardar nova hemoptise.",
           "isCorrect": false,
-          "comment": "Incorreta. Hemoptise volumosa com hipoxemia e instabilidade exige estabilização, isolamento e transferência para serviço capaz de realizar broncoscopia ou embolização. Acompanhamento na UBS, espera ou tratamento sintomático são inadequados."
+          "comment": "Incorreta. Aguardar recorrência após uma radiografia expõe o paciente a obstrução aguda das vias aéreas, choque e morte. A radiografia pode auxiliar na localização, mas não substitui estabilização nem tratamento definitivo."
         },
         {
           "optionId": "D",
           "optionText": "Prescrever antitussígeno e orientar repouso domiciliar.",
           "isCorrect": false,
-          "comment": "Incorreta. Hemoptise volumosa com hipoxemia e instabilidade exige estabilização, isolamento e transferência para serviço capaz de realizar broncoscopia ou embolização. Acompanhamento na UBS, espera ou tratamento sintomático são inadequados."
+          "comment": "Incorreta. Antitussígeno e repouso não controlam hemoptise volumosa e podem retardar uma intervenção salvadora. A presença de hipoxemia e instabilidade exclui manejo domiciliar."
         }
       ]
     },
@@ -1331,31 +1331,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "C",
       "correctOptionText": "Obter amostras microbiológicas e prosseguir investigação da lesão.",
-      "teachingPoint": "Tuberculose e neoplasia podem apresentar sobreposição clínica e radiológica. A abordagem correta é obter material microbiológico e investigar estruturalmente a lesão. Tratamentos empíricos simultâneos ou atraso de três meses são inadequados.",
+      "teachingPoint": "Tuberculose e neoplasia pulmonar podem produzir tosse, emagrecimento, hemoptise e cavitação, especialmente em tabagistas. As hipóteses não são mutuamente excludentes e podem coexistir. A estratégia adequada combina coleta de amostras para teste molecular, baciloscopia e cultura com caracterização tomográfica da lesão e obtenção de tecido quando indicada.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Escolher a hipótese mais provável e abandonar a investigação da outra.",
           "isCorrect": false,
-          "comment": "Incorreta. Tuberculose e neoplasia podem apresentar sobreposição clínica e radiológica. A abordagem correta é obter material microbiológico e investigar estruturalmente a lesão. Tratamentos empíricos simultâneos ou atraso de três meses são inadequados."
+          "comment": "Incorreta. Escolher precocemente uma única hipótese cria risco de fechamento diagnóstico. Uma resposta incompleta ao tratamento ou um exame inicial negativo não exclui a outra condição, e tuberculose pode coexistir com câncer pulmonar."
         },
         {
           "optionId": "B",
           "optionText": "Tratar simultaneamente tuberculose e câncer antes de confirmação.",
           "isCorrect": false,
-          "comment": "Incorreta. Tuberculose e neoplasia podem apresentar sobreposição clínica e radiológica. A abordagem correta é obter material microbiológico e investigar estruturalmente a lesão. Tratamentos empíricos simultâneos ou atraso de três meses são inadequados."
+          "comment": "Incorreta. O tratamento antituberculose possui toxicidade relevante, enquanto o tratamento oncológico depende de confirmação histológica, subtipo e estadiamento. Tratar simultaneamente sem confirmação expõe o paciente a dano e pode dificultar a interpretação da evolução."
         },
         {
           "optionId": "C",
           "optionText": "Obter amostras microbiológicas e prosseguir investigação da lesão.",
           "isCorrect": true,
-          "comment": "Correta. Tuberculose e neoplasia podem apresentar sobreposição clínica e radiológica. A abordagem correta é obter material microbiológico e investigar estruturalmente a lesão. Tratamentos empíricos simultâneos ou atraso de três meses são inadequados."
+          "comment": "Correta. Devem ser obtidas amostras respiratórias para investigação microbiológica e resistência, paralelamente à avaliação estrutural da cavidade. Broncoscopia, biópsia ou punção podem ser necessárias conforme localização e achados tomográficos."
         },
         {
           "optionId": "D",
           "optionText": "Repetir radiografia em três meses antes de qualquer procedimento.",
           "isCorrect": false,
-          "comment": "Incorreta. Tuberculose e neoplasia podem apresentar sobreposição clínica e radiológica. A abordagem correta é obter material microbiológico e investigar estruturalmente a lesão. Tratamentos empíricos simultâneos ou atraso de três meses são inadequados."
+          "comment": "Incorreta. Esperar três meses é inadequado diante de sintomas constitucionais e lesão cavitária em tabagista. Tanto tuberculose ativa quanto câncer exigem diagnóstico oportuno, por risco de transmissão, progressão e perda de oportunidade terapêutica."
         }
       ]
     },
@@ -1364,31 +1364,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "A",
       "correctOptionText": "Betalactâmico associado a macrolídeo ou esquema equivalente.",
-      "teachingPoint": "Em pneumonia hospitalar não grave ou grave sem risco de patógenos resistentes, utiliza-se combinação de betalactâmico e macrolídeo ou alternativa equivalente. Vancomicina e carbapenêmicos devem ser reservados para indicações específicas. Macrolídeo isolado é insuficiente.",
+      "teachingPoint": "Em adultos internados com pneumonia comunitária, sem fatores de risco para MRSA ou Pseudomonas, o tratamento empírico deve cobrir os principais agentes típicos e atípicos. Uma estratégia usual é associar um betalactâmico a um macrolídeo; uma fluoroquinolona respiratória em monoterapia pode ser alternativa em situações selecionadas. O espectro deve ser ampliado somente quando os fatores clínicos e microbiológicos justificarem.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Betalactâmico associado a macrolídeo ou esquema equivalente.",
           "isCorrect": true,
-          "comment": "Correta. Em pneumonia hospitalar não grave ou grave sem risco de patógenos resistentes, utiliza-se combinação de betalactâmico e macrolídeo ou alternativa equivalente. Vancomicina e carbapenêmicos devem ser reservados para indicações específicas. Macrolídeo isolado é insuficiente."
+          "comment": "Correta. O betalactâmico oferece cobertura para pneumococo e outros agentes bacterianos típicos, enquanto o macrolídeo amplia a cobertura para agentes atípicos. O esquema específico deve considerar alergias, gravidade, função renal, interações e perfil local de resistência."
         },
         {
           "optionId": "B",
           "optionText": "Vancomicina associada a carbapenêmico em todos os casos.",
           "isCorrect": false,
-          "comment": "Incorreta. Em pneumonia hospitalar não grave ou grave sem risco de patógenos resistentes, utiliza-se combinação de betalactâmico e macrolídeo ou alternativa equivalente. Vancomicina e carbapenêmicos devem ser reservados para indicações específicas. Macrolídeo isolado é insuficiente."
+          "comment": "Incorreta. Vancomicina é direcionada sobretudo a MRSA, e carbapenêmicos são reservados a situações específicas de resistência ou patógenos gram-negativos. Utilizá-los em todos os casos amplia desnecessariamente o espectro, aumenta toxicidade e favorece resistência."
         },
         {
           "optionId": "C",
           "optionText": "Aminoglicosídeo associado a fluoroquinolona.",
           "isCorrect": false,
-          "comment": "Incorreta. Em pneumonia hospitalar não grave ou grave sem risco de patógenos resistentes, utiliza-se combinação de betalactâmico e macrolídeo ou alternativa equivalente. Vancomicina e carbapenêmicos devem ser reservados para indicações específicas. Macrolídeo isolado é insuficiente."
+          "comment": "Incorreta. Aminoglicosídeos não constituem base adequada para pneumonia comunitária e apresentam risco de nefrotoxicidade e ototoxicidade. A associação com fluoroquinolona não é esquema empírico habitual na ausência de risco específico para bacilos gram-negativos resistentes."
         },
         {
           "optionId": "D",
           "optionText": "Macrolídeo isolado independentemente da gravidade.",
           "isCorrect": false,
-          "comment": "Incorreta. Em pneumonia hospitalar não grave ou grave sem risco de patógenos resistentes, utiliza-se combinação de betalactâmico e macrolídeo ou alternativa equivalente. Vancomicina e carbapenêmicos devem ser reservados para indicações específicas. Macrolídeo isolado é insuficiente."
+          "comment": "Incorreta. Macrolídeo isolado é insuficiente para a maioria dos pacientes hospitalizados e pode falhar diante de pneumococo resistente. A gravidade e o contexto de internação exigem cobertura mais consistente para agentes típicos."
         }
       ]
     },
@@ -1397,31 +1397,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "D",
       "correctOptionText": "Pneumonia secundária ao quadro viral.",
-      "teachingPoint": "Piora após melhora inicial, febre recorrente, dispneia e achados focais sugerem pneumonia secundária. As demais alternativas não explicam a deterioração respiratória e os estertores localizados.",
+      "teachingPoint": "Piora respiratória após uma fase de melhora da síndrome gripal, com retorno da febre e aparecimento de estertores focais, sugere pneumonia secundária. A complicação pode decorrer de progressão viral ou de sobreinfecção bacteriana, frequentemente por Streptococcus pneumoniae, Staphylococcus aureus ou Haemophilus influenzae. A nova avaliação deve incluir gravidade, oxigenação e investigação por imagem.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Cefaleia por uso excessivo de analgésicos.",
           "isCorrect": false,
-          "comment": "Incorreta. Piora após melhora inicial, febre recorrente, dispneia e achados focais sugerem pneumonia secundária. As demais alternativas não explicam a deterioração respiratória e os estertores localizados."
+          "comment": "Incorreta. Cefaleia por uso excessivo de analgésicos exige cefaleia frequente associada ao consumo repetido de medicamentos agudos. Não explica febre recorrente, dispneia nem estertores pulmonares localizados."
         },
         {
           "optionId": "B",
           "optionText": "Rinossinusite viral prolongada.",
           "isCorrect": false,
-          "comment": "Incorreta. Piora após melhora inicial, febre recorrente, dispneia e achados focais sugerem pneumonia secundária. As demais alternativas não explicam a deterioração respiratória e os estertores localizados."
+          "comment": "Incorreta. Rinossinusite viral prolongada pode produzir congestão, secreção nasal e dor facial, mas não costuma causar hipoxemia, dispneia significativa ou estertores focais. Esses achados indicam acometimento do parênquima pulmonar."
         },
         {
           "optionId": "C",
           "optionText": "Reação adversa ao antitérmico.",
           "isCorrect": false,
-          "comment": "Incorreta. Piora após melhora inicial, febre recorrente, dispneia e achados focais sugerem pneumonia secundária. As demais alternativas não explicam a deterioração respiratória e os estertores localizados."
+          "comment": "Incorreta. Reações a antitérmicos podem causar manifestações alérgicas, gastrointestinais, hematológicas ou hepáticas, conforme o fármaco, mas não reproduzem o padrão de dupla piora infecciosa com achados pulmonares focais."
         },
         {
           "optionId": "D",
           "optionText": "Pneumonia secundária ao quadro viral.",
           "isCorrect": true,
-          "comment": "Correta. Piora após melhora inicial, febre recorrente, dispneia e achados focais sugerem pneumonia secundária. As demais alternativas não explicam a deterioração respiratória e os estertores localizados."
+          "comment": "Correta. A deterioração após melhora inicial, o retorno da febre e os estertores focais são típicos de pneumonia pós-viral. É necessário avaliar necessidade de radiografia, antibioticoterapia, antiviral quando pertinente e internação conforme a gravidade."
         }
       ]
     },
@@ -1430,31 +1430,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "B",
       "correctOptionText": "Derrame pleural.",
-      "teachingPoint": "Macicez, redução do murmúrio vesicular e diminuição do frêmito são típicos de derrame pleural. Consolidação aumenta o frêmito. Pneumotórax causa hipertimpanismo, e broncoespasmo produz sibilos difusos.",
+      "teachingPoint": "No derrame pleural, o líquido entre as pleuras reduz a transmissão das vibrações sonoras e impede a adequada ventilação do pulmão subjacente. Por isso, encontram-se macicez à percussão, diminuição do murmúrio vesicular e redução do frêmito toracovocal. Esses achados contrastam com consolidação pulmonar, pneumotórax e broncoespasmo.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Consolidação pulmonar lobar.",
           "isCorrect": false,
-          "comment": "Incorreta. Macicez, redução do murmúrio vesicular e diminuição do frêmito são típicos de derrame pleural. Consolidação aumenta o frêmito. Pneumotórax causa hipertimpanismo, e broncoespasmo produz sibilos difusos."
+          "comment": "Incorreta. Consolidação lobar também pode causar macicez, mas geralmente aumenta o frêmito toracovocal e produz respiração brônquica, broncofonia ou egofonia, pois o tecido consolidado transmite melhor as vibrações."
         },
         {
           "optionId": "B",
           "optionText": "Derrame pleural.",
           "isCorrect": true,
-          "comment": "Correta. Macicez, redução do murmúrio vesicular e diminuição do frêmito são típicos de derrame pleural. Consolidação aumenta o frêmito. Pneumotórax causa hipertimpanismo, e broncoespasmo produz sibilos difusos."
+          "comment": "Correta. A combinação de macicez, murmúrio vesicular reduzido e frêmito diminuído é típica de derrame pleural. Ultrassonografia torácica pode confirmar o líquido, estimar seu volume e orientar toracocentese quando indicada."
         },
         {
           "optionId": "C",
           "optionText": "Pneumotórax hipertensivo.",
           "isCorrect": false,
-          "comment": "Incorreta. Macicez, redução do murmúrio vesicular e diminuição do frêmito são típicos de derrame pleural. Consolidação aumenta o frêmito. Pneumotórax causa hipertimpanismo, e broncoespasmo produz sibilos difusos."
+          "comment": "Incorreta. Pneumotórax produz hipertimpanismo ou hiperressonância, com diminuição do murmúrio e do frêmito. Na forma hipertensiva, esperam-se ainda instabilidade hemodinâmica, desconforto intenso e sinais de pressão intratorácica elevada."
         },
         {
           "optionId": "D",
           "optionText": "Broncoespasmo difuso.",
           "isCorrect": false,
-          "comment": "Incorreta. Macicez, redução do murmúrio vesicular e diminuição do frêmito são típicos de derrame pleural. Consolidação aumenta o frêmito. Pneumotórax causa hipertimpanismo, e broncoespasmo produz sibilos difusos."
+          "comment": "Incorreta. Broncoespasmo difuso manifesta-se principalmente por sibilos, expiração prolongada e redução difusa do fluxo aéreo. A percussão pode ser normal ou hiperressonante, mas não há macicez focal típica."
         }
       ]
     },
@@ -1463,31 +1463,31 @@
       "theme": "Dispneia e condições respiratórias",
       "correctOptionId": "A",
       "correctOptionText": "Avaliar via aérea, respiração e circulação, ofertando oxigênio conforme necessidade.",
-      "teachingPoint": "Em insuficiência respiratória, suporte inicial pelo ABC precede exames etiológicos. Oxigênio deve ser ofertado e titulado conforme o quadro. Tomografia, antibiótico ou espirometria não devem atrasar estabilização.",
+      "teachingPoint": "Dispneia com saturação de 86%, taquipneia e uso de musculatura acessória representa insuficiência respiratória aguda até prova em contrário. A abordagem inicial deve seguir o ABC: avaliar e proteger a via aérea, estimar o trabalho respiratório, ofertar oxigênio titulado, monitorizar circulação e identificar rapidamente sinais de exaustão. A investigação etiológica ocorre em paralelo, sem atrasar a estabilização.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Avaliar via aérea, respiração e circulação, ofertando oxigênio conforme necessidade.",
           "isCorrect": true,
-          "comment": "Correta. Em insuficiência respiratória, suporte inicial pelo ABC precede exames etiológicos. Oxigênio deve ser ofertado e titulado conforme o quadro. Tomografia, antibiótico ou espirometria não devem atrasar estabilização."
+          "comment": "Correta. A prioridade é avaliar via aérea, respiração e circulação, iniciar oxigênio e monitorização e reavaliar a resposta. Em geral, busca-se saturação de 94% a 98%, ou de 88% a 92% quando há risco conhecido de retenção de dióxido de carbono, ajustando conforme gasometria e evolução."
         },
         {
           "optionId": "B",
           "optionText": "Solicitar tomografia antes de iniciar suporte respiratório.",
           "isCorrect": false,
-          "comment": "Incorreta. Em insuficiência respiratória, suporte inicial pelo ABC precede exames etiológicos. Oxigênio deve ser ofertado e titulado conforme o quadro. Tomografia, antibiótico ou espirometria não devem atrasar estabilização."
+          "comment": "Incorreta. Tomografia pode ser útil posteriormente, mas transportar um paciente hipoxêmico sem suporte adequado aumenta o risco de deterioração. Oxigenação e estabilização devem começar antes de exames demorados."
         },
         {
           "optionId": "C",
           "optionText": "Prescrever antimicrobiano oral e reavaliar após uma hora.",
           "isCorrect": false,
-          "comment": "Incorreta. Em insuficiência respiratória, suporte inicial pelo ABC precede exames etiológicos. Oxigênio deve ser ofertado e titulado conforme o quadro. Tomografia, antibiótico ou espirometria não devem atrasar estabilização."
+          "comment": "Incorreta. Antimicrobiano oral não corrige a hipoxemia imediata e presume uma etiologia ainda não estabelecida. O paciente necessita suporte respiratório e avaliação de gravidade antes de qualquer estratégia ambulatorial."
         },
         {
           "optionId": "D",
           "optionText": "Realizar espirometria para classificar o distúrbio ventilatório.",
           "isCorrect": false,
-          "comment": "Incorreta. Em insuficiência respiratória, suporte inicial pelo ABC precede exames etiológicos. Oxigênio deve ser ofertado e titulado conforme o quadro. Tomografia, antibiótico ou espirometria não devem atrasar estabilização."
+          "comment": "Incorreta. Espirometria não deve ser realizada durante insuficiência respiratória aguda importante. O esforço exigido pode ser inviável e não contribui para a estabilização; sua utilização fica reservada à avaliação funcional em momento apropriado."
         }
       ]
     },
@@ -1496,31 +1496,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "B",
       "correctOptionText": "Tratar empiricamente como cistite aguda não complicada.",
-      "teachingPoint": "Disúria, urgência e polaciúria sem sintomas vaginais ou sistêmicos permitem diagnóstico clínico de cistite não complicada e tratamento empírico. Não há indicação de tomografia, internação ou avaliação urológica inicial.",
+      "teachingPoint": "Em mulher jovem, não gestante e sem comorbidades, a combinação de disúria, polaciúria e urgência, na ausência de corrimento vaginal, febre ou dor em flanco, apresenta alta probabilidade clínica de cistite aguda não complicada. Nessa situação, o tratamento empírico pode ser iniciado sem exames de imagem ou investigação urológica. Urocultura é reservada principalmente para gestação, recorrência, falha terapêutica, apresentações atípicas ou suspeita de infecção complicada.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Solicitar tomografia antes de iniciar qualquer tratamento.",
           "isCorrect": false,
-          "comment": "Incorreta. Disúria, urgência e polaciúria sem sintomas vaginais ou sistêmicos permitem diagnóstico clínico de cistite não complicada e tratamento empírico. Não há indicação de tomografia, internação ou avaliação urológica inicial."
+          "comment": "Incorreta. Tomografia não faz parte da avaliação inicial da cistite não complicada. É reservada para suspeita de obstrução, cálculo, abscesso, anomalia anatômica ou pielonefrite com evolução desfavorável. Solicitá-la rotineiramente acrescenta radiação e custo sem modificar o manejo."
         },
         {
           "optionId": "B",
           "optionText": "Tratar empiricamente como cistite aguda não complicada.",
           "isCorrect": true,
-          "comment": "Correta. Disúria, urgência e polaciúria sem sintomas vaginais ou sistêmicos permitem diagnóstico clínico de cistite não complicada e tratamento empírico. Não há indicação de tomografia, internação ou avaliação urológica inicial."
+          "comment": "Correta. O quadro clínico é típico de cistite aguda não complicada: sintomas urinários baixos, início recente e ausência de manifestações vaginais ou sistêmicas. Pode-se iniciar antimicrobiano oral adequado ao perfil local de resistência, associado a orientações de retorno se houver febre, dor lombar ou piora."
         },
         {
           "optionId": "C",
           "optionText": "Encaminhar para avaliação urológica por provável obstrução.",
           "isCorrect": false,
-          "comment": "Incorreta. Disúria, urgência e polaciúria sem sintomas vaginais ou sistêmicos permitem diagnóstico clínico de cistite não complicada e tratamento empírico. Não há indicação de tomografia, internação ou avaliação urológica inicial."
+          "comment": "Incorreta. Obstrução urinária seria sugerida por retenção, jato fraco, hidronefrose, litíase ou alteração anatômica, achados não presentes. Um episódio isolado de cistite típica não exige avaliação urológica."
         },
         {
           "optionId": "D",
           "optionText": "Internar para antibioticoterapia intravenosa.",
           "isCorrect": false,
-          "comment": "Incorreta. Disúria, urgência e polaciúria sem sintomas vaginais ou sistêmicos permitem diagnóstico clínico de cistite não complicada e tratamento empírico. Não há indicação de tomografia, internação ou avaliação urológica inicial."
+          "comment": "Incorreta. Internação e antibiótico intravenoso são indicados em infecção grave, sepse, incapacidade de ingerir medicamentos, gestação com pielonefrite ou outras complicações. A paciente está estável e possui quadro restrito ao trato urinário inferior."
         }
       ]
     },
@@ -1529,31 +1529,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "C",
       "correctOptionText": "Corrimento vaginal.",
-      "teachingPoint": "Corrimento vaginal reduz a probabilidade de cistite e sugere vaginite, cervicite ou uretrite. Urgência, dor suprapúbica e hematúria podem ocorrer na cistite.",
+      "teachingPoint": "A presença de corrimento ou irritação vaginal reduz a probabilidade de cistite isolada e direciona a avaliação para vaginite, cervicite ou uretrite. Em contraste, disúria acompanhada de urgência e polaciúria, sem sintomas vaginais, favorece infecção vesical. A anamnese sexual e o exame ginecológico tornam-se relevantes quando há corrimento, sangramento pós-coital ou dor pélvica.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Urgência miccional.",
           "isCorrect": false,
-          "comment": "Incorreta. Corrimento vaginal reduz a probabilidade de cistite e sugere vaginite, cervicite ou uretrite. Urgência, dor suprapúbica e hematúria podem ocorrer na cistite."
+          "comment": "Incorreta. Urgência miccional é manifestação típica de irritação vesical e aumenta a probabilidade de cistite, especialmente quando ocorre com disúria e polaciúria."
         },
         {
           "optionId": "B",
           "optionText": "Dor suprapúbica.",
           "isCorrect": false,
-          "comment": "Incorreta. Corrimento vaginal reduz a probabilidade de cistite e sugere vaginite, cervicite ou uretrite. Urgência, dor suprapúbica e hematúria podem ocorrer na cistite."
+          "comment": "Incorreta. Desconforto suprapúbico pode acompanhar inflamação da bexiga e é compatível com cistite. Isoladamente, não diferencia infecção urinária de outras causas pélvicas, mas não favorece especificamente uma causa genital."
         },
         {
           "optionId": "C",
           "optionText": "Corrimento vaginal.",
           "isCorrect": true,
-          "comment": "Correta. Corrimento vaginal reduz a probabilidade de cistite e sugere vaginite, cervicite ou uretrite. Urgência, dor suprapúbica e hematúria podem ocorrer na cistite."
+          "comment": "Correta. Corrimento vaginal sugere envolvimento vulvovaginal ou cervical, como candidíase, tricomoníase, vaginose, cervicite por clamídia ou gonococo. Sua presença reduz a precisão do diagnóstico clínico de cistite e exige avaliação direcionada do trato genital."
         },
         {
           "optionId": "D",
           "optionText": "Hematúria microscópica.",
           "isCorrect": false,
-          "comment": "Incorreta. Corrimento vaginal reduz a probabilidade de cistite e sugere vaginite, cervicite ou uretrite. Urgência, dor suprapúbica e hematúria podem ocorrer na cistite."
+          "comment": "Incorreta. Hematúria microscópica pode ocorrer na cistite devido à inflamação da mucosa vesical. Sua presença não exclui infecção urinária, embora hematúria persistente após resolução dos sintomas necessite investigação."
         }
       ]
     },
@@ -1562,31 +1562,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "A",
       "correctOptionText": "Internação e início de antibiótico intravenoso após coleta de urocultura.",
-      "teachingPoint": "Pielonefrite na gestação deve ser tratada inicialmente em ambiente hospitalar, com antibiótico intravenoso e urocultura. Nitrofurantoína e fosfomicina não atingem concentrações renais adequadas para pielonefrite. O tratamento não deve aguardar o resultado da cultura.",
+      "teachingPoint": "Pielonefrite durante a gestação apresenta maior risco de sepse, insuficiência respiratória, anemia, disfunção renal e trabalho de parto prematuro. Por isso, recomenda-se tratamento inicial hospitalar com antibiótico intravenoso e coleta de urocultura, mesmo quando a gestante está hemodinamicamente estável. Após melhora clínica e período adequado sem febre, pode-se realizar transição para terapia oral guiada pela cultura.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Internação e início de antibiótico intravenoso após coleta de urocultura.",
           "isCorrect": true,
-          "comment": "Correta. Pielonefrite na gestação deve ser tratada inicialmente em ambiente hospitalar, com antibiótico intravenoso e urocultura. Nitrofurantoína e fosfomicina não atingem concentrações renais adequadas para pielonefrite. O tratamento não deve aguardar o resultado da cultura."
+          "comment": "Correta. Febre, dor em flanco, náuseas e sintomas urinários indicam pielonefrite, e a gestação torna o quadro potencialmente complicado. A internação permite hidratação, monitorização materno-fetal, coleta de urocultura e início imediato de antibiótico intravenoso seguro na gestação."
         },
         {
           "optionId": "B",
           "optionText": "Nitrofurantoína oral por cinco dias e retorno ambulatorial.",
           "isCorrect": false,
-          "comment": "Incorreta. Pielonefrite na gestação deve ser tratada inicialmente em ambiente hospitalar, com antibiótico intravenoso e urocultura. Nitrofurantoína e fosfomicina não atingem concentrações renais adequadas para pielonefrite. O tratamento não deve aguardar o resultado da cultura."
+          "comment": "Incorreta. Nitrofurantoína é útil para infecção restrita à bexiga, mas não alcança concentração adequada no parênquima renal. Portanto, não deve ser usada para tratar pielonefrite, independentemente da via oral ser tolerada."
         },
         {
           "optionId": "C",
           "optionText": "Fosfomicina em dose única e hidratação domiciliar.",
           "isCorrect": false,
-          "comment": "Incorreta. Pielonefrite na gestação deve ser tratada inicialmente em ambiente hospitalar, com antibiótico intravenoso e urocultura. Nitrofurantoína e fosfomicina não atingem concentrações renais adequadas para pielonefrite. O tratamento não deve aguardar o resultado da cultura."
+          "comment": "Incorreta. Fosfomicina em dose única pode ser opção em cistite selecionada, mas não produz níveis renais adequados para infecção do trato urinário superior. Hidratação domiciliar isolada não reduz os riscos maternos e obstétricos."
         },
         {
           "optionId": "D",
           "optionText": "Aguardar o resultado da urocultura antes de iniciar o tratamento.",
           "isCorrect": false,
-          "comment": "Incorreta. Pielonefrite na gestação deve ser tratada inicialmente em ambiente hospitalar, com antibiótico intravenoso e urocultura. Nitrofurantoína e fosfomicina não atingem concentrações renais adequadas para pielonefrite. O tratamento não deve aguardar o resultado da cultura."
+          "comment": "Incorreta. A urocultura deve ser coletada antes do antibiótico quando isso não causar atraso, porém o tratamento empírico deve começar imediatamente. Aguardar o resultado, que pode levar dias, aumenta o risco de progressão para sepse."
         }
       ]
     },
@@ -1595,31 +1595,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "B",
       "correctOptionText": "Urocultura com antibiograma.",
-      "teachingPoint": "A urocultura identifica o agente e permite ajustar o antibiótico. Tomografia é reservada para complicações ou evolução desfavorável. Cistoscopia e citologia não fazem parte da avaliação inicial.",
+      "teachingPoint": "Na pielonefrite gestacional, a urocultura com antibiograma deve ser obtida antes ou logo após o início do antibiótico. Ela confirma o agente, identifica resistência e permite ajustar ou descalonar o tratamento. Exames de imagem são reservados para suspeita de obstrução, cálculo, abscesso ou ausência de melhora clínica após tratamento adequado.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Citologia urinária.",
           "isCorrect": false,
-          "comment": "Incorreta. A urocultura identifica o agente e permite ajustar o antibiótico. Tomografia é reservada para complicações ou evolução desfavorável. Cistoscopia e citologia não fazem parte da avaliação inicial."
+          "comment": "Incorreta. Citologia urinária pesquisa principalmente células neoplásicas do urotélio e não identifica adequadamente o agente bacteriano nem orienta o antimicrobiano na pielonefrite."
         },
         {
           "optionId": "B",
           "optionText": "Urocultura com antibiograma.",
           "isCorrect": true,
-          "comment": "Correta. A urocultura identifica o agente e permite ajustar o antibiótico. Tomografia é reservada para complicações ou evolução desfavorável. Cistoscopia e citologia não fazem parte da avaliação inicial."
+          "comment": "Correta. A urocultura confirma bacteriúria significativa, identifica o microrganismo e fornece o perfil de sensibilidade. Na gestação, esse dado é especialmente importante para garantir eficácia e segurança do esquema escolhido."
         },
         {
           "optionId": "C",
           "optionText": "Cistoscopia diagnóstica.",
           "isCorrect": false,
-          "comment": "Incorreta. A urocultura identifica o agente e permite ajustar o antibiótico. Tomografia é reservada para complicações ou evolução desfavorável. Cistoscopia e citologia não fazem parte da avaliação inicial."
+          "comment": "Incorreta. Cistoscopia é um procedimento invasivo destinado a indicações como hematúria persistente, lesões vesicais ou alterações anatômicas selecionadas. Não integra a avaliação inicial de pielonefrite gestacional."
         },
         {
           "optionId": "D",
           "optionText": "Tomografia contrastada do abdome.",
           "isCorrect": false,
-          "comment": "Incorreta. A urocultura identifica o agente e permite ajustar o antibiótico. Tomografia é reservada para complicações ou evolução desfavorável. Cistoscopia e citologia não fazem parte da avaliação inicial."
+          "comment": "Incorreta. Tomografia contrastada envolve radiação ionizante e contraste e não é exame de rotina na gestação. Se houver suspeita de complicação ou obstrução, a ultrassonografia costuma ser o primeiro método de imagem considerado."
         }
       ]
     },
@@ -1628,31 +1628,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "D",
       "correctOptionText": "Febre, calafrios e dor em flanco.",
-      "teachingPoint": "Febre, calafrios e dor em flanco indicam acometimento do trato urinário superior. Os demais conjuntos são mais compatíveis com infecção vesical ou doença genital.",
+      "teachingPoint": "Pielonefrite corresponde à infecção do trato urinário superior e costuma manifestar-se com febre, calafrios, dor em flanco, náuseas, vômitos e dor à punho-percussão lombar. Cistite geralmente permanece limitada a disúria, urgência, polaciúria e desconforto suprapúbico, sem síndrome sistêmica. Corrimento e sangramento pós-coital direcionam para doença genital.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Disúria, urgência e desconforto suprapúbico.",
           "isCorrect": false,
-          "comment": "Incorreta. Febre, calafrios e dor em flanco indicam acometimento do trato urinário superior. Os demais conjuntos são mais compatíveis com infecção vesical ou doença genital."
+          "comment": "Incorreta. Disúria, urgência e desconforto suprapúbico são manifestações clássicas de cistite. Na ausência de febre ou dor em flanco, não há evidência clínica de acometimento renal."
         },
         {
           "optionId": "B",
           "optionText": "Polaciúria, hematúria e sensação de esvaziamento incompleto.",
           "isCorrect": false,
-          "comment": "Incorreta. Febre, calafrios e dor em flanco indicam acometimento do trato urinário superior. Os demais conjuntos são mais compatíveis com infecção vesical ou doença genital."
+          "comment": "Incorreta. Polaciúria e hematúria podem ocorrer na cistite. Sensação de esvaziamento incompleto também pode refletir irritação vesical ou disfunção miccional, mas não é marcador específico de pielonefrite."
         },
         {
           "optionId": "C",
           "optionText": "Dor uretral, corrimento e sangramento pós-coital.",
           "isCorrect": false,
-          "comment": "Incorreta. Febre, calafrios e dor em flanco indicam acometimento do trato urinário superior. Os demais conjuntos são mais compatíveis com infecção vesical ou doença genital."
+          "comment": "Incorreta. Dor uretral, corrimento e sangramento pós-coital sugerem uretrite ou cervicite, especialmente após exposição sexual. Esses achados exigem investigação de infecções sexualmente transmissíveis, não de infecção renal."
         },
         {
           "optionId": "D",
           "optionText": "Febre, calafrios e dor em flanco.",
           "isCorrect": true,
-          "comment": "Correta. Febre, calafrios e dor em flanco indicam acometimento do trato urinário superior. Os demais conjuntos são mais compatíveis com infecção vesical ou doença genital."
+          "comment": "Correta. Febre e calafrios demonstram repercussão sistêmica, enquanto dor em flanco sugere envolvimento do rim e da pelve renal. Esse conjunto diferencia pielonefrite de infecção restrita à bexiga."
         }
       ]
     },
@@ -1661,31 +1661,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "A",
       "correctOptionText": "Prostatite bacteriana aguda.",
-      "teachingPoint": "Febre, dor perineal e próstata intensamente dolorosa são típicas de prostatite bacteriana aguda. Hiperplasia isolada não causa síndrome infecciosa. Câncer costuma ser indolor ao toque, e bexiga hiperativa não provoca febre.",
+      "teachingPoint": "Prostatite bacteriana aguda apresenta início súbito de febre, calafrios, disúria, sintomas obstrutivos e dor perineal, pélvica ou lombossacra. Ao toque retal, a próstata pode estar aumentada, quente e intensamente dolorosa. O exame deve ser delicado, sem massagem prostática, devido ao risco de bacteremia.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Prostatite bacteriana aguda.",
           "isCorrect": true,
-          "comment": "Correta. Febre, dor perineal e próstata intensamente dolorosa são típicas de prostatite bacteriana aguda. Hiperplasia isolada não causa síndrome infecciosa. Câncer costuma ser indolor ao toque, e bexiga hiperativa não provoca febre."
+          "comment": "Correta. A associação de síndrome febril, dor perineal, sintomas urinários e próstata muito dolorosa ao toque é típica de prostatite bacteriana aguda. O manejo inclui urocultura, antibiótico com penetração prostática e avaliação de gravidade."
         },
         {
           "optionId": "B",
           "optionText": "Hiperplasia prostática benigna isolada.",
           "isCorrect": false,
-          "comment": "Incorreta. Febre, dor perineal e próstata intensamente dolorosa são típicas de prostatite bacteriana aguda. Hiperplasia isolada não causa síndrome infecciosa. Câncer costuma ser indolor ao toque, e bexiga hiperativa não provoca febre."
+          "comment": "Incorreta. Hiperplasia prostática benigna causa sintomas obstrutivos crônicos, como jato fraco, hesitação e noctúria, mas não costuma produzir febre, dor perineal intensa ou próstata extremamente dolorosa."
         },
         {
           "optionId": "C",
           "optionText": "Câncer de próstata avançado.",
           "isCorrect": false,
-          "comment": "Incorreta. Febre, dor perineal e próstata intensamente dolorosa são típicas de prostatite bacteriana aguda. Hiperplasia isolada não causa síndrome infecciosa. Câncer costuma ser indolor ao toque, e bexiga hiperativa não provoca febre."
+          "comment": "Incorreta. Câncer de próstata geralmente é assintomático nas fases iniciais e pode produzir nódulo ou endurecimento ao toque, não uma próstata difusamente dolorosa associada a febre aguda."
         },
         {
           "optionId": "D",
           "optionText": "Síndrome da bexiga hiperativa.",
           "isCorrect": false,
-          "comment": "Incorreta. Febre, dor perineal e próstata intensamente dolorosa são típicas de prostatite bacteriana aguda. Hiperplasia isolada não causa síndrome infecciosa. Câncer costuma ser indolor ao toque, e bexiga hiperativa não provoca febre."
+          "comment": "Incorreta. Síndrome da bexiga hiperativa causa urgência, aumento da frequência e possível urge-incontinência, mas não explica febre, dor perineal nem alterações inflamatórias prostáticas."
         }
       ]
     },
@@ -1694,31 +1694,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "C",
       "correctOptionText": "Promover drenagem urinária, iniciar antibiótico e avaliar com urologia.",
-      "teachingPoint": "Retenção urinária associada à prostatite requer drenagem, antibiótico e avaliação urológica. Massagem prostática é contraindicada. Finasterida tem efeito tardio e PSA não deve atrasar o tratamento.",
+      "teachingPoint": "Retenção urinária na prostatite bacteriana aguda representa complicação que exige drenagem, tratamento antimicrobiano e avaliação urológica. A instrumentação uretral deve ser cuidadosamente avaliada, pois pode ser dolorosa e agravar a inflamação; em situações selecionadas, a drenagem suprapúbica é preferida. A prioridade é aliviar a obstrução sem atrasar o controle da infecção.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Realizar massagem prostática para obtenção de secreção.",
           "isCorrect": false,
-          "comment": "Incorreta. Retenção urinária associada à prostatite requer drenagem, antibiótico e avaliação urológica. Massagem prostática é contraindicada. Finasterida tem efeito tardio e PSA não deve atrasar o tratamento."
+          "comment": "Incorreta. Massagem prostática vigorosa é contraindicada na prostatite aguda porque pode disseminar bactérias para a corrente sanguínea e precipitar bacteremia ou sepse. A cultura de urina geralmente fornece material suficiente para investigação."
         },
         {
           "optionId": "B",
           "optionText": "Prescrever finasterida e reavaliar em quatro semanas.",
           "isCorrect": false,
-          "comment": "Incorreta. Retenção urinária associada à prostatite requer drenagem, antibiótico e avaliação urológica. Massagem prostática é contraindicada. Finasterida tem efeito tardio e PSA não deve atrasar o tratamento."
+          "comment": "Incorreta. Finasterida reduz o volume prostático ao longo de meses e é utilizada em hiperplasia prostática benigna selecionada. Não resolve retenção aguda nem trata a infecção bacteriana."
         },
         {
           "optionId": "C",
           "optionText": "Promover drenagem urinária, iniciar antibiótico e avaliar com urologia.",
           "isCorrect": true,
-          "comment": "Correta. Retenção urinária associada à prostatite requer drenagem, antibiótico e avaliação urológica. Massagem prostática é contraindicada. Finasterida tem efeito tardio e PSA não deve atrasar o tratamento."
+          "comment": "Correta. O globo vesical doloroso exige descompressão urinária, associada ao início imediato de antibiótico e avaliação urológica. O método de drenagem deve ser individualizado, considerando a gravidade da inflamação e a segurança da via de acesso."
         },
         {
           "optionId": "D",
           "optionText": "Solicitar PSA antes de iniciar qualquer intervenção.",
           "isCorrect": false,
-          "comment": "Incorreta. Retenção urinária associada à prostatite requer drenagem, antibiótico e avaliação urológica. Massagem prostática é contraindicada. Finasterida tem efeito tardio e PSA não deve atrasar o tratamento."
+          "comment": "Incorreta. O PSA pode elevar-se transitoriamente durante prostatite e não auxilia na decisão emergencial. Aguardar sua dosagem atrasaria drenagem e antibioticoterapia, além de poder gerar interpretação equivocada."
         }
       ]
     },
@@ -1727,31 +1727,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "A",
       "correctOptionText": "Pode precipitar bacteremia e agravar a infecção.",
-      "teachingPoint": "A manipulação vigorosa da próstata infectada pode disseminar bactérias para a circulação. Alterações do PSA podem ocorrer, mas não são a principal razão para a contraindicação. Retenção não ocorre obrigatoriamente após a manobra.",
+      "teachingPoint": "Na prostatite bacteriana aguda, a manipulação vigorosa da próstata inflamada pode forçar bactérias para a circulação, aumentando o risco de bacteremia e sepse. O toque retal, quando necessário, deve ser suave e limitado à avaliação clínica. A confirmação microbiológica é feita prioritariamente por urocultura, sem necessidade de obtenção de secreção prostática.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Pode precipitar bacteremia e agravar a infecção.",
           "isCorrect": true,
-          "comment": "Correta. A manipulação vigorosa da próstata infectada pode disseminar bactérias para a circulação. Alterações do PSA podem ocorrer, mas não são a principal razão para a contraindicação. Retenção não ocorre obrigatoriamente após a manobra."
+          "comment": "Correta. A próstata infectada é altamente vascularizada e dolorosa. A compressão repetida pode promover disseminação hematogênica das bactérias, razão principal para evitar a massagem no quadro agudo."
         },
         {
           "optionId": "B",
           "optionText": "Reduz a sensibilidade da cultura de urina.",
           "isCorrect": false,
-          "comment": "Incorreta. A manipulação vigorosa da próstata infectada pode disseminar bactérias para a circulação. Alterações do PSA podem ocorrer, mas não são a principal razão para a contraindicação. Retenção não ocorre obrigatoriamente após a manobra."
+          "comment": "Incorreta. A principal preocupação não é reduzir a sensibilidade da cultura urinária. A manipulação poderia até liberar bactérias e secreções, mas o risco sistêmico supera qualquer possível benefício diagnóstico."
         },
         {
           "optionId": "C",
           "optionText": "Provoca retenção urinária em todos os pacientes.",
           "isCorrect": false,
-          "comment": "Incorreta. A manipulação vigorosa da próstata infectada pode disseminar bactérias para a circulação. Alterações do PSA podem ocorrer, mas não são a principal razão para a contraindicação. Retenção não ocorre obrigatoriamente após a manobra."
+          "comment": "Incorreta. Retenção urinária pode ocorrer como complicação da prostatite, porém não é consequência obrigatória da massagem e não constitui o principal motivo da contraindicação."
         },
         {
           "optionId": "D",
           "optionText": "Eleva permanentemente os níveis de PSA.",
           "isCorrect": false,
-          "comment": "Incorreta. A manipulação vigorosa da próstata infectada pode disseminar bactérias para a circulação. Alterações do PSA podem ocorrer, mas não são a principal razão para a contraindicação. Retenção não ocorre obrigatoriamente após a manobra."
+          "comment": "Incorreta. Inflamação e manipulação podem elevar temporariamente o PSA, mas essa elevação não é permanente. O risco relevante e imediato da massagem é a disseminação bacteriana."
         }
       ]
     },
@@ -1760,31 +1760,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "D",
       "correctOptionText": "Cervicite por infecção sexualmente transmissível.",
-      "teachingPoint": "Disúria associada a corrimento, sangramento pós-coital, exposição sexual e colo friável indica cervicite. Cistite não explica os achados cervicais. Candidíase costuma causar prurido e corrimento característico. Não há febre ou dor em flanco para pielonefrite.",
+      "teachingPoint": "Cervicite deve ser suspeitada diante de secreção endocervical, friabilidade do colo, sangramento pós-coital ou ao toque e exposição sexual sem preservativo. Chlamydia trachomatis e Neisseria gonorrhoeae são causas importantes, embora outros agentes também possam estar envolvidos. A avaliação inclui testes moleculares quando disponíveis, rastreio de outras infecções sexualmente transmissíveis e análise de sinais de doença inflamatória pélvica.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Cistite bacteriana não complicada.",
           "isCorrect": false,
-          "comment": "Incorreta. Disúria associada a corrimento, sangramento pós-coital, exposição sexual e colo friável indica cervicite. Cistite não explica os achados cervicais. Candidíase costuma causar prurido e corrimento característico. Não há febre ou dor em flanco para pielonefrite."
+          "comment": "Incorreta. Cistite pode causar disúria e frequência urinária, mas não explica secreção endocervical, colo friável ou sangramento pós-coital. A presença desses achados reduz a probabilidade de infecção restrita à bexiga."
         },
         {
           "optionId": "B",
           "optionText": "Candidíase vulvovaginal.",
           "isCorrect": false,
-          "comment": "Incorreta. Disúria associada a corrimento, sangramento pós-coital, exposição sexual e colo friável indica cervicite. Cistite não explica os achados cervicais. Candidíase costuma causar prurido e corrimento característico. Não há febre ou dor em flanco para pielonefrite."
+          "comment": "Incorreta. Candidíase costuma produzir prurido vulvar intenso, eritema e corrimento branco espesso, geralmente sem friabilidade cervical. Sangramento pós-coital e secreção endocervical direcionam para cervicite."
         },
         {
           "optionId": "C",
           "optionText": "Pielonefrite aguda.",
           "isCorrect": false,
-          "comment": "Incorreta. Disúria associada a corrimento, sangramento pós-coital, exposição sexual e colo friável indica cervicite. Cistite não explica os achados cervicais. Candidíase costuma causar prurido e corrimento característico. Não há febre ou dor em flanco para pielonefrite."
+          "comment": "Incorreta. Pielonefrite é caracterizada por febre, calafrios, dor em flanco e repercussão sistêmica. Não há elementos de infecção renal, e os achados do colo uterino indicam origem genital."
         },
         {
           "optionId": "D",
           "optionText": "Cervicite por infecção sexualmente transmissível.",
           "isCorrect": true,
-          "comment": "Correta. Disúria associada a corrimento, sangramento pós-coital, exposição sexual e colo friável indica cervicite. Cistite não explica os achados cervicais. Candidíase costuma causar prurido e corrimento característico. Não há febre ou dor em flanco para pielonefrite."
+          "comment": "Correta. Exposição sexual, disúria, corrimento, sangramento pós-coital e colo friável são típicos de cervicite relacionada a infecção sexualmente transmissível. O tratamento pode ser empírico conforme risco e possibilidade de seguimento."
         }
       ]
     },
@@ -1793,31 +1793,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "B",
       "correctOptionText": "Avaliação e tratamento dos parceiros sexuais.",
-      "teachingPoint": "O manejo das parcerias reduz reinfecção e transmissão. Tomografia e culturas urinárias seriadas não são rotineiras. Antifúngicos não tratam as principais causas bacterianas de cervicite.",
+      "teachingPoint": "O tratamento da cervicite deve ser acompanhado por manejo das parcerias sexuais recentes, orientação para abstinência até conclusão do tratamento e resolução dos sintomas, oferta de preservativos e rastreio de outras infecções sexualmente transmissíveis. Avaliar e tratar parceiros reduz reinfecção da paciente e interrompe a cadeia de transmissão.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Solicitação rotineira de tomografia pélvica.",
           "isCorrect": false,
-          "comment": "Incorreta. O manejo das parcerias reduz reinfecção e transmissão. Tomografia e culturas urinárias seriadas não são rotineiras. Antifúngicos não tratam as principais causas bacterianas de cervicite."
+          "comment": "Incorreta. Tomografia pélvica não é exame de rotina na cervicite não complicada. Imagem é considerada quando há suspeita de abscesso tubo-ovariano, complicação pélvica ou diagnóstico alternativo que não possa ser esclarecido clinicamente."
         },
         {
           "optionId": "B",
           "optionText": "Avaliação e tratamento dos parceiros sexuais.",
           "isCorrect": true,
-          "comment": "Correta. O manejo das parcerias reduz reinfecção e transmissão. Tomografia e culturas urinárias seriadas não são rotineiras. Antifúngicos não tratam as principais causas bacterianas de cervicite."
+          "comment": "Correta. As parcerias sexuais devem ser avaliadas e, conforme o agente ou a estratégia sindrômica adotada, tratadas presumivelmente. Também se orienta evitar relações sexuais até que todos tenham completado o tratamento recomendado."
         },
         {
           "optionId": "C",
           "optionText": "Repetição mensal de cultura de urina.",
           "isCorrect": false,
-          "comment": "Incorreta. O manejo das parcerias reduz reinfecção e transmissão. Tomografia e culturas urinárias seriadas não são rotineiras. Antifúngicos não tratam as principais causas bacterianas de cervicite."
+          "comment": "Incorreta. Cultura de urina investiga infecção urinária e não monitora adequadamente cervicite. Testes de controle ou reteste são definidos pelo agente identificado, pelo tratamento utilizado e pelo risco de reinfecção, não por culturas urinárias mensais."
         },
         {
           "optionId": "D",
           "optionText": "Prescrição de antifúngico para ambos os parceiros.",
           "isCorrect": false,
-          "comment": "Incorreta. O manejo das parcerias reduz reinfecção e transmissão. Tomografia e culturas urinárias seriadas não são rotineiras. Antifúngicos não tratam as principais causas bacterianas de cervicite."
+          "comment": "Incorreta. Antifúngicos tratam candidíase, que não é a causa principal da cervicite bacteriana por clamídia ou gonococo. Além disso, parceiros não devem receber antifúngico automaticamente sem indicação clínica."
         }
       ]
     },
@@ -1826,31 +1826,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "C",
       "correctOptionText": "Cólica renal por ureterolitíase.",
-      "teachingPoint": "Dor em cólica irradiada para a região inguinal e hematúria sugerem ureterolitíase. Pielonefrite costuma cursar com febre e dor contínua. Prostatite causa dor perineal, e lombalgia mecânica não explica hematúria.",
+      "teachingPoint": "Ureterolitíase costuma causar dor lombar ou em flanco de início súbito, intensa, em cólica e com irradiação para abdome inferior, região inguinal ou genitais, conforme a progressão do cálculo pelo ureter. Náuseas, vômitos e hematúria são frequentes. Febre, calafrios, hipotensão ou sinais de infecção associados à obstrução modificam a urgência do quadro e exigem avaliação imediata.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Pielonefrite aguda.",
           "isCorrect": false,
-          "comment": "Incorreta. Dor em cólica irradiada para a região inguinal e hematúria sugerem ureterolitíase. Pielonefrite costuma cursar com febre e dor contínua. Prostatite causa dor perineal, e lombalgia mecânica não explica hematúria."
+          "comment": "Incorreta. Pielonefrite aguda geralmente produz febre, calafrios, sintomas urinários e dor contínua em flanco, frequentemente acompanhada de dor à punho-percussão lombar. A ausência de febre e o padrão em cólica com irradiação inguinal favorecem obstrução ureteral por cálculo."
         },
         {
           "optionId": "B",
           "optionText": "Prostatite bacteriana.",
           "isCorrect": false,
-          "comment": "Incorreta. Dor em cólica irradiada para a região inguinal e hematúria sugerem ureterolitíase. Pielonefrite costuma cursar com febre e dor contínua. Prostatite causa dor perineal, e lombalgia mecânica não explica hematúria."
+          "comment": "Incorreta. Prostatite bacteriana costuma manifestar-se com febre, disúria, dificuldade miccional e dor perineal, pélvica ou suprapúbica. A próstata pode estar aumentada e muito dolorosa ao toque. Não explica adequadamente a cólica lombar irradiada para a virilha associada à hematúria."
         },
         {
           "optionId": "C",
           "optionText": "Cólica renal por ureterolitíase.",
           "isCorrect": true,
-          "comment": "Correta. Dor em cólica irradiada para a região inguinal e hematúria sugerem ureterolitíase. Pielonefrite costuma cursar com febre e dor contínua. Prostatite causa dor perineal, e lombalgia mecânica não explica hematúria."
+          "comment": "Correta. Dor intensa e intermitente em flanco, irradiada para a região inguinal, associada a náusea e hematúria, constitui apresentação típica de cólica renal por ureterolitíase. A estabilidade clínica e a ausência de febre reduzem a suspeita imediata de obstrução infectada."
         },
         {
           "optionId": "D",
           "optionText": "Lombalgia mecânica inespecífica.",
           "isCorrect": false,
-          "comment": "Incorreta. Dor em cólica irradiada para a região inguinal e hematúria sugerem ureterolitíase. Pielonefrite costuma cursar com febre e dor contínua. Prostatite causa dor perineal, e lombalgia mecânica não explica hematúria."
+          "comment": "Incorreta. Lombalgia mecânica geralmente se relaciona a postura ou movimento, pode ser reproduzida no exame musculoesquelético e não causa hematúria. A irradiação inguinal e o caráter em cólica apontam para origem ureteral."
         }
       ]
     },
@@ -1859,31 +1859,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "A",
       "correctOptionText": "Descompressão urgente do sistema urinário e antibioticoterapia.",
-      "teachingPoint": "Obstrução urinária infectada é emergência, exigindo antibiótico e descompressão por cateter ureteral ou nefrostomia. Tratamento expulsivo isolado é perigoso. Litotripsia definitiva costuma ser adiada até controle da infecção.",
+      "teachingPoint": "Obstrução do trato urinário associada a infecção sistêmica é uma emergência urológica. Febre, hipotensão e hidronefrose sugerem sistema coletor infectado sob pressão, com risco de bacteremia, choque séptico e perda de função renal. O tratamento exige antibioticoterapia intravenosa, suporte para sepse e descompressão urgente por cateter ureteral ou nefrostomia. O tratamento definitivo do cálculo é realizado após o controle da infecção.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Descompressão urgente do sistema urinário e antibioticoterapia.",
           "isCorrect": true,
-          "comment": "Correta. Obstrução urinária infectada é emergência, exigindo antibiótico e descompressão por cateter ureteral ou nefrostomia. Tratamento expulsivo isolado é perigoso. Litotripsia definitiva costuma ser adiada até controle da infecção."
+          "comment": "Correta. A drenagem urgente elimina a pressão do sistema urinário infectado e permite controle da fonte, enquanto o antibiótico trata a infecção sistêmica. Cateter ureteral e nefrostomia percutânea são alternativas, escolhidas conforme anatomia, disponibilidade e condição clínica."
         },
         {
           "optionId": "B",
           "optionText": "Analgesia e tentativa de eliminação espontânea em domicílio.",
           "isCorrect": false,
-          "comment": "Incorreta. Obstrução urinária infectada é emergência, exigindo antibiótico e descompressão por cateter ureteral ou nefrostomia. Tratamento expulsivo isolado é perigoso. Litotripsia definitiva costuma ser adiada até controle da infecção."
+          "comment": "Incorreta. Tratamento expulsivo domiciliar pode ser considerado em cálculos selecionados sem infecção, insuficiência renal ou dor intratável. Febre, hipotensão e hidronefrose indicam obstrução infectada e tornam a conduta conservadora potencialmente fatal."
         },
         {
           "optionId": "C",
           "optionText": "Litotripsia extracorpórea eletiva após resolução da febre.",
           "isCorrect": false,
-          "comment": "Incorreta. Obstrução urinária infectada é emergência, exigindo antibiótico e descompressão por cateter ureteral ou nefrostomia. Tratamento expulsivo isolado é perigoso. Litotripsia definitiva costuma ser adiada até controle da infecção."
+          "comment": "Incorreta. Litotripsia extracorpórea pode integrar o tratamento definitivo de alguns cálculos, mas não oferece controle imediato da fonte séptica. A simples resolução da febre não substitui a descompressão urgente do sistema obstruído durante a fase aguda."
         },
         {
           "optionId": "D",
           "optionText": "Alcalinização urinária e controle ambulatorial em 48 horas.",
           "isCorrect": false,
-          "comment": "Incorreta. Obstrução urinária infectada é emergência, exigindo antibiótico e descompressão por cateter ureteral ou nefrostomia. Tratamento expulsivo isolado é perigoso. Litotripsia definitiva costuma ser adiada até controle da infecção."
+          "comment": "Incorreta. Alcalinização urinária é útil apenas em tipos específicos de cálculo, como os de ácido úrico, e não trata sepse nem desobstrui rapidamente o trato urinário. Controle ambulatorial é contraindicado diante de hipotensão."
         }
       ]
     },
@@ -1892,31 +1892,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "B",
       "correctOptionText": "Vigilância clínica e por imagem, com orientação preventiva.",
-      "teachingPoint": "Cálculo pequeno, não obstrutivo e assintomático pode ser acompanhado, com orientação sobre hidratação, prevenção e imagem seriada. Procedimentos invasivos, antibiótico e cateter não são justificados sem sintomas ou complicações.",
+      "teachingPoint": "Cálculos renais pequenos, assintomáticos e não obstrutivos podem ser acompanhados de forma expectante. A decisão deve considerar tamanho, localização, crescimento, anatomia renal, ocupação, acesso a atendimento e preferência do paciente. A vigilância inclui orientação preventiva, avaliação de fatores de risco e imagem periódica. Intervenção é considerada se houver crescimento, sintomas, infecção, obstrução ou circunstâncias clínicas específicas.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Nefrolitotomia percutânea imediata.",
           "isCorrect": false,
-          "comment": "Incorreta. Cálculo pequeno, não obstrutivo e assintomático pode ser acompanhado, com orientação sobre hidratação, prevenção e imagem seriada. Procedimentos invasivos, antibiótico e cateter não são justificados sem sintomas ou complicações."
+          "comment": "Incorreta. Nefrolitotomia percutânea é um procedimento invasivo utilizado principalmente para cálculos grandes, complexos ou coraliformes. Um cálculo incidental de 4 mm, sem sintomas ou obstrução, não justifica os riscos de sangramento, infecção e lesão renal associados ao procedimento."
         },
         {
           "optionId": "B",
           "optionText": "Vigilância clínica e por imagem, com orientação preventiva.",
           "isCorrect": true,
-          "comment": "Correta. Cálculo pequeno, não obstrutivo e assintomático pode ser acompanhado, com orientação sobre hidratação, prevenção e imagem seriada. Procedimentos invasivos, antibiótico e cateter não são justificados sem sintomas ou complicações."
+          "comment": "Correta. Vigilância clínica e por imagem é adequada para cálculo pequeno, estável e não obstrutivo. Deve-se orientar ingestão hídrica apropriada, medidas dietéticas individualizadas e retorno se surgirem dor, febre, hematúria importante ou sintomas urinários."
         },
         {
           "optionId": "C",
           "optionText": "Antibioticoterapia profilática contínua.",
           "isCorrect": false,
-          "comment": "Incorreta. Cálculo pequeno, não obstrutivo e assintomático pode ser acompanhado, com orientação sobre hidratação, prevenção e imagem seriada. Procedimentos invasivos, antibiótico e cateter não são justificados sem sintomas ou complicações."
+          "comment": "Incorreta. Antibiótico profilático não previne crescimento nem eliminação do cálculo e não deve ser utilizado sem infecção documentada. O uso prolongado aumenta eventos adversos, seleção de resistência e risco de infecções por microrganismos resistentes."
         },
         {
           "optionId": "D",
           "optionText": "Cateter duplo J até a eliminação do cálculo.",
           "isCorrect": false,
-          "comment": "Incorreta. Cálculo pequeno, não obstrutivo e assintomático pode ser acompanhado, com orientação sobre hidratação, prevenção e imagem seriada. Procedimentos invasivos, antibiótico e cateter não são justificados sem sintomas ou complicações."
+          "comment": "Incorreta. O cateter duplo J é empregado para drenagem de obstrução, proteção do ureter em procedimentos ou situações selecionadas. Não promove a eliminação de um cálculo renal assintomático e pode causar dor, urgência, hematúria, infecção e incrustação."
         }
       ]
     },
@@ -1925,31 +1925,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "D",
       "correctOptionText": "Profilaxia antimicrobiana pós-coito.",
-      "teachingPoint": "Em cistites recorrentes claramente relacionadas ao coito, profilaxia pós-coito pode reduzir novos episódios. Tomografia e cistoscopia não são rotineiras na ausência de anormalidades. Antibioticoterapia indefinida aumenta eventos adversos e resistência.",
+      "teachingPoint": "Cistite recorrente é geralmente definida por pelo menos dois episódios em seis meses ou três em doze meses. Quando as recorrências apresentam relação temporal consistente com atividade sexual, a profilaxia antimicrobiana pós-coito pode reduzir novos episódios e costuma expor a paciente a menos doses do que a profilaxia contínua. A decisão deve ser compartilhada, após confirmação dos episódios e discussão de medidas comportamentais, riscos, benefícios e alternativas não antimicrobianas.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Tomografia anual do trato urinário.",
           "isCorrect": false,
-          "comment": "Incorreta. Em cistites recorrentes claramente relacionadas ao coito, profilaxia pós-coito pode reduzir novos episódios. Tomografia e cistoscopia não são rotineiras na ausência de anormalidades. Antibioticoterapia indefinida aumenta eventos adversos e resistência."
+          "comment": "Incorreta. Tomografia anual não é indicada rotineiramente em mulheres com cistite recorrente típica e sem hematúria persistente, litíase, obstrução, infecção por agentes incomuns ou outras alterações. A imagem repetida gera radiação e achados incidentais sem benefício demonstrado."
         },
         {
           "optionId": "B",
           "optionText": "Cistoscopia após cada novo episódio.",
           "isCorrect": false,
-          "comment": "Incorreta. Em cistites recorrentes claramente relacionadas ao coito, profilaxia pós-coito pode reduzir novos episódios. Tomografia e cistoscopia não são rotineiras na ausência de anormalidades. Antibioticoterapia indefinida aumenta eventos adversos e resistência."
+          "comment": "Incorreta. Cistoscopia não deve ser realizada após cada episódio de cistite. É reservada para situações selecionadas, como hematúria persistente, suspeita de lesão vesical, corpo estranho, fístula ou recorrências com características atípicas."
         },
         {
           "optionId": "C",
           "optionText": "Antibioticoterapia contínua por tempo indeterminado.",
           "isCorrect": false,
-          "comment": "Incorreta. Em cistites recorrentes claramente relacionadas ao coito, profilaxia pós-coito pode reduzir novos episódios. Tomografia e cistoscopia não são rotineiras na ausência de anormalidades. Antibioticoterapia indefinida aumenta eventos adversos e resistência."
+          "comment": "Incorreta. Profilaxia contínua pode ser considerada por período definido em casos selecionados, mas não deve ser prescrita por tempo indeterminado. Uso prolongado aumenta efeitos adversos, candidíase, alterações da microbiota e resistência antimicrobiana."
         },
         {
           "optionId": "D",
           "optionText": "Profilaxia antimicrobiana pós-coito.",
           "isCorrect": true,
-          "comment": "Correta. Em cistites recorrentes claramente relacionadas ao coito, profilaxia pós-coito pode reduzir novos episódios. Tomografia e cistoscopia não são rotineiras na ausência de anormalidades. Antibioticoterapia indefinida aumenta eventos adversos e resistência."
+          "comment": "Correta. Como os episódios ocorrem repetidamente após relações sexuais, uma dose antimicrobiana pós-coito constitui estratégia direcionada ao fator precipitante. A escolha do fármaco deve considerar culturas anteriores, alergias, função renal e perfil local de resistência."
         }
       ]
     },
@@ -1958,31 +1958,31 @@
       "theme": "Disúria e condições urogenitais",
       "correctOptionId": "A",
       "correctOptionText": "Não tratar a bacteriúria assintomática.",
-      "teachingPoint": "Bacteriúria assintomática não deve ser tratada em mulheres não gestantes que não realizarão procedimento urológico invasivo. Repetir culturas e tratar persistentemente não traz benefício e aumenta o risco de resistência e eventos adversos.",
+      "teachingPoint": "Bacteriúria assintomática corresponde ao crescimento bacteriano significativo na urina sem sintomas atribuíveis ao trato urinário. Na maioria dos adultos, rastrear ou tratar essa condição não reduz pielonefrite nem complicações e aumenta efeitos adversos e resistência. As principais situações em que o tratamento traz benefício são a gestação e o período anterior a procedimentos urológicos com provável trauma de mucosa.",
       "alternativeComments": [
         {
           "optionId": "A",
           "optionText": "Não tratar a bacteriúria assintomática.",
           "isCorrect": true,
-          "comment": "Correta. Bacteriúria assintomática não deve ser tratada em mulheres não gestantes que não realizarão procedimento urológico invasivo. Repetir culturas e tratar persistentemente não traz benefício e aumenta o risco de resistência e eventos adversos."
+          "comment": "Correta. Mulher não gestante, sem sintomas urinários e sem procedimento urológico invasivo programado não deve receber antibiótico. É importante orientar que urina turva, odor forte ou resultado positivo isolado não constituem, por si sós, infecção urinária sintomática."
         },
         {
           "optionId": "B",
           "optionText": "Prescrever antibiótico por três dias.",
           "isCorrect": false,
-          "comment": "Incorreta. Bacteriúria assintomática não deve ser tratada em mulheres não gestantes que não realizarão procedimento urológico invasivo. Repetir culturas e tratar persistentemente não traz benefício e aumenta o risco de resistência e eventos adversos."
+          "comment": "Incorreta. Um esquema curto de antibiótico não oferece benefício clínico nesse contexto e pode causar reações adversas, infecção por Clostridioides difficile, candidíase e seleção de bactérias resistentes."
         },
         {
           "optionId": "C",
           "optionText": "Repetir a urocultura e tratar se permanecer positiva.",
           "isCorrect": false,
-          "comment": "Incorreta. Bacteriúria assintomática não deve ser tratada em mulheres não gestantes que não realizarão procedimento urológico invasivo. Repetir culturas e tratar persistentemente não traz benefício e aumenta o risco de resistência e eventos adversos."
+          "comment": "Incorreta. Repetir a cultura apenas para documentar persistência tende a perpetuar exames e tratamentos desnecessários. Nova cultura deve ser solicitada quando houver indicação clínica específica, como surgimento de sintomas ou mudança para uma condição em que o rastreio seja recomendado."
         },
         {
           "optionId": "D",
           "optionText": "Solicitar ultrassonografia e iniciar profilaxia antimicrobiana.",
           "isCorrect": false,
-          "comment": "Incorreta. Bacteriúria assintomática não deve ser tratada em mulheres não gestantes que não realizarão procedimento urológico invasivo. Repetir culturas e tratar persistentemente não traz benefício e aumenta o risco de resistência e eventos adversos."
+          "comment": "Incorreta. Ultrassonografia e profilaxia antimicrobiana não são indicadas por uma urocultura positiva isolada em paciente assintomática. Investigação estrutural é reservada para situações como obstrução, litíase, infecção recorrente complicada ou alteração anatômica suspeita."
         }
       ]
     }
