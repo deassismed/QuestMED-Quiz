@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Clock3, LockKeyhole, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Clock3, GraduationCap, Users, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { LAST_RESOLVER_STUDENT_KEY, QuestionResolver } from "./QuestionResolver";
@@ -11,6 +11,7 @@ import {
   joinRoom,
   loadRoomState,
   loadStudentState,
+  listRooms,
   startQuestionTimer,
   startReleasedQuestions,
   syncPendingOfflineActions,
@@ -20,6 +21,7 @@ import { getBrowserSupabase } from "../lib/supabase-browser";
 import type { QuestionComment, QuestionOption, QuizQuestion, RoomPublicState, StudentSessionState } from "../types";
 
 type Step = "room" | "student" | "quiz";
+type EntryMode = "home" | "room";
 
 const SESSION_KEY = "questmed-quiz-session";
 const LAST_NICKNAME_KEY = "questmed-quiz-last-nickname";
@@ -36,6 +38,7 @@ function normalizeName(value: string) {
 
 export function QuizPlayer({ questionComments, questions }: { questionComments: QuestionComment[]; questions: QuizQuestion[] }) {
   const [step, setStep] = useState<Step>("room");
+  const [entryMode, setEntryMode] = useState<EntryMode>("home");
   const [resolverMode, setResolverMode] = useState(() => typeof window !== "undefined" && Boolean(window.localStorage.getItem(LAST_RESOLVER_STUDENT_KEY)));
   const [roomCode, setRoomCode] = useState("");
   const [nickname, setNickname] = useState("");
@@ -54,6 +57,10 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
   const [mobileAvatarConfirm, setMobileAvatarConfirm] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [showProfessorAccess, setShowProfessorAccess] = useState(false);
+  const [professorPassword, setProfessorPassword] = useState("");
+  const [professorError, setProfessorError] = useState("");
+  const [professorBusy, setProfessorBusy] = useState(false);
   const [duplicateNickname, setDuplicateNickname] = useState(false);
   const [offlinePendingCount, setOfflinePendingCount] = useState(0);
   const roomInputRef = useRef<HTMLInputElement>(null);
@@ -144,6 +151,7 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
     setAnswerFlash(null);
     setDuplicateNickname(false);
     setError(message);
+    setEntryMode("home");
     setStep("room");
   }
 
@@ -153,6 +161,7 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
     const saved = window.localStorage.getItem(SESSION_KEY);
     if (requestedRoom) {
       setRoomCode(requestedRoom);
+      setEntryMode("room");
       setNickname(normalizeName(window.localStorage.getItem(LAST_NICKNAME_KEY) ?? ""));
       void loadRoom(requestedRoom, true);
       return;
@@ -172,6 +181,7 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
           setUbsName(next.ubsTeam.name);
           setAddingNewUbs(false);
           setAvatarId(next.student.avatarId ?? DEFAULT_AVATAR_ID);
+          setEntryMode("room");
           setStep("quiz");
         }).catch(() => forceExitToEntry());
       } catch {
@@ -424,6 +434,21 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
     await loadRoom(nextRoomCode, true);
   }
 
+  async function enterProfessorArea(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setProfessorBusy(true);
+    setProfessorError("");
+    try {
+      await listRooms(professorPassword);
+      window.sessionStorage.setItem("questmed-professor-password", professorPassword);
+      window.location.assign("/professor");
+    } catch (caught) {
+      setProfessorError(caught instanceof Error ? caught.message : "Nao foi possivel validar o acesso.");
+    } finally {
+      setProfessorBusy(false);
+    }
+  }
+
   async function submitStudent(event: FormEvent<HTMLFormElement>, confirmReconnect = false) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -553,40 +578,114 @@ export function QuizPlayer({ questionComments, questions }: { questionComments: 
 
   if (step === "room") {
     return (
-      <main className="app-shell">
-        <section className="entry-panel">
-          <span className="eyebrow">QuestMED Quiz</span>
-          <h1>Entre na sala</h1>
-          <form className="entry-form" onSubmit={submitRoom}>
-            <input
-              autoFocus
-              maxLength={6}
-              name="roomCode"
-              onChange={(event) => setRoomCode(normalizeCode(event.currentTarget.value))}
-              onInput={(event) => setRoomCode(normalizeCode(event.currentTarget.value))}
-              placeholder="CODIGO"
-              ref={roomInputRef}
-              type="text"
-              defaultValue={roomCode}
-            />
-            <button disabled={busy} type="submit">Continuar</button>
-          </form>
-          <div className="entry-actions">
-            <button className="resolver-entry-button" onClick={() => setResolverMode(true)} type="button">
-              Resolver questões
+      <main
+        className="entry-shell"
+        onMouseDown={entryMode === "room" ? () => setEntryMode("home") : undefined}
+      >
+        {entryMode === "home" ? (
+          <section className="entry-panel entry-hero">
+            <span className="eyebrow">QuestMED Quiz</span>
+            <h1>Entre no desafio de questoes</h1>
+            <p>Escolha como deseja acessar a atividade: painel do professor, jogo dos alunos ou resolucao individual.</p>
+            <div className="entry-choice-grid">
+              <button className="entry-choice-card professor" onClick={() => setShowProfessorAccess(true)} type="button">
+                <span className="entry-choice-icon"><GraduationCap size={30} /></span>
+                <strong>PROFESSOR</strong>
+                <small>Criar salas, liberar questoes, acompanhar UBS e projetar o placar.</small>
+                <span className="entry-choice-action">
+                  Abrir painel do professor <ArrowRight size={18} />
+                </span>
+              </button>
+              <button className="entry-choice-card student" onClick={() => setEntryMode("room")} type="button">
+                <span className="entry-choice-icon"><Users size={30} /></span>
+                <strong>ALUNOS</strong>
+                <small>Entrar com o codigo da sala, escolher UBS e responder as questoes liberadas.</small>
+                <span className="entry-choice-action">
+                  Informar codigo da sala <ArrowRight size={18} />
+                </span>
+              </button>
+            </div>
+            <button className="resolver-entry-button hero-resolver-button" onClick={() => setResolverMode(true)} type="button">
+              Resolver questoes
             </button>
-            <a className="teacher-link" href="/professor"><LockKeyhole size={16} /> Area do professor</a>
+            {error ? <p className="entry-error hero-entry-error">{error}</p> : null}
+          </section>
+        ) : (
+          <section className="entry-panel room-picker-panel" onMouseDown={(event) => event.stopPropagation()}>
+            <button className="entry-back-button" onClick={() => setEntryMode("home")} type="button">
+              <ArrowLeft size={18} />
+              Voltar
+            </button>
+            <span className="eyebrow">Alunos e UBS</span>
+            <h1>Escolha sua sala</h1>
+            <p>Digite o codigo informado pelo professor para continuar.</p>
+            <form className="entry-form compact" onSubmit={submitRoom}>
+              <input
+                autoFocus
+                maxLength={6}
+                name="roomCode"
+                onChange={(event) => setRoomCode(normalizeCode(event.currentTarget.value))}
+                onInput={(event) => setRoomCode(normalizeCode(event.currentTarget.value))}
+                placeholder="CODIGO DA SALA"
+                ref={roomInputRef}
+                type="text"
+                value={roomCode}
+              />
+              <button disabled={busy || roomCode.length !== 6} type="submit">Continuar</button>
+            </form>
+            {error ? <p className="entry-error">{error}</p> : null}
+          </section>
+        )}
+        {showProfessorAccess ? (
+          <div className="professor-access-backdrop" onMouseDown={() => setShowProfessorAccess(false)} role="presentation">
+            <section
+              aria-labelledby="professor-access-title"
+              aria-modal="true"
+              className="professor-access-modal"
+              onMouseDown={(event) => event.stopPropagation()}
+              role="dialog"
+            >
+              <button
+                aria-label="Fechar acesso do professor"
+                className="professor-access-close"
+                onClick={() => setShowProfessorAccess(false)}
+                type="button"
+              >
+                <X size={20} />
+              </button>
+              <span className="eyebrow">Acesso restrito</span>
+              <h2 id="professor-access-title">Area do professor</h2>
+              <form onSubmit={enterProfessorArea}>
+                <input
+                  autoFocus
+                  onChange={(event) => {
+                    setProfessorPassword(event.currentTarget.value);
+                    setProfessorError("");
+                  }}
+                  placeholder="Senha"
+                  type="password"
+                  value={professorPassword}
+                />
+                <button disabled={professorBusy || !professorPassword} type="submit">
+                  Entrar
+                </button>
+              </form>
+              {professorError ? <p className="entry-error">{professorError}</p> : null}
+            </section>
           </div>
-          {error ? <p className="entry-error">{error}</p> : null}
-        </section>
+        ) : null}
       </main>
     );
   }
 
   if (step === "student") {
     return (
-      <main className="app-shell">
-        <section className="entry-panel">
+      <main className="entry-shell">
+        <section className="entry-panel identify-panel">
+          <button className="entry-back-button" onClick={() => setStep("room")} type="button">
+            <ArrowLeft size={18} />
+            Trocar sala
+          </button>
           <span className="eyebrow">Sala {roomCode}</span>
           <h1>Identifique-se</h1>
           <form className="entry-form stacked" onSubmit={submitStudent}>

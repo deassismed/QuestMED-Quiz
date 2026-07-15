@@ -4123,3 +4123,395 @@ a { color: inherit; }
     width: 100%;
   }
 }
+
+.entry-shell {
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(5, 9, 18, 0.72), rgba(5, 9, 18, 0.34) 48%, rgba(5, 9, 18, 0.78)),
+    linear-gradient(180deg, rgba(5, 9, 18, 0.15), rgba(5, 9, 18, 0.85)),
+    url("/fundo-entrada.webp") center / cover no-repeat;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  max-width: none;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: 18px;
+  position: relative;
+  width: 100%;
+}
+
+.entry-shell::before {
+  background:
+    radial-gradient(circle at 50% 78%, rgba(255, 128, 47, 0.24), transparent 28%),
+    linear-gradient(90deg, rgba(5, 9, 18, 0.88), transparent 28%, transparent 70%, rgba(5, 9, 18, 0.88));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.entry-shell::after {
+  background: rgba(5, 9, 18, 0.12);
+  backdrop-filter: saturate(1.05);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.entry-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.entry-shell .entry-panel {
+  background:
+    linear-gradient(150deg, rgba(15, 118, 110, 0.08), rgba(255, 255, 255, 0) 42%),
+    #fff;
+  color: var(--ink);
+  gap: 18px;
+  margin: auto;
+  max-width: 680px;
+  width: min(100%, 680px);
+}
+
+.entry-shell .entry-panel .eyebrow {
+  color: var(--accent-strong);
+  text-shadow: none;
+}
+
+.entry-shell .entry-panel h1 {
+  color: var(--ink);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.04;
+  margin: 0;
+  text-shadow: none;
+}
+
+.entry-shell .entry-panel p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 760px;
+}
+
+.entry-hero {
+  align-content: end;
+  align-self: stretch;
+  background: transparent !important;
+  border: 0;
+  box-shadow: none;
+  gap: 20px;
+  margin: 0;
+  max-width: 1120px !important;
+  min-height: calc(100svh - 48px);
+  padding: min(7rem, 11vh) clamp(20px, 5vw, 56px) clamp(26px, 6vh, 58px) !important;
+  width: min(100%, 1120px) !important;
+}
+
+.entry-hero .eyebrow {
+  color: rgba(255, 255, 255, 0.94) !important;
+  font-weight: 950;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.92) !important;
+}
+
+.entry-shell .entry-hero h1 {
+  color: #fff;
+  font-size: 3.7rem;
+  max-width: 680px;
+  text-shadow: 0 4px 2px rgba(0, 0, 0, 0.64), 0 18px 44px rgba(0, 0, 0, 0.96);
+}
+
+.entry-shell .entry-hero p {
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 800;
+  max-width: 620px;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.96);
+}
+
+.entry-choice-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.entry-choice-card {
+  align-content: start;
+  background: rgba(6, 12, 24, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.48);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  gap: 13px;
+  min-height: 250px;
+  padding: 22px;
+  text-align: left;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.entry-choice-card:hover {
+  background: rgba(12, 20, 36, 0.84);
+  border-color: rgba(80, 232, 255, 0.72);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.42), 0 0 28px rgba(80, 232, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.entry-choice-card.professor {
+  background:
+    linear-gradient(160deg, rgba(80, 155, 255, 0.18), transparent 48%),
+    rgba(6, 12, 24, 0.86);
+}
+
+.entry-choice-card.student {
+  background:
+    linear-gradient(160deg, rgba(20, 184, 166, 0.2), transparent 48%),
+    rgba(6, 12, 24, 0.86);
+}
+
+.entry-choice-icon {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  color: #50e8ff;
+  display: flex;
+  height: 58px;
+  justify-content: center;
+  width: 58px;
+}
+
+.entry-choice-card.professor .entry-choice-icon {
+  color: #82b7ff;
+}
+
+.entry-choice-card strong {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.1;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.92);
+}
+
+.entry-choice-card small {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.entry-choice-action {
+  align-items: center;
+  color: #74fff0;
+  display: inline-flex;
+  font-weight: 900;
+  gap: 8px;
+  margin-top: auto;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.86);
+}
+
+.hero-resolver-button {
+  background: rgba(6, 12, 24, 0.78);
+  border-color: rgba(255, 255, 255, 0.28);
+  justify-self: start;
+}
+
+.hero-entry-error {
+  background: rgba(255, 255, 255, 0.94);
+  max-width: 620px;
+}
+
+.room-picker-panel {
+  background:
+    linear-gradient(150deg, rgba(15, 118, 110, 0.14), transparent 46%),
+    rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(14px);
+  max-width: 760px !important;
+  width: min(100%, 760px) !important;
+}
+
+.identify-panel {
+  max-width: 760px !important;
+  width: min(100%, 760px) !important;
+}
+
+.entry-back-button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 900;
+  gap: 7px;
+  justify-self: start;
+  padding: 0;
+}
+
+.entry-back-button:hover {
+  color: var(--accent-strong);
+}
+
+.entry-form.compact {
+  border-top: 1px solid var(--line);
+  margin-top: 2px;
+  padding-top: 18px;
+}
+
+.professor-access-backdrop {
+  align-items: center;
+  background:
+    radial-gradient(circle at center, rgba(5, 9, 18, 0.2), rgba(5, 9, 18, 0.46)),
+    rgba(5, 9, 18, 0.18);
+  backdrop-filter: blur(4px) saturate(1.05);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 20px;
+  position: fixed;
+  z-index: 90;
+}
+
+.professor-access-modal {
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 8px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+  color: var(--ink);
+  display: grid;
+  gap: 14px;
+  max-width: 430px;
+  padding: 28px;
+  position: relative;
+  width: 100%;
+}
+
+.professor-access-modal h2 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.professor-access-modal form {
+  display: grid;
+  gap: 10px;
+}
+
+.professor-access-modal input {
+  background: #fff;
+  border: 2px solid var(--dark);
+  border-radius: 8px;
+  color: var(--dark);
+  font: inherit;
+  min-height: 50px;
+  padding: 0 14px;
+}
+
+.professor-access-modal input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.professor-access-modal form button {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+  min-height: 48px;
+}
+
+.professor-access-modal form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.professor-access-close {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  height: 38px;
+  justify-content: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 38px;
+}
+
+@media (max-width: 860px) {
+  .entry-shell {
+    background-position: center top;
+    overflow-y: auto;
+  }
+
+  .entry-shell::before {
+    background:
+      linear-gradient(180deg, rgba(5, 9, 18, 0.4), rgba(5, 9, 18, 0.95)),
+      linear-gradient(90deg, rgba(5, 9, 18, 0.74), rgba(5, 9, 18, 0.42));
+  }
+
+  .entry-hero {
+    align-content: end;
+    min-height: calc(100svh - 32px);
+    padding: 36px 16px 20px !important;
+  }
+
+  .entry-shell .entry-hero h1 {
+    font-size: 2.9rem;
+    max-width: 520px;
+  }
+
+  .entry-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-choice-card {
+    min-height: 178px;
+  }
+
+  .entry-form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .entry-form button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .entry-shell {
+    background-position: 50% top;
+    padding: 10px;
+  }
+
+  .entry-hero {
+    gap: 14px;
+    min-height: calc(100svh - 20px);
+    padding: 28px 10px 32px !important;
+  }
+
+  .entry-shell .entry-hero h1 {
+    font-size: 2.35rem;
+  }
+
+  .entry-shell .entry-hero p {
+    font-size: 0.98rem;
+  }
+
+  .entry-choice-card {
+    gap: 8px;
+    min-height: 142px;
+    padding: 14px;
+  }
+
+  .entry-choice-icon {
+    height: 44px;
+    width: 44px;
+  }
+}

@@ -18,7 +18,14 @@ export function RoomCreator() {
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const roomNameInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => setOrigin(window.location.origin), []);
+  useEffect(() => {
+    setOrigin(window.location.origin);
+    const savedPassword = window.sessionStorage.getItem("questmed-professor-password") ?? "";
+    if (!savedPassword) return;
+    setPassword(savedPassword);
+    if (passwordInputRef.current) passwordInputRef.current.value = savedPassword;
+    void loadExistingRooms(savedPassword);
+  }, []);
 
   const studentUrl = useMemo(() => (created && origin ? `${origin}/?sala=${created.room.roomCode}` : ""), [created, origin]);
   const adminUrl = useMemo(() => (created && origin ? `${origin}/professor/${created.room.id}/${created.adminKey}` : ""), [created, origin]);
