@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getServerSupabase } from "../../../lib/supabase-server";
+import { requireResolverRotationId } from "../../../lib/resolver-rotation-config";
 
 type ResolverStudentRankRow = {
   id: string;
@@ -16,18 +17,23 @@ type ResolverAnswerRankRow = {
   score: number | string;
 };
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const rotationId = requireResolverRotationId(new URL(request.url).searchParams.get("rotationId"));
     const supabase = getServerSupabase();
     const { data, error } = await supabase
       .from("qmq_resolver_students")
       .select("id,nickname,ubs_name,avatar_id,total_score,answered_count,average_score")
+      .eq("rotation_id", rotationId)
       .order("nickname", { ascending: true });
     if (error) throw error;
 
+    if (!data || data.length === 0) return NextResponse.json({ ranking: [] });
+
     const { data: answerData, error: answerError } = await supabase
       .from("qmq_resolver_answers")
-      .select("student_id,score");
+      .select("student_id,score")
+      .in("student_id", ((data ?? []) as ResolverStudentRankRow[]).map((row) => row.id));
     if (answerError) throw answerError;
 
     const answersByStudent = new Map<string, ResolverAnswerRankRow[]>();

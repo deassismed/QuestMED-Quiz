@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSupabase } from "../../../lib/supabase-server";
 import { validateProfessorPassword } from "../../../lib/online-server";
 import type { QuestionOption } from "../../../types";
+import { requireResolverRotationId, type ResolverRotationId } from "../../../lib/resolver-rotation-config";
 
 type ResolverStudentRow = {
   id: string;
@@ -28,13 +29,14 @@ type ResolverAnswerRow = {
 
 const PAGE_SIZE = 1000;
 
-async function loadResolverAdminState() {
+async function loadResolverAdminState(rotationId: ResolverRotationId) {
   const supabase = getServerSupabase();
   const studentsData: ResolverStudentRow[] = [];
   for (let from = 0; ; from += PAGE_SIZE) {
     const { data, error } = await supabase
       .from("qmq_resolver_students")
       .select("id,nickname,ubs_name,avatar_id,total_score,answered_count,average_score,created_at,updated_at")
+      .eq("rotation_id", rotationId)
       .order("total_score", { ascending: false })
       .order("answered_count", { ascending: false })
       .order("nickname", { ascending: true })
@@ -45,15 +47,19 @@ async function loadResolverAdminState() {
   }
 
   const answersData: ResolverAnswerRow[] = [];
+  const studentIds = studentsData.map((student) => student.id);
+  if (studentIds.length > 0) {
   for (let from = 0; ; from += PAGE_SIZE) {
     const { data, error } = await supabase
       .from("qmq_resolver_answers")
       .select("student_id,question_id,selected_option_id,is_correct,status,score,elapsed_seconds,answered_at")
+      .in("student_id", studentIds)
       .order("answered_at", { ascending: true })
       .range(from, from + PAGE_SIZE - 1);
     if (error) throw error;
     answersData.push(...((data ?? []) as ResolverAnswerRow[]));
     if (!data || data.length < PAGE_SIZE) break;
+  }
   }
 
   const answers = answersData.map((answer) => ({
@@ -141,9 +147,10 @@ async function loadResolverAdminState() {
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as { password?: string };
+    const body = (await request.json()) as { password?: string; rotationId?: string };
     if (!validateProfessorPassword(body.password ?? "")) throw new Error("Senha do professor invalida.");
-    return NextResponse.json(await loadResolverAdminState());
+    const rotationId = requireResolverRotationId(body.rotationId);
+    return NextResponse.json(await loadResolverAdminState(rotationId));
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Nao foi possivel carregar o resolvedor." }, { status: 400 });
   }
@@ -151,9 +158,10 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    const body = (await request.json()) as { password?: string };
+    const body = (await request.json()) as { password?: string; rotationId?: string };
     if (!validateProfessorPassword(body.password ?? "")) throw new Error("Senha do professor invalida.");
-    const { error } = await getServerSupabase().from("qmq_resolver_students").delete().neq("id", "");
+    const rotationId = requireResolverRotationId(body.rotationId);
+    const { error } = await getServerSupabase().from("qmq_resolver_students").delete().eq("rotation_id", rotationId);
     if (error) throw error;
     return NextResponse.json({ ok: true });
   } catch (error) {

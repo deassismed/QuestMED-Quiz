@@ -5,6 +5,8 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { AvatarBadge } from "./AvatarBadge";
 import { AVATAR_PRESETS, DEFAULT_AVATAR_ID } from "../lib/avatars";
 import type { QuestionComment, QuestionOption, QuizQuestion } from "../types";
+import { resolverRotations } from "../lib/resolver-rotations";
+import { LEGACY_RESOLVER_ROTATION_ID, type ResolverRotationId } from "../lib/resolver-rotation-config";
 
 const RESOLVER_TABLE_KEY = "questmed-resolver-table";
 export const LAST_RESOLVER_STUDENT_KEY = "questmed-resolver-last-student";
@@ -32,7 +34,7 @@ const UBS_OPTIONS = [
   "USF Santa Tereza"
 ];
 
-type ResolverStep = "resume" | "identify" | "quiz";
+type ResolverStep = "rotation" | "resume" | "identify" | "quiz" | "ranking";
 type AnswerStatus = "correct" | "incorrect" | "timeout";
 
 type ResolverAnswer = {
@@ -49,6 +51,7 @@ type ResolverStudent = {
   id: string;
   nickname: string;
   ubsName: string;
+  rotationId: ResolverRotationId;
   avatarId: string;
   questionOrder: string[];
   currentIndex: number;
@@ -81,8 +84,8 @@ function normalizeName(value: string) {
   return value.toLocaleUpperCase("pt-BR").replace(/[^\p{L}\p{N} .'-]/gu, "");
 }
 
-function getStudentKey(nickname: string, ubsName: string) {
-  return `${normalizeName(nickname).trim()}::${ubsName.trim().toLocaleUpperCase("pt-BR")}`;
+function getStudentKey(nickname: string, ubsName: string, rotationId: ResolverRotationId) {
+  return `${normalizeName(nickname).trim()}::${ubsName.trim().toLocaleUpperCase("pt-BR")}::${rotationId}`;
 }
 
 function createEmptyTable(): ResolverTable {
@@ -93,7 +96,17 @@ function readResolverTable(): ResolverTable {
   if (typeof window === "undefined") return createEmptyTable();
   try {
     const parsed = JSON.parse(window.localStorage.getItem(RESOLVER_TABLE_KEY) ?? "");
-    if (parsed && Array.isArray(parsed.students)) return parsed as ResolverTable;
+    if (parsed && Array.isArray(parsed.students)) {
+      const table = parsed as ResolverTable;
+      let migrated = false;
+      table.students = table.students.map((student) => {
+        if (student.rotationId) return student;
+        migrated = true;
+        return { ...student, rotationId: LEGACY_RESOLVER_ROTATION_ID };
+      });
+      if (migrated) window.localStorage.setItem(RESOLVER_TABLE_KEY, JSON.stringify(table));
+      return table;
+    }
   } catch {
     return createEmptyTable();
   }
@@ -104,11 +117,12 @@ function writeResolverTable(table: ResolverTable) {
   window.localStorage.setItem(RESOLVER_TABLE_KEY, JSON.stringify(table));
 }
 
-function getLastResolverStudent() {
+function getLastResolverStudent(rotationId: ResolverRotationId) {
   if (typeof window === "undefined") return null;
   const table = readResolverTable();
   const lastId = window.localStorage.getItem(LAST_RESOLVER_STUDENT_KEY);
-  return table.students.find((item) => item.id === lastId) ?? [...table.students].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0] ?? null;
+  const students = table.students.filter((item) => item.rotationId === rotationId);
+  return students.find((item) => item.id === lastId) ?? [...students].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0] ?? null;
 }
 
 async function requestResolverJson<T>(url: string, init?: RequestInit) {
@@ -122,8 +136,8 @@ async function requestResolverJson<T>(url: string, init?: RequestInit) {
   return data;
 }
 
-function getLocalRanking(table: ResolverTable): ResolverRankingItem[] {
-  return table.students
+function getLocalRanking(table: ResolverTable, rotationId: ResolverRotationId): ResolverRankingItem[] {
+  return table.students.filter((item) => item.rotationId === rotationId)
     .map((item) => {
       const totalScore = item.answers.reduce((sum, answer) => sum + answer.score, 0);
       return {
@@ -139,8 +153,9 @@ function getLocalRanking(table: ResolverTable): ResolverRankingItem[] {
     .sort((a, b) => b.totalScore - a.totalScore || b.answeredCount - a.answeredCount || a.nickname.localeCompare(b.nickname));
 }
 
-async function loadResolverRanking() {
-  return requestResolverJson<{ ranking: ResolverRankingItem[] }>("/api/resolver/ranking");
+async function loadResolverRanking(rotationId: ResolverRotationId) {
+  const params = new URLSearchParams({ rotationId });
+  return requestResolverJson<{ ranking: ResolverRankingItem[] }>(`/api/resolver/ranking?${params.toString()}`);
 }
 
 async function syncResolverStudent(student: ResolverStudent) {
@@ -150,8 +165,8 @@ async function syncResolverStudent(student: ResolverStudent) {
   });
 }
 
-async function loadResolverStudent(nickname: string, ubsName: string) {
-  const params = new URLSearchParams({ nickname, ubsName });
+async function loadResolverStudent(nickname: string, ubsName: string, rotationId: ResolverRotationId) {
+  const params = new URLSearchParams({ nickname, ubsName, rotationId });
   return requestResolverJson<{ student: ResolverStudent | null }>(`/api/resolver/student?${params.toString()}`);
 }
 
@@ -204,15 +219,14 @@ function mergeResolverStudents(localStudent: ResolverStudent | undefined, server
 }
 
 export function QuestionResolver({
-  onBack,
-  questionComments,
-  questions
+  onBack
 }: {
   onBack: () => void;
   questionComments: QuestionComment[];
   questions: QuizQuestion[];
 }) {
-  const [step, setStep] = useState<ResolverStep>("identify");
+  const [step, setStep] = useState<ResolverStep>("rotation");
+  const [rotationId, setRotationId] = useState<ResolverRotationId | null>(null);
   const [resumeStudent, setResumeStudent] = useState<ResolverStudent | null>(null);
   const [nickname, setNickname] = useState("");
   const [ubsName, setUbsName] = useState("");
@@ -232,6 +246,10 @@ export function QuestionResolver({
   const actionsRef = useRef<HTMLDivElement>(null);
   const entryErrorRef = useRef<HTMLParagraphElement>(null);
 
+  const rotation = resolverRotations.find((item) => item.id === rotationId) ?? null;
+  const questions = rotation?.questions ?? [];
+  const questionComments = rotation?.comments ?? [];
+
   const commentsByQuestion = useMemo(
     () => new Map(questionComments.map((comment) => [comment.questionId, comment])),
     [questionComments]
@@ -244,10 +262,10 @@ export function QuestionResolver({
   const completed = Boolean(student && student.answers.length >= questions.length);
   const questionNumber = student ? Math.min(student.currentIndex + 1, questions.length) : 0;
   const totalScore = student?.answers.reduce((sum, answer) => sum + answer.score, 0) ?? 0;
-  const localRanking = useMemo(() => getLocalRanking(table), [table]);
+  const localRanking = useMemo(() => rotationId ? getLocalRanking(table, rotationId) : [], [rotationId, table]);
   const savedStudents = useMemo(
-    () => [...table.students].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)),
-    [table.students]
+    () => [...table.students].filter((item) => item.rotationId === rotationId).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)),
+    [rotationId, table.students]
   );
   const individualRanking = serverRanking.length > 0 ? serverRanking : localRanking;
   const podiumSlots = [
@@ -259,20 +277,22 @@ export function QuestionResolver({
 
   useEffect(() => {
     const nextTable = readResolverTable();
-    const lastStudent = getLastResolverStudent();
     setTable(nextTable);
-    setResumeStudent(lastStudent);
-    if (lastStudent) setStep("resume");
-    void loadResolverRanking()
+  }, []);
+
+  useEffect(() => {
+    if (!rotationId) return;
+    const nextTable = readResolverTable();
+    void loadResolverRanking(rotationId)
       .then((data) => setServerRanking(data.ranking))
-      .catch(() => setServerRanking(getLocalRanking(nextTable)));
+      .catch(() => setServerRanking(getLocalRanking(nextTable, rotationId)));
     const interval = window.setInterval(() => {
-      void loadResolverRanking()
+      void loadResolverRanking(rotationId)
         .then((data) => setServerRanking(data.ranking))
-        .catch(() => setServerRanking(getLocalRanking(readResolverTable())));
+        .catch(() => setServerRanking(getLocalRanking(readResolverTable(), rotationId)));
     }, 15000);
     return () => window.clearInterval(interval);
-  }, []);
+  }, [rotationId]);
 
   useEffect(() => {
     if (!currentQuestion || currentAnswer || completed) {
@@ -324,7 +344,7 @@ export function QuestionResolver({
     const nextTable = saveStudentLocally(nextStudent);
     void syncResolverStudent(nextStudent)
       .then((data) => setServerRanking(data.ranking))
-      .catch(() => setServerRanking(getLocalRanking(nextTable)));
+      .catch(() => setServerRanking(getLocalRanking(nextTable, nextStudent.rotationId)));
   }
 
   function askToResumeExisting(nextStudent: ResolverStudent) {
@@ -349,6 +369,7 @@ export function QuestionResolver({
 
   async function submitIdentification(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!rotationId || !rotation?.acceptsAnswers) return;
     const nextNickname = normalizeName(nickname).trim();
     if (!nextNickname) {
       setError("Informe seu nome para continuar.");
@@ -360,10 +381,10 @@ export function QuestionResolver({
     }
     setError("");
     const nextTable = readResolverTable();
-    const key = getStudentKey(nextNickname, ubsName);
-    const existing = nextTable.students.find((item) => getStudentKey(item.nickname, item.ubsName) === key);
+    const key = getStudentKey(nextNickname, ubsName, rotationId);
+    const existing = nextTable.students.find((item) => getStudentKey(item.nickname, item.ubsName, item.rotationId) === key);
     try {
-      const serverData = await loadResolverStudent(nextNickname, ubsName);
+      const serverData = await loadResolverStudent(nextNickname, ubsName, rotationId);
       if (serverData.student) {
         askToResumeExisting(mergeResolverStudents(existing, serverData.student));
         return;
@@ -384,6 +405,7 @@ export function QuestionResolver({
       id: `resolver-${hashSeed(key).toString(36)}`,
       nickname: nextNickname,
       ubsName,
+      rotationId,
       avatarId,
       questionOrder: shuffleQuestions(questions.map((question) => question.id), `${nextNickname}:${ubsName}:${now}`),
       currentIndex: 0,
@@ -415,6 +437,30 @@ export function QuestionResolver({
     setStep("identify");
   }
 
+  function selectRotation(nextRotationId: ResolverRotationId) {
+    const nextRotation = resolverRotations.find((item) => item.id === nextRotationId);
+    if (!nextRotation) return;
+    setRotationId(nextRotationId);
+    setServerRanking([]);
+    setStudent(null);
+    setExistingConfirmation(null);
+    if (!nextRotation.acceptsAnswers) {
+      setStep("ranking");
+      return;
+    }
+    const lastStudent = getLastResolverStudent(nextRotationId);
+    setResumeStudent(lastStudent);
+    setStep(lastStudent ? "resume" : "identify");
+  }
+
+  function chooseAnotherRotation() {
+    setRotationId(null);
+    setResumeStudent(null);
+    setStudent(null);
+    setServerRanking([]);
+    setStep("rotation");
+  }
+
   function deleteLocalStudent(studentId: string) {
     const nextTable = readResolverTable();
     const nextStudents = nextTable.students.filter((item) => item.id !== studentId);
@@ -426,7 +472,7 @@ export function QuestionResolver({
     setTable(updatedTable);
     if (resumeStudent?.id === studentId) setResumeStudent(null);
     if (student?.id === studentId) setStudent(null);
-    if (nextStudents.length === 0) setStep("identify");
+    if (nextStudents.filter((item) => item.rotationId === rotationId).length === 0) setStep("identify");
   }
 
   function goToMainEntry() {
@@ -509,6 +555,7 @@ export function QuestionResolver({
     const html = buildResolverReportHtml({
       commentsByQuestion,
       questionsById,
+      rotationName: rotation?.name ?? student.rotationId,
       student,
       totalQuestions: questions.length,
       totalScore
@@ -530,6 +577,51 @@ export function QuestionResolver({
     };
     printWindow.onload = printReport;
     window.setTimeout(printReport, 500);
+  }
+
+  if (step === "rotation") {
+    return (
+      <main className="app-shell resolver-entry-shell">
+        <section className="entry-panel resolver-entry-panel">
+          <span className="eyebrow">QuestMED Quiz</span>
+          <h1>Escolha seu rodízio</h1>
+          <div className="resolver-rotation-list">
+            {resolverRotations.map((item) => (
+              <button className="resolver-rotation-card" key={item.id} onClick={() => selectRotation(item.id)} type="button">
+                <strong>{item.name}</strong>
+                <span>{item.acceptsAnswers ? `${item.questions.length} questões disponíveis` : "Ranking da turma"}</span>
+              </button>
+            ))}
+          </div>
+          <button className="resolver-back-button" onClick={onBack} type="button">Voltar</button>
+        </section>
+      </main>
+    );
+  }
+
+  if (step === "ranking" && rotation) {
+    return (
+      <main className="app-shell resolver-entry-shell">
+        <section className="entry-panel resolver-entry-panel resolver-rotation-ranking">
+          <span className="eyebrow"><Trophy size={16} /> Ranking do rodízio</span>
+          <h1>{rotation.name}</h1>
+          <p>As novas questões deste rodízio ainda não estão disponíveis.</p>
+          <div className="resolver-ranking-only-list">
+            {individualRanking.slice(0, 100).map((item, index) => (
+              <article className="broadcast-score-row resolver-score-row" key={item.id}>
+                <strong>{index + 1}º</strong>
+                <AvatarBadge avatarId={item.avatarId} className="game-avatar small" name={item.nickname} />
+                <div className="broadcast-team"><strong>{item.nickname}</strong><small>{item.ubsName}</small></div>
+                <b>{item.totalScore.toFixed(1)} pts</b>
+              </article>
+            ))}
+            {individualRanking.length === 0 ? <p className="empty-ranking">Ainda não há alunos neste ranking.</p> : null}
+          </div>
+          <button className="resolver-back-button" onClick={chooseAnotherRotation} type="button">Escolher outro rodízio</button>
+          <button className="resolver-back-button" onClick={onBack} type="button">Tela principal</button>
+        </section>
+      </main>
+    );
   }
 
   if (step === "resume" && savedStudents.length > 0) {
@@ -569,7 +661,7 @@ export function QuestionResolver({
           </div>
           <div className="resolver-resume-actions">
             <button onClick={createNewStudent} type="button">Novo usuario</button>
-            <button className="resolver-back-button" onClick={goToMainEntry} type="button">Tela principal</button>
+            <button className="resolver-back-button" onClick={chooseAnotherRotation} type="button">Trocar rodízio</button>
           </div>
         </section>
       </main>
@@ -641,7 +733,7 @@ export function QuestionResolver({
               </div>
             </fieldset>
             <button type="submit">Entrar</button>
-            <button className="resolver-back-button" onClick={onBack} type="button">Voltar</button>
+            <button className="resolver-back-button" onClick={chooseAnotherRotation} type="button">Trocar rodízio</button>
           </form>
         </section>
       </main>
@@ -659,7 +751,7 @@ export function QuestionResolver({
         <header className="topbar">
           <AvatarBadge avatarId={student.avatarId} className="player-avatar" name={student.nickname} />
           <div>
-            <p className="eyebrow">{student.ubsName}</p>
+            <p className="eyebrow">{rotation?.name} · {student.ubsName}</p>
             <h1>{student.nickname}</h1>
           </div>
           <div className="score-chip rank-chip">
@@ -909,12 +1001,14 @@ function getDisplayOptions(question: QuizQuestion, studentId: string) {
 function buildResolverReportHtml({
   commentsByQuestion,
   questionsById,
+  rotationName,
   student,
   totalQuestions,
   totalScore
 }: {
   commentsByQuestion: Map<string, QuestionComment>;
   questionsById: Map<string, QuizQuestion>;
+  rotationName: string;
   student: ResolverStudent;
   totalQuestions: number;
   totalScore: number;
@@ -1024,6 +1118,7 @@ function buildResolverReportHtml({
   <header>
     <h1>QuestMED Quiz - Relatorio do resolvedor</h1>
     <p><strong>${escapeHtml(student.nickname)}</strong> - ${escapeHtml(student.ubsName)}</p>
+    <p>${escapeHtml(rotationName)}</p>
     <p class="muted">Gerado em ${escapeHtml(generatedAt)}</p>
     <section class="summary" aria-label="Resumo">
       <div><span>Respondidas</span><strong>${student.answers.length}/${totalQuestions}</strong></div>

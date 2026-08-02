@@ -4,6 +4,8 @@ import { ArrowLeft, Loader2, LogOut, RefreshCw, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import type { QuizQuestion } from "../types";
 import { AvatarBadge } from "./AvatarBadge";
+import { resolverRotations } from "../lib/resolver-rotations";
+import { LEGACY_RESOLVER_ROTATION_ID, type ResolverRotationId } from "../lib/resolver-rotation-config";
 
 type ResolverAnswer = {
   questionId: string;
@@ -19,6 +21,7 @@ type ResolverAdminStudent = {
   id: string;
   nickname: string;
   ubsName: string;
+  rotationId?: ResolverRotationId;
   avatarId: string;
   totalScore: number;
   answeredCount: number;
@@ -35,24 +38,27 @@ type ResolverAdminState = {
   summary: { studentCount: number; ubsCount: number; answerCount: number; averageScore: number; lastActivityAt: string | null };
 };
 
-async function requestResolverAdmin(password: string, method: "POST" | "DELETE" = "POST") {
+async function requestResolverAdmin(password: string, rotationId: ResolverRotationId, method: "POST" | "DELETE" = "POST") {
   const response = await fetch("/api/resolver/admin", {
     method,
     cache: "no-store",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ password })
+    body: JSON.stringify({ password, rotationId })
   });
   const data = (await response.json()) as ResolverAdminState & { error?: string; ok?: true };
   if (!response.ok) throw new Error(data.error ?? "Falha ao carregar o resolvedor.");
   return data;
 }
 
-export function ResolverAdminDashboard({ questions }: { questions: QuizQuestion[] }) {
+export function ResolverAdminDashboard({ questions: _questions }: { questions: QuizQuestion[] }) {
   const [password, setPassword] = useState("");
   const [state, setState] = useState<ResolverAdminState | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [selectedStudent, setSelectedStudent] = useState<ResolverAdminStudent | null>(null);
+  const [rotationId, setRotationId] = useState<ResolverRotationId>(LEGACY_RESOLVER_ROTATION_ID);
+  const rotation = resolverRotations.find((item) => item.id === rotationId) ?? resolverRotations[0];
+  const questions = rotation.questions;
   const questionsById = useMemo(() => new Map(questions.map((question) => [question.id, question])), [questions]);
   const studentRanking = [...(state?.students ?? [])].sort((a, b) => b.totalScore - a.totalScore || b.answeredCount - a.answeredCount);
 
@@ -63,11 +69,11 @@ export function ResolverAdminDashboard({ questions }: { questions: QuizQuestion[
     void load(savedPassword);
   }, []);
 
-  async function load(currentPassword = password) {
+  async function load(currentPassword = password, currentRotationId = rotationId) {
     setBusy(true);
     setError("");
     try {
-      const next = await requestResolverAdmin(currentPassword);
+      const next = await requestResolverAdmin(currentPassword, currentRotationId);
       window.sessionStorage.setItem("questmed-professor-password", currentPassword);
       setState(next);
     } catch (caught) {
@@ -83,11 +89,11 @@ export function ResolverAdminDashboard({ questions }: { questions: QuizQuestion[
   }
 
   async function clearResolver() {
-    if (!window.confirm("Limpar todas as respostas e alunos do resolvedor?")) return;
+    if (!window.confirm(`Limpar todas as respostas e alunos de ${rotation.name}?`)) return;
     setBusy(true);
     setError("");
     try {
-      await requestResolverAdmin(password, "DELETE");
+      await requestResolverAdmin(password, rotationId, "DELETE");
       setState(null);
       setSelectedStudent(null);
       await load(password);
@@ -112,6 +118,21 @@ export function ResolverAdminDashboard({ questions }: { questions: QuizQuestion[
           <h1>RESOLVEDOR</h1>
         </div>
         <div className="dashboard-actions">
+          <label className="resolver-admin-rotation-select">
+            <span>Rodízio</span>
+            <select
+              onChange={(event) => {
+                const nextId = event.currentTarget.value as ResolverRotationId;
+                setRotationId(nextId);
+                setState(null);
+                setSelectedStudent(null);
+                void load(password, nextId);
+              }}
+              value={rotationId}
+            >
+              {resolverRotations.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
+            </select>
+          </label>
           <a aria-label="Todas as salas" href="/professor" title="Todas as salas">
             <ArrowLeft size={19} />
             <span>Todas as salas</span>

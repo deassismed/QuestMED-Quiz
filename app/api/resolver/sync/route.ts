@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getServerSupabase } from "../../../lib/supabase-server";
 import type { QuestionOption } from "../../../types";
+import { requireResolverRotationId, resolverRotationAcceptsAnswers, type ResolverRotationId } from "../../../lib/resolver-rotation-config";
 
 type ResolverAnswerInput = {
   questionId: string;
@@ -16,6 +17,7 @@ type ResolverStudentInput = {
   id: string;
   nickname: string;
   ubsName: string;
+  rotationId: ResolverRotationId;
   avatarId: string;
   questionOrder: string[];
   currentIndex: number;
@@ -60,17 +62,21 @@ function normalizeName(value: string) {
   return value.trim().replace(/\s+/g, " ").toLocaleUpperCase("pt-BR").replace(/[^\p{L}\p{N} .'-]/gu, "");
 }
 
-async function loadRanking() {
+async function loadRanking(rotationId: ResolverRotationId) {
   const supabase = getServerSupabase();
   const { data, error } = await supabase
     .from("qmq_resolver_students")
     .select("id,nickname,ubs_name,avatar_id,total_score,answered_count,average_score")
+    .eq("rotation_id", rotationId)
     .order("nickname", { ascending: true });
   if (error) throw error;
 
+  if (!data || data.length === 0) return [];
+
   const { data: answerData, error: answerError } = await supabase
     .from("qmq_resolver_answers")
-    .select("student_id,score");
+    .select("student_id,score")
+    .in("student_id", ((data ?? []) as ResolverStudentRankRow[]).map((row) => row.id));
   if (answerError) throw answerError;
 
   const answersByStudent = new Map<string, ResolverAnswerRankRow[]>();
@@ -106,11 +112,14 @@ export async function POST(request: Request) {
     const body = (await request.json()) as { student?: ResolverStudentInput };
     const student = body.student;
     if (!student?.id) throw new Error("Aluno invalido.");
+    const rotationId = requireResolverRotationId(student.rotationId);
+    if (!resolverRotationAcceptsAnswers(rotationId)) throw new Error("Este rodízio está disponível somente para consulta do ranking.");
     const supabase = getServerSupabase();
     const { data: existingStudent, error: existingStudentError } = await supabase
       .from("qmq_resolver_students")
       .select("id,created_at,question_order,current_index")
       .eq("id", student.id)
+      .eq("rotation_id", rotationId)
       .maybeSingle();
     if (existingStudentError) throw existingStudentError;
 
@@ -150,6 +159,7 @@ export async function POST(request: Request) {
       nickname: normalizeName(student.nickname),
       nickname_normalized: normalizeName(student.nickname),
       ubs_name: student.ubsName,
+      rotation_id: rotationId,
       avatar_id: student.avatarId,
       question_order: questionOrder,
       current_index: currentIndex,
@@ -177,7 +187,7 @@ export async function POST(request: Request) {
       if (answersError) throw answersError;
     }
 
-    return NextResponse.json({ ranking: await loadRanking() });
+    return NextResponse.json({ ranking: await loadRanking(rotationId) });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Falha ao sincronizar resolvedor." }, { status: 400 });
   }

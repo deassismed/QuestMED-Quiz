@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getServerSupabase } from "../../../lib/supabase-server";
 import type { QuestionOption } from "../../../types";
+import { requireResolverRotationId } from "../../../lib/resolver-rotation-config";
 
 type ResolverStudentRow = {
   id: string;
@@ -11,6 +12,7 @@ type ResolverStudentRow = {
   current_index: number;
   created_at: string;
   updated_at: string;
+  rotation_id: string;
 };
 
 type ResolverAnswerRow = {
@@ -41,14 +43,16 @@ export async function GET(request: Request) {
     const url = new URL(request.url);
     const nickname = normalizeName(url.searchParams.get("nickname") ?? "");
     const ubsName = url.searchParams.get("ubsName")?.trim() ?? "";
+    const rotationId = requireResolverRotationId(url.searchParams.get("rotationId"));
     if (!nickname || !ubsName) throw new Error("Informe nome e UBS.");
 
     const supabase = getServerSupabase();
     const { data: student, error: studentError } = await supabase
       .from("qmq_resolver_students")
-      .select("id,nickname,ubs_name,avatar_id,question_order,current_index,created_at,updated_at")
+      .select("id,nickname,ubs_name,avatar_id,question_order,current_index,created_at,updated_at,rotation_id")
       .eq("nickname_normalized", nickname)
       .eq("ubs_name", ubsName)
+      .eq("rotation_id", rotationId)
       .maybeSingle();
     if (studentError) throw studentError;
     if (!student) return NextResponse.json({ student: null });
@@ -76,6 +80,7 @@ export async function GET(request: Request) {
         id: row.id,
         nickname: row.nickname,
         ubsName: row.ubs_name,
+        rotationId: row.rotation_id,
         avatarId: row.avatar_id,
         questionOrder: mergeQuestionOrder(row.question_order ?? [], mappedAnswers.map((answer) => answer.questionId)),
         currentIndex: row.current_index,
