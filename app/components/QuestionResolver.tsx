@@ -231,6 +231,7 @@ export function QuestionResolver({
   const [nickname, setNickname] = useState("");
   const [ubsName, setUbsName] = useState("");
   const [avatarId, setAvatarId] = useState(DEFAULT_AVATAR_ID);
+  const [showAvatarPicker, setShowAvatarPicker] = useState(false);
   const [table, setTable] = useState<ResolverTable>(createEmptyTable);
   const [serverRanking, setServerRanking] = useState<ResolverRankingItem[]>([]);
   const [student, setStudent] = useState<ResolverStudent | null>(null);
@@ -431,7 +432,8 @@ export function QuestionResolver({
     setResumeStudent(null);
     setNickname("");
     setUbsName("");
-    setAvatarId(DEFAULT_AVATAR_ID);
+    setAvatarId(AVATAR_PRESETS[Math.floor(Math.random() * AVATAR_PRESETS.length)]?.id ?? DEFAULT_AVATAR_ID);
+    setShowAvatarPicker(false);
     setStudent(null);
     setError("");
     setStep("identify");
@@ -450,6 +452,7 @@ export function QuestionResolver({
     }
     const lastStudent = getLastResolverStudent(nextRotationId);
     setResumeStudent(lastStudent);
+    if (!lastStudent) setAvatarId(AVATAR_PRESETS[Math.floor(Math.random() * AVATAR_PRESETS.length)]?.id ?? DEFAULT_AVATAR_ID);
     setStep(lastStudent ? "resume" : "identify");
   }
 
@@ -723,19 +726,33 @@ export function QuestionResolver({
               type="text"
               value={nickname}
             />
-            <label className="resolver-select-label">
-              <span>Escolha sua UBS</span>
-              <select
-                onChange={(event) => {
-                  setExistingConfirmation(null);
-                  setUbsName(event.currentTarget.value);
-                }}
-                value={ubsName}
-              >
-                <option value="">SELECIONE SUA UBS</option>
-                {UBS_OPTIONS.map((ubs) => <option key={ubs} value={ubs}>{ubs}</option>)}
-              </select>
-            </label>
+            <div className="resolver-entry-avatar">
+              <AvatarBadge avatarId={avatarId} className="choice-avatar" name={nickname || "Seu avatar"} />
+              <div>
+                <span>Seu avatar</span>
+                <strong>Escolhido para você</strong>
+              </div>
+              <button onClick={() => setShowAvatarPicker(true)} type="button">Alterar avatar</button>
+            </div>
+            <fieldset className="resolver-ubs-picker">
+              <legend>Escolha sua UBS</legend>
+              <div>
+                {UBS_OPTIONS.map((ubs) => (
+                  <button
+                    aria-pressed={ubsName === ubs}
+                    className={ubsName === ubs ? "selected" : ""}
+                    key={ubs}
+                    onClick={() => {
+                      setExistingConfirmation(null);
+                      setUbsName(ubs);
+                    }}
+                    type="button"
+                  >
+                    {ubs}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
             {existingConfirmation ? (
               <section className="resolver-existing-warning" role="alert">
                 <strong>Usuario ja existe nesta UBS</strong>
@@ -749,25 +766,34 @@ export function QuestionResolver({
                 </div>
               </section>
             ) : null}
-            <fieldset className="avatar-picker resolver-avatar-picker">
-              <legend>Escolha seu avatar</legend>
-              <div>
-                {AVATAR_PRESETS.map((avatar) => (
-                  <button
-                    aria-pressed={avatarId === avatar.id}
-                    className={avatarId === avatar.id ? "avatar-choice selected" : "avatar-choice"}
-                    key={avatar.id}
-                    onClick={() => setAvatarId(avatar.id)}
-                    type="button"
-                  >
-                    <AvatarBadge avatarId={avatar.id} className="choice-avatar" name={nickname || avatar.label} />
-                  </button>
-                ))}
-              </div>
-            </fieldset>
             <button type="submit">Entrar</button>
             <button className="resolver-back-button" onClick={chooseAnotherRotation} type="button">Trocar rodízio</button>
           </form>
+          {showAvatarPicker ? (
+            <div className="avatar-modal-backdrop" onMouseDown={() => setShowAvatarPicker(false)} role="presentation">
+              <section aria-labelledby="resolver-avatar-title" aria-modal="true" className="avatar-modal resolver-entry-avatar-modal" onMouseDown={(event) => event.stopPropagation()} role="dialog">
+                <h2 id="resolver-avatar-title">Escolha seu avatar</h2>
+                <p>Selecione o personagem que vai representar você no ranking.</p>
+                <div className="avatar-modal-grid">
+                  {AVATAR_PRESETS.map((avatar) => (
+                    <button
+                      aria-label={avatar.label}
+                      aria-pressed={avatarId === avatar.id}
+                      className={avatarId === avatar.id ? "avatar-modal-choice selected" : "avatar-modal-choice"}
+                      key={avatar.id}
+                      onClick={() => setAvatarId(avatar.id)}
+                      type="button"
+                    >
+                      <AvatarBadge avatarId={avatar.id} className="choice-avatar" name={avatar.label} />
+                    </button>
+                  ))}
+                </div>
+                <div className="avatar-modal-actions">
+                  <button className="avatar-modal-confirm" onClick={() => setShowAvatarPicker(false)} type="button">Usar este avatar</button>
+                </div>
+              </section>
+            </div>
+          ) : null}
         </section>
       </main>
     );
