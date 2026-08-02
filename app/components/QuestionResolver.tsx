@@ -582,16 +582,24 @@ export function QuestionResolver({
   if (step === "rotation") {
     return (
       <main className="app-shell resolver-entry-shell">
-        <section className="entry-panel resolver-entry-panel">
-          <span className="eyebrow">QuestMED Quiz</span>
+        <section className="entry-panel resolver-entry-panel resolver-rotation-picker">
+          <span className="eyebrow"><BookOpen size={16} /> QuestMED Quiz</span>
           <h1>Escolha seu rodízio</h1>
+          <p className="resolver-rotation-intro">Selecione a sua turma para acessar as questões e o ranking correto.</p>
           <div className="resolver-rotation-list">
-            {resolverRotations.map((item) => (
-              <button className="resolver-rotation-card" key={item.id} onClick={() => selectRotation(item.id)} type="button">
-                <strong>{item.name}</strong>
-                <span>{item.acceptsAnswers ? `${item.questions.length} questões disponíveis` : "Ranking da turma"}</span>
-              </button>
-            ))}
+            {resolverRotations.map((item) => {
+              const RotationIcon = item.acceptsAnswers ? BookOpen : Trophy;
+              return (
+                <button className={item.acceptsAnswers ? "resolver-rotation-card questions" : "resolver-rotation-card ranking"} key={item.id} onClick={() => selectRotation(item.id)} type="button">
+                  <span className="resolver-rotation-icon"><RotationIcon size={28} /></span>
+                  <span className="resolver-rotation-copy">
+                    <strong>{item.name}</strong>
+                    <small>{item.acceptsAnswers ? `${item.questions.length} questões disponíveis` : "Ranking da turma"}</small>
+                  </span>
+                  <ChevronRight className="resolver-rotation-arrow" size={24} />
+                </button>
+              );
+            })}
           </div>
           <button className="resolver-back-button" onClick={onBack} type="button">Voltar</button>
         </section>
@@ -602,23 +610,48 @@ export function QuestionResolver({
   if (step === "ranking" && rotation) {
     return (
       <main className="app-shell resolver-entry-shell">
-        <section className="entry-panel resolver-entry-panel resolver-rotation-ranking">
-          <span className="eyebrow"><Trophy size={16} /> Ranking do rodízio</span>
-          <h1>{rotation.name}</h1>
-          <p>As novas questões deste rodízio ainda não estão disponíveis.</p>
+        <section className="scoreboard-panel game-board resolver-rotation-ranking">
+          <header className="resolver-ranking-only-header">
+            <span className="eyebrow"><Trophy size={16} /> Ranking do rodízio</span>
+            <h1>{rotation.name}</h1>
+            <p>As novas questões deste rodízio ainda não estão disponíveis.</p>
+          </header>
+          {podiumSlots.length > 0 ? (
+            <section className="podium-strip resolver-podium-strip resolver-ranking-only-podium" aria-label="Top 3 alunos">
+              {podiumSlots.map(({ item, rank }) => (
+                <article className={`podium-card podium-rank-${rank}`} key={item.id}>
+                  <div className="podium-portrait">
+                    <img className="podium-medal-image" alt={podiumRankLabel(rank)} src={medalSrc(rank)} />
+                    <AvatarBadge avatarId={item.avatarId} className="podium-avatar" name={item.nickname} />
+                  </div>
+                  <strong>{item.nickname}</strong>
+                  <span><i aria-hidden="true" />{item.totalScore.toFixed(1)} pts</span>
+                  <small>{item.ubsName}</small>
+                </article>
+              ))}
+            </section>
+          ) : null}
+          {individualRanking.length > 3 ? (
+            <div className="game-section-title resolver-ranking-only-title">
+              <span /><strong>Classificação geral</strong><span />
+            </div>
+          ) : null}
           <div className="resolver-ranking-only-list">
-            {individualRanking.slice(0, 100).map((item, index) => (
-              <article className="broadcast-score-row resolver-score-row" key={item.id}>
-                <strong>{index + 1}º</strong>
+            {individualRanking.slice(3, 100).map((item, offset) => {
+              const index = offset + 3;
+              return (
+              <article className={`broadcast-score-row resolver-score-row rank-${Math.min(index + 1, 9)}`} key={item.id}>
                 <AvatarBadge avatarId={item.avatarId} className="game-avatar small" name={item.nickname} />
-                <div className="broadcast-team"><strong>{item.nickname}</strong><small>{item.ubsName}</small></div>
-                <b>{item.totalScore.toFixed(1)} pts</b>
+                <div className="broadcast-team"><strong>{item.nickname}</strong><span><i aria-hidden="true" /> {item.totalScore.toFixed(1)} pts</span><small>{item.ubsName}</small></div>
+                <div className="rank-laurel"><span>{rankLabel(index)}</span></div>
               </article>
-            ))}
+            )})}
             {individualRanking.length === 0 ? <p className="empty-ranking">Ainda não há alunos neste ranking.</p> : null}
           </div>
-          <button className="resolver-back-button" onClick={chooseAnotherRotation} type="button">Escolher outro rodízio</button>
-          <button className="resolver-back-button" onClick={onBack} type="button">Tela principal</button>
+          <footer className="resolver-ranking-only-actions">
+            <button className="resolver-back-button" onClick={chooseAnotherRotation} type="button"><ChevronLeft size={18} /> Escolher outro rodízio</button>
+            <button className="resolver-back-button" onClick={onBack} type="button">Tela principal</button>
+          </footer>
         </section>
       </main>
     );
