@@ -11,13 +11,25 @@ export const LAST_RESOLVER_STUDENT_KEY = "questmed-resolver-last-student";
 const QUESTION_TIME_LIMIT_SECONDS = 90;
 const DISPLAY_OPTION_IDS = ["A", "B", "C", "D"] as const;
 const UBS_OPTIONS = [
-  "USF Felipe Camarao",
-  "USF Amarante",
+  "UBS Amarante",
+  "UBS Bela Parnamirim",
+  "UBS Padre João Maria",
+  "USF Monte Alegre",
+  "USF Bom Pastor",
+  "USF Brasília Teimosa",
   "USF Cidade Praia",
-  "USF Ronaldo Machado",
   "USF Cidade Nova",
-  "USF Joao Maria",
-  "USF Bela Parnamirim"
+  "USF Felipe Camarão I",
+  "USF Felipe Camarão III",
+  "USF Guarapes",
+  "USF Jockey Club",
+  "USF Monte Líbano",
+  "USF Nazaré",
+  "USF Pajuçara",
+  "USF Potengi",
+  "USF Ronaldo Machado",
+  "USF Rosângela Lima",
+  "USF Santa Tereza"
 ];
 
 type ResolverStep = "resume" | "identify" | "quiz";
