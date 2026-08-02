@@ -1,0 +1,1562 @@
+[
+  {
+    "id": "Q001",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Homem de 38 anos procura a Unidade Básica de Saúde por dor lombar iniciada há quatro dias, após carregar móveis. A dor é bilateral, não se irradia para os membros inferiores e piora com flexão do tronco. O exame neurológico é normal e não há febre, perda ponderal ou alterações esfincterianas. Qual é a conduta inicial mais adequada?",
+    "explanation": "A alternativa A é correta porque a lombalgia mecânica aguda, sem sinais de alarme, deve ser manejada com educação, manutenção de atividades e analgesia. A imagem inicial não melhora o desfecho nesse cenário. Repouso prolongado favorece incapacidade, e não há indicação de ressonância ou avaliação cirúrgica.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Manter atividades toleradas, orientar analgesia e evitar repouso prolongado."
+      },
+      {
+        "id": "B",
+        "text": "Solicitar radiografia lombar antes de iniciar o tratamento sintomático."
+      },
+      {
+        "id": "C",
+        "text": "Prescrever repouso no leito até o desaparecimento completo da dor."
+      },
+      {
+        "id": "D",
+        "text": "Solicitar ressonância magnética e encaminhar para avaliação especializada."
+      }
+    ]
+  },
+  {
+    "id": "Q002",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Mulher de 51 anos apresenta lombociatalgia à direita há cinco dias. Nas últimas 12 horas, passou a apresentar dificuldade para urinar e redução da sensibilidade ao realizar higiene perineal. Ao exame, observa-se diminuição do tônus anal e fraqueza para flexão plantar. Qual é a próxima conduta?",
+    "explanation": "A dificuldade miccional, a anestesia em sela, a redução do tônus anal e o déficit bilateral sugerem síndrome da cauda equina. É necessária ressonância urgente e avaliação cirúrgica. Eletroneuromiografia, tratamento ambulatorial ou radiografia atrasariam uma intervenção potencialmente tempo-dependente.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Solicitar eletroneuromiografia ambulatorial e iniciar gabapentina."
+      },
+      {
+        "id": "B",
+        "text": "Prescrever anti-inflamatório e reavaliar o exame neurológico em 48 horas."
+      },
+      {
+        "id": "C",
+        "text": "Solicitar ressonância lombossacra urgente e acionar equipe cirúrgica."
+      },
+      {
+        "id": "D",
+        "text": "Realizar radiografia simples e encaminhar para fisioterapia motora."
+      }
+    ]
+  },
+  {
+    "id": "Q003",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Homem de 69 anos relata dor lombar e bilateral nas pernas após caminhar aproximadamente 200 metros. Os sintomas também surgem quando permanece parado em pé e melhoram ao sentar-se ou inclinar o tronco para a frente. Os pulsos distais são palpáveis. Qual é o diagnóstico mais provável?",
+    "explanation": "A piora em ortostatismo e a melhora ao sentar ou flexionar o tronco caracterizam claudicação neurogênica. Na claudicação vascular, ficar parado geralmente alivia e os pulsos podem estar reduzidos. Polineuropatia não apresenta esse padrão postural, e hérnia discal aguda não costuma produzir quadro crônico bilateral dependente da marcha.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Claudicação vascular por doença arterial periférica."
+      },
+      {
+        "id": "B",
+        "text": "Claudicação neurogênica por estenose do canal lombar."
+      },
+      {
+        "id": "C",
+        "text": "Polineuropatia periférica distal de causa metabólica."
+      },
+      {
+        "id": "D",
+        "text": "Radiculopatia aguda por hérnia discal sequestrada."
+      }
+    ]
+  },
+  {
+    "id": "Q004",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Mulher de 74 anos apresenta dor intensa na transição toracolombar após cair sentada da própria altura. Tem antecedente de fratura de punho por queda e uso intermitente de prednisona. Há dor focal à percussão vertebral, sem déficit neurológico. Qual é a investigação inicial mais adequada?",
+    "explanation": "Radiografia é a investigação inicial de uma possível fratura vertebral por fragilidade. A ressonância é reservada para dúvida diagnóstica, déficit neurológico ou avaliação de complicações. Eletroneuromiografia e tomografia abdominal não respondem à hipótese principal.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ressonância magnética lombar de urgência."
+      },
+      {
+        "id": "B",
+        "text": "Eletroneuromiografia dos membros inferiores."
+      },
+      {
+        "id": "C",
+        "text": "Tomografia de abdome com contraste intravenoso."
+      },
+      {
+        "id": "D",
+        "text": "Radiografia da coluna toracolombar."
+      }
+    ]
+  },
+  {
+    "id": "Q005",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Homem de 31 anos apresenta lombalgia há oito meses. A dor começou insidiosamente, piora na segunda metade da noite e melhora ao levantar-se e caminhar. Há rigidez matinal de 45 minutos e história prévia de uveíte anterior. Qual característica mais favorece uma etiologia inflamatória?",
+    "explanation": "A melhora com exercício e a piora com repouso são características de dor inflamatória. A localização lombar e a ausência de irradiação são inespecíficas. Dor após permanecer em pé pode ocorrer em condições mecânicas.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Melhora da dor com atividade física."
+      },
+      {
+        "id": "B",
+        "text": "Localização da dor na região lombar baixa."
+      },
+      {
+        "id": "C",
+        "text": "Ausência de irradiação abaixo do joelho."
+      },
+      {
+        "id": "D",
+        "text": "Presença de dor após períodos prolongados em pé."
+      }
+    ]
+  },
+  {
+    "id": "Q006",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Paciente de 28 anos apresenta quadro clínico sugestivo de espondiloartrite axial. A radiografia das articulações sacroilíacas é normal, mas persiste elevada suspeita clínica. Qual é o exame de imagem mais apropriado para prosseguir a investigação?",
+    "explanation": "A ressonância das sacroilíacas pode identificar inflamação ativa antes do aparecimento de alterações radiográficas. Tomografia demonstra melhor alterações estruturais, mas não é o exame preferencial para inflamação precoce. Cintilografia e ultrassonografia têm menor utilidade nesse contexto.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tomografia computadorizada da coluna lombar."
+      },
+      {
+        "id": "B",
+        "text": "Cintilografia óssea de corpo inteiro."
+      },
+      {
+        "id": "C",
+        "text": "Ressonância magnética das articulações sacroilíacas."
+      },
+      {
+        "id": "D",
+        "text": "Ultrassonografia musculoesquelética da região lombar."
+      }
+    ]
+  },
+  {
+    "id": "Q007",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Mulher de 62 anos, tratada por câncer de mama há quatro anos, apresenta lombalgia progressiva, predominantemente noturna, associada a perda ponderal. O exame neurológico é normal, mas há dor focal à percussão de L2. Qual é a conduta mais adequada?",
+    "explanation": "Antecedente de câncer, dor noturna, perda ponderal e dor vertebral focal exigem investigação prioritária de metástase. Fisioterapia ou analgesia isolada podem retardar o diagnóstico. A radiografia simples tem sensibilidade limitada e não deve ser a única investigação em situação de alta suspeita.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Iniciar fisioterapia e reavaliar após seis semanas."
+      },
+      {
+        "id": "B",
+        "text": "Investigar comprometimento vertebral por neoplasia com prioridade."
+      },
+      {
+        "id": "C",
+        "text": "Prescrever anti-inflamatório e solicitar radiografia se não houver melhora."
+      },
+      {
+        "id": "D",
+        "text": "Orientar atividade física progressiva por provável lombalgia inespecífica."
+      }
+    ]
+  },
+  {
+    "id": "Q008",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Mulher de 57 anos, com artrite reumatoide, usa prednisona diariamente há dois anos. Apresentou dor toracolombar súbita ao levantar-se da cama, sem queda. Há dor localizada à percussão vertebral. Qual hipótese deve ser prioritariamente considerada?",
+    "explanation": "Uso crônico de glicocorticoide e dor súbita vertebral localizada sugerem fratura por fragilidade. Não há febre ou fatores infecciosos que favoreçam espondilodiscite. A ausência de sintomas radiculares reduz a probabilidade de radiculopatia, e artrite reumatoide não explica isoladamente dor focal vertebral súbita.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Fratura vertebral por fragilidade."
+      },
+      {
+        "id": "B",
+        "text": "Espondilodiscite bacteriana."
+      },
+      {
+        "id": "C",
+        "text": "Radiculopatia lombossacra."
+      },
+      {
+        "id": "D",
+        "text": "Exacerbação da artrite reumatoide."
+      }
+    ]
+  },
+  {
+    "id": "Q009",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Gestante de 25 semanas relata dor lombopélvica que piora ao virar-se na cama, subir escadas e permanecer apoiada em uma perna. Não apresenta febre, sangramento, contrações regulares ou alterações neurológicas. Qual é a orientação mais apropriada?",
+    "explanation": "A dor lombopélvica mecânica na gestação é manejada com exercícios adaptados, fisioterapia, ajustes posturais e analgesia segura. Repouso prolongado e suspensão completa das atividades não são recomendados. AINEs devem ser evitados, especialmente nas fases mais avançadas da gestação.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Suspender exercícios físicos até o parto."
+      },
+      {
+        "id": "B",
+        "text": "Manter ibuprofeno conforme necessidade."
+      },
+      {
+        "id": "C",
+        "text": "Indicar repouso no leito e afastamento das atividades."
+      },
+      {
+        "id": "D",
+        "text": "Orientar exercícios adaptados, medidas posturais e analgesia segura."
+      }
+    ]
+  },
+  {
+    "id": "Q010",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Gestante de 29 semanas procura atendimento por dor lombar e pergunta se pode continuar utilizando ibuprofeno, que vinha tomando por conta própria. Qual é a orientação mais adequada?",
+    "explanation": "AINEs devem ser suspensos na gestação avançada devido aos riscos fetais, incluindo repercussões renais e fechamento prematuro do ducto arterioso. A troca por outro AINE não elimina esses riscos. Normalidade ultrassonográfica não torna o uso seguro.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Manter o ibuprofeno apenas nos dias de dor intensa."
+      },
+      {
+        "id": "B",
+        "text": "Suspender o AINE e priorizar medidas não farmacológicas e paracetamol judicioso."
+      },
+      {
+        "id": "C",
+        "text": "Substituir o ibuprofeno por outro AINE de meia-vida mais curta."
+      },
+      {
+        "id": "D",
+        "text": "Manter o medicamento desde que a ultrassonografia fetal esteja normal."
+      }
+    ]
+  },
+  {
+    "id": "Q011",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Homem de 45 anos apresenta lombalgia há nove meses, sem sinais de alarme ou déficit neurológico. Evita movimentar-se porque acredita que qualquer dor indica agravamento da lesão. Está afastado do trabalho, dorme mal e apresenta humor deprimido. Qual abordagem é mais apropriada?",
+    "explanation": "Medo de movimento, insônia, humor deprimido e afastamento laboral são fatores de cronificação. A abordagem deve ser biopsicossocial e orientada à recuperação funcional. Novas imagens podem reforçar a medicalização, e ausência total de dor não é requisito para retorno gradual às atividades.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Solicitar nova ressonância para demonstrar que não existe lesão estrutural."
+      },
+      {
+        "id": "B",
+        "text": "Manter afastamento até que o paciente permaneça completamente sem dor."
+      },
+      {
+        "id": "C",
+        "text": "Adotar abordagem biopsicossocial com metas funcionais e retorno gradual."
+      },
+      {
+        "id": "D",
+        "text": "Encaminhar diretamente para cirurgia por falha do tratamento conservador."
+      }
+    ]
+  },
+  {
+    "id": "Q012",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Mulher de 30 anos apresenta dor musculoesquelética variável, fadiga, sono não reparador e múltiplas consultas de emergência. Exames repetidos não identificaram doença estrutural relevante. A paciente evita atividades por medo de lesionar a coluna. Qual formulação clínica é mais adequada?",
+    "explanation": "O quadro é compatível com dor crônica primária, sensibilização central e comportamento de evitação. A ausência de alteração estrutural e a distribuição variável tornam hérnia discal e radiculopatia improváveis. Sintomas desproporcionais não significam simulação consciente.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Dor crônica primária associada à sensibilização central e catastrofização."
+      },
+      {
+        "id": "B",
+        "text": "Hérnia discal intermitente não demonstrada nos exames de imagem."
+      },
+      {
+        "id": "C",
+        "text": "Simulação deliberada dos sintomas para obtenção de benefícios secundários."
+      },
+      {
+        "id": "D",
+        "text": "Radiculopatia lombar de baixa intensidade com exame neurológico normal."
+      }
+    ]
+  },
+  {
+    "id": "Q013",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Homem de 43 anos apresenta dor lombar com irradiação para a face posterior da coxa após esforço físico. Não há déficit motor, alteração esfincteriana, febre, história de câncer ou trauma relevante. Qual é a melhor estratégia em relação aos exames de imagem?",
+    "explanation": "Na lombalgia ou lombociatalgia sem sinais de alarme e sem déficit progressivo, não se recomenda imagem inicial. Radiografia, tomografia e ressonância não modificam o manejo imediato e podem revelar achados incidentais sem relação causal com os sintomas.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Solicitar tomografia para excluir hérnia discal."
+      },
+      {
+        "id": "B",
+        "text": "Solicitar radiografia para avaliar o alinhamento vertebral."
+      },
+      {
+        "id": "C",
+        "text": "Solicitar ressonância para definir a raiz acometida."
+      },
+      {
+        "id": "D",
+        "text": "Não realizar imagem inicialmente, salvo evolução desfavorável."
+      }
+    ]
+  },
+  {
+    "id": "Q014",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Paciente de 40 anos com lombalgia crônica acredita que precisa permanecer em repouso sempre que a dor aumenta. Não apresenta sinais de alarme. Qual orientação é mais adequada?",
+    "explanation": "Manutenção das atividades toleradas e retorno funcional progressivo reduzem incapacidade. Repouso no leito, evitação de movimentos e cintas de uso contínuo podem aumentar medo, descondicionamento e cronificação.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Permanecer no leito por 48 a 72 horas em cada exacerbação."
+      },
+      {
+        "id": "B",
+        "text": "Manter atividades toleradas e retomar progressivamente a função."
+      },
+      {
+        "id": "C",
+        "text": "Evitar flexão, caminhada e exercícios até resolução completa da dor."
+      },
+      {
+        "id": "D",
+        "text": "Utilizar cinta lombar continuamente durante atividades cotidianas."
+      }
+    ]
+  },
+  {
+    "id": "Q015",
+    "area": "Banco clinico",
+    "theme": "Lombalgia",
+    "statement": "Homem de 52 anos, com lombalgia crônica, apresenta insônia, medo de movimento, conflito ocupacional e expectativa de que somente uma cirurgia poderá resolver o problema. Esses elementos são classificados principalmente como:",
+    "explanation": "Insônia, medo, conflito ocupacional e expectativas negativas são yellow flags, associadas a pior prognóstico funcional. Não são sinais de doença estrutural grave, compressão radicular ou critérios específicos de espondiloartrite.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Sinais vermelhos de doença estrutural grave."
+      },
+      {
+        "id": "B",
+        "text": "Sinais neurológicos de compressão radicular."
+      },
+      {
+        "id": "C",
+        "text": "Fatores psicossociais associados à cronificação."
+      },
+      {
+        "id": "D",
+        "text": "Critérios diagnósticos de espondiloartrite axial."
+      }
+    ]
+  },
+  {
+    "id": "Q016",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Mulher de 44 anos apresenta cefaleia bilateral, em pressão, de intensidade leve a moderada, em 20 dias por mês. A dor não piora com atividade física e não se associa a náuseas. O exame neurológico é normal. Qual é o diagnóstico mais provável?",
+    "explanation": "A dor bilateral, em pressão, sem piora com atividade e sem náuseas é típica de cefaleia tensional. Enxaqueca costuma ser pulsátil, moderada ou forte e acompanhada de náusea ou foto e fonofobia. Hemicrania contínua é estritamente unilateral, e salvas apresenta crises curtas com sintomas autonômicos intensos.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cefaleia do tipo tensional crônica."
+      },
+      {
+        "id": "B",
+        "text": "Enxaqueca crônica sem aura."
+      },
+      {
+        "id": "C",
+        "text": "Hemicrania contínua."
+      },
+      {
+        "id": "D",
+        "text": "Cefaleia em salvas."
+      }
+    ]
+  },
+  {
+    "id": "Q017",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Mulher de 32 anos apresenta crises unilaterais pulsáteis que duram cerca de 18 horas, acompanhadas de náusea, fotofobia e lacrimejamento ipsilateral. Durante as crises, prefere permanecer deitada e imóvel. Qual é o diagnóstico mais provável?",
+    "explanation": "A duração prolongada, o caráter pulsátil, as náuseas, a fotofobia e a preferência por permanecer imóvel indicam enxaqueca. Sintomas autonômicos podem ocorrer na enxaqueca. Nas cefaleias trigêminoautonômicas, as crises costumam ser mais curtas e acompanhadas de inquietação.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cefaleia em salvas."
+      },
+      {
+        "id": "B",
+        "text": "Hemicrania paroxística."
+      },
+      {
+        "id": "C",
+        "text": "Enxaqueca com sintomas autonômicos cranianos."
+      },
+      {
+        "id": "D",
+        "text": "Rinossinusite aguda recorrente."
+      }
+    ]
+  },
+  {
+    "id": "Q018",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Paciente com enxaqueca apresenta oito dias de cefaleia por mês, com prejuízo laboral importante, apesar de tratamento adequado das crises. Qual é a melhor estratégia?",
+    "explanation": "Frequência elevada e incapacidade funcional justificam profilaxia, mesmo que o tratamento agudo seja eficaz. Manter apenas abortivos aumenta o risco de uso excessivo. Neuroimagem não é obrigatória na ausência de sinais de alerta, e opioides não são tratamento preventivo apropriado.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Manter exclusivamente a medicação abortiva."
+      },
+      {
+        "id": "B",
+        "text": "Iniciar tratamento preventivo para enxaqueca."
+      },
+      {
+        "id": "C",
+        "text": "Solicitar neuroimagem antes de qualquer tratamento."
+      },
+      {
+        "id": "D",
+        "text": "Substituir o analgésico por opioide de ação prolongada."
+      }
+    ]
+  },
+  {
+    "id": "Q019",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Mulher de 27 anos, com história de enxaqueca, passou a usar triptano em 14 dias por mês e analgésicos simples em outros dez dias. Atualmente apresenta cefaleia quase diária. Qual é a conduta mais adequada?",
+    "explanation": "O uso frequente de triptanos e analgésicos associado à cefaleia quase diária caracteriza provável cefaleia por uso excessivo de medicação. É necessário reduzir os sintomáticos e instituir prevenção. Trocar o triptano ou manter o uso excessivo perpetua o quadro.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Trocar o triptano por outro da mesma classe."
+      },
+      {
+        "id": "B",
+        "text": "Manter os sintomáticos até que a profilaxia faça efeito."
+      },
+      {
+        "id": "C",
+        "text": "Solicitar ressonância por mudança da frequência da dor."
+      },
+      {
+        "id": "D",
+        "text": "Reduzir o uso de sintomáticos e iniciar tratamento preventivo."
+      }
+    ]
+  },
+  {
+    "id": "Q020",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Homem de 36 anos apresenta dor facial, obstrução nasal e secreção purulenta há 11 dias. Houve melhora parcial no quinto dia, seguida de piora da dor e da secreção. Qual é a interpretação mais adequada?",
+    "explanation": "Persistência por mais de dez dias e piora após melhora inicial favorecem rinossinusite bacteriana. O padrão não é de infecção viral em resolução. A associação com secreção purulenta e sintomas nasais torna enxaqueca ou cefaleia tensional menos prováveis.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Rinossinusite bacteriana provável pelo padrão de dupla piora."
+      },
+      {
+        "id": "B",
+        "text": "Rinossinusite viral não complicada em resolução espontânea."
+      },
+      {
+        "id": "C",
+        "text": "Enxaqueca com sintomas nasais e indicação de triptano."
+      },
+      {
+        "id": "D",
+        "text": "Cefaleia tensional associada a infecção respiratória viral."
+      }
+    ]
+  },
+  {
+    "id": "Q021",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Mulher hipertensa procura atendimento com cefaleia leve e pressão arterial de 182 × 104 mmHg. Não há déficit neurológico, alterações visuais persistentes, dor torácica, dispneia ou lesão aguda identificável de órgão-alvo. Qual é a conduta inicial mais adequada?",
+    "explanation": "Pressão elevada sem lesão aguda de órgão-alvo não caracteriza emergência hipertensiva. Deve-se tratar fatores precipitantes, repetir a aferição e revisar a terapia crônica. Redução intravenosa rápida pode ser prejudicial, e neuroimagem ou UTI não são indicadas apenas pelo valor pressórico.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Administrar nitroprussiato para normalizar rapidamente a pressão."
+      },
+      {
+        "id": "B",
+        "text": "Tratar a dor, repetir as medidas e avaliar adesão ao tratamento."
+      },
+      {
+        "id": "C",
+        "text": "Solicitar tomografia de crânio antes de qualquer intervenção."
+      },
+      {
+        "id": "D",
+        "text": "Internar em terapia intensiva para monitorização pressórica contínua."
+      }
+    ]
+  },
+  {
+    "id": "Q022",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Homem de 54 anos apresenta cefaleia matinal em pressão, que desaparece em cerca de uma hora. A esposa relata roncos intensos e pausas respiratórias. Há sonolência diurna e obesidade. Qual é a investigação mais apropriada?",
+    "explanation": "Ronco, apneias observadas, obesidade, sonolência e cefaleia matinal sugerem apneia obstrutiva do sono, investigada por polissonografia. Não há elementos para doença vascular cerebral, alteração da pressão liquórica ou arterite temporal.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Angiorressonância cerebral."
+      },
+      {
+        "id": "B",
+        "text": "Punção lombar com medida da pressão de abertura."
+      },
+      {
+        "id": "C",
+        "text": "Polissonografia para investigação de apneia do sono."
+      },
+      {
+        "id": "D",
+        "text": "Biópsia de artéria temporal."
+      }
+    ]
+  },
+  {
+    "id": "Q023",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Homem de 29 anos sofreu queda de bicicleta há três dias. Apresenta cefaleia leve, irritabilidade e dificuldade de concentração. Glasgow 15, exame neurológico normal, sem vômitos, anticoagulação ou sinais de fratura. Qual é a conduta inicial mais adequada?",
+    "explanation": "O quadro é compatível com sintomas pós-concussivos leves, sem critérios clínicos descritos para neuroimagem imediata. Recomenda-se repouso relativo curto e retorno gradual. Repouso absoluto prolongado pode retardar a recuperação, e anticonvulsivantes não são indicados preventivamente.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Repouso relativo breve e retorno progressivo às atividades."
+      },
+      {
+        "id": "B",
+        "text": "Tomografia imediata e repetição sistemática após 24 horas."
+      },
+      {
+        "id": "C",
+        "text": "Repouso absoluto em ambiente escuro durante duas semanas."
+      },
+      {
+        "id": "D",
+        "text": "Tratamento preventivo com anticonvulsivante por três meses."
+      }
+    ]
+  },
+  {
+    "id": "Q024",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Puérpera no sexto dia após o parto apresenta cefaleia intensa, escotomas, dor epigástrica e pressão arterial de 168 × 110 mmHg. Qual é a conduta prioritária?",
+    "explanation": "Cefaleia, sintomas visuais, dor epigástrica e hipertensão grave no puerpério indicam pré-eclâmpsia com sinais de gravidade. Sulfato de magnésio previne eclâmpsia e a pressão deve ser tratada prontamente. A investigação por imagem não deve atrasar a estabilização.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Realizar blood patch por provável cefaleia pós-punção."
+      },
+      {
+        "id": "B",
+        "text": "Prescrever analgésico e reavaliar após o período de repouso."
+      },
+      {
+        "id": "C",
+        "text": "Solicitar ressonância e aguardar o resultado antes do tratamento."
+      },
+      {
+        "id": "D",
+        "text": "Iniciar sulfato de magnésio e tratar a hipertensão grave."
+      }
+    ]
+  },
+  {
+    "id": "Q025",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Mulher de 71 anos apresenta cefaleia temporal recente, sensibilidade no couro cabeludo e fadiga mandibular ao mastigar. Relata episódio transitório de perda visual monocular. Qual é a melhor conduta?",
+    "explanation": "O risco de perda visual exige glicocorticoide imediato, antes da confirmação definitiva. Aguardar biópsia pode resultar em cegueira irreversível. Triptano e tomografia não tratam a vasculite nem reduzem o risco isquêmico ocular.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Solicitar biópsia e aguardar o resultado antes de tratar."
+      },
+      {
+        "id": "B",
+        "text": "Iniciar glicocorticoide imediatamente e confirmar o diagnóstico."
+      },
+      {
+        "id": "C",
+        "text": "Prescrever triptano e solicitar avaliação oftalmológica eletiva."
+      },
+      {
+        "id": "D",
+        "text": "Solicitar tomografia de crânio e repetir os marcadores inflamatórios."
+      }
+    ]
+  },
+  {
+    "id": "Q026",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Homem de 58 anos apresenta cefaleia intensa, com duração de segundos, desencadeada exclusivamente por tosse e manobra de Valsalva. O exame neurológico é normal. Qual deve ser a primeira preocupação diagnóstica?",
+    "explanation": "Cefaleia precipitada por tosse ou Valsalva requer exclusão de causas secundárias, sobretudo alterações de fossa posterior. Somente após imagem adequada pode-se considerar cefaleia primária da tosse. Triptano e biópsia temporal não correspondem ao padrão clínico.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Excluir lesão estrutural da fossa posterior ou transição craniocervical."
+      },
+      {
+        "id": "B",
+        "text": "Confirmar enxaqueca por meio de teste terapêutico com triptano."
+      },
+      {
+        "id": "C",
+        "text": "Diagnosticar cefaleia primária da tosse sem necessidade de exames."
+      },
+      {
+        "id": "D",
+        "text": "Investigar arterite de células gigantes com biópsia temporal."
+      }
+    ]
+  },
+  {
+    "id": "Q027",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Mulher de 41 anos apresenta dor unilateral contínua há quatro meses, com exacerbações acompanhadas de lacrimejamento e congestão nasal ipsilaterais. A dor nunca desaparece completamente. Qual teste terapêutico é mais informativo?",
+    "explanation": "Hemicrania contínua é unilateral, persistente e absolutamente responsiva à indometacina. Oxigênio e verapamil são utilizados sobretudo na cefaleia em salvas. Carbamazepina é mais característica do tratamento de neuralgias.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Verapamil em dose crescente."
+      },
+      {
+        "id": "B",
+        "text": "Oxigênio em alto fluxo."
+      },
+      {
+        "id": "C",
+        "text": "Indometacina em dose adequada."
+      },
+      {
+        "id": "D",
+        "text": "Carbamazepina em dose baixa."
+      }
+    ]
+  },
+  {
+    "id": "Q028",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Mulher de 34 anos apresenta cefaleia que surge ao ficar em pé e melhora após permanecer deitada. Refere zumbido e diplopia intermitente. A ressonância mostra realce paquimeníngeo difuso. Qual é o diagnóstico mais provável?",
+    "explanation": "A ortostase como gatilho, o alívio em decúbito e o realce paquimeníngeo são típicos de hipotensão intracraniana. Hipertensão intracraniana geralmente apresenta papiledema e pode piorar em decúbito. Os demais diagnósticos não explicam tão bem o padrão postural.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Hipertensão intracraniana idiopática."
+      },
+      {
+        "id": "B",
+        "text": "Hipotensão intracraniana espontânea."
+      },
+      {
+        "id": "C",
+        "text": "Trombose venosa cerebral."
+      },
+      {
+        "id": "D",
+        "text": "Enxaqueca vestibular."
+      }
+    ]
+  },
+  {
+    "id": "Q029",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Homem de 67 anos é despertado por cefaleia bilateral entre 2 e 3 horas da manhã. Os episódios duram aproximadamente uma hora, ocorrem apenas durante o sono e não se associam a sintomas autonômicos. Qual é o diagnóstico mais provável?",
+    "explanation": "A cefaleia hípnica ocorre exclusivamente durante o sono, geralmente em pessoas mais velhas, sem sintomas autonômicos importantes. Salvas costuma ser unilateral e autonômica. Apneia pode causar cefaleia ao despertar, mas não crises estereotipadas que acordam o paciente. Arterite apresentaria outros sinais sistêmicos.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cefaleia em salvas."
+      },
+      {
+        "id": "B",
+        "text": "Apneia obstrutiva do sono."
+      },
+      {
+        "id": "C",
+        "text": "Arterite de células gigantes."
+      },
+      {
+        "id": "D",
+        "text": "Cefaleia hípnica."
+      }
+    ]
+  },
+  {
+    "id": "Q030",
+    "area": "Banco clinico",
+    "theme": "Cefaleia",
+    "statement": "Mulher de 40 anos apresenta cefaleia unilateral que começa na região cervical e é reproduzida pela rotação do pescoço e pela palpação suboccipital. O exame neurológico é normal. Qual é a melhor abordagem inicial?",
+    "explanation": "Dor reproduzida por movimento cervical e palpação sugere cefaleia cervicogênica, inicialmente tratada com medidas físicas e correção biomecânica. Oxigênio, indometacina e neuroimagem rotineira não correspondem à apresentação sem sinais de alerta.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Educação, exercícios cervicais e correção dos fatores mecânicos."
+      },
+      {
+        "id": "B",
+        "text": "Oxigênio em alto fluxo e verapamil como profilaxia."
+      },
+      {
+        "id": "C",
+        "text": "Indometacina em dose plena para confirmação diagnóstica."
+      },
+      {
+        "id": "D",
+        "text": "Ressonância de encéfalo antes de qualquer medida terapêutica."
+      }
+    ]
+  },
+  {
+    "id": "Q031",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Homem de 59 anos, tabagista de 40 maços-ano, apresenta tosse há dois meses, hemoptise ocasional, perda ponderal e opacidade persistente em lobo superior direito. Qual é a próxima etapa mais apropriada?",
+    "explanation": "Tabagismo, hemoptise, perda ponderal e opacidade persistente exigem investigação de câncer pulmonar com tomografia e diagnóstico tecidual. Antibiótico isolado ou broncodilatador atrasariam o diagnóstico. Tuberculose permanece diferencial, mas também exige confirmação microbiológica.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tratar empiricamente como pneumonia e repetir radiografia em seis meses."
+      },
+      {
+        "id": "B",
+        "text": "Investigar neoplasia pulmonar com tomografia e obtenção de tecido."
+      },
+      {
+        "id": "C",
+        "text": "Prescrever broncodilatador e acompanhar a resposta clínica."
+      },
+      {
+        "id": "D",
+        "text": "Iniciar tratamento para tuberculose sem coleta de amostras respiratórias."
+      }
+    ]
+  },
+  {
+    "id": "Q032",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Paciente com provável neoplasia pulmonar apresenta dispneia intensa, hipoxemia e grande derrame pleural com colapso parcial do pulmão. Qual é a conduta imediata mais adequada?",
+    "explanation": "Derrame volumoso com hipoxemia requer estabilização, internação e drenagem diagnóstica e terapêutica. Manejo ambulatorial é inseguro. Antibiótico ou broncodilatador isolados não tratam a repercussão mecânica do derrame.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Acompanhamento ambulatorial com analgesia e nova imagem."
+      },
+      {
+        "id": "B",
+        "text": "Antibioticoterapia oral e reavaliação em 48 horas."
+      },
+      {
+        "id": "C",
+        "text": "Oxigênio, internação e toracocentese diagnóstica e terapêutica."
+      },
+      {
+        "id": "D",
+        "text": "Broncodilatador inalatório e alta após melhora da saturação."
+      }
+    ]
+  },
+  {
+    "id": "Q033",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Mulher de 34 anos, sem comorbidades, apresenta febre, mialgia, cefaleia e tosse seca há 72 horas, sem dispneia ou sinais de gravidade. Qual é a conduta mais adequada?",
+    "explanation": "Paciente jovem, sem risco elevado ou gravidade e fora da fase de maior benefício antiviral pode receber tratamento sintomático. Antibióticos e corticoides não são indicados rotineiramente em síndrome gripal não complicada. Não há critério para internação.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tratamento sintomático e orientações sobre sinais de alarme."
+      },
+      {
+        "id": "B",
+        "text": "Amoxicilina-clavulanato por suspeita de infecção bacteriana."
+      },
+      {
+        "id": "C",
+        "text": "Internação para observação por risco de insuficiência respiratória."
+      },
+      {
+        "id": "D",
+        "text": "Corticoide sistêmico para redução da duração dos sintomas."
+      }
+    ]
+  },
+  {
+    "id": "Q034",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Gestante de 30 semanas apresenta febre, mialgia e tosse seca iniciadas há 24 horas, durante período de circulação de influenza. Não há hipoxemia. Qual é a melhor conduta?",
+    "explanation": "Gestantes são grupo de risco para complicações da influenza, devendo receber oseltamivir precocemente, sem aguardar teste. Antibiótico não previne pneumonia viral e a gestação não contraindica o antiviral recomendado.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Apenas tratamento sintomático, pois a gestação contraindica antiviral."
+      },
+      {
+        "id": "B",
+        "text": "Azitromicina para prevenir pneumonia bacteriana secundária."
+      },
+      {
+        "id": "C",
+        "text": "Aguardar confirmação laboratorial antes de iniciar tratamento."
+      },
+      {
+        "id": "D",
+        "text": "Iniciar oseltamivir precocemente, sem aguardar confirmação."
+      }
+    ]
+  },
+  {
+    "id": "Q035",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Homem de 48 anos, sem comorbidades, apresenta febre, tosse produtiva e consolidação lobar. Está hemodinamicamente estável, com saturação normal e possibilidade de tratamento ambulatorial. Qual classe de antimicrobiano é apropriada para tratamento inicial?",
+    "explanation": "Pneumonia comunitária leve, em paciente sem comorbidades e com manejo ambulatorial, pode ser tratada com antimicrobiano oral apropriado. Cobertura para MRSA ou Pseudomonas deve ser reservada para fatores de risco. Aminoglicosídeo isolado e combinações amplas são inadequados.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Antibiótico oral direcionado à pneumonia comunitária não complicada."
+      },
+      {
+        "id": "B",
+        "text": "Associação intravenosa com cobertura para Pseudomonas e MRSA."
+      },
+      {
+        "id": "C",
+        "text": "Aminoglicosídeo isolado por curto período."
+      },
+      {
+        "id": "D",
+        "text": "Fluoroquinolona obrigatoriamente associada a macrolídeo."
+      }
+    ]
+  },
+  {
+    "id": "Q036",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Homem de 70 anos apresenta pneumonia adquirida na comunidade, frequência respiratória de 32 irpm e ureia elevada. Está orientado e normotenso. Qual é a implicação desses achados?",
+    "explanation": "Frequência respiratória elevada e ureia aumentada são componentes de escores de gravidade e favorecem avaliação hospitalar. Não determinam isoladamente ventilação mecânica ou cobertura antipseudomonas. O tratamento domiciliar não deve ser decidido apenas pela ausência de febre.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Confirmam necessidade obrigatória de ventilação mecânica."
+      },
+      {
+        "id": "B",
+        "text": "Aumentam a pontuação de gravidade e favorecem avaliação hospitalar."
+      },
+      {
+        "id": "C",
+        "text": "Indicam cobertura empírica obrigatória para Pseudomonas."
+      },
+      {
+        "id": "D",
+        "text": "Permitem tratamento domiciliar desde que não haja febre."
+      }
+    ]
+  },
+  {
+    "id": "Q037",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Mulher de 73 anos apresenta pneumonia multilobar, confusão mental, frequência respiratória de 35 irpm, hipoxemia e hipotensão persistente após reposição volêmica. Qual é a disposição mais adequada?",
+    "explanation": "Hipotensão persistente, confusão, hipoxemia e infiltrados multilobares indicam pneumonia grave e necessidade de terapia intensiva. Enfermaria ou observação breve não oferecem suporte adequado.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tratamento ambulatorial com retorno diário."
+      },
+      {
+        "id": "B",
+        "text": "Internação em enfermaria sem monitorização contínua."
+      },
+      {
+        "id": "C",
+        "text": "Admissão em unidade de terapia intensiva."
+      },
+      {
+        "id": "D",
+        "text": "Observação por seis horas e alta se houver melhora da febre."
+      }
+    ]
+  },
+  {
+    "id": "Q038",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Homem com bronquiectasias apresenta pneumonia grave. Foi internado e recebeu antibiótico intravenoso há 45 dias, e cultura respiratória anterior isolou Pseudomonas aeruginosa. Como esses dados modificam a terapia empírica?",
+    "explanation": "Internação recente com antibiótico intravenoso e isolamento respiratório prévio de Pseudomonas justificam cobertura antipseudomonas empírica. Macrolídeo isolado ou tratamento usual não contemplam o risco microbiológico.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Indicam inclusão de antimicrobiano com atividade antipseudomonas."
+      },
+      {
+        "id": "B",
+        "text": "Permitem utilizar exclusivamente macrolídeo por via oral."
+      },
+      {
+        "id": "C",
+        "text": "Indicam cobertura apenas para germes atípicos."
+      },
+      {
+        "id": "D",
+        "text": "Não modificam o esquema habitual da pneumonia comunitária."
+      }
+    ]
+  },
+  {
+    "id": "Q039",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Homem de 42 anos apresenta tosse há seis semanas, febre vespertina, sudorese noturna, emagrecimento e cavitação em lobo superior. Qual exame deve ser priorizado na investigação etiológica?",
+    "explanation": "O quadro é típico de tuberculose pulmonar, devendo ser investigado com teste molecular rápido e exames bacteriológicos do escarro. Espirometria, sorologia e citologia isolada não confirmam a principal hipótese.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Espirometria com prova broncodilatadora."
+      },
+      {
+        "id": "B",
+        "text": "Citologia oncótica de escarro isoladamente."
+      },
+      {
+        "id": "C",
+        "text": "Sorologia para agentes respiratórios atípicos."
+      },
+      {
+        "id": "D",
+        "text": "Teste molecular rápido e pesquisa bacteriológica no escarro."
+      }
+    ]
+  },
+  {
+    "id": "Q040",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Paciente com suspeita de tuberculose pulmonar apresenta hemoptise volumosa, hipoxemia e instabilidade hemodinâmica. Qual é a conduta mais adequada?",
+    "explanation": "Hemoptise volumosa com hipoxemia e instabilidade exige estabilização, isolamento e transferência para serviço capaz de realizar broncoscopia ou embolização. Acompanhamento na UBS, espera ou tratamento sintomático são inadequados.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Iniciar esquema para tuberculose e acompanhar na UBS."
+      },
+      {
+        "id": "B",
+        "text": "Estabilizar, instituir precaução respiratória e transferir ao hospital."
+      },
+      {
+        "id": "C",
+        "text": "Solicitar radiografia de controle e aguardar nova hemoptise."
+      },
+      {
+        "id": "D",
+        "text": "Prescrever antitussígeno e orientar repouso domiciliar."
+      }
+    ]
+  },
+  {
+    "id": "Q041",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Homem tabagista apresenta tosse, emagrecimento e lesão pulmonar cavitária. Tanto tuberculose quanto neoplasia pulmonar são consideradas. Qual estratégia é mais apropriada?",
+    "explanation": "Tuberculose e neoplasia podem apresentar sobreposição clínica e radiológica. A abordagem correta é obter material microbiológico e investigar estruturalmente a lesão. Tratamentos empíricos simultâneos ou atraso de três meses são inadequados.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Escolher a hipótese mais provável e abandonar a investigação da outra."
+      },
+      {
+        "id": "B",
+        "text": "Tratar simultaneamente tuberculose e câncer antes de confirmação."
+      },
+      {
+        "id": "C",
+        "text": "Obter amostras microbiológicas e prosseguir investigação da lesão."
+      },
+      {
+        "id": "D",
+        "text": "Repetir radiografia em três meses antes de qualquer procedimento."
+      }
+    ]
+  },
+  {
+    "id": "Q042",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Paciente com pneumonia comunitária necessita internação, mas não apresenta fatores de risco para MRSA ou Pseudomonas. Qual é o princípio do tratamento empírico?",
+    "explanation": "Em pneumonia hospitalar não grave ou grave sem risco de patógenos resistentes, utiliza-se combinação de betalactâmico e macrolídeo ou alternativa equivalente. Vancomicina e carbapenêmicos devem ser reservados para indicações específicas. Macrolídeo isolado é insuficiente.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Betalactâmico associado a macrolídeo ou esquema equivalente."
+      },
+      {
+        "id": "B",
+        "text": "Vancomicina associada a carbapenêmico em todos os casos."
+      },
+      {
+        "id": "C",
+        "text": "Aminoglicosídeo associado a fluoroquinolona."
+      },
+      {
+        "id": "D",
+        "text": "Macrolídeo isolado independentemente da gravidade."
+      }
+    ]
+  },
+  {
+    "id": "Q043",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Paciente com síndrome gripal apresenta piora súbita após oito dias, com dispneia, febre recorrente e estertores focais. Qual complicação deve ser considerada prioritariamente?",
+    "explanation": "Piora após melhora inicial, febre recorrente, dispneia e achados focais sugerem pneumonia secundária. As demais alternativas não explicam a deterioração respiratória e os estertores localizados.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cefaleia por uso excessivo de analgésicos."
+      },
+      {
+        "id": "B",
+        "text": "Rinossinusite viral prolongada."
+      },
+      {
+        "id": "C",
+        "text": "Reação adversa ao antitérmico."
+      },
+      {
+        "id": "D",
+        "text": "Pneumonia secundária ao quadro viral."
+      }
+    ]
+  },
+  {
+    "id": "Q044",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Homem de 63 anos apresenta dispneia progressiva e macicez à percussão da base direita, com redução do murmúrio vesicular e do frêmito toracovocal. Qual alteração é mais provável?",
+    "explanation": "Macicez, redução do murmúrio vesicular e diminuição do frêmito são típicos de derrame pleural. Consolidação aumenta o frêmito. Pneumotórax causa hipertimpanismo, e broncoespasmo produz sibilos difusos.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Consolidação pulmonar lobar."
+      },
+      {
+        "id": "B",
+        "text": "Derrame pleural."
+      },
+      {
+        "id": "C",
+        "text": "Pneumotórax hipertensivo."
+      },
+      {
+        "id": "D",
+        "text": "Broncoespasmo difuso."
+      }
+    ]
+  },
+  {
+    "id": "Q045",
+    "area": "Banco clinico",
+    "theme": "Dispneia e condições respiratórias",
+    "statement": "Paciente apresenta dispneia, taquipneia, saturação de 86% e uso de musculatura acessória. Qual deve ser a primeira abordagem?",
+    "explanation": "Em insuficiência respiratória, suporte inicial pelo ABC precede exames etiológicos. Oxigênio deve ser ofertado e titulado conforme o quadro. Tomografia, antibiótico ou espirometria não devem atrasar estabilização.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Avaliar via aérea, respiração e circulação, ofertando oxigênio conforme necessidade."
+      },
+      {
+        "id": "B",
+        "text": "Solicitar tomografia antes de iniciar suporte respiratório."
+      },
+      {
+        "id": "C",
+        "text": "Prescrever antimicrobiano oral e reavaliar após uma hora."
+      },
+      {
+        "id": "D",
+        "text": "Realizar espirometria para classificar o distúrbio ventilatório."
+      }
+    ]
+  },
+  {
+    "id": "Q046",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Mulher de 26 anos apresenta disúria, polaciúria e urgência há dois dias. Não tem febre, corrimento vaginal, dor lombar, gravidez ou comorbidades. Qual é a abordagem mais adequada?",
+    "explanation": "Disúria, urgência e polaciúria sem sintomas vaginais ou sistêmicos permitem diagnóstico clínico de cistite não complicada e tratamento empírico. Não há indicação de tomografia, internação ou avaliação urológica inicial.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Solicitar tomografia antes de iniciar qualquer tratamento."
+      },
+      {
+        "id": "B",
+        "text": "Tratar empiricamente como cistite aguda não complicada."
+      },
+      {
+        "id": "C",
+        "text": "Encaminhar para avaliação urológica por provável obstrução."
+      },
+      {
+        "id": "D",
+        "text": "Internar para antibioticoterapia intravenosa."
+      }
+    ]
+  },
+  {
+    "id": "Q047",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Qual achado, em uma mulher com disúria, reduz mais a probabilidade de cistite e favorece uma causa genital?",
+    "explanation": "Corrimento vaginal reduz a probabilidade de cistite e sugere vaginite, cervicite ou uretrite. Urgência, dor suprapúbica e hematúria podem ocorrer na cistite.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Urgência miccional."
+      },
+      {
+        "id": "B",
+        "text": "Dor suprapúbica."
+      },
+      {
+        "id": "C",
+        "text": "Corrimento vaginal."
+      },
+      {
+        "id": "D",
+        "text": "Hematúria microscópica."
+      }
+    ]
+  },
+  {
+    "id": "Q048",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Gestante de dez semanas apresenta febre, dor em flanco, náuseas e sintomas urinários. Está hemodinamicamente estável. Qual é a conduta mais adequada?",
+    "explanation": "Pielonefrite na gestação deve ser tratada inicialmente em ambiente hospitalar, com antibiótico intravenoso e urocultura. Nitrofurantoína e fosfomicina não atingem concentrações renais adequadas para pielonefrite. O tratamento não deve aguardar o resultado da cultura.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Internação e início de antibiótico intravenoso após coleta de urocultura."
+      },
+      {
+        "id": "B",
+        "text": "Nitrofurantoína oral por cinco dias e retorno ambulatorial."
+      },
+      {
+        "id": "C",
+        "text": "Fosfomicina em dose única e hidratação domiciliar."
+      },
+      {
+        "id": "D",
+        "text": "Aguardar o resultado da urocultura antes de iniciar o tratamento."
+      }
+    ]
+  },
+  {
+    "id": "Q049",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Em gestante com pielonefrite, qual exame deve ser obtido antes ou logo após o início do antibiótico?",
+    "explanation": "A urocultura identifica o agente e permite ajustar o antibiótico. Tomografia é reservada para complicações ou evolução desfavorável. Cistoscopia e citologia não fazem parte da avaliação inicial.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Citologia urinária."
+      },
+      {
+        "id": "B",
+        "text": "Urocultura com antibiograma."
+      },
+      {
+        "id": "C",
+        "text": "Cistoscopia diagnóstica."
+      },
+      {
+        "id": "D",
+        "text": "Tomografia contrastada do abdome."
+      }
+    ]
+  },
+  {
+    "id": "Q050",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Qual conjunto de manifestações mais sugere pielonefrite, em vez de cistite?",
+    "explanation": "Febre, calafrios e dor em flanco indicam acometimento do trato urinário superior. Os demais conjuntos são mais compatíveis com infecção vesical ou doença genital.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Disúria, urgência e desconforto suprapúbico."
+      },
+      {
+        "id": "B",
+        "text": "Polaciúria, hematúria e sensação de esvaziamento incompleto."
+      },
+      {
+        "id": "C",
+        "text": "Dor uretral, corrimento e sangramento pós-coital."
+      },
+      {
+        "id": "D",
+        "text": "Febre, calafrios e dor em flanco."
+      }
+    ]
+  },
+  {
+    "id": "Q051",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Homem de 63 anos apresenta febre, dor perineal e sintomas urinários. Ao toque retal, a próstata está aumentada e intensamente dolorosa. Qual é o diagnóstico mais provável?",
+    "explanation": "Febre, dor perineal e próstata intensamente dolorosa são típicas de prostatite bacteriana aguda. Hiperplasia isolada não causa síndrome infecciosa. Câncer costuma ser indolor ao toque, e bexiga hiperativa não provoca febre.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Prostatite bacteriana aguda."
+      },
+      {
+        "id": "B",
+        "text": "Hiperplasia prostática benigna isolada."
+      },
+      {
+        "id": "C",
+        "text": "Câncer de próstata avançado."
+      },
+      {
+        "id": "D",
+        "text": "Síndrome da bexiga hiperativa."
+      }
+    ]
+  },
+  {
+    "id": "Q052",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Paciente com prostatite bacteriana aguda apresenta retenção urinária, com globo vesical doloroso. Qual é a melhor conduta?",
+    "explanation": "Retenção urinária associada à prostatite requer drenagem, antibiótico e avaliação urológica. Massagem prostática é contraindicada. Finasterida tem efeito tardio e PSA não deve atrasar o tratamento.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Realizar massagem prostática para obtenção de secreção."
+      },
+      {
+        "id": "B",
+        "text": "Prescrever finasterida e reavaliar em quatro semanas."
+      },
+      {
+        "id": "C",
+        "text": "Promover drenagem urinária, iniciar antibiótico e avaliar com urologia."
+      },
+      {
+        "id": "D",
+        "text": "Solicitar PSA antes de iniciar qualquer intervenção."
+      }
+    ]
+  },
+  {
+    "id": "Q053",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Por que a massagem prostática deve ser evitada na suspeita de prostatite bacteriana aguda?",
+    "explanation": "A manipulação vigorosa da próstata infectada pode disseminar bactérias para a circulação. Alterações do PSA podem ocorrer, mas não são a principal razão para a contraindicação. Retenção não ocorre obrigatoriamente após a manobra.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Pode precipitar bacteremia e agravar a infecção."
+      },
+      {
+        "id": "B",
+        "text": "Reduz a sensibilidade da cultura de urina."
+      },
+      {
+        "id": "C",
+        "text": "Provoca retenção urinária em todos os pacientes."
+      },
+      {
+        "id": "D",
+        "text": "Eleva permanentemente os níveis de PSA."
+      }
+    ]
+  },
+  {
+    "id": "Q054",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Mulher de 33 anos apresenta disúria, corrimento discreto e sangramento pós-coital após relação sem preservativo. Ao exame, o colo está friável, com secreção endocervical. Qual é a hipótese mais provável?",
+    "explanation": "Disúria associada a corrimento, sangramento pós-coital, exposição sexual e colo friável indica cervicite. Cistite não explica os achados cervicais. Candidíase costuma causar prurido e corrimento característico. Não há febre ou dor em flanco para pielonefrite.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cistite bacteriana não complicada."
+      },
+      {
+        "id": "B",
+        "text": "Candidíase vulvovaginal."
+      },
+      {
+        "id": "C",
+        "text": "Pielonefrite aguda."
+      },
+      {
+        "id": "D",
+        "text": "Cervicite por infecção sexualmente transmissível."
+      }
+    ]
+  },
+  {
+    "id": "Q055",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Na abordagem de uma paciente com cervicite, qual medida deve acompanhar o tratamento antimicrobiano?",
+    "explanation": "O manejo das parcerias reduz reinfecção e transmissão. Tomografia e culturas urinárias seriadas não são rotineiras. Antifúngicos não tratam as principais causas bacterianas de cervicite.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Solicitação rotineira de tomografia pélvica."
+      },
+      {
+        "id": "B",
+        "text": "Avaliação e tratamento dos parceiros sexuais."
+      },
+      {
+        "id": "C",
+        "text": "Repetição mensal de cultura de urina."
+      },
+      {
+        "id": "D",
+        "text": "Prescrição de antifúngico para ambos os parceiros."
+      }
+    ]
+  },
+  {
+    "id": "Q056",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Homem de 48 anos apresenta dor lombar intensa em cólica, irradiada para a região inguinal, associada a náusea e hematúria. Está afebril e hemodinamicamente estável. Qual é o diagnóstico mais provável?",
+    "explanation": "Dor em cólica irradiada para a região inguinal e hematúria sugerem ureterolitíase. Pielonefrite costuma cursar com febre e dor contínua. Prostatite causa dor perineal, e lombalgia mecânica não explica hematúria.",
+    "correctOptionId": "C",
+    "options": [
+      {
+        "id": "A",
+        "text": "Pielonefrite aguda."
+      },
+      {
+        "id": "B",
+        "text": "Prostatite bacteriana."
+      },
+      {
+        "id": "C",
+        "text": "Cólica renal por ureterolitíase."
+      },
+      {
+        "id": "D",
+        "text": "Lombalgia mecânica inespecífica."
+      }
+    ]
+  },
+  {
+    "id": "Q057",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Paciente com ureterolitíase apresenta febre, hipotensão e hidronefrose. Qual é a conduta mais adequada?",
+    "explanation": "Obstrução urinária infectada é emergência, exigindo antibiótico e descompressão por cateter ureteral ou nefrostomia. Tratamento expulsivo isolado é perigoso. Litotripsia definitiva costuma ser adiada até controle da infecção.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Descompressão urgente do sistema urinário e antibioticoterapia."
+      },
+      {
+        "id": "B",
+        "text": "Analgesia e tentativa de eliminação espontânea em domicílio."
+      },
+      {
+        "id": "C",
+        "text": "Litotripsia extracorpórea eletiva após resolução da febre."
+      },
+      {
+        "id": "D",
+        "text": "Alcalinização urinária e controle ambulatorial em 48 horas."
+      }
+    ]
+  },
+  {
+    "id": "Q058",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Homem assintomático apresenta cálculo renal de 4 mm, não obstrutivo, identificado incidentalmente. Qual é a estratégia inicial mais razoável?",
+    "explanation": "Cálculo pequeno, não obstrutivo e assintomático pode ser acompanhado, com orientação sobre hidratação, prevenção e imagem seriada. Procedimentos invasivos, antibiótico e cateter não são justificados sem sintomas ou complicações.",
+    "correctOptionId": "B",
+    "options": [
+      {
+        "id": "A",
+        "text": "Nefrolitotomia percutânea imediata."
+      },
+      {
+        "id": "B",
+        "text": "Vigilância clínica e por imagem, com orientação preventiva."
+      },
+      {
+        "id": "C",
+        "text": "Antibioticoterapia profilática contínua."
+      },
+      {
+        "id": "D",
+        "text": "Cateter duplo J até a eliminação do cálculo."
+      }
+    ]
+  },
+  {
+    "id": "Q059",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Mulher apresenta três episódios documentados de cistite no último ano, geralmente nas 48 horas seguintes à relação sexual. Após tratar o episódio atual, qual estratégia pode ser considerada?",
+    "explanation": "Em cistites recorrentes claramente relacionadas ao coito, profilaxia pós-coito pode reduzir novos episódios. Tomografia e cistoscopia não são rotineiras na ausência de anormalidades. Antibioticoterapia indefinida aumenta eventos adversos e resistência.",
+    "correctOptionId": "D",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tomografia anual do trato urinário."
+      },
+      {
+        "id": "B",
+        "text": "Cistoscopia após cada novo episódio."
+      },
+      {
+        "id": "C",
+        "text": "Antibioticoterapia contínua por tempo indeterminado."
+      },
+      {
+        "id": "D",
+        "text": "Profilaxia antimicrobiana pós-coito."
+      }
+    ]
+  },
+  {
+    "id": "Q060",
+    "area": "Banco clinico",
+    "theme": "Disúria e condições urogenitais",
+    "statement": "Mulher não gestante, assintomática, apresenta urocultura positiva solicitada durante avaliação de rotina. Não realizará procedimento urológico invasivo. Qual é a conduta mais adequada?",
+    "explanation": "Bacteriúria assintomática não deve ser tratada em mulheres não gestantes que não realizarão procedimento urológico invasivo. Repetir culturas e tratar persistentemente não traz benefício e aumenta o risco de resistência e eventos adversos.",
+    "correctOptionId": "A",
+    "options": [
+      {
+        "id": "A",
+        "text": "Não tratar a bacteriúria assintomática."
+      },
+      {
+        "id": "B",
+        "text": "Prescrever antibiótico por três dias."
+      },
+      {
+        "id": "C",
+        "text": "Repetir a urocultura e tratar se permanecer positiva."
+      },
+      {
+        "id": "D",
+        "text": "Solicitar ultrassonografia e iniciar profilaxia antimicrobiana."
+      }
+    ]
+  }
+]
