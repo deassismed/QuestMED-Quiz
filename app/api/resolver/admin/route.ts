@@ -158,11 +158,15 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    const body = (await request.json()) as { password?: string; rotationId?: string };
+    const body = (await request.json()) as { password?: string; rotationId?: string; studentId?: string };
     if (!validateProfessorPassword(body.password ?? "")) throw new Error("Senha do professor invalida.");
     const rotationId = requireResolverRotationId(body.rotationId);
-    const { error } = await getServerSupabase().from("qmq_resolver_students").delete().eq("rotation_id", rotationId);
+    const studentId = body.studentId?.trim();
+    let query = getServerSupabase().from("qmq_resolver_students").delete().eq("rotation_id", rotationId);
+    if (studentId) query = query.eq("id", studentId);
+    const { data, error } = await query.select("id");
     if (error) throw error;
+    if (studentId && (!data || data.length === 0)) throw new Error("Participante nao encontrado neste rodizio.");
     return NextResponse.json({ ok: true });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Nao foi possivel limpar o resolvedor." }, { status: 400 });

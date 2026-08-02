@@ -38,12 +38,12 @@ type ResolverAdminState = {
   summary: { studentCount: number; ubsCount: number; answerCount: number; averageScore: number; lastActivityAt: string | null };
 };
 
-async function requestResolverAdmin(password: string, rotationId: ResolverRotationId, method: "POST" | "DELETE" = "POST") {
+async function requestResolverAdmin(password: string, rotationId: ResolverRotationId, method: "POST" | "DELETE" = "POST", studentId?: string) {
   const response = await fetch("/api/resolver/admin", {
     method,
     cache: "no-store",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ password, rotationId })
+    body: JSON.stringify({ password, rotationId, studentId })
   });
   const data = (await response.json()) as ResolverAdminState & { error?: string; ok?: true };
   if (!response.ok) throw new Error(data.error ?? "Falha ao carregar o resolvedor.");
@@ -99,6 +99,21 @@ export function ResolverAdminDashboard({ questions: _questions }: { questions: Q
       await load(password);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Nao foi possivel limpar o resolvedor.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function deleteResolverStudent(student: ResolverAdminStudent) {
+    if (!window.confirm(`Excluir ${student.nickname} de ${student.ubsName}? Todas as respostas deste participante serão removidas do banco de dados.`)) return;
+    setBusy(true);
+    setError("");
+    try {
+      await requestResolverAdmin(password, rotationId, "DELETE", student.id);
+      setSelectedStudent(null);
+      await load(password);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Nao foi possivel excluir o participante.");
     } finally {
       setBusy(false);
     }
@@ -212,7 +227,7 @@ export function ResolverAdminDashboard({ questions: _questions }: { questions: Q
             </div>
             <div className="data-table-wrap">
               <table className="data-table">
-                <thead><tr><th>Aluno</th><th>UBS</th><th>Respondidas</th><th>Pontos</th><th>Ultima atividade</th></tr></thead>
+                <thead><tr><th>Aluno</th><th>UBS</th><th>Respondidas</th><th>Pontos</th><th>Ultima atividade</th><th>Ações</th></tr></thead>
                 <tbody>
                   {studentRanking.map((student) => (
                     <tr className="clickable-row" key={student.id} onClick={() => setSelectedStudent(student)} tabIndex={0}>
@@ -221,9 +236,22 @@ export function ResolverAdminDashboard({ questions: _questions }: { questions: Q
                       <td>{student.answeredCount}</td>
                       <td><strong>{student.totalScore.toFixed(1)}</strong></td>
                       <td>{new Date(student.updatedAt).toLocaleString("pt-BR")}</td>
+                      <td>
+                        <button
+                          className="resolver-admin-delete-student"
+                          disabled={busy}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            void deleteResolverStudent(student);
+                          }}
+                          type="button"
+                        >
+                          <Trash2 size={15} /> Excluir
+                        </button>
+                      </td>
                     </tr>
                   ))}
-                  {studentRanking.length === 0 ? <tr><td className="empty-table" colSpan={5}>Nenhum aluno sincronizou o resolvedor.</td></tr> : null}
+                  {studentRanking.length === 0 ? <tr><td className="empty-table" colSpan={6}>Nenhum aluno sincronizou o resolvedor.</td></tr> : null}
                 </tbody>
               </table>
             </div>
