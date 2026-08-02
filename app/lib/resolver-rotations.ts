@@ -1,7 +1,7 @@
 import p9QuestionsData from "../../data/questions.json";
 import p9CommentsData from "../../data/questions_coments.json";
-import p11QuestionsData from "../../data/questions - Copia.json";
-import p11CommentsData from "../../data/questions_coments - Copia.json";
+import p11QuestionsData from "../../data/questions_p11.json";
+import p11CommentsData from "../../data/questions_coments_p11.json";
 import type { QuestionComment, QuizQuestion } from "../types";
 import { RESOLVER_ROTATIONS, type ResolverRotationId } from "./resolver-rotation-config";
 
