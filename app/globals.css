@@ -2045,6 +2045,34 @@ a { color: inherit; }
   outline: 3px solid rgba(15, 118, 110, 0.18);
   outline-offset: -3px;
 }
+.resolver-admin-delete-student {
+  align-items: center;
+  background: #fff4f3;
+  border: 1px solid rgba(180, 35, 24, 0.24);
+  border-radius: 8px;
+  color: #a82418;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 900;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 10px;
+  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+.resolver-admin-delete-student:hover,
+.resolver-admin-delete-student:focus-visible {
+  background: #ffe6e3;
+  border-color: rgba(180, 35, 24, 0.5);
+  outline: none;
+  transform: translateY(-1px);
+}
+.resolver-admin-delete-student:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
 .empty-table { color: var(--muted); text-align: center !important; }
 
 .random-release-panel {
@@ -3837,6 +3865,145 @@ a { color: inherit; }
 
 .resolver-avatar-picker > div {
   max-height: 270px;
+}
+
+.resolver-entry-avatar {
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.1), transparent 62%),
+    #f7fbfb;
+  border: 1px solid #d1e5e1;
+  border-radius: 12px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  padding: 12px;
+}
+
+.resolver-entry-avatar .choice-avatar {
+  box-shadow: 0 8px 22px rgba(13, 96, 87, 0.2);
+  height: 64px;
+  width: 64px;
+}
+
+.resolver-entry-avatar > div {
+  display: grid;
+  gap: 3px;
+}
+
+.resolver-entry-avatar span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resolver-entry-avatar strong {
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.resolver-entry-avatar > button {
+  background: #fff;
+  border: 1px solid rgba(15, 118, 110, 0.3);
+  border-radius: 9px;
+  color: var(--accent-strong);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 950;
+  min-height: 42px;
+  padding: 0 13px;
+}
+
+.resolver-ubs-picker {
+  border: 0;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.resolver-ubs-picker legend {
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.resolver-ubs-picker > div {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-height: min(330px, 42dvh);
+  overflow-y: auto;
+  padding: 2px 4px 2px 2px;
+  scrollbar-color: rgba(15, 118, 110, 0.45) rgba(15, 118, 110, 0.06);
+}
+
+.resolver-ubs-picker button {
+  background: #f7fbfb;
+  border: 1px solid #d6e5e2;
+  border-radius: 9px;
+  color: #304541;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 850;
+  line-height: 1.2;
+  min-height: 54px;
+  padding: 9px 8px;
+  text-align: center;
+  transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.resolver-ubs-picker button:hover,
+.resolver-ubs-picker button:focus-visible {
+  border-color: rgba(15, 118, 110, 0.54);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.resolver-ubs-picker button.selected {
+  background: linear-gradient(145deg, #168f81, #0b6d64);
+  border-color: #0b6d64;
+  box-shadow: 0 9px 20px rgba(11, 109, 100, 0.23);
+  color: #fff;
+}
+
+.resolver-entry-avatar-modal > p {
+  color: rgba(255, 255, 255, 0.68);
+  margin: -6px 0 0;
+}
+
+.resolver-entry-avatar-modal .choice-avatar {
+  height: 72px;
+  width: 72px;
+}
+
+@media (max-width: 620px) {
+  .resolver-entry-avatar {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  .resolver-entry-avatar .choice-avatar {
+    grid-row: span 2;
+    height: 56px;
+    width: 56px;
+  }
+
+  .resolver-entry-avatar > button {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .resolver-ubs-picker > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .resolver-back-button {
